@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    env_file:
+      - .env.db
+  backend:
+    build: ./backend/programbuilder
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - ./backend/programbuilder/.env
+  frontend:
+    build: ./frontend/svelte-app
+    ports:
+      - "5000:5000"
