@@ -7,6 +7,8 @@ import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import postcss from 'rollup-plugin-postcss';
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -40,12 +42,20 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		postcss({
+		  extract: true,
+		  minimize: production,
+		  sourceMap: !production
+		}),
 		svelte({
-			preprocess: sveltePreprocess({ sourceMap: !production }),
-			compilerOptions: {
-				// enable run-time checks when not in production
-				dev: !production
-			}
+		  preprocess: sveltePreprocess({
+			postcss: true,
+			sourceMap: !production
+		  }),
+		  compilerOptions: {
+			// enable run-time checks when not in production
+			dev: !production,
+		  },
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
