@@ -1,12 +1,10 @@
 <script lang="ts">
     // Import your theme CSS and fonts
-    import './theme.postcss';
-    import './app.postcss';
+    import '../styles/theme.postcss';
+    import '../styles/app.postcss';
 </script>
   
-<style>
-/* Additional styles specific to this component */
-</style>
+
   
 
   

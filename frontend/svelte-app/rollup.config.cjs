@@ -1,13 +1,14 @@
-import { spawn } from 'child_process';
-import svelte from 'rollup-plugin-svelte';
-import commonjs from '@rollup/plugin-commonjs';
-import terser from '@rollup/plugin-terser';
-import resolve from '@rollup/plugin-node-resolve';
-import livereload from 'rollup-plugin-livereload';
-import css from 'rollup-plugin-css-only';
-import sveltePreprocess from 'svelte-preprocess';
-import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
+const { spawn } = require('child_process');
+const svelte = require('rollup-plugin-svelte');
+const commonjs = require('@rollup/plugin-commonjs');
+const terser = require('@rollup/plugin-terser');
+const resolve = require('@rollup/plugin-node-resolve');
+const livereload = require('rollup-plugin-livereload');
+const css = require('rollup-plugin-css-only');
+const typescript = require('@rollup/plugin-typescript');
+const sveltePreprocess = require('svelte-preprocess');
+const postcss = require('rollup-plugin-postcss');
+const postcssConfig = require('./postcss.config.cjs');
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -33,7 +34,7 @@ function serve() {
 	};
 }
 
-export default {
+module.exports = {
 	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
@@ -43,13 +44,14 @@ export default {
 	},
 	plugins: [
 		postcss({
-		  extract: true,
-		  minimize: production,
-		  sourceMap: !production
-		}),
+			extract: true,
+			minimize: production,
+			sourceMap: !production,
+			extensions: ['.postcss']
+		  }),
 		svelte({
 		  preprocess: sveltePreprocess({
-			postcss: true,
+			postcss: postcssConfig.plugins,
 			sourceMap: !production
 		  }),
 		  compilerOptions: {
