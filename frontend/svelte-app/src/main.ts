@@ -1,12 +1,10 @@
 import App from './App.svelte';
-import './tailwind.css';
-import './styles/theme.postcss';
-import './styles/app.postcss';
+import './styles/main.css';  // This should import everything you need
 
 const app = new App({
-    target: document.body,
+    target: document.querySelector('#app'),
     props: {
-        name: 'app'
+        name: 'World'
     }
 });
 
