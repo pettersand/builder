@@ -1,10 +1,9 @@
 <script lang="ts">
-    // Your TypeScript logic here
+    
 </script>
   
   <style>
-    @import '../styles/theme.postcss';
-    @import '../styles/app.postcss';
+    
     
     .header {
       @apply bg-blue-500 text-white p-4;
@@ -21,7 +20,7 @@
     </header>
   
     <main>
-      <slot></slot> <!-- This is where the content of the child components will be injected -->
+      <slot></slot>
     </main>
   
     <footer class="footer">
