@@ -17,7 +17,7 @@ module.exports = {
         
         // Light Mode
         'light-bg': 'rgb(191, 199, 207)',
-        'light-header-footer': 'rgb(77, 98, 121)',
+        'light-header-footer': 'rgb(15, 59, 81)',
         'light-text': 'rgb(0, 15, 31)',
         'light-primary': 'rgb(20, 78, 108)',
         'light-primary2': 'rgb(18, 70, 97)',
