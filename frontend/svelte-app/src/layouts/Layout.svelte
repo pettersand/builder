@@ -2,6 +2,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import themeStore from '../stores/themeStore';
+  import Dashboard from '../components/Dashboard.svelte';
   import { derived } from 'svelte/store';
   import 'boxicons';
   
@@ -24,11 +25,11 @@
 
 <style>
   :global(body) {
-    @apply flex flex-col min-h-screen font-muli;
+    @apply flex flex-col font-muli;
   }
 
   .layout {
-    @apply flex flex-col min-h-screen font-muli;
+    @apply flex flex-col h-screen font-muli;
   }
   .header {
     @apply p-4 flex justify-between items-center border-b;
@@ -87,7 +88,8 @@
     </div>
   </header>
 
-  <main>
+  <main class="flex">
+    <Dashboard />
     <slot></slot>
   </main>
 
