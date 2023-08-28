@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Layout from './components/Layout.svelte';
+	import Layout from './layouts/Layout.svelte';
 	export let name: string;
 </script>
   

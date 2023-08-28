@@ -1,11 +1,13 @@
 <!-- Layout.svelte -->
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import themeStore from '../stores/themeStore';
   import 'boxicons';
+  
   export let title: string;
-  let isDarkMode = false;
 
   function toggleDarkMode() {
-    isDarkMode = !isDarkMode;
+    $themeStore = $themeStore === 'dark' ? 'light' : 'dark';
   }
 
   function handleKeydown(event: KeyboardEvent) {
@@ -13,9 +15,25 @@
       toggleDarkMode();
     }
   }
+
+  onMount(() => {
+    const unsubscribe = themeStore.subscribe((theme) => {
+      document.body.className = theme === 'dark' ? '' : 'light-mode';
+    });
+
+    return unsubscribe; // Cleanup
+  });
 </script>
 
 <style>
+
+  :global(body) {
+    @apply bg-surface-900 text-tertiary-500;
+  }
+  :global(body.light-mode) {
+    @apply bg-surface-100 text-surface-900;
+  }
+
   .layout {
     @apply flex flex-col min-h-screen font-muli;
   }
@@ -62,13 +80,13 @@
         role="button"
         tabindex="0"
       >
-        <div class={`toggle-ball ${isDarkMode ? 'move' : ''}`}>
-          {#if isDarkMode}
-            <box-icon name='moon' class="toggle-icon"></box-icon>
-          {:else}
-            <box-icon name='sun' class="toggle-icon"></box-icon>
-          {/if}
-        </div>
+      <div class={`toggle-ball ${$themeStore === 'dark' ? '' : 'move'}`}>
+        {#if $themeStore === 'dark'}
+          <box-icon name='moon' class="toggle-icon"></box-icon>
+        {:else}
+          <box-icon name='sun' class="toggle-icon"></box-icon>
+        {/if}
+      </div>
       </div>
     </div>
   </header>
