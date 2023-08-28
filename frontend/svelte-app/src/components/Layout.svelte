@@ -1,11 +1,17 @@
 <!-- Layout.svelte -->
 <script lang="ts">
+  import 'boxicons';
   export let title: string;
   let isDarkMode = false;
 
   function toggleDarkMode() {
     isDarkMode = !isDarkMode;
-    // Here you'll eventually add the logic to switch themes
+  }
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleDarkMode();
+    }
   }
 </script>
 
@@ -16,29 +22,21 @@
   .header {
     @apply bg-surface-800 text-tertiary-500 p-4 flex justify-between;
   }
-  .menu {
+  .menu, .icons {
     @apply flex space-x-4;
   }
-  .icons {
-    @apply flex space-x-6;
-  }
-  .toggle-checkbox:checked + .toggle-label {
-    @apply bg-primary-500;
-  }
-  .toggle-label {
-    @apply bg-primary-500 w-16 h-7;
-  }
   .toggle-container {
-    @apply flex items-center justify-center h-7 w-16; /* Centering using flexbox */
+    @apply inline-flex items-center rounded-full bg-primary-500 cursor-pointer transition-all duration-500 ease-in-out w-16 h-8;
   }
-  .toggle-checkbox {
-    @apply absolute block w-6 h-6 rounded-full bg-primary-600 border-4 border-primary-600 appearance-none cursor-pointer transition-transform duration-300 ease-in-out;
+  .toggle-ball {
+    @apply w-7 h-7 rounded-full bg-primary-600 border-2 border-primary-600 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center;
     padding: 2px;
-    margin: 2px;
-    left: 0; /* Start from the left */
   }
-  .toggle-checkbox:checked {
-    transform: translateX(2.2rem); /* Move to the other side */
+  .toggle-ball.move {
+  @apply translate-x-[124%]; /* Adjust this value */
+  }
+  .toggle-icon {
+    @apply w-7 h-7 text-white;
   }
   main {
     @apply bg-surface-900 flex-grow text-tertiary-500;
@@ -57,26 +55,21 @@
       <h1>{title}</h1>
     </div>
     <div class="icons">
-      <button
-        class="focus:outline-none"
-        aria-label="Toggle dark mode"
+      <div
+        class="toggle-container"
         on:click={toggleDarkMode}
+        on:keydown={handleKeydown}
+        role="button"
+        tabindex="0"
       >
-        <div class="relative inline-block align-middle select-none transition duration-200 ease-in toggle-container">
-          <input
-            type="checkbox"
-            name="toggle"
-            id="toggle"
-            class="toggle-checkbox"
-            bind:checked={isDarkMode}
-          />
-          <label
-            for="toggle"
-            class="toggle-label block overflow-hidden h-8 rounded-full bg-primary-300 cursor-pointer"
-          ></label>
+        <div class={`toggle-ball ${isDarkMode ? 'move' : ''}`}>
+          {#if isDarkMode}
+            <box-icon name='moon' class="toggle-icon"></box-icon>
+          {:else}
+            <box-icon name='sun' class="toggle-icon"></box-icon>
+          {/if}
         </div>
-      </button>
-      <span class="cursor-pointer">Notification</span>
+      </div>
     </div>
   </header>
 
