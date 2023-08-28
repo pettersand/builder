@@ -31,7 +31,7 @@
     @apply flex flex-col min-h-screen font-muli;
   }
   .header {
-    @apply p-4 flex justify-between items-center;
+    @apply p-4 flex justify-between items-center border-b;
   }
   .footer {
     @apply p-4 flex justify-between items-center;
@@ -55,18 +55,18 @@
   main {
     @apply flex-grow;
   }
-  footer {
-    @apply p-4;
+  .footer {
+    @apply p-4 border-t;
   }
 </style>
 
 <div class={$themeStore === 'dark' ? 'bg-dark-bg text-dark-text layout' : 'bg-light-bg text-light-text layout'}>
-  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer header' : 'bg-light-header-footer header'}>
+  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer border-dark-text header' : 'bg-light-header-footer header'}>
     <div class="menu">
       <span>Dashboard</span>
     </div>
     <div class="title">
-      <span>Title</span>
+      <span><b>BUILDER</b></span>
     </div>
     <div class="icons">
       <div
@@ -91,7 +91,7 @@
     <slot></slot>
   </main>
 
-  <footer class={$themeStore === 'dark' ? 'bg-dark-header-footer footer' : 'bg-light-header-footer footer'}>
+  <footer class={$themeStore === 'dark' ? 'bg-dark-header-footer border-dark-text footer' : 'bg-light-header-footer footer'}>
     <p>Footer Content</p>
   </footer>
 </div>
