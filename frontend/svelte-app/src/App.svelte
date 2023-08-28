@@ -4,7 +4,7 @@
 </script>
   
 <Layout title="My Svelte App">
-<h1>Hello, {name}!</h1>
+
 </Layout>
 
 <style>
