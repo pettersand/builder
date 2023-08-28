@@ -25,14 +25,11 @@
   .toggle-checkbox:checked + .toggle-label {
     @apply bg-primary-500;
   }
-  .toggle-button {
-    @apply bg-primary-500;
-  }
   .toggle-label {
-    @apply bg-primary-500 w-16 h-8;
+    @apply bg-primary-500 w-16 h-7;
   }
   .toggle-container {
-    @apply flex items-center justify-center h-8 w-16; /* Centering using flexbox */
+    @apply flex items-center justify-center h-7 w-16; /* Centering using flexbox */
   }
   .toggle-checkbox {
     @apply absolute block w-6 h-6 rounded-full bg-primary-600 border-4 border-primary-600 appearance-none cursor-pointer transition-transform duration-300 ease-in-out;
@@ -41,7 +38,7 @@
     left: 0; /* Start from the left */
   }
   .toggle-checkbox:checked {
-    transform: translateX(calc(100% - 1rem)); /* Move to the other side */
+    transform: translateX(2.2rem); /* Move to the other side */
   }
   main {
     @apply bg-surface-900 flex-grow text-tertiary-500;
