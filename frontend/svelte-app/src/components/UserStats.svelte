@@ -2,9 +2,9 @@
     // Your script here
   </script>
   
-  <div class="user-stats-container flex  h-[200px] bg-dark-bg p-4 border border-dark-text">
+  <div class="user-stats-container flex rounded-lg h-[200px]  bg-dark-card p-4">
     <!-- First Area -->
-    <div class="stats-area flex-1 p-4">
+    <div class="stats-area flex-1 p-4 border-r border-dark-text">
       <h2 class="text-lg font-semibold">Workouts</h2>
       <div class="grid grid-cols-2 gap-4">
         <p>Workouts completed: 10</p>
@@ -16,7 +16,7 @@
     </div>
   
     <!-- Second Area -->
-    <div class="stats-area flex-1 p-4">
+    <div class="stats-area flex-1 p-4 border-r border-dark-text">
       <h2 class="text-lg font-semibold">Exercises</h2>
       <div class="grid grid-cols-2 gap-4">
         <p>Exercises Skipped: 10</p>

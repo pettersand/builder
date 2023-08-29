@@ -9,10 +9,10 @@
 /* Add your TailwindCSS classes or custom styles */
 </style>
 
-<main class="flex flex-row flex-grow">
-    <div class="flex flex-col w-full">
+<main class="flex flex-row flex-grow gap-4">
+    <div class="flex flex-col w-full gap-4">
         <UserStats />
-        <div class="flex flex-row flex-grow p-4 gap-2">
+        <div class="flex flex-row flex-grow gap-4">
             <Workout />
             <CardLayout />
         </div>

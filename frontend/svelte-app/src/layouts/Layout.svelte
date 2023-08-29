@@ -29,10 +29,10 @@
   }
 
   .layout {
-    @apply flex flex-col h-screen font-muli;
+    @apply flex flex-col h-screen font-muli p-6 gap-4;
   }
   .header {
-    @apply p-4 flex justify-between items-center border-b;
+    @apply p-4 flex justify-between items-center border-b rounded-lg;
   }
   .footer {
     @apply p-4 flex justify-between items-center;
@@ -61,8 +61,8 @@
   }
 </style>
 
-<div class={$themeStore === 'dark' ? 'bg-dark-bg text-dark-text layout' : 'bg-light-bg text-light-text layout'}>
-  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer border-dark-text header' : 'bg-light-header-footer header'}>
+<div class={$themeStore === 'dark' ? 'bg-gradient-to-tr from-black to-dark-bg2 via-dark-bg text-dark-text layout' : 'bg-gradient-to-tr from-light-bg to-light-bg2 via-light-bg3 text-light-text layout'}>
+  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer bg-opacity-40 border-dark-text header' : 'bg-light-card2 bg-opacity-60 header'}>
     <div class="menu">
       <span>Dashboard</span>
     </div>
@@ -71,13 +71,13 @@
     </div>
     <div class="icons">
       <div
-        class={$themeStore === 'dark' ? 'toggle-container bg-dark-primary' : 'toggle-container bg-light-primary3'}
+        class={$themeStore === 'dark' ? 'toggle-container bg-dark-primary' : 'toggle-container bg-light-bg3'}
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
         tabindex="0"
       >
-        <div class={$themeStore === 'dark' ? 'toggle-ball bg-dark-primary2 border-dark-primary' : 'toggle-ball bg-light-primary3 border-light-primary2 move'}>
+        <div class={$themeStore === 'dark' ? 'toggle-ball bg-dark-primary2 border-dark-primary' : 'toggle-ball bg-light-bg border-light-primary2 move'}>
           {#if $themeStore === 'dark'}
             <box-icon name='moon' class="toggle-icon"></box-icon>
           {:else}
@@ -93,7 +93,5 @@
     <slot></slot>
   </main>
 
-  <footer class={$themeStore === 'dark' ? 'bg-dark-header-footer border-dark-text footer' : 'bg-light-header-footer footer'}>
-    <p>Footer Content</p>
-  </footer>
+
 </div>
