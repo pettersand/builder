@@ -6,7 +6,6 @@
   import { derived } from 'svelte/store';
   import 'boxicons';
   
-  export let title: string;
 
   const themeClassStore = derived(themeStore, ($themeStore) => {
     return $themeStore === 'dark' ? 'dark-mode' : 'light-mode';

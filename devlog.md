@@ -10,4 +10,4 @@ Worked on layout styling, and toggle switch for light/dark mode.
 Finalized layout and updated color scheme + Dashboard first draft design
 
 ## 30/08-23 ##
-Database schema architecture planning. Created overview and first draft SQL setup.
+Database schema architecture planning. Created overview and first draft SQL setup with Django models. 
