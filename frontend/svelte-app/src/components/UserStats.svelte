@@ -1,10 +1,10 @@
 <script>
-    // Your script here
-  </script>
+    import themeStore from '../stores/themeStore';
+</script>
   
-  <div class="user-stats-container flex rounded-lg h-[200px]  bg-dark-card p-4">
+  <div class={`user-stats-container flex rounded-lg h-[200px] ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-header-footer'}`}>
     <!-- First Area -->
-    <div class="stats-area flex-1 p-4 border-r border-dark-text">
+    <div class={`stats-area flex-1 p-4 border-r ${$themeStore === 'dark' ? 'border-dark-text' : 'border-light-text'}`}>
       <h2 class="text-lg font-semibold">Workouts</h2>
       <div class="grid grid-cols-2 gap-4">
         <p>Workouts completed: 10</p>
@@ -16,7 +16,7 @@
     </div>
   
     <!-- Second Area -->
-    <div class="stats-area flex-1 p-4 border-r border-dark-text">
+    <div class={`stats-area flex-1 p-4 border-r ${$themeStore === 'dark' ? 'border-dark-text' : 'border-light-text'}`}>
       <h2 class="text-lg font-semibold">Exercises</h2>
       <div class="grid grid-cols-2 gap-4">
         <p>Exercises Skipped: 10</p>
@@ -37,3 +37,4 @@
       </div>
     </div>
   </div>
+  

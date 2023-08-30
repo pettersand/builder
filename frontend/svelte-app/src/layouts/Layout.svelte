@@ -34,9 +34,6 @@
   .header {
     @apply p-4 flex justify-between items-center border-b rounded-lg;
   }
-  .footer {
-    @apply p-4 flex justify-between items-center;
-  }
   .menu, .icons {
     @apply flex space-x-4;
   }
@@ -55,9 +52,6 @@
   }
   main {
     @apply flex-grow;
-  }
-  .footer {
-    @apply p-4 border-t;
   }
 </style>
 

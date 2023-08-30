@@ -3,6 +3,7 @@
     import UserStats from './UserStats.svelte';
     import CardLayout from './CardLayout.svelte';
     import Workout from './Workout.svelte';
+    import themeStore from '../stores/themeStore';
 </script>
   
 <style>
