@@ -56,7 +56,7 @@
 </style>
 
 <div class={$themeStore === 'dark' ? 'bg-gradient-to-tr from-black to-dark-bg2 via-dark-bg text-dark-text layout' : 'bg-gradient-to-tr from-light-bg to-light-bg2 via-light-bg3 text-light-text layout'}>
-  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer bg-opacity-40 border-dark-text header' : 'bg-light-card2 bg-opacity-60 header'}>
+  <header class={$themeStore === 'dark' ? 'bg-dark-header-footer bg-opacity-40 border-dark-text header' : 'bg-light-header bg-opacity-70 header'}>
     <div class="menu">
       <span>Dashboard</span>
     </div>
@@ -65,13 +65,13 @@
     </div>
     <div class="icons">
       <div
-        class={$themeStore === 'dark' ? 'toggle-container bg-dark-primary' : 'toggle-container bg-light-bg3'}
+        class={$themeStore === 'dark' ? 'toggle-container bg-dark-header border border-dark-primary3' : 'toggle-container bg-light-bg2 border border-light-card2'}
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
         tabindex="0"
       >
-        <div class={$themeStore === 'dark' ? 'toggle-ball bg-dark-primary2 border-dark-primary' : 'toggle-ball bg-light-bg border-light-primary2 move'}>
+        <div class={$themeStore === 'dark' ? 'toggle-ball bg-dark-primary border-dark-primary3' : 'toggle-ball bg-light-header border-light-card2 move'}>
           {#if $themeStore === 'dark'}
             <box-icon name='moon' class="toggle-icon"></box-icon>
           {:else}

@@ -2,7 +2,7 @@
     import themeStore from '../stores/themeStore';
 </script>
   
-  <div class={`user-stats-container flex rounded-lg h-[200px] ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-header-footer'}`}>
+  <div class={`user-stats-container flex rounded-lg h-[200px] ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-card2'}`}>
     <!-- First Area -->
     <div class={`stats-area flex-1 p-4 border-r ${$themeStore === 'dark' ? 'border-dark-text' : 'border-light-text'}`}>
       <h2 class="text-lg font-semibold">Workouts</h2>

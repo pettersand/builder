@@ -3,13 +3,7 @@
 </script>
   
 
-<style>
-    .color-box {
-      /* Additional styling for the color boxes */
-    }
-</style>
-
-  <aside class={`sidebar h-full min-w-[200px] rounded-lg flex flex-col flex-shrink-0 ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-card'}`}>
+  <aside class={`sidebar h-full min-w-[200px] rounded-lg flex flex-col flex-shrink-0 ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-card2'}`}>
     <section class={`account-section flex-1 p-4 border-b ${$themeStore === 'dark' ? 'border-dark-text' : 'border-light-text'}`}>
       <h2 class="text-lg font-semibold">Account</h2>
       <!-- Account details go here -->
@@ -25,13 +19,13 @@
         <div class="color-box bg-dark-bg2   flex items-center justify-center text-white">
           dark-bg2
         </div>
-        <div class="color-box bg-dark-header-footer   flex items-center justify-center text-white ">
+        <div class="color-box bg-dark-header  flex items-center justify-center text-white ">
           dark-header-footer
         </div>
-        <div class="color-box bg-dark-text   flex items-center justify-center text-white ">
+        <div class="color-box bg-dark-text  flex items-center justify-center text-white ">
           dark-text
         </div>
-        <div class="color-box bg-dark-card   flex items-center justify-center text-white ">
+        <div class="color-box bg-dark-card  flex items-center justify-center text-white ">
           dark-card
         </div>
         <div class="color-box bg-dark-primary   flex items-center justify-center text-white ">
@@ -54,16 +48,16 @@
         <div class="color-box bg-light-bg3   flex items-center justify-center text-white ">
           light-bg3
         </div>
-        <div class="color-box bg-light-header-footer   flex items-center justify-center text-white ">
+        <div class="color-box bg-light-header  flex items-center justify-center text-white ">
           light-header-footer
         </div>
-        <div class="color-box bg-light-text   flex items-center justify-center text-white ">
+        <div class="color-box bg-light-text  flex items-center justify-center text-white ">
           light-text
         </div>
-        <div class="color-box bg-light-card   flex items-center justify-center text-white ">
+        <div class="color-box bg-light-card   flex items-center justify-center text-black ">
           light-card
         </div>
-        <div class="color-box bg-light-card2   flex items-center justify-center text-white ">
+        <div class="color-box bg-light-card2   flex items-center justify-center text-black ">
           light-card2
         </div>
         <div class="color-box bg-light-primary   flex items-center justify-center text-white ">
