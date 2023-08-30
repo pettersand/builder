@@ -5,3 +5,9 @@ Issues: Ran into some problems with postcss. Lots of troubleshooting of rollup.c
 
 ## 28/08-23 ## 
 Worked on layout styling, and toggle switch for light/dark mode. 
+
+## 29/08-23 ##
+Finalized layout and updated color scheme + Dashboard first draft design
+
+## 30/08-23 ##
+Database schema architecture planning. Created overview and first draft SQL setup.
