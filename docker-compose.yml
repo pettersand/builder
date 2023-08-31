@@ -12,6 +12,8 @@ services:
       - db
     env_file:
       - ./backend/programbuilder/.env
+    environment:
+      - DB_HOST=db
   frontend:
     build: ./frontend/svelte-app
     ports:
