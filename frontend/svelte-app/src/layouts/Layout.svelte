@@ -3,6 +3,8 @@
   import { onMount } from 'svelte';
   import themeStore from '../stores/themeStore';
   import Dashboard from '../components/Dashboard.svelte';
+  import Builder from '../components/Builder.svelte';
+  let currentView = 'dashboard';
   import { derived } from 'svelte/store';
   import 'boxicons';
   
@@ -57,7 +59,8 @@
 <div class={$themeStore === 'dark' ? 'bg-gradient-to-tr from-black to-dark-bg2 via-dark-bg text-dark-text layout' : 'bg-gradient-to-tr from-light-bg to-light-bg2 via-light-bg3 text-light-text layout'}>
   <header class={$themeStore === 'dark' ? 'bg-dark-header-footer bg-opacity-40 border-dark-text header' : 'bg-light-header bg-opacity-70 header'}>
     <div class="menu">
-      <span>Dashboard</span>
+      <button on:click={() => (currentView = 'dashboard')}>Dashboard</button>
+      <button on:click={() => (currentView = 'builder')}>Builder</button>
     </div>
     <div class="title">
       <span><b>BUILDER</b></span>
@@ -82,7 +85,11 @@
   </header>
 
   <main class="flex">
+    {#if currentView === 'dashboard'}
     <Dashboard />
+  {:else if currentView === 'builder'}
+    <Builder />
+  {/if}
     <slot></slot>
   </main>
 
