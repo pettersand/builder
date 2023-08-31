@@ -1,6 +1,6 @@
 from django.db import models
 from uuid import uuid4
-from django.contrib.postgres.fields import JSONField
+from django.db.models import JSONField
 from .programs import Programs
 
 class Sessions(models.Model):
