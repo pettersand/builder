@@ -3,7 +3,7 @@
 	export let name: string;
 </script>
   
-<Layout title="My Svelte App">
+<Layout>
 
 </Layout>
 

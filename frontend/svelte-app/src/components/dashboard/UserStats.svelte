@@ -1,5 +1,5 @@
 <script>
-    import themeStore from '../stores/themeStore';
+    import themeStore from '../../stores/themeStore';
 </script>
   
   <div class={`user-stats-container flex rounded-lg h-[200px] ${$themeStore === 'dark' ? 'bg-dark-card' : 'bg-light-card2'}`}>

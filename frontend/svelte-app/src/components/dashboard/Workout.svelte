@@ -1,5 +1,5 @@
 <script>
-    import themeStore from '../stores/themeStore';
+    import themeStore from '../../stores/themeStore';
 </script>
 
 <!-- Add bg-dark-header-footer or bg-light-header-footer based on the theme -->

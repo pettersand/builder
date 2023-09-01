@@ -3,7 +3,7 @@
   let activeOption = "newProgram"; // Default active option
 </script>
 
-<div class="">
+<div class="page-header">
   <nav class="vertical-nav">
     <button
       class={activeOption === "newProgram" ? "active" : ""}
@@ -34,12 +34,22 @@
 
 <style>
   /* Add styles for the vertical navigation bar here */
+  .page-header {
+    width: 100%; /* Full width */
+    height: 80px; /* Reserved height */
+    background-color: #f0f0f0; /* Example background color */
+    border-bottom: 1px solid #ddd; /* Example border */
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Example padding */
+  }
+
   .vertical-nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  .active {
-    /* Your styles for active button here */
+  .vertical-nav button.active {
+    background-color: #ddd; /* Example active background color */
   }
 </style>

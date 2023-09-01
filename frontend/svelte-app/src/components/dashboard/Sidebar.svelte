@@ -1,5 +1,5 @@
 <script>
-    import themeStore from '../stores/themeStore';
+    import themeStore from '../../stores/themeStore';
 </script>
   
 
