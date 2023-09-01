@@ -1,8 +1,8 @@
 <script>
-    import Sidebar from './Sidebar.svelte';
-    import UserStats from './UserStats.svelte';
-    import CardLayout from './CardLayout.svelte';
-    import Workout from './Workout.svelte';
+    import Sidebar from '../components/Sidebar.svelte';
+    import UserStats from '../components/UserStats.svelte';
+    import CardLayout from '../components/CardLayout.svelte';
+    import Workout from '../components/Workout.svelte';
     import themeStore from '../stores/themeStore';
 </script>
   
