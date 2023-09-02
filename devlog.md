@@ -24,3 +24,7 @@ Work on Builder.svelte layout and design, adding initial components.
 ## 01/09-23
 
 Started work on specific options and design for NewProgram - planned the UI and base functions.
+
+## 02/09-23
+
+More work on setting up options layout and main for Builder page.
