@@ -6,6 +6,7 @@
   } from "./UtilityFunctions";
   import { onMount } from "svelte";
   import globalStore from "../stores/globalStore";
+  import themeStore from "../stores/themeStore";
 
   export let modalContent: string;
   export let onClose: () => void;
@@ -35,13 +36,13 @@
 
 <div
   class={`fixed inset-0 flex items-center justify-center z-50 rounded-lg ${
-    $globalStore.theme === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
+    $themeStore === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
   }`}
   bind:this={modalRef}
 >
   <div
     class={`modal p-6 w-1/3 rounded-lg ${
-      $globalStore.theme === "dark"
+      $themeStore === "dark"
         ? "bg-dark-card text-dark-text"
         : "bg-light-card text-light-text"
     }`}
@@ -55,7 +56,7 @@
     <div class="mt-4">
       <button
         class={`px-4 py-2 mr-2 rounded-full ${
-          $globalStore.theme === "dark"
+          $themeStore === "dark"
             ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
             : "bg-light-primary hover:bg-light-primary2 text-light-text"
         }`}
@@ -65,7 +66,7 @@
       </button>
       <button
         class={`px-4 py-2 rounded-full ${
-          $globalStore.theme === "dark"
+          $themeStore === "dark"
             ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
             : "bg-light-primary hover:bg-light-primary2 text-light-text"
         }`}

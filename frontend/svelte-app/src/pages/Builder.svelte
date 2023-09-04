@@ -12,8 +12,10 @@
   import PreMadeProgramMain from "../components/builder/main/PreMadeProgramMain.svelte";
   import BaseModal from "../components/BaseModal.svelte";
   import globalStore from "../stores/globalStore";
+  import themeStore from "../stores/themeStore";
   import setCurrentPage from "../stores/globalStore";
   import type { Level } from "../types/index";
+  import type { MainComponentMap, OptionsComponentMap } from "../types/index";
   import {
     toggleModal,
     handleKeyboardEvent,
@@ -24,22 +26,14 @@
   let activeOption: string = "newProgram"; // Default active option
   let selectedLevel: Level = "Beginner";
 
-  type ComponentMap = {
-    [key: string]:
-      | typeof NewProgramMain
-      | typeof EditProgramMain
-      | typeof SavedTemplatesMain
-      | typeof PreMadeProgramMain;
-  };
-
-  const optionToMainComponent: ComponentMap = {
+  const optionToMainComponent: MainComponentMap = {
     newProgram: NewProgramMain,
     editProgram: EditProgramMain,
     savedTemplates: SavedTemplatesMain,
     preMadePrograms: PreMadeProgramMain,
   };
 
-  const optionToOptionsComponent: ComponentMap = {
+  const optionToOptionsComponent: OptionsComponentMap = {
     newProgram: NewProgramOptions,
     editProgram: EditProgramOptions,
     savedTemplates: SavedTemplatesOptions,
@@ -77,7 +71,7 @@
 <main class="flex flex-grow flex-col h-screen">
   <div
     class={`flex p-4 ${
-      $globalStore.theme === "dark"
+      $themeStore === "dark"
         ? "bg-dark-card text-dark-text"
         : "bg-light-card2 text-light-text"
     }`}
@@ -88,7 +82,7 @@
           on:click={() => setActiveOption(option)}
           class={`p-2 transition duration-300 ease-in-out rounded-md hover:border hover:border-opacity-50 ${
             activeOption === option
-              ? $globalStore.theme === "dark"
+              ? $themeStore === "dark"
                 ? "bg-opacity-30 bg-dark-primary"
                 : "bg-opacity-30 bg-light-primary"
               : ""

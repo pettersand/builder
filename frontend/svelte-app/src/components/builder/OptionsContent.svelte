@@ -1,11 +1,20 @@
-<script>
-  export let activeOption;
-  export let optionToOptionsComponent;
+<script lang="ts">
+  import type { OptionsComponentMap } from "../../types/index"; // Add this line
+  export let activeOption: string;
+  export let optionToOptionsComponent: OptionsComponentMap;
+  import globalStore from "../../stores/globalStore";
   import themeStore from "../../stores/themeStore";
+
+  $: componentToRender = optionToOptionsComponent[activeOption] as any;
 </script>
 
 <div
-  class={`p-4 ${$themeStore === "dark" ? "bg-dark-card" : "bg-light-card2"}`}
+  class={`p-4 ${
+    $themeStore === "dark" ? "bg-dark-card" : "bg-light-card2"
+  }`}
 >
-  <svelte:component this={optionToOptionsComponent[activeOption]} />
+<svelte:component
+    this={componentToRender}
+    level={$globalStore.level}
+  />
 </div>

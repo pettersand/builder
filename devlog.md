@@ -28,3 +28,8 @@ Started work on specific options and design for NewProgram - planned the UI and 
 ## 02/09-23
 
 More work on setting up options layout and main for Builder page.
+
+## 04/09-23
+
+Added some organizational files for global types, functions, stores. Created Base Modal style, and started
+implementing it with the Builder Options for Beginners.
