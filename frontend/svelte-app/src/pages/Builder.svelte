@@ -1,4 +1,3 @@
-<!-- Builder.svelte -->
 <script lang="ts">
   import { onMount } from "svelte";
   import MainContent from "../components/builder/MainContent.svelte";
@@ -11,9 +10,19 @@
   import EditProgramMain from "../components/builder/main/EditProgramMain.svelte";
   import SavedTemplatesMain from "../components/builder/main/SavedTemplatesMain.svelte";
   import PreMadeProgramMain from "../components/builder/main/PreMadeProgramMain.svelte";
-  import themeStore from "../stores/themeStore";
+  import BaseModal from "../components/BaseModal.svelte";
+  import globalStore from "../stores/globalStore";
+  import setCurrentPage from "../stores/globalStore";
+  import type { Level } from "../types/index";
+  import {
+    toggleModal,
+    handleKeyboardEvent,
+    handleClickOutside,
+  } from "../components/UtilityFunctions";
 
+  let showModal = false;
   let activeOption: string = "newProgram"; // Default active option
+  let selectedLevel: Level = "Beginner";
 
   type ComponentMap = {
     [key: string]:
@@ -39,18 +48,36 @@
 
   const setActiveOption = (option: string) => {
     activeOption = option;
+    if (option === "newProgram") {
+      showModal = true;
+    }
+  };
+
+  const onClose = () => {
+    showModal = false;
+  };
+
+  const onConfirm = () => {
+    // Add your confirm logic here
+    // For example, you might want to set the selected level
+    globalStore.setLevel(selectedLevel);
+    showModal = false;
   };
 
   // Function to capitalize the first letter of each word in a string
-  function capitalizeFirstLetter(string) {
+  function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  onMount(() => {
+    globalStore.setCurrentPage("Builder"); // Set the current page to 'Builder'
+  });
 </script>
 
 <main class="flex flex-grow flex-col h-screen">
   <div
     class={`flex p-4 ${
-      $themeStore === "dark"
+      $globalStore.theme === "dark"
         ? "bg-dark-card text-dark-text"
         : "bg-light-card2 text-light-text"
     }`}
@@ -58,10 +85,10 @@
     <nav class="flex flex-col items-start pr-4 text-left">
       {#each ["newProgram", "editProgram", "savedTemplates", "preMadePrograms"] as option}
         <button
-          on:click={() => (activeOption = option)}
+          on:click={() => setActiveOption(option)}
           class={`p-2 transition duration-300 ease-in-out rounded-md hover:border hover:border-opacity-50 ${
             activeOption === option
-              ? $themeStore === "dark"
+              ? $globalStore.theme === "dark"
                 ? "bg-opacity-30 bg-dark-primary"
                 : "bg-opacity-30 bg-light-primary"
               : ""
@@ -74,8 +101,30 @@
     <OptionsContent bind:activeOption {optionToOptionsComponent} />
   </div>
   <MainContent {activeOption} {optionToMainComponent} />
+
+  <!-- Modal HTML structure -->
+  {#if showModal}
+    <BaseModal modalContent="Select Level" {onClose} {onConfirm}>
+      {#each ["Beginner", "Intermediate", "Expert"] as level}
+        <label class="inline-flex items-center mt-3">
+          <input
+            type="radio"
+            class="form-radio"
+            name="level"
+            bind:group={selectedLevel}
+            value={level}
+          />
+          <span class="ml-2">{level}</span>
+        </label>
+      {/each}
+    </BaseModal>
+  {/if}
 </main>
 
+<!-- Modal styles -->
 <style>
-  /* Add your styles here */
+  .modal {
+    position: relative;
+    border-radius: 8px;
+  }
 </style>

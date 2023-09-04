@@ -3,9 +3,22 @@
   import themeStore from "../stores/themeStore";
   import Dashboard from "../pages/Dashboard.svelte";
   import Builder from "../pages/Builder.svelte";
-  let currentView = "dashboard";
   import { derived } from "svelte/store";
   import "boxicons";
+  import globalStore from "../stores/globalStore"; // Import globalStore
+
+  let currentView = localStorage.getItem("currentPage") || "Dashboard"; //
+
+  onMount(() => {
+    // Subscribe to globalStore to keep track of the current page
+    const unsubscribe = globalStore.subscribe((state) => {
+      currentView = state.currentPage;
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  });
 
   const themeClassStore = derived(themeStore, ($themeStore) => {
     return $themeStore === "dark" ? "dark-mode" : "light-mode";
@@ -33,8 +46,8 @@
       : "bg-light-header bg-opacity-70 header"}
   >
     <div class="menu">
-      <button on:click={() => (currentView = "dashboard")}>Dashboard</button>
-      <button on:click={() => (currentView = "builder")}>Builder</button>
+      <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
+      <button on:click={() => (currentView = "Builder")}>Builder</button>
     </div>
     <div class="title">
       <span><b>BUILDER</b></span>
@@ -65,9 +78,9 @@
   </header>
 
   <main class="flex">
-    {#if currentView === "dashboard"}
+    {#if currentView === "Dashboard"}
       <Dashboard />
-    {:else if currentView === "builder"}
+    {:else if currentView === "Builder"}
       <Builder />
     {/if}
     <slot />
