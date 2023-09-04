@@ -7,8 +7,39 @@
 </script>
 
 {#if level === "Beginner"}
-  <!-- Beginner content here -->
-  <h1>BEGINNER</h1>
+  <div class="flex flex-row justify-between">
+    {#each ["Custom Setup", "Templates", "Exercise Picker", "Options"] as title}
+      <div
+        class={`w-1/4 p-4 ${
+          $themeStore === "dark"
+            ? "bg-dark-card border-dark-text"
+            : "bg-light-card2 border-light-text"
+        }`}
+      >
+        <h2 class="text-center text-sm border-b-2 border-opacity-50">
+          {title}
+        </h2>
+        {#if title === "Custom Setup"}
+          <div class="mt-2 space-y-2">
+            {#each [{ label: "How many unique training days?", id: "trainingDays" }, { label: "How many exercises per day?", id: "exercisesPerDay" }, { label: "How many sessions per week?", id: "sessionsPerWeek" }, { label: "How many weeks?", id: "weeks" }] as field}
+              <div class="flex items-center justify-between">
+                <label for={field.id} class="text-xs">{field.label}</label>
+                <input
+                  id={field.id}
+                  type="number"
+                  class={`w-1/3 p-1 text-xs border rounded-md ${
+                    $themeStore === "dark"
+                      ? "bg-dark-primary3 opacity-50 border-dark-primary"
+                      : "bg-light-card opacity-50 border-light-primary"
+                  }`}
+                />
+              </div>
+            {/each}
+          </div>
+        {/if}
+      </div>
+    {/each}
+  </div>
 {:else if level === "Intermediate"}
   <!-- Intermediate content here -->
   <h1>INTERMEDIATE</h1>

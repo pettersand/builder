@@ -9,12 +9,9 @@
 </script>
 
 <div
-  class={`p-4 ${
+  class={`p-1 flex-grow ${
     $themeStore === "dark" ? "bg-dark-card" : "bg-light-card2"
   }`}
 >
-<svelte:component
-    this={componentToRender}
-    level={$globalStore.level}
-  />
+  <svelte:component this={componentToRender} level={$globalStore.level} />
 </div>

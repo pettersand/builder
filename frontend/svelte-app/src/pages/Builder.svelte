@@ -70,7 +70,7 @@
 
 <main class="flex flex-grow flex-col h-screen">
   <div
-    class={`flex p-4 ${
+    class={`flex p-2 ${
       $themeStore === "dark"
         ? "bg-dark-card text-dark-text"
         : "bg-light-card2 text-light-text"
