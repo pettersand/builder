@@ -33,3 +33,10 @@ More work on setting up options layout and main for Builder page.
 
 Added some organizational files for global types, functions, stores. Created Base Modal style, and started
 implementing it with the Builder Options for Beginners.
+
+## 05/09-23
+
+Worked on design of workout template component blocks for highly customizable layouts.
+Focusing on Beginner options and initial design to begin with. Landing on using seperate functions
+that the program will call to create the workout plan components based on user input.
+Created README.md
