@@ -34,7 +34,8 @@ Welcome to the Workout Program Builder & Personal Trainer Management System. Thi
 
 ## Database Structure
 
-For a visual representation of the database structure, please refer to the included screenshot.
+For a visual representation of the initial database structure, please refer to the included screenshot.
+![Database Structure](./assets/db.png)
 
 ## Future Development
 
