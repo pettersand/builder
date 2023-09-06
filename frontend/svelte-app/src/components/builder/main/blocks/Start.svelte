@@ -7,10 +7,10 @@
   class={`start-block ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-card2 text-light-text border-light-bg2"
+      : "bg-light-header text-light-text border-light-bg2"
   }`}
 >
-  BUILDR
+  <b>BUILDR</b>
 </div>
 
 <style>

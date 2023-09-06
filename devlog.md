@@ -40,3 +40,8 @@ Worked on design of workout template component blocks for highly customizable la
 Focusing on Beginner options and initial design to begin with. Landing on using seperate functions
 that the program will call to create the workout plan components based on user input.
 Created README.md
+
+## 06/09-23
+
+Decided on process for block composition, rendering, saving "Building".
+Created: Start Block,
