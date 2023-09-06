@@ -10,7 +10,18 @@
 
   let activeOption = "newProgram"; //
   export let level: Level;
-  let uniqueTrainingDays = 1;
+
+  import programOptions from "../../../stores/programOptionsStore";
+
+  let trainingDays;
+  let exercisesPerDay;
+  let sessionsPerWeek;
+  let weeks;
+
+  programOptions.subscribe(($programOptions) => {
+    ({ trainingDays, exercisesPerDay, sessionsPerWeek, weeks } =
+      $programOptions);
+  });
 </script>
 
 <div class="main-content">
@@ -30,11 +41,11 @@
   <div class="flex flex-col">
     <div class="flex flex-row">
       <Exercise />
-      <CellBlock />  
+      <CellBlock />
     </div>
     <div class="flex flex-row">
       <Exercise />
-      <CellBlock />  
+      <CellBlock />
     </div>
   </div>
 </div>
