@@ -50,7 +50,7 @@
       <button on:click={() => (currentView = "Builder")}>Builder</button>
     </div>
     <div class="title">
-      <span><b>BUILDER</b></span>
+      <span><b>BUILD'R</b></span>
     </div>
     <div class="icons">
       <div

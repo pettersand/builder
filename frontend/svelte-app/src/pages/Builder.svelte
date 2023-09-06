@@ -70,7 +70,7 @@
 
 <main class="flex flex-grow flex-col h-screen">
   <div
-    class={`flex p-2 ${
+    class={`flex rounded-md p-2 ${
       $themeStore === "dark"
         ? "bg-dark-card text-dark-text"
         : "bg-light-card2 text-light-text"
@@ -83,8 +83,8 @@
           class={`p-2 transition duration-300 ease-in-out rounded-md hover:border hover:border-opacity-50 ${
             activeOption === option
               ? $themeStore === "dark"
-                ? "bg-opacity-30 bg-dark-primary"
-                : "bg-opacity-30 bg-light-primary"
+                ? "bg-opacity-30 bg-dark-primary2"
+                : "bg-opacity-30 bg-light-primary3"
               : ""
           }`}
         >
