@@ -48,4 +48,4 @@ Created: All beginner template blocks. Started work on custom template assembler
 
 ## 07/09-23
 
-Aiming to finish the base beginner assembler/builder today.
+Worked on BlockUtils.ts automatically and reactively updating the template layout upon custom user input.

@@ -1,6 +1,14 @@
 <!-- src/components/builder/main/blocks/DayOrExercise.svelte -->
 <script lang="ts">
+  import { onMount } from "svelte";
   import themeStore from "../../../../stores/themeStore";
+
+  // Export the label prop
+  export let label: string = "Day";
+
+  onMount(() => {
+    console.log(`Label is: ${label}`);
+  });
 </script>
 
 <div
@@ -10,7 +18,8 @@
       : "bg-light-header text-light-text border-light-bg2"
   }`}
 >
-  <b>Day 1</b>
+  <!-- Use the label prop here -->
+  <b>{label}</b>
 </div>
 
 <style>

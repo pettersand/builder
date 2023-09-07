@@ -7,46 +7,48 @@
   import Week from "./blocks/Week.svelte";
   import Keys from "./blocks/Keys.svelte";
   import CellBlock from "./blocks/CellBlock.svelte";
+  import { generateBlocks } from "./blocks/BlockUtils";
+  import programOptions from "../../../stores/programOptionsStore";
 
   let activeOption = "newProgram"; //
   export let level: Level;
 
-  import programOptions from "../../../stores/programOptionsStore";
-
-  let trainingDays;
-  let exercisesPerDay;
-  let sessionsPerWeek;
-  let weeks;
+  let blocks = [];
 
   programOptions.subscribe(($programOptions) => {
-    ({ trainingDays, exercisesPerDay, sessionsPerWeek, weeks } =
-      $programOptions);
+    console.log("Received updated options: ", $programOptions);
+    const { trainingDays, exercisesPerDay, sessionsPerWeek, weeks } =
+      $programOptions;
+    blocks = generateBlocks(
+      trainingDays,
+      exercisesPerDay,
+      sessionsPerWeek,
+      weeks
+    );
   });
+  console.log(blocks);
 </script>
 
 <div class="main-content">
   <!-- Add your main content for New Program here -->
-  <h2>New Program Main Content</h2>
-  <p>This is the main content for the New Program option.</p>
 
-  <!-- Render the Start block -->
-  <div class="flex flex-row">
-    <Start />
-    <Week />
-  </div>
-  <div class="flex flex-row">
-    <Day />
-    <Keys />
-  </div>
-  <div class="flex flex-col">
-    <div class="flex flex-row">
-      <Exercise />
-      <CellBlock />
-    </div>
-    <div class="flex flex-row">
-      <Exercise />
-      <CellBlock />
-    </div>
+  <!-- Render Program Layout -->
+  <div class="block-container flex flex-row">
+    {#each blocks as block}
+      {#if block === "Start"}
+        <Start />
+      {:else if block === "Week"}
+        <Week />
+      {:else if block === "Day"}
+        <Day label={block.label} />
+      {:else if block === "Exercise"}
+        <Exercise />
+      {:else if block === "Keys"}
+        <Keys />
+      {:else if block === "CellBlock"}
+        <CellBlock />
+      {/if}
+    {/each}
   </div>
 </div>
 
