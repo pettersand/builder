@@ -45,3 +45,7 @@ Created README.md
 
 Decided on process for block composition, rendering, saving "Building".
 Created: All beginner template blocks. Started work on custom template assembler syntax for reactive template creation.
+
+## 07/09-23
+
+Aiming to finish the base beginner assembler/builder today.
