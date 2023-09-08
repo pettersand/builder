@@ -24,8 +24,8 @@
 <input
   class={`exercise-input ${
     $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-card2 text-light-text border-light-bg2"
+      ? "bg-dark-bg2 text-dark-text"
+      : "bg-light-card2 text-light-text"
   }`}
   type="text"
   placeholder="Add Exercise"
@@ -40,7 +40,7 @@
     height: 30px;
     padding-left: 5px;
     text-align: flex-start;
-    border: 1px solid;
+    border: 2px solid black;
     font-weight: bold;
   }
 </style>

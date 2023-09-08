@@ -39,7 +39,13 @@
   });
 </script>
 
-<div class="main-content">
+<div
+  class={`main-content rounded-tl-md border-2  ${
+    $themeStore === "dark"
+      ? "bg-dark-bg2 text-dark-text border-dark-bg"
+      : "bg-light-header text-light-text  border-light-bg2"
+  }`}
+>
   {#each rows as row}
     <div class="block-row">
       {#each row as block}
@@ -66,6 +72,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border: 3px solid;
   }
   .block-row {
     display: flex;

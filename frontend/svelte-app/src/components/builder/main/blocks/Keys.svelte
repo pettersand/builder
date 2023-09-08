@@ -5,12 +5,12 @@
 <div
   class={`flex justify-between keys-container ${
     $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-header text-light-text border-light-bg2"
+      ? "bg-dark-bg2 text-dark-text"
+      : "bg-light-header text-light-text"
   }`}
 >
-  <div class="key sets">S</div>
-  <div class="key reps">R</div>
+  <div class="key sets">s</div>
+  <div class="key reps">r</div>
   <div class="key weight">kg</div>
 </div>
 
@@ -20,14 +20,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
+    border: 1px solid black;
     font-weight: bold;
   }
   .sets {
-    width: 30px; /* 50px */
+    width: 35px; /* 50px */
   }
   .reps,
   .weight {
-    width: 60px; /* 75px */
+    width: 65px; /* 75px */
   }
 </style>

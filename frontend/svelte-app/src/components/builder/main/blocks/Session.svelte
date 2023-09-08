@@ -7,8 +7,8 @@
 <div
   class={`session-block ${
     $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-header text-light-text border-light-bg2"
+      ? "bg-dark-bg2 text-dark-text"
+      : "bg-light-header text-light-text"
   }`}
 >
   {label}
@@ -16,12 +16,12 @@
 
 <style>
   .session-block {
-    width: 150px;
+    width: 165px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
+    border: 2px solid black;
     font-weight: bold;
   }
 </style>

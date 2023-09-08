@@ -4,10 +4,10 @@
 </script>
 
 <div
-  class={`start-block ${
+  class={`start-block rounded-tl-md ${
     $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-header text-light-text border-light-bg2"
+      ? "bg-dark-bg2 text-dark-text"
+      : "bg-light-header text-light-text"
   }`}
 >
   <b>{label}</b>
@@ -20,7 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
-    border-top-left-radius: 8px; /* Slightly rounded top-left corner */
+    border: 2px solid black;
   }
 </style>

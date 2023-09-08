@@ -13,20 +13,20 @@
   
   <style>
     .input-fields {
-      width: 150px;
+      width: 165px;
     }
     .input {
       height: 30px;
       border: 1px solid;
       text-align: center;
-      font-weight: bold;
+      color: black;
     }
     .sets {
-      width: 30px;
+      width: 35px;
     }
     .reps,
     .weight {
-      width: 60px;
+      width: 65px;
     }
   </style>
 

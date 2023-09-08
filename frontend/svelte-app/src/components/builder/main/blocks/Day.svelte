@@ -14,8 +14,8 @@
 <div
   class={`day-or-exercise-block ${
     $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-header text-light-text border-light-bg2"
+      ? "bg-dark-bg2 text-dark-text"
+      : "bg-light-header text-light-text"
   }`}
 >
   <!-- Use the label prop here -->
@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
+    border: 1px solid black;
     font-weight: bold;
   }
 </style>
