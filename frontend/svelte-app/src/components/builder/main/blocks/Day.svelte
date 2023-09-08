@@ -19,16 +19,17 @@
   }`}
 >
   <!-- Use the label prop here -->
-  <b>{label}</b>
+  {label}
 </div>
 
 <style>
   .day-or-exercise-block {
     width: 200px;
-    height: 40px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid;
+    font-weight: bold;
   }
 </style>

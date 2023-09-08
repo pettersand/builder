@@ -1,6 +1,6 @@
-<!-- src/components/builder/main/blocks/Start.svelte -->
 <script lang="ts">
   import themeStore from "../../../../stores/themeStore";
+  export let label: string;
 </script>
 
 <div
@@ -10,13 +10,13 @@
       : "bg-light-header text-light-text border-light-bg2"
   }`}
 >
-  <b>BUILDR</b>
+  <b>{label}</b>
 </div>
 
 <style>
   .start-block {
     width: 200px; /* Set width */
-    height: 40px; /* Set height */
+    height: 30px; /* Set height */
     display: flex;
     justify-content: center;
     align-items: center;

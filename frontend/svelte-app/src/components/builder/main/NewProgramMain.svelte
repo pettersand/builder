@@ -4,7 +4,7 @@
   import Start from "./blocks/Start.svelte";
   import Day from "./blocks/Day.svelte";
   import ExerciseName from "./blocks/ExerciseName.svelte";
-  import Week from "./blocks/Week.svelte";
+  import Session from "./blocks/Session.svelte";
   import Keys from "./blocks/Keys.svelte";
   import CellBlock from "./blocks/CellBlock.svelte";
   import { generateBlocksAndRows } from "./blocks/BlockUtils";
@@ -15,49 +15,45 @@
 
   let trainingDays;
   let exercisesPerDay;
-  let sessionsPerWeek;
-  let weeks;
+  let sessions;
+  let programBlocks;
 
   let blocks = [];
   let rows = [];
 
   programOptions.subscribe(($programOptions) => {
     console.log("Received updated options: ", $programOptions);
-    const { trainingDays, exercisesPerDay, sessionsPerWeek, weeks } =
+    const { trainingDays, exercisesPerDay, sessions, programBlocks } =
       $programOptions;
 
     const { blocks: newBlocks, rows: newRows } = generateBlocksAndRows(
       trainingDays,
       exercisesPerDay,
-      sessionsPerWeek,
-      weeks
+      programBlocks,
+      sessions
     );
 
     blocks = newBlocks;
     rows = newRows;
-    console.log("Rows:", rows)
+    console.log("Rows:", rows);
   });
-
-  console.log(blocks);
-  console.log(rows);
-  console.log("Rows:", rows);
 </script>
 
 <div class="main-content">
   {#each rows as row}
     <div class="block-row">
       {#each row as block}
-        {#if block === 'Start'}
-          <Start />
-        {:else if block === 'Week'}
-          <Week />
-        {:else if block.type === 'Day'}
+        {#if block.type === "Start"}
+          <Start label={block.label} />
+        {:else if block.type === "Session"}
+          <Session label={block.label} />
+        {:else if block.type === "Day"}
           <Day label={block.label} />
-        {:else if block === 'Keys'}
+        {:else if block === "Keys"}
           <Keys />
-        {:else if block === 'ExerciseName'}
+        {:else if block === "ExerciseName"}
           <ExerciseName />
-        {:else if block === 'CellBlock'}
+        {:else if block === "CellBlock"}
           <CellBlock />
         {/if}
       {/each}

@@ -49,3 +49,9 @@ Created: All beginner template blocks. Started work on custom template assembler
 ## 07/09-23
 
 Worked on BlockUtils.ts automatically and reactively updating the template layout upon custom user input.
+
+## 08/09-23
+
+Changed logic of BlockUtils assembler for a cleaner and more defined user experience and future implementation.
+Removed sessionsPerWeek and changed weeks to sessions. Added functionality of programBlocks so the user
+can more easily duplicate their program for another Block, and thus another run of sessions.

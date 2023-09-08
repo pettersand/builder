@@ -6,24 +6,24 @@
   import themeStore from "../../../stores/themeStore";
   import programOptions from "../../../stores/programOptionsStore";
 
-  let trainingDays = 0;
-  let exercisesPerDay = 0;
-  let sessionsPerWeek = 0;
-  let weeks = 0;
+  let trainingDays = 1;
+  let exercisesPerDay = 6;
+  let sessions = 8;
+  let programBlocks = 1;
 
   // Function to update the store
   function updateStore() {
     console.log("Updating store with: ", {
       trainingDays,
       exercisesPerDay,
-      sessionsPerWeek,
-      weeks,
+      programBlocks,
+      sessions,
     });
     programOptions.set({
       trainingDays,
       exercisesPerDay,
-      sessionsPerWeek,
-      weeks,
+      programBlocks,
+      sessions,
     });
   }
 </script>
@@ -76,38 +76,6 @@
             }`}
           />
         </div>
-        <!-- Sessions Per Week -->
-        <div class="flex items-center justify-between">
-          <label for="sessionsPerWeek" class="text-xs"
-            >How many sessions per week?</label
-          >
-          <input
-            bind:value={sessionsPerWeek}
-            id="sessionsPerWeek"
-            type="number"
-            on:input={updateStore}
-            class={`w-1/3 p-1 text-xs border rounded-md ${
-              $themeStore === "dark"
-                ? "bg-dark-primary3 opacity-50 border-dark-primary"
-                : "bg-light-card opacity-50 border-light-primary"
-            }`}
-          />
-        </div>
-        <!-- Weeks -->
-        <div class="flex items-center justify-between">
-          <label for="weeks" class="text-xs">How many weeks?</label>
-          <input
-            bind:value={weeks}
-            id="weeks"
-            type="number"
-            on:input={updateStore}
-            class={`w-1/3 p-1 text-xs border rounded-md ${
-              $themeStore === "dark"
-                ? "bg-dark-primary3 opacity-50 border-dark-primary"
-                : "bg-light-card opacity-50 border-light-primary"
-            }`}
-          />
-        </div>
       </div>
     </div>
     <!-- Templates -->
@@ -121,7 +89,13 @@
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Templates
       </h2>
-      <!-- Content for Templates -->
+      <span>Browse Layouts</span>
+      <br />
+      <span>Browse Programs</span>
+      <br />
+      <span>Saved Templates</span>
+      <br />
+      <span>Saved Programs</span>
     </div>
     <!-- Exercise Picker -->
     <div
@@ -134,7 +108,13 @@
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Exercise Picker
       </h2>
-      <!-- Content for Exercise Picker -->
+      <span>Body Part</span>
+      <br />
+      <span>Equipment</span>
+      <br />
+      <span>Push/Pull</span>
+      <br />
+      <span>Box for Options</span>
     </div>
     <!-- Options -->
     <div
@@ -145,7 +125,13 @@
       }`}
     >
       <h2 class="text-center text-sm border-b-2 border-opacity-50">Options</h2>
-      <!-- Content for Options -->
+      <span>Save Program</span>
+      <br />
+      <span>Activate Program</span>
+      <br />
+      <span>Send Program</span>
+      <br />
+      <span>Box for Options</span>
     </div>
   </div>
 {:else if level === "Intermediate"}

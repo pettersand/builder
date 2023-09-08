@@ -1,50 +1,45 @@
 export function generateBlocksAndRows(
     trainingDays: number,
     exercisesPerDay: number,
-    sessionsPerWeek: number,
-    weeks: number
+    programBlocks: number,
+    sessions: number
   ) {
     const blocks = [];
     const rows = [];
     let currentRow = [];
   
-    // Add Start block
-    blocks.push('Start');
+    // Loop for each program block
+    for (let block = 1; block <= programBlocks; block++) {
+      // Add Start block with conditional label
+      const startLabel = programBlocks > 1 ? `Block ${block}` : "BUILDR";
+      blocks.push({ type: "Start", label: startLabel });
   
-    // Add Week blocks
-    for (let i = 0; i < weeks; i++) {
-      blocks.push('Week');
-    }
-  
-    // Add Day, Keys, Exercise, and CellBlock blocks
-    for (let day = 1; day <= trainingDays; day++) {
-      const label = trainingDays > 1 ? `Day ${day}` : 'Exercise';
-      blocks.push({ type: 'Day', label });
-  
-      // Add Keys blocks
-      for (let i = 0; i < weeks * sessionsPerWeek; i++) {
-        blocks.push('Keys');
+      // Add Session blocks
+      for (let i = 1; i <= sessions; i++) {
+        blocks.push({ type: "Session", label: `Session ${i}` });
       }
   
-      // Add Exercise and CellBlock blocks
-      for (let exercise = 1; exercise <= exercisesPerDay; exercise++) {
-        blocks.push('ExerciseName');
-        for (let i = 0; i < weeks * sessionsPerWeek; i++) {
-          blocks.push('CellBlock');
+      // Add Day blocks
+      for (let day = 1; day <= trainingDays; day++) {
+        const label = trainingDays > 1 ? `Day ${day}` : "Exercise";
+        blocks.push({ type: "Day", label });
+  
+        // Add Keys, Exercise, and CellBlock blocks
+        for (let i = 0; i < sessions; i++) {
+          blocks.push("Keys");
+        }
+        for (let exercise = 1; exercise <= exercisesPerDay; exercise++) {
+          blocks.push("ExerciseName");
+          for (let i = 0; i < sessions; i++) {
+            blocks.push("CellBlock");
+          }
         }
       }
     }
   
     // Organize blocks into rows
-    currentRow.push(blocks[0]); // Start block is always the first
-  
-    for (let i = 1; i < blocks.length; i++) {
-      const block = blocks[i];
-  
-      if (block === 'Week') {
-        currentRow.push(block);
-      } else {
-        if (block.type === 'Day' || block === 'ExerciseName') {
+    for (let block of blocks) {
+        if (block.type === "Start" || block.type === "Day" || block === "ExerciseName") {
           if (currentRow.length > 0) {
             rows.push([...currentRow]);
           }
@@ -53,11 +48,10 @@ export function generateBlocksAndRows(
           currentRow.push(block);
         }
       }
+    
+      if (currentRow.length > 0) {
+        rows.push(currentRow);
+      }
+    
+      return { blocks, rows };
     }
-  
-    if (currentRow.length > 0) {
-      rows.push(currentRow);
-    }
-  
-    return { blocks, rows };
-  }

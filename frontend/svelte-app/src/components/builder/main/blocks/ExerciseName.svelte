@@ -37,7 +37,7 @@
 <style>
   .exercise-input {
     width: 200px;
-    height: 40px;
+    height: 30px;
     padding-left: 5px;
     text-align: flex-start;
     border: 1px solid;

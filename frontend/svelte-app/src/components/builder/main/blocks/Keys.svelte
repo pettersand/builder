@@ -9,14 +9,14 @@
       : "bg-light-header text-light-text border-light-bg2"
   }`}
 >
-  <div class="key sets">sets</div>
-  <div class="key reps">reps</div>
-  <div class="key weight">weight</div>
+  <div class="key sets">S</div>
+  <div class="key reps">R</div>
+  <div class="key weight">kg</div>
 </div>
 
 <style>
   .key {
-    height: 40px; /* 50px */
+    height: 30px; /* 50px */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,10 +24,10 @@
     font-weight: bold;
   }
   .sets {
-    width: 50px; /* 50px */
+    width: 30px; /* 50px */
   }
   .reps,
   .weight {
-    width: 75px; /* 75px */
+    width: 60px; /* 75px */
   }
 </style>
