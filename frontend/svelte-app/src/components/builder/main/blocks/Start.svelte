@@ -16,7 +16,7 @@
 <style>
   .start-block {
     width: 200px; /* Set width */
-    height: 50px; /* Set height */
+    height: 40px; /* Set height */
     display: flex;
     justify-content: center;
     align-items: center;

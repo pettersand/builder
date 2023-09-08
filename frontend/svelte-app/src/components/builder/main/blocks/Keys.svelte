@@ -16,7 +16,7 @@
 
 <style>
   .key {
-    height: 50px; /* 50px */
+    height: 40px; /* 50px */
     display: flex;
     justify-content: center;
     align-items: center;

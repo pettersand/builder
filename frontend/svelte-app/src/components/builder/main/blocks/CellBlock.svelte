@@ -16,7 +16,7 @@
       width: 200px;
     }
     .input {
-      height: 50px;
+      height: 40px;
       border: 1px solid;
       text-align: center;
       font-weight: bold;

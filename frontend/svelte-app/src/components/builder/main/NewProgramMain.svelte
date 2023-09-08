@@ -3,55 +3,77 @@
   import themeStore from "../../../stores/themeStore";
   import Start from "./blocks/Start.svelte";
   import Day from "./blocks/Day.svelte";
-  import Exercise from "./blocks/Exercise.svelte";
+  import ExerciseName from "./blocks/ExerciseName.svelte";
   import Week from "./blocks/Week.svelte";
   import Keys from "./blocks/Keys.svelte";
   import CellBlock from "./blocks/CellBlock.svelte";
-  import { generateBlocks } from "./blocks/BlockUtils";
+  import { generateBlocksAndRows } from "./blocks/BlockUtils";
   import programOptions from "../../../stores/programOptionsStore";
 
   let activeOption = "newProgram"; //
   export let level: Level;
 
+  let trainingDays;
+  let exercisesPerDay;
+  let sessionsPerWeek;
+  let weeks;
+
   let blocks = [];
+  let rows = [];
 
   programOptions.subscribe(($programOptions) => {
     console.log("Received updated options: ", $programOptions);
     const { trainingDays, exercisesPerDay, sessionsPerWeek, weeks } =
       $programOptions;
-    blocks = generateBlocks(
+
+    const { blocks: newBlocks, rows: newRows } = generateBlocksAndRows(
       trainingDays,
       exercisesPerDay,
       sessionsPerWeek,
       weeks
     );
+
+    blocks = newBlocks;
+    rows = newRows;
+    console.log("Rows:", rows)
   });
+
   console.log(blocks);
+  console.log(rows);
+  console.log("Rows:", rows);
 </script>
 
 <div class="main-content">
-  <!-- Add your main content for New Program here -->
-
-  <!-- Render Program Layout -->
-  <div class="block-container flex flex-row">
-    {#each blocks as block}
-      {#if block === "Start"}
-        <Start />
-      {:else if block === "Week"}
-        <Week />
-      {:else if block === "Day"}
-        <Day label={block.label} />
-      {:else if block === "Exercise"}
-        <Exercise />
-      {:else if block === "Keys"}
-        <Keys />
-      {:else if block === "CellBlock"}
-        <CellBlock />
-      {/if}
-    {/each}
-  </div>
+  {#each rows as row}
+    <div class="block-row">
+      {#each row as block}
+        {#if block === 'Start'}
+          <Start />
+        {:else if block === 'Week'}
+          <Week />
+        {:else if block.type === 'Day'}
+          <Day label={block.label} />
+        {:else if block === 'Keys'}
+          <Keys />
+        {:else if block === 'ExerciseName'}
+          <ExerciseName />
+        {:else if block === 'CellBlock'}
+          <CellBlock />
+        {/if}
+      {/each}
+    </div>
+  {/each}
 </div>
 
 <style>
-  /* Add styles for the main content component here */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .block-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 </style>

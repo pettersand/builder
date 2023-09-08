@@ -1,6 +1,6 @@
 <!-- src/components/builder/main/blocks/Exercise.svelte -->
 <script lang="ts">
-  import { handleKeyboardEvent } from "../../../../components/UtilityFunctions";
+  import { handleKeyboardEvent } from "../../../UtilityFunctions";
   import themeStore from "../../../../stores/themeStore";
   let exerciseName = ""; // Local state for the exercise name
 
@@ -37,7 +37,7 @@
 <style>
   .exercise-input {
     width: 200px;
-    height: 50px;
+    height: 40px;
     padding-left: 5px;
     text-align: flex-start;
     border: 1px solid;
