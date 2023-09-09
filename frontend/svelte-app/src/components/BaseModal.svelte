@@ -1,14 +1,14 @@
 <script lang="ts">
-  import {
-    toggleModal,
-    handleKeyboardEvent,
-    handleClickOutside,
-  } from "./UtilityFunctions";
+  import { handleKeyboardEvent, handleClickOutside } from "./UtilityFunctions";
   import { onMount } from "svelte";
   import globalStore from "../stores/globalStore";
   import themeStore from "../stores/themeStore";
 
-  export let modalContent: string;
+  let modalContent: string;
+  globalStore.subscribe((state) => {
+    modalContent = state.modalContent;
+  });
+
   export let onClose: () => void;
   export let onConfirm: () => void;
 

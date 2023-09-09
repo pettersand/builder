@@ -1,5 +1,6 @@
 <script lang="ts">
   import themeStore from "../stores/themeStore";
+  import globalStore from "../stores/globalStore";
   let username = "";
   let password = "";
   let confirmPassword = "";
@@ -17,47 +18,49 @@
   // TODO: Add form submission logic
 </script>
 
-<div
-  class={`fixed inset-0 flex items-center justify-center z-50 rounded-lg ${
-    $themeStore === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
-  }`}
->
+{#if $globalStore.showModal}
   <div
-    class={`auth-modal p-6 w-1/2 rounded-lg ${
-      $themeStore === "dark"
-        ? "bg-dark-card text-dark-text"
-        : "bg-light-card text-light-text"
+    class={`fixed inset-0 flex items-center justify-center z-50 rounded-lg ${
+      $themeStore === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
     }`}
   >
-    <button class="absolute top-0 right-0 p-2 rounded-full"> X </button>
-    <div class="login-section">
-      <!-- Login Fields -->
-    </div>
-    <div class="register-section">
-      <!-- Register Fields -->
-    </div>
-    <div class="mt-4">
-      <button
-        class={`px-4 py-2 mr-2 rounded-full ${
-          $themeStore === "dark"
-            ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-            : "bg-light-primary hover:bg-light-primary2 text-light-text"
-        }`}
-      >
-        Confirm
-      </button>
-      <button
-        class={`px-4 py-2 rounded-full ${
-          $themeStore === "dark"
-            ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-            : "bg-light-primary hover:bg-light-primary2 text-light-text"
-        }`}
-      >
-        Exit
-      </button>
+    <div
+      class={`auth-modal p-6 w-1/2 rounded-lg ${
+        $themeStore === "dark"
+          ? "bg-dark-card text-dark-text"
+          : "bg-light-card text-light-text"
+      }`}
+    >
+      <button class="absolute top-0 right-0 p-2 rounded-full"> X </button>
+      <div class="login-section">
+        <!-- Login Fields -->
+      </div>
+      <div class="register-section">
+        <!-- Register Fields -->
+      </div>
+      <div class="mt-4">
+        <button
+          class={`px-4 py-2 mr-2 rounded-full ${
+            $themeStore === "dark"
+              ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
+              : "bg-light-primary hover:bg-light-primary2 text-light-text"
+          }`}
+        >
+          Confirm
+        </button>
+        <button
+          class={`px-4 py-2 rounded-full ${
+            $themeStore === "dark"
+              ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
+              : "bg-light-primary hover:bg-light-primary2 text-light-text"
+          }`}
+        >
+          Exit
+        </button>
+      </div>
     </div>
   </div>
-</div>
+{/if}
 
 <style>
   .bg-dark-overlay {

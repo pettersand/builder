@@ -17,12 +17,15 @@
   import type { Level } from "../types/index";
   import type { MainComponentMap, OptionsComponentMap } from "../types/index";
   import {
-    toggleModal,
     handleKeyboardEvent,
     handleClickOutside,
   } from "../components/UtilityFunctions";
 
-  let showModal = false;
+  let showModal: boolean;
+  globalStore.subscribe((state) => {
+    showModal = state.showModal;
+  });
+
   let activeOption: string = "newProgram"; // Default active option
   let selectedLevel: Level = "Beginner";
 
@@ -43,19 +46,17 @@
   const setActiveOption = (option: string) => {
     activeOption = option;
     if (option === "newProgram") {
-      showModal = true;
+      globalStore.toggleModalWithContent("levelSelect", "Select Level");
     }
   };
 
   const onClose = () => {
-    showModal = false;
+    globalStore.toggleModalWithContent("", "");
   };
 
   const onConfirm = () => {
-    // Add your confirm logic here
-    // For example, you might want to set the selected level
     globalStore.setLevel(selectedLevel);
-    showModal = false;
+    globalStore.toggleModalWithContent("", ""); // Close the modal by setting showModal to false
   };
 
   // Function to capitalize the first letter of each word in a string

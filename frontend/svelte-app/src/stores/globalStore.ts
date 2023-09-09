@@ -4,19 +4,21 @@ type Level = "Beginner" | "Intermediate" | "Expert";
 
 // Initialize the state
 const initialState = {
-    theme: localStorage.getItem("theme") || "dark", // Initialize with 'dark' or 'light' based on user preference or default to 'dark'
-    level: "Beginner" as Level, // Initialize with 'Beginner'
-    showModal: false, // Initialize with false
-    currentPage: localStorage.getItem("currentPage") || "Dashboard", // Initialize with 'Dashboard' or based on user preference
-  };
+  theme: localStorage.getItem("theme") || "dark",
+  level: "Beginner" as Level,
+  showModal: false,
+  modalContent: "",
+  modalType: "", // New field
+  currentPage: localStorage.getItem("currentPage") || "Dashboard",
+};
 
 const globalStore = writable(initialState);
 
-// Subscribe to changes and update localStorage for theme
+// Subscribe to changes and update localStorage for theme and currentPage
 globalStore.subscribe((state) => {
-    localStorage.setItem("theme", state.theme);
-    localStorage.setItem("currentPage", state.currentPage);
-  });
+  localStorage.setItem("theme", state.theme);
+  localStorage.setItem("currentPage", state.currentPage);
+});
 
 // Define methods to update the store
 const methods = {
@@ -30,14 +32,14 @@ const methods = {
       return { ...state, level: newLevel };
     });
   },
-  toggleModal: () => {
-    globalStore.update((state) => {
-      return { ...state, showModal: !state.showModal };
-    });
-  },
   setCurrentPage: (newPage: string) => {
     globalStore.update((state) => {
       return { ...state, currentPage: newPage };
+    });
+  },
+  toggleModalWithContent: (type: string, content: string) => { // New method
+    globalStore.update((state) => {
+      return { ...state, showModal: !state.showModal, modalType: type, modalContent: content };
     });
   },
 };

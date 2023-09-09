@@ -1,8 +1,5 @@
 // UtilityFunctions.ts
 
-// Function to toggle modal visibility
-export const toggleModal = (showModal: boolean): boolean => !showModal;
-
 // Function to handle keyboard events for accessibility and closing the modal
 export const handleKeyboardEvent = (event: KeyboardEvent, action: Function, closeModal: Function) => {
   if (event.key === "Enter" || event.key === " ") {

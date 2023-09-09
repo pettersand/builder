@@ -7,9 +7,18 @@
   import { derived } from "svelte/store";
   import "boxicons";
   import globalStore from "../stores/globalStore";
+  import {
+    handleClickOutside,
+    handleKeyboardEvent,
+  } from "../components/UtilityFunctions";
+  import LoginRegister from "../components/LoginRegister.svelte";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
   let isLoggedIn = writable(false);
+
+  function openLoginModal() {
+    globalStore.toggleModal();
+  }
 
   onMount(() => {
     // Subscribe to globalStore to keep track of the current page
@@ -56,15 +65,12 @@
     </div>
     <div class="icons">
       <!-- Login/Register and Log Out buttons -->
-      {#if $isLoggedIn}
-        <button class="auth-button" on:click={() => ($isLoggedIn = false)}
-          >Log Out</button
-        >
-      {:else}
-        <button class="auth-button" on:click={() => ($isLoggedIn = true)}
-          >Login / Register</button
-        >
-      {/if}
+      <!-- Login/Register and Log Out buttons -->
+
+      <button class="auth-button" on:click={openLoginModal}>
+        Login / Register
+      </button>
+
       <!-- Light Switch for dark/light mode  -->
       <div
         class={$themeStore === "dark"
