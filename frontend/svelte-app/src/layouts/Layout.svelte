@@ -1,50 +1,55 @@
+<!-- Layout.svelte -->
+<!-- Layout.svelte -->
 <script lang="ts">
   import { onMount } from "svelte";
-  import { writable } from "svelte/store";
   import themeStore from "../stores/themeStore";
+  import globalStore from "../stores/globalStore";
+  import modalStore from "../stores/modalStore";
+  import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import Dashboard from "../pages/Dashboard.svelte";
   import Builder from "../pages/Builder.svelte";
-  import { derived } from "svelte/store";
-  import "boxicons";
-  import globalStore from "../stores/globalStore";
-  import {
-    handleClickOutside,
-    handleKeyboardEvent,
-  } from "../components/UtilityFunctions";
-  import LoginRegister from "../components/LoginRegister.svelte";
+  import LoginRegister from "../components/LoginRegisterModal.svelte";
+  import BaseModal from "../components/BaseModal.svelte";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
-  let isLoggedIn = writable(false);
-
-  function openLoginModal() {
-    globalStore.toggleModal();
-  }
 
   onMount(() => {
-    // Subscribe to globalStore to keep track of the current page
     const unsubscribe = globalStore.subscribe((state) => {
       currentView = state.currentPage;
     });
-
     return () => {
       unsubscribe();
     };
   });
 
-  const themeClassStore = derived(themeStore, ($themeStore) => {
-    return $themeStore === "dark" ? "dark-mode" : "light-mode";
-  });
+  function openLoginModal() {
+    modalStore.toggleModalWithContent("loginRegister", "Login / Register");
+  }
 
   function toggleDarkMode() {
-    $themeStore = $themeStore === "dark" ? "light" : "dark";
+    themeStore.update((currentTheme) =>
+      currentTheme === "dark" ? "light" : "dark"
+    );
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "Enter" || event.key === " ") {
-      toggleDarkMode();
-    }
+    handleKeyboardEvent(event, toggleDarkMode, () => {});
   }
 </script>
+
+{#if $modalStore.showModal}
+  {#if $modalStore.modalType === "loginRegister"}
+    <LoginRegister />
+  {:else if $modalStore.modalType === "levelCheck"}
+    <BaseModal
+      modalContent={$modalStore.modalContent}
+      onClose={() => modalStore.toggleModalWithContent("", "")}
+      onConfirm={() => {
+        /* Your confirm action here */
+      }}
+    />
+  {/if}
+{/if}
 
 <div
   class={$themeStore === "dark"

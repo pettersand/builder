@@ -1,3 +1,5 @@
+// globalStore.ts
+
 import { writable } from "svelte/store";
 
 type Level = "Beginner" | "Intermediate" | "Expert";
@@ -6,9 +8,6 @@ type Level = "Beginner" | "Intermediate" | "Expert";
 const initialState = {
   theme: localStorage.getItem("theme") || "dark",
   level: "Beginner" as Level,
-  showModal: false,
-  modalContent: "",
-  modalType: "", // New field
   currentPage: localStorage.getItem("currentPage") || "Dashboard",
 };
 
@@ -35,11 +34,6 @@ const methods = {
   setCurrentPage: (newPage: string) => {
     globalStore.update((state) => {
       return { ...state, currentPage: newPage };
-    });
-  },
-  toggleModalWithContent: (type: string, content: string) => { // New method
-    globalStore.update((state) => {
-      return { ...state, showModal: !state.showModal, modalType: type, modalContent: content };
     });
   },
 };

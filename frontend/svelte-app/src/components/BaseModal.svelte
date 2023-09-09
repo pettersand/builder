@@ -1,35 +1,31 @@
+<!-- BaseModal.svelte -->
 <script lang="ts">
-  import { handleKeyboardEvent, handleClickOutside } from "./UtilityFunctions";
+  import {
+    handleKeyboardEvent,
+    handleClickOutside,
+  } from "../utilities/modalUtilities";
   import { onMount } from "svelte";
-  import globalStore from "../stores/globalStore";
   import themeStore from "../stores/themeStore";
 
-  let modalContent: string;
-  globalStore.subscribe((state) => {
-    modalContent = state.modalContent;
-  });
-
+  export let modalContent: string;
   export let onClose: () => void;
   export let onConfirm: () => void;
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
 
+  const handleOutsideClick = (event: MouseEvent) =>
+    handleClickOutside(event, modalRef, modalBox, onClose);
+  const handleKeyEvent = (event: KeyboardEvent) =>
+    handleKeyboardEvent(event, onConfirm, onClose);
+
   onMount(() => {
-    window.addEventListener("click", (event) =>
-      handleClickOutside(event, modalRef, modalBox, onClose)
-    );
-    window.addEventListener("keydown", (event) =>
-      handleKeyboardEvent(event, onConfirm, onClose)
-    );
+    window.addEventListener("click", handleOutsideClick);
+    window.addEventListener("keydown", handleKeyEvent);
 
     return () => {
-      window.removeEventListener("click", (event) =>
-        handleClickOutside(event, modalRef, modalBox, onClose)
-      );
-      window.removeEventListener("keydown", (event) =>
-        handleKeyboardEvent(event, onConfirm, onClose)
-      );
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("keydown", handleKeyEvent);
     };
   });
 </script>

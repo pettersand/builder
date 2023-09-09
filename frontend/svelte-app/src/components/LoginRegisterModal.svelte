@@ -1,6 +1,17 @@
+<!-- LoginRegisterModal.svelte -->
 <script lang="ts">
+  import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
-  import globalStore from "../stores/globalStore";
+  import modalStore from "../stores/modalStore";
+  import {
+    handleKeyboardEvent,
+    handleClickOutside,
+  } from "../utilities/modalUtilities";
+
+  let modalRef: HTMLElement;
+  let modalBox: HTMLElement;
+
+  // Form fields
   let username = "";
   let password = "";
   let confirmPassword = "";
@@ -16,13 +27,42 @@
   let agreeToTerms = false;
 
   // TODO: Add form submission logic
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    handleClickOutside(event, modalRef, modalBox, () => {
+      modalStore.toggleModalWithContent("", ""); // Close the modal
+    });
+  };
+
+  const handleKey = (event: KeyboardEvent) => {
+    handleKeyboardEvent(
+      event,
+      () => {
+        // Confirm logic here
+      },
+      () => {
+        modalStore.toggleModalWithContent("", ""); // Close the modal
+      }
+    );
+  };
+
+  onMount(() => {
+    window.addEventListener("click", handleOutsideClick);
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("keydown", handleKey);
+    };
+  });
 </script>
 
-{#if $globalStore.showModal}
+{#if $modalStore.showModal}
   <div
     class={`fixed inset-0 flex items-center justify-center z-50 rounded-lg ${
       $themeStore === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
     }`}
+    bind:this={modalRef}
   >
     <div
       class={`auth-modal p-6 w-1/2 rounded-lg ${
@@ -30,6 +70,7 @@
           ? "bg-dark-card text-dark-text"
           : "bg-light-card text-light-text"
       }`}
+      bind:this={modalBox}
     >
       <button class="absolute top-0 right-0 p-2 rounded-full"> X </button>
       <div class="login-section">

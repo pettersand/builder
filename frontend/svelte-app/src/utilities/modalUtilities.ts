@@ -1,4 +1,4 @@
-// UtilityFunctions.ts
+// modalUtilities.ts
 
 // Function to handle keyboard events for accessibility and closing the modal
 export const handleKeyboardEvent = (event: KeyboardEvent, action: Function, closeModal: Function) => {

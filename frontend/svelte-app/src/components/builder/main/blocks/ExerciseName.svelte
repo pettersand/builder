@@ -1,6 +1,6 @@
 <!-- src/components/builder/main/blocks/Exercise.svelte -->
 <script lang="ts">
-  import { handleKeyboardEvent } from "../../../UtilityFunctions";
+  import { handleKeyboardEvent } from "../../../../utilities/modalUtilities";
   import themeStore from "../../../../stores/themeStore";
   let exerciseName = ""; // Local state for the exercise name
 

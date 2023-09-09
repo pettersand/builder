@@ -12,18 +12,19 @@
   import PreMadeProgramMain from "../components/builder/main/PreMadeProgramMain.svelte";
   import BaseModal from "../components/BaseModal.svelte";
   import globalStore from "../stores/globalStore";
+  import modalStore from "../stores/modalStore";
   import themeStore from "../stores/themeStore";
-  import setCurrentPage from "../stores/globalStore";
   import type { Level } from "../types/index";
   import type { MainComponentMap, OptionsComponentMap } from "../types/index";
-  import {
-    handleKeyboardEvent,
-    handleClickOutside,
-  } from "../components/UtilityFunctions";
 
   let showModal: boolean;
-  globalStore.subscribe((state) => {
+  let modalType: string;
+  let modalContent: string;
+
+  modalStore.subscribe((state) => {
     showModal = state.showModal;
+    modalType = state.modalType;
+    modalContent = state.modalContent;
   });
 
   let activeOption: string = "newProgram"; // Default active option
@@ -46,17 +47,17 @@
   const setActiveOption = (option: string) => {
     activeOption = option;
     if (option === "newProgram") {
-      globalStore.toggleModalWithContent("levelSelect", "Select Level");
+      modalStore.toggleModalWithContent("levelSelect", "Select Level");
     }
   };
 
   const onClose = () => {
-    globalStore.toggleModalWithContent("", "");
+    modalStore.closeModal();
   };
-
+  
   const onConfirm = () => {
     globalStore.setLevel(selectedLevel);
-    globalStore.toggleModalWithContent("", ""); // Close the modal by setting showModal to false
+    modalStore.closeModal();
   };
 
   // Function to capitalize the first letter of each word in a string
@@ -98,8 +99,8 @@
   <MainContent {activeOption} {optionToMainComponent} />
 
   <!-- Modal HTML structure -->
-  {#if showModal}
-    <BaseModal modalContent="Select Level" {onClose} {onConfirm}>
+  {#if showModal && modalType === 'levelSelect'}
+    <BaseModal modalContent={modalContent} {onClose} {onConfirm}>
       {#each ["Beginner", "Intermediate", "Expert"] as level}
         <label class="inline-flex items-center mt-3">
           <input

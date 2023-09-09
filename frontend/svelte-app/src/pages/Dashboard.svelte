@@ -25,5 +25,5 @@
 </main>
 
 <style>
-  /* Add your TailwindCSS classes or custom styles */
+
 </style>

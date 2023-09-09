@@ -1,3 +1,4 @@
+// themeStore.ts
 import { writable } from 'svelte/store';
 
 // Initialize with 'dark' or 'light' based on user preference or default to 'dark'

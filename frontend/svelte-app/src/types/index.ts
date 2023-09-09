@@ -3,6 +3,7 @@ import type { SvelteComponent } from "svelte";
 
 export type Level = "Beginner" | "Intermediate" | "Expert";
 export type Theme = "dark" | "light";
+export type ModalType = "info" | "warning" | "error"; // Add more types as needed
 
 type ComponentWithLevel = {
   new (): {
