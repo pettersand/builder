@@ -55,3 +55,8 @@ Worked on BlockUtils.ts automatically and reactively updating the template layou
 Changed logic of BlockUtils assembler for a cleaner and more defined user experience and future implementation.
 Removed sessionsPerWeek and changed weeks to sessions. Added functionality of programBlocks so the user
 can more easily duplicate their program for another Block, and thus another run of sessions.
+
+## 09/09-23
+
+Started work on Login/Registration, so I can setup program template saving for user SQL. Planned out
+functionality and the login process.

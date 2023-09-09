@@ -11,7 +11,6 @@
   import programOptions from "../../../stores/programOptionsStore";
 
   let activeOption = "newProgram"; //
-  export let level: Level;
 
   let trainingDays;
   let exercisesPerDay;

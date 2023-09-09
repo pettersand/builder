@@ -1,13 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { writable } from "svelte/store";
   import themeStore from "../stores/themeStore";
   import Dashboard from "../pages/Dashboard.svelte";
   import Builder from "../pages/Builder.svelte";
   import { derived } from "svelte/store";
   import "boxicons";
-  import globalStore from "../stores/globalStore"; // Import globalStore
+  import globalStore from "../stores/globalStore";
 
-  let currentView = localStorage.getItem("currentPage") || "Dashboard"; //
+  let currentView = localStorage.getItem("currentPage") || "Dashboard";
+  let isLoggedIn = writable(false);
 
   onMount(() => {
     // Subscribe to globalStore to keep track of the current page
@@ -53,6 +55,17 @@
       <span><b>BUILD'R</b></span>
     </div>
     <div class="icons">
+      <!-- Login/Register and Log Out buttons -->
+      {#if $isLoggedIn}
+        <button class="auth-button" on:click={() => ($isLoggedIn = false)}
+          >Log Out</button
+        >
+      {:else}
+        <button class="auth-button" on:click={() => ($isLoggedIn = true)}
+          >Login / Register</button
+        >
+      {/if}
+      <!-- Light Switch for dark/light mode  -->
       <div
         class={$themeStore === "dark"
           ? "toggle-container bg-dark-header border border-dark-primary3"
