@@ -59,4 +59,9 @@ can more easily duplicate their program for another Block, and thus another run 
 ## 09/09-23
 
 Started work on Login/Registration, so I can setup program template saving for user SQL. Planned out
-functionality and the login process.
+functionality and the login process. Finished the base UI and functionality of the component.
+
+## 10/09-23
+
+Started work on API calls for registration process. Started integrating CI/CD pipeline and unit testing with Jest.
+Also started integrating Sentry for logging.
