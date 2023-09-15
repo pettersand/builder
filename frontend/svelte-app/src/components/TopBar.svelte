@@ -1,30 +1,30 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import messageStore from "../stores/messageStore";
+  import type { MessageState } from "../stores/messageStore";
 
-  let message: string = "";
-  let type: string = "";
-  let visible: boolean = false;
+  let message: MessageState | null = null;
 
-  // Subscribe to the store
-  const unsubscribe = messageStore.subscribe(
-    (state: { message: string; type: string; visible: boolean }) => {
-      ({ message, type, visible } = state);
-    }
-  );
+  const unsubscribe = messageStore.subscribe(($message) => {
+    message = $message;
+  });
 
-  onMount(() => {
-    return () => {
-      unsubscribe();
-    };
+  onDestroy(() => {
+    unsubscribe();
   });
 </script>
 
-{#if visible}
-  <div class={`top-bar ${type === "error" ? "bg-red-500" : "bg-green-500"}`}>
-    {message}
-  </div>
-{/if}
+<div class="fixed top-0 left-0 w-full">
+  {#if message}
+    <div
+      class={`bg-${
+        message.type === "confirmation" ? "success-500" : "error-500"
+      } text-white p-4`}
+    >
+      {message.message}
+    </div>
+  {/if}
+</div>
 
 <style>
   .top-bar {

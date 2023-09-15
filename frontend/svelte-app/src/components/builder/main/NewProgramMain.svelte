@@ -9,7 +9,8 @@
   import CellBlock from "./blocks/CellBlock.svelte";
   import { generateBlocksAndRows } from "./blocks/BlockUtils";
   import programOptions from "../../../stores/programOptionsStore";
-
+  
+  export let level: Level;
   let activeOption = "newProgram"; //
 
   let trainingDays;

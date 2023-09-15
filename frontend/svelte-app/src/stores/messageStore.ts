@@ -1,7 +1,8 @@
+// messageStore.ts
 import { writable } from "svelte/store";
 import type { Writable } from "svelte/store";
 
-interface MessageState {
+export interface MessageState {
   message: string;
   type: string; // "error", "confirmation"
   visible: boolean;

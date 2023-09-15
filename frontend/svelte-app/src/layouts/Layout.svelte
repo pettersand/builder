@@ -12,14 +12,15 @@
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
 
+
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
 
   onMount(() => {
-    const unsubscribe = globalStore.subscribe((state) => {
+    const unsubscribeGlobal = globalStore.subscribe((state) => {
       currentView = state.currentPage;
     });
     return () => {
-      unsubscribe();
+      unsubscribeGlobal();
     };
   });
 
@@ -51,6 +52,7 @@
     />
   {/if}
 {/if}
+<TopBar />
 
 <div
   class={$themeStore === "dark"
