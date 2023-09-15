@@ -1,5 +1,4 @@
 <!-- Layout.svelte -->
-<!-- Layout.svelte -->
 <script lang="ts">
   import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
@@ -11,7 +10,6 @@
   import LoginRegister from "../components/LoginRegisterModal.svelte";
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
-
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
 
@@ -72,7 +70,6 @@
       <span><b>BUILD'R</b></span>
     </div>
     <div class="icons">
-      <!-- Login/Register and Log Out buttons -->
       <!-- Login/Register and Log Out buttons -->
 
       <button class="auth-button" on:click={openLoginModal}>

@@ -150,7 +150,7 @@
               } ${usernameValid ? "" : "border-red-500"}`}
             />
             {#if !usernameValid && usernameTyped}
-              <small class="text-red-500">Username is not valid</small>
+              <small class="text-red-500">Username must be between 3 and 20 characters.</small>
             {/if}
             <label for="email" class="block text-sm font-medium">Email</label>
             <input
@@ -241,145 +241,158 @@
             </button>
           </div>
         {:else if step === 2}
-        <h2 class="text-center w-full p-2">Additional Information</h2>
+          <h2 class="text-center w-full p-2">Additional Information</h2>
 
-        <!-- First Name -->
-        <label for="firstName" class="block text-sm font-medium">First Name</label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          placeholder="First Name"
-          required
-          minlength="2"
-          maxlength="50"
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Last Name -->
-        <label for="lastName" class="block text-sm font-medium">Last Name</label>
-        <input
-          id="lastName"
-          name="lastName"
-          type="text"
-          placeholder="Last Name"
-          required
-          minlength="2"
-          maxlength="50"
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Date of Birth -->
-        <label for="dob" class="block text-sm font-medium">Date of Birth</label>
-        <input
-          id="dob"
-          name="dob"
-          type="date"
-          required
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Country -->
-        <label for="country" class="block text-sm font-medium">Country</label>
-        <input
-          id="country"
-          name="country"
-          type="text"
-          placeholder="Country"
-          required
-          minlength="2"
-          maxlength="50"
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Gender -->
-        <label for="gender" class="block text-sm font-medium">Gender</label>
-        <input
-          id="gender"
-          name="gender"
-          type="text"
-          placeholder="Gender"
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Biological Sex -->
-        <label for="bioSex" class="block text-sm font-medium">Biological Sex</label>
-        <input
-          id="bioSex"
-          name="bioSex"
-          type="text"
-          placeholder="Biological Sex"
-          class={`w-full p-2 mb-2 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-input text-dark-text"
-              : "bg-light-input text-light-text"
-          }`}
-        />
-      
-        <!-- Checkboxes -->
-        <div class="flex flex-col">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox" name="isTrainer" />
-            <span class="ml-2">I am a trainer</span>
-          </label>
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox" name="hasTrainer" />
-            <span class="ml-2">I have a trainer / I am a client</span>
-          </label>
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox" name="terms" required />
-            <span class="ml-2">I agree to the Terms of Service</span>
-          </label>
-        </div>
-      
-        <!-- Privacy Policy Button -->
-        <button
-          class={`w-full p-2 mt-4 rounded ${
-            $themeStore === "dark"
-              ? "bg-dark-secondary hover:bg-dark-secondary2 text-dark-text"
-              : "bg-light-secondary hover:bg-light-secondary2 text-light-text"
-          }`}
-        >
-          Privacy Policy
-        </button>
-            <button
-              class={`px-4 py-2 mr-2 rounded-full ${
-                $themeStore === "dark"
-                  ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-                  : "bg-light-primary hover:bg-light-primary2 text-light-text"
-              }`}
-              on:click={goToPreviousStep}>Previous</button
-            >
-            <button
-              class={`px-4 py-2 mr-2 rounded-full ${
-                $themeStore === "dark"
-                  ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-                  : "bg-light-primary hover:bg-light-primary2 text-light-text"
-              }`}
-              on:click={() => modalStore.closeModal()}
-            >
-              Register
-            </button>
+          <!-- First Name -->
+          <label for="firstName" class="block text-sm font-medium"
+            >First Name</label
+          >
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="First Name"
+            required
+            minlength="2"
+            maxlength="50"
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Last Name -->
+          <label for="lastName" class="block text-sm font-medium"
+            >Last Name</label
+          >
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Last Name"
+            required
+            minlength="2"
+            maxlength="50"
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Date of Birth -->
+          <label for="dob" class="block text-sm font-medium"
+            >Date of Birth</label
+          >
+          <input
+            id="dob"
+            name="dob"
+            type="date"
+            required
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Country -->
+          <label for="country" class="block text-sm font-medium">Country</label>
+          <input
+            id="country"
+            name="country"
+            type="text"
+            placeholder="Country"
+            required
+            minlength="2"
+            maxlength="50"
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Gender -->
+          <label for="gender" class="block text-sm font-medium">Gender</label>
+          <input
+            id="gender"
+            name="gender"
+            type="text"
+            placeholder="Gender"
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Biological Sex -->
+          <label for="bioSex" class="block text-sm font-medium"
+            >Biological Sex</label
+          >
+          <input
+            id="bioSex"
+            name="bioSex"
+            type="text"
+            placeholder="Biological Sex"
+            class={`w-full p-2 mb-2 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Checkboxes -->
+          <div class="flex flex-col">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" name="isTrainer" />
+              <span class="ml-2">I am a trainer</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" name="hasTrainer" />
+              <span class="ml-2">I have a trainer / I am a client</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                name="terms"
+                required
+              />
+              <span class="ml-2">I agree to the Terms of Service</span>
+            </label>
+          </div>
+
+          <!-- Privacy Policy Button -->
+          <button
+            class={`w-full p-2 mt-4 rounded ${
+              $themeStore === "dark"
+                ? "bg-dark-secondary hover:bg-dark-secondary2 text-dark-text"
+                : "bg-light-secondary hover:bg-light-secondary2 text-light-text"
+            }`}
+          >
+            Privacy Policy
+          </button>
+          <button
+            class={`px-4 py-2 mr-2 rounded-full ${
+              $themeStore === "dark"
+                ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
+                : "bg-light-primary hover:bg-light-primary2 text-light-text"
+            }`}
+            on:click={goToPreviousStep}>Previous</button
+          >
+          <button
+            class={`px-4 py-2 mr-2 rounded-full ${
+              $themeStore === "dark"
+                ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
+                : "bg-light-primary hover:bg-light-primary2 text-light-text"
+            }`}
+            on:click={() => modalStore.closeModal()}
+          >
+            Register
+          </button>
         {/if}
       </div>
     </div>
