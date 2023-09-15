@@ -65,3 +65,7 @@ functionality and the login process. Finished the base UI and functionality of t
 
 Started work on API calls for registration process. Started integrating CI/CD pipeline and unit testing with Jest.
 Also started integrating Sentry for logging.
+
+## 15/09-23
+
+Very busy week, finally back at it.

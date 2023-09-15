@@ -10,6 +10,7 @@
   import Builder from "../pages/Builder.svelte";
   import LoginRegister from "../components/LoginRegisterModal.svelte";
   import BaseModal from "../components/BaseModal.svelte";
+  import TopBar from "../components/TopBar.svelte";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
 
