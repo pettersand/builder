@@ -11,15 +11,32 @@
     emailPattern,
     passwordPattern,
   } from "../utilities/validationPatterns";
+  import { registrationStore } from "../stores/registrationStore";
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
 
   // Form fields
-  let username = "";
-  let password = "";
-  let confirmPassword = "";
-  let email = "";
+  let step1Data = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
+  // Subscribe to the store
+  const unsubscribe = registrationStore.subscribe((data) => {
+    if (data.step1) {
+      step1Data = data.step1;
+    }
+  });
+
+  // Update the store when the form is submitted
+  function handleStep1Submit() {
+    registrationStore.setStep1Data(step1Data);
+    // Proceed to step 2 or send data to the server
+  }
+
   let firstName = "";
   let lastName = "";
   let dob = "";
@@ -65,7 +82,7 @@
 
   const handleOutsideClick = (event: MouseEvent) => {
     handleClickOutside(event, modalRef, modalBox, () => {
-      modalStore.toggleModalWithContent("", ""); // Close the modal
+      modalStore.toggleModalWithContent("", "");
     });
   };
 
@@ -76,7 +93,7 @@
         // Confirm logic here
       },
       () => {
-        modalStore.toggleModalWithContent("", ""); // Close the modal
+        modalStore.toggleModalWithContent("", "");
       }
     );
   };
@@ -150,7 +167,9 @@
               } ${usernameValid ? "" : "border-red-500"}`}
             />
             {#if !usernameValid && usernameTyped}
-              <small class="text-red-500">Username must be between 3 and 20 characters.</small>
+              <small class="text-red-500"
+                >Username must be between 3 and 20 characters.</small
+              >
             {/if}
             <label for="email" class="block text-sm font-medium">Email</label>
             <input
