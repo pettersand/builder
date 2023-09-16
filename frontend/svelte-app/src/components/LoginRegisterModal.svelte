@@ -12,6 +12,7 @@
     passwordPattern,
   } from "../utilities/validationPatterns";
   import { registrationStore } from "../stores/registrationStore";
+  import axios from "axios";
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
@@ -35,6 +36,25 @@
   function handleStep1Submit() {
     registrationStore.setStep1Data(step1Data);
     // Proceed to step 2 or send data to the server
+  }
+
+  async function sendDataToBackend() {
+    try {
+      const response = await axios.post("http://localhost:8000/api/register/", {
+        username: step1Data.username,
+        email: step1Data.email,
+        password: step1Data.password,
+        confirmPassword: step1Data.confirmPassword,
+      });
+
+      if (response.status === 200) {
+        console.log("Data sent successfully", response.data);
+        // Navigate to the next step or show a success message
+      }
+    } catch (error) {
+      console.error("An error occurred while sending data", error);
+      // Handle the error appropriately
+    }
   }
 
   let firstName = "";
@@ -237,7 +257,18 @@
             {/if}
             <button
               type="submit"
-              on:click={goToNextStep}
+              on:click={() => {
+                if (
+                  usernameValid &&
+                  emailValid &&
+                  passwordValid &&
+                  confirmPasswordValid &&
+                  passwordsMatch
+                ) {
+                  sendDataToBackend();
+                  goToNextStep();
+                }
+              }}
               disabled={!usernameValid ||
                 !emailValid ||
                 !passwordValid ||
