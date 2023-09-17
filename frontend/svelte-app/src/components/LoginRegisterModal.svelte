@@ -40,12 +40,15 @@
 
   async function sendDataToBackend() {
     try {
-      const response = await axios.post("http://localhost:8000/api/register/", {
-        username: step1Data.username,
-        email: step1Data.email,
-        password: step1Data.password,
-        confirm_password: step1Data.confirmPassword,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/register_step_1/",
+        {
+          username: step1Data.username,
+          email: step1Data.email,
+          password: step1Data.password,
+          confirm_password: step1Data.confirmPassword,
+        }
+      );
 
       if (response.status === 200) {
         console.log("Data sent successfully", response.data);

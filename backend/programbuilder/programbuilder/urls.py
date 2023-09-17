@@ -17,17 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from builder.views import (
-    UserViewSet,
-)
+
 from builder.views import RegisterStep1View
 
-# Create a router and register our viewset with it.
-router = DefaultRouter()
-router.register(r"users", UserViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/register/", RegisterStep1View.as_view(), name="register_step_1"),
+    path("api/register_step_1/", RegisterStep1View.as_view(), name="register_step_1"),
 ]
