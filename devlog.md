@@ -69,3 +69,13 @@ Also started integrating Sentry for logging.
 ## 15/09-23
 
 Very busy week, finally back at it.
+Continued work on setting up the data flow between front-back in registration process.
+
+## 16/09-23
+
+Set up basic outline of serializer, worked on input checks and refined registration process
+
+## 17/09-23
+
+Implemented and started testing the process of our 2-step registration process. Aiming to follow best practice
+and security of the data and app in general.

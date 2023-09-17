@@ -44,7 +44,7 @@
         username: step1Data.username,
         email: step1Data.email,
         password: step1Data.password,
-        confirmPassword: step1Data.confirmPassword,
+        confirm_password: step1Data.confirmPassword,
       });
 
       if (response.status === 200) {
