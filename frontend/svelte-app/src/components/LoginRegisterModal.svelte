@@ -23,6 +23,7 @@
 
   // Subscribe to the store
   const unsubscribe = registrationStore.subscribe((data) => {
+    console.log("Subscribed to store, received data:", data);
     if (data.step1) {
       step1Data = data.step1;
     }
@@ -30,12 +31,21 @@
 
   // Update the store when the form is submitted
   function handleStep1Submit() {
+    console.log("Handling Step 1 Submit, setting data to store:", step1Data);
     registrationStore.setStep1Data(step1Data);
     // Proceed to step 2 or send data to the server
   }
 
   async function sendDataToBackend() {
     try {
+      console.log("Sending data to backend:", {
+        // Log the data being sent to the backend
+        username: step1Data.username,
+        email: step1Data.email,
+        password: step1Data.password,
+        confirm_password: step1Data.confirmPassword,
+      });
+
       const response = await axios.post(
         "http://localhost:8000/api/register_step_1/",
         {
@@ -78,6 +88,7 @@
 
   function checkValidity(event: Event) {
     const input = event.target as HTMLInputElement;
+    step1Data[input.name] = input.value;
     const emailRegex = new RegExp(
       "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
     );
@@ -91,7 +102,6 @@
       emailTyped = true;
     } else if (input.name === "password") {
       passwordValid = passwordRegex.test(input.value);
-      console.log("Password:", input.value, "Is Valid:", passwordValid);
       passwordTyped = true;
     } else if (input.name === "confirmPassword") {
       confirmPasswordValid = passwordRegex.test(input.value);
