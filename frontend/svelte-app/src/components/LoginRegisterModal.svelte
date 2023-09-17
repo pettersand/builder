@@ -7,10 +7,6 @@
     handleKeyboardEvent,
     handleClickOutside,
   } from "../utilities/modalUtilities";
-  import {
-    emailPattern,
-    passwordPattern,
-  } from "../utilities/validationPatterns";
   import { registrationStore } from "../stores/registrationStore";
   import axios from "axios";
 
@@ -82,17 +78,23 @@
 
   function checkValidity(event: Event) {
     const input = event.target as HTMLInputElement;
+    const emailRegex = new RegExp(
+      "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+    );
+    const passwordRegex = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
+
     if (input.name === "username") {
       usernameValid = input.checkValidity();
       usernameTyped = true;
     } else if (input.name === "email") {
-      emailValid = input.checkValidity();
+      emailValid = emailRegex.test(input.value);
       emailTyped = true;
     } else if (input.name === "password") {
-      passwordValid = input.checkValidity();
+      passwordValid = passwordRegex.test(input.value);
+      console.log("Password:", input.value, "Is Valid:", passwordValid);
       passwordTyped = true;
     } else if (input.name === "confirmPassword") {
-      confirmPasswordValid = input.checkValidity();
+      confirmPasswordValid = passwordRegex.test(input.value);
       confirmPasswordTyped = true;
       const passwordInput = document.getElementById(
         "password"
@@ -201,7 +203,6 @@
               type="email"
               placeholder="Email"
               required
-              pattern={emailPattern}
               on:input={checkValidity}
               class={`w-full p-2 mb-2 rounded border ${
                 $themeStore === "dark"
@@ -222,7 +223,6 @@
               placeholder="Password"
               required
               minlength="6"
-              pattern={passwordPattern}
               on:input={checkValidity}
               class={`w-full p-2 mb-2 rounded border ${
                 $themeStore === "dark"
@@ -247,7 +247,6 @@
               placeholder="Confirm Password"
               required
               minlength="6"
-              pattern={passwordPattern}
               on:input={checkValidity}
               class={`w-full p-2 mb-2 rounded border ${
                 $themeStore === "dark"
