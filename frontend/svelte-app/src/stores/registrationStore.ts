@@ -7,9 +7,21 @@ interface Step1Data {
   confirmPassword: string;
 }
 
+interface Step2Data {
+    firstName: string,
+    lastName: string,
+    dob: string,
+    country: string,
+    gender: string,
+    bioSex: string,
+    isTrainer: boolean,
+    hasTrainer: boolean,
+    terms: boolean,
+}
+
 interface RegistrationData {
     step1?: Step1Data;
-    // Add step2
+    step2?: Step2Data;
   }
 
   const createRegistrationStore = () => {
@@ -19,7 +31,7 @@ interface RegistrationData {
     return {
       subscribe,
       setStep1Data: (data: Step1Data) => update(state => ({ ...state, step1: data })),
-      // Add step2
+      setStep2Data: (data: Step2Data) => update(state => ({ ...state, step2: data })),
     };
   };
   

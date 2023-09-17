@@ -21,6 +21,17 @@
     confirmPassword: "",
   };
 
+  let step2Data = {
+    firstName: "",
+    lastName: "",
+    dob: "",
+    country: "",
+    gender: "",
+    bioSex: "",
+    isTrainer: false,
+    hasTrainer: false,
+    terms: false,
+  };
   // Subscribe to the store
   const unsubscribe = registrationStore.subscribe((data) => {
     console.log("Subscribed to store, received data:", data);
@@ -28,13 +39,6 @@
       step1Data = data.step1;
     }
   });
-
-  // Update the store when the form is submitted
-  function handleStep1Submit() {
-    console.log("Handling Step 1 Submit, setting data to store:", step1Data);
-    registrationStore.setStep1Data(step1Data);
-    // Proceed to step 2 or send data to the server
-  }
 
   async function sendDataToBackend() {
     try {
@@ -65,16 +69,10 @@
       // Handle the error appropriately
     }
   }
-
-  let firstName = "";
-  let lastName = "";
-  let dob = "";
-  let country = "";
-  let isFitnessProfessional = false;
-  let hasPT = false;
-  let gender = "";
-  let biologicalSex = "";
-  let agreeToTerms = false;
+  const registerUser = async () => {
+    const allData = { ...step1Data, ...step2Data };
+    // Send allData to the backend
+  };
 
   let usernameTyped = false;
   let emailTyped = false;
@@ -113,7 +111,16 @@
     }
   }
 
-  // TODO: Add form submission logic
+  let allRequiredFieldsFilled = false;
+
+  $: {
+    allRequiredFieldsFilled =
+      step2Data.firstName &&
+      step2Data.lastName &&
+      step2Data.dob &&
+      step2Data.country &&
+      step2Data.terms;
+  }
 
   const handleOutsideClick = (event: MouseEvent) => {
     handleClickOutside(event, modalRef, modalBox, () => {
@@ -454,6 +461,7 @@
             on:click={goToPreviousStep}>Previous</button
           >
           <button
+            disabled={!allRequiredFieldsFilled}
             class={`px-4 py-2 mr-2 rounded-full ${
               $themeStore === "dark"
                 ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
