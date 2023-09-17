@@ -194,6 +194,7 @@
               required
               minlength="3"
               maxlength="20"
+              value={step1Data.username}
               on:input={checkValidity}
               class={`w-full p-2 mb-2 rounded border ${
                 $themeStore === "dark"
@@ -213,6 +214,7 @@
               type="email"
               placeholder="Email"
               required
+              value={step1Data.email}
               on:input={checkValidity}
               class={`w-full p-2 mb-2 rounded border ${
                 $themeStore === "dark"
@@ -378,33 +380,39 @@
 
           <!-- Gender -->
           <label for="gender" class="block text-sm font-medium">Gender</label>
-          <input
+          <select
             id="gender"
             name="gender"
-            type="text"
-            placeholder="Gender"
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
                 : "bg-light-input text-light-text"
             }`}
-          />
+          >
+            <option value="" selected>Choose...</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+            <option value="Trans">Trans</option>
+            <option value="Other">Other</option>
+          </select>
 
           <!-- Biological Sex -->
           <label for="bioSex" class="block text-sm font-medium"
             >Biological Sex</label
           >
-          <input
+          <select
             id="bioSex"
             name="bioSex"
-            type="text"
-            placeholder="Biological Sex"
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
                 : "bg-light-input text-light-text"
             }`}
-          />
+          >
+            <option value="" selected>Other</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+          </select>
 
           <!-- Checkboxes -->
           <div class="flex flex-col">
