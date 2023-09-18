@@ -50,7 +50,7 @@
         username: step1Data.username,
         email: step1Data.email,
         password: step1Data.password,
-        confirm_password: step1Data.confirmPassword,
+        confirmPassword: step1Data.confirmPassword,
       });
 
       const response = await axios.post(
@@ -59,13 +59,14 @@
           username: step1Data.username,
           email: step1Data.email,
           password: step1Data.password,
-          confirm_password: step1Data.confirmPassword,
+          confirmPassword: step1Data.confirmPassword,
         }
       );
 
       if (response.status === 200) {
         console.log("Data sent successfully", response.data);
         step1Successful = true;
+        step++;
         // Navigate to the next step or show a success message
       }
     } catch (error) {
@@ -75,7 +76,8 @@
   }
 
   async function registerUser() {
-    const allData = { ...step1Data, ...step2Data };
+    const allData = { step1: step1Data, step2: step2Data };
+    console.log("Data frontend sending", allData);
     try {
       const response = await axios.post(
         "http://localhost:8000/api/register_step_2/",
@@ -312,7 +314,6 @@
                   passwordsMatch
                 ) {
                   sendDataToBackend();
-                  goToNextStep();
                 }
               }}
               disabled={!usernameValid ||
@@ -459,7 +460,7 @@
                 type="checkbox"
                 class="form-checkbox"
                 name="isTrainer"
-                bind:value={step2Data.isTrainer}
+                bind:checked={step2Data.isTrainer}
               />
               <span class="ml-2">I am a trainer</span>
             </label>
@@ -468,7 +469,7 @@
                 type="checkbox"
                 class="form-checkbox"
                 name="hasTrainer"
-                bind:value={step2Data.hasTrainer}
+                bind:checked={step2Data.hasTrainer}
               />
               <span class="ml-2">I have a trainer / I am a client</span>
             </label>
@@ -477,7 +478,7 @@
                 type="checkbox"
                 class="form-checkbox"
                 name="terms"
-                bind:value={step2Data.terms}
+                bind:checked={step2Data.terms}
                 required
               />
               <span class="ml-2">I agree to the Terms of Service</span>

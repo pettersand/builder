@@ -11,6 +11,7 @@ from builder.serializers import Step1Serializer, Step2Serializer
 
 class RegisterStep1View(APIView):
     def post(self, request):
+        print("Step 1 Validation")
         serializer = Step1Serializer(data=request.data)
         if serializer.is_valid():
             username = serializer.validated_data.get("username")
@@ -40,12 +41,15 @@ class RegisterStep2View(APIView):
     def post(self, request):
         step1_data = request.data.get("step1")
         step2_data = request.data.get("step2")
+        print("Step 2 Data Retrieved", step1_data, step2_data)
 
         step1_serializer = Step1Serializer(data=step1_data)
         step2_serializer = Step2Serializer(data=step2_data)
+        print("Serializers called")
 
         if step1_serializer.is_valid() and step2_serializer.is_valid():
             # Create base user
+            print("Starting user creation")
             user = User.objects.create_user(
                 username=step1_serializer.validated_data["username"],
                 email=step1_serializer.validated_data["email"],
@@ -55,6 +59,7 @@ class RegisterStep2View(APIView):
             )
 
             # Update step 2 registration items to profile table
+            print("Starting User Profile creation")
             UserProfile.objects.create(
                 user=user,
                 date_of_birth=step2_serializer.validated_data["dob"],
@@ -64,9 +69,11 @@ class RegisterStep2View(APIView):
             )
 
             # Checks for roles and assigns to role_id
+            print("Checking roles")
             is_trainer = step2_serializer.validated_data["isTrainer"]
             has_trainer = step2_serializer.validated_data["hasTrainer"]
 
+            print("Applying Roles")
             if is_trainer:
                 role = get_object_or_404(Role, name="Trainer")
             elif has_trainer:
@@ -76,15 +83,19 @@ class RegisterStep2View(APIView):
 
             UserRole.objects.create(user=user, role=role)
 
+            print("Done!")
             return Response(
                 {"message": "Data is valid, registration complete"},
                 status=status.HTTP_200_OK,
             )
         else:
             errors = {}
+            print(errors)
             if not step1_serializer.is_valid():
+                print("Step 1 Error", step1_serializer.errors)
                 errors.update({"step1": step1_serializer.errors})
             if not step2_serializer.is_valid():
+                print("Step 2 Error", step2_serializer.errors)
                 errors.update({"step2": step2_serializer.errors})
 
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)

@@ -9,23 +9,25 @@ class Step1Serializer(serializers.Serializer):
     username = serializers.CharField(max_length=20, min_length=3)
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True, min_length=6)
-    confirm_password = serializers.CharField(write_only=True, min_length=6)
+    confirmPassword = serializers.CharField(write_only=True, min_length=6)
 
     def validate(self, data):
+        print("step 1 validate called")
         password = data.get("password")
-        confirm_password = data.get("confirm_password")
+        confirmPassword = data.get("confirmPassword")
 
-        if password != confirm_password:
+        if password != confirmPassword:
+            print("s1 password confirmation failed")
             raise serializers.ValidationError(
-                {"confirm_password": "Passwords must match."}
+                {"confirmPassword": "Passwords must match."}
             )
-
+        print("Step 1 done")
         return data
 
 
 class Step2Serializer(serializers.Serializer):
-    first_name = serializers.CharField(max_length=30)
-    last_name = serializers.CharField(max_length=30)
+    firstName = serializers.CharField(max_length=30)
+    lastName = serializers.CharField(max_length=30)
     dob = serializers.DateField()
     country = serializers.CharField(max_length=30)
     gender = serializers.CharField(required=False)
@@ -33,6 +35,8 @@ class Step2Serializer(serializers.Serializer):
     isTrainer = serializers.BooleanField(required=False)
     hasTrainer = serializers.BooleanField(required=False)
     terms = serializers.BooleanField()
+
+    print("step 2 validation done.")
 
     def validate_terms(self, value):
         if not value:
