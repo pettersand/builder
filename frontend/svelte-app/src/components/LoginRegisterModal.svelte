@@ -218,7 +218,7 @@
           <h2 class="text-center w-full p-2">Register</h2>
           <div class="w-full p-4">
             <label for="username" class="block text-sm font-medium"
-              >Username</label
+              >Username <span class="text-red-500">*</span></label
             >
             <input
               id="username"
@@ -241,7 +241,9 @@
                 >Username must be between 3 and 20 characters.</small
               >
             {/if}
-            <label for="email" class="block text-sm font-medium">Email</label>
+            <label for="email" class="block text-sm font-medium"
+              >Email <span class="text-red-500">*</span></label
+            >
             <input
               id="email"
               name="email"
@@ -260,7 +262,7 @@
               <small class="text-red-500">Email is not valid</small>
             {/if}
             <label for="password" class="block text-sm font-medium"
-              >Password</label
+              >Password <span class="text-red-500">*</span></label
             >
             <input
               id="password"
@@ -284,7 +286,7 @@
               <small class="text-red-500">Password is not valid</small>
             {/if}
             <label for="confirmPassword" class="block text-sm font-medium"
-              >Confirm Password</label
+              >Confirm Password <span class="text-red-500">*</span></label
             >
             <input
               id="confirmPassword"
@@ -342,7 +344,7 @@
 
           <!-- First Name -->
           <label for="firstName" class="block text-sm font-medium"
-            >First Name</label
+            >First Name <span class="text-red-500">*</span></label
           >
           <input
             id="firstName"
@@ -362,7 +364,7 @@
 
           <!-- Last Name -->
           <label for="lastName" class="block text-sm font-medium"
-            >Last Name</label
+            >Last Name <span class="text-red-500">*</span></label
           >
           <input
             id="lastName"
@@ -382,7 +384,7 @@
 
           <!-- Date of Birth -->
           <label for="dob" class="block text-sm font-medium"
-            >Date of Birth</label
+            >Date of Birth <span class="text-red-500">*</span></label
           >
           <input
             id="dob"
@@ -398,7 +400,9 @@
           />
 
           <!-- Country -->
-          <label for="country" class="block text-sm font-medium">Country</label>
+          <label for="country" class="block text-sm font-medium"
+            >Country <span class="text-red-500">*</span></label
+          >
           <input
             id="country"
             name="country"
@@ -481,7 +485,11 @@
                 bind:checked={step2Data.terms}
                 required
               />
-              <span class="ml-2">I agree to the Terms of Service</span>
+              <span class="ml-2"
+                >I agree to the Terms of Service <span class="text-red-500"
+                  >*</span
+                ></span
+              >
             </label>
           </div>
 
