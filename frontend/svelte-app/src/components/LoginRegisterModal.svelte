@@ -326,6 +326,7 @@
             required
             minlength="2"
             maxlength="50"
+            bind:value={step2Data.firstName}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -345,6 +346,7 @@
             required
             minlength="2"
             maxlength="50"
+            bind:value={step2Data.lastName}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -361,6 +363,7 @@
             name="dob"
             type="date"
             required
+            bind:value={step2Data.dob}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -378,6 +381,7 @@
             required
             minlength="2"
             maxlength="50"
+            bind:value={step2Data.country}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -390,6 +394,7 @@
           <select
             id="gender"
             name="gender"
+            bind:value={step2Data.gender}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -410,6 +415,7 @@
           <select
             id="bioSex"
             name="bioSex"
+            bind:value={step2Data.bioSex}
             class={`w-full p-2 mb-2 rounded ${
               $themeStore === "dark"
                 ? "bg-dark-input text-dark-text"
@@ -424,11 +430,21 @@
           <!-- Checkboxes -->
           <div class="flex flex-col">
             <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox" name="isTrainer" />
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                name="isTrainer"
+                bind:value={step2Data.isTrainer}
+              />
               <span class="ml-2">I am a trainer</span>
             </label>
             <label class="inline-flex items-center">
-              <input type="checkbox" class="form-checkbox" name="hasTrainer" />
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                name="hasTrainer"
+                bind:value={step2Data.hasTrainer}
+              />
               <span class="ml-2">I have a trainer / I am a client</span>
             </label>
             <label class="inline-flex items-center">
@@ -436,6 +452,7 @@
                 type="checkbox"
                 class="form-checkbox"
                 name="terms"
+                bind:value={step2Data.terms}
                 required
               />
               <span class="ml-2">I agree to the Terms of Service</span>

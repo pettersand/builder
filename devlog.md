@@ -79,3 +79,9 @@ Set up basic outline of serializer, worked on input checks and refined registrat
 
 Implemented and started testing the process of our 2-step registration process. Aiming to follow best practice
 and security of the data and app in general.
+
+## 18/09-23
+
+Working on step 2 registration. Data validation, and setting up the flow of data between front and back. Goal for today is to complete
+the registration process, and starting work on login functionality - this will allow me to start populating the database with
+workout program templates.
