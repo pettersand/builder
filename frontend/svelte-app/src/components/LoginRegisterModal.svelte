@@ -78,7 +78,7 @@
     const allData = { ...step1Data, ...step2Data };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/register_step_2",
+        "http://localhost:8000/api/register_step_2/",
         allData
       );
       if (response.status === 200) {

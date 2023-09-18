@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
 from builder.models import User, UserProfile, Role, UserRole
 from builder.serializers import Step1Serializer, Step2Serializer
 
@@ -52,6 +53,8 @@ class RegisterStep2View(APIView):
                 first_name=step2_serializer.validated_data["firstName"],
                 last_name=step2_serializer.validated_data["lastName"],
             )
+
+            # Update step 2 registration items to profile table
             UserProfile.objects.create(
                 user=user,
                 date_of_birth=step2_serializer.validated_data["dob"],
@@ -59,6 +62,20 @@ class RegisterStep2View(APIView):
                 gender=step2_serializer.validated_data["gender"],
                 biological_sex=step2_serializer.validated_data["bioSex"],
             )
+
+            # Checks for roles and assigns to role_id
+            is_trainer = step2_serializer.validated_data["isTrainer"]
+            has_trainer = step2_serializer.validated_data["hasTrainer"]
+
+            if is_trainer:
+                role = get_object_or_404(Role, name="Trainer")
+            elif has_trainer:
+                role = get_object_or_404(Role, name="Client")
+            else:
+                role = get_object_or_404(Role, name="Solo")
+
+            UserRole.objects.create(user=user, role=role)
+
             return Response(
                 {"message": "Data is valid, registration complete"},
                 status=status.HTTP_200_OK,

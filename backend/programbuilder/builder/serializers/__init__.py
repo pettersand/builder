@@ -1,1 +1,1 @@
-from .user_serializer import Step1Serializer
+from .user_serializer import Step1Serializer, Step2Serializer
