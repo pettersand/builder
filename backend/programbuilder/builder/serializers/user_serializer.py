@@ -1,3 +1,5 @@
+# user_serializer.py
+
 from rest_framework import serializers
 from builder.models import User
 
@@ -17,4 +19,15 @@ class Step1Serializer(serializers.Serializer):
                 {"confirm_password": "Passwords must match."}
             )
 
+        return data
+
+
+class Step2Serializer(serializers.Serializer):
+    # Your fields for step 2 go here. For example:
+    first_name = serializers.CharField(max_length=30)
+    last_name = serializers.CharField(max_length=30)
+    # Add more fields as needed
+
+    def validate(self, data):
+        # Your custom validation logic for step 2 goes here
         return data

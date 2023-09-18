@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from builder.models import User
-from builder.serializers import Step1Serializer
+from builder.serializers import Step1Serializer, Step2Serializer
 
 
 class RegisterStep1View(APIView):
@@ -32,4 +32,16 @@ class RegisterStep1View(APIView):
                 status=status.HTTP_200_OK,
             )
 
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RegisterStep2View(APIView):
+    def post(self, request):
+        serializer = Step2Serializer(data=request.data)
+        if serializer.is_valid():
+            # Your logic for handling step 2 data goes here
+            return Response(
+                {"message": "Data is valid, registration complete"},
+                status=status.HTTP_200_OK,
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,6 +1,7 @@
 <!-- LoginRegisterModal.svelte -->
 <script lang="ts">
   import { onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import themeStore from "../stores/themeStore";
   import modalStore from "../stores/modalStore";
   import {
@@ -12,6 +13,8 @@
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
+  let registrationSuccessful = false;
+  let step1Successful = false;
 
   // Form fields
   let step1Data = {
@@ -62,6 +65,7 @@
 
       if (response.status === 200) {
         console.log("Data sent successfully", response.data);
+        step1Successful = true;
         // Navigate to the next step or show a success message
       }
     } catch (error) {
@@ -69,10 +73,25 @@
       // Handle the error appropriately
     }
   }
-  const registerUser = async () => {
+
+  async function registerUser() {
     const allData = { ...step1Data, ...step2Data };
-    // Send allData to the backend
-  };
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/register",
+        allData
+      );
+      if (response.status === 200) {
+        console.log("Registration successful", response.data);
+        registrationSuccessful = true;
+
+        // Navigate to the next step or show a success message
+      }
+    } catch (error) {
+      console.error("An error occurred while sending data", error);
+      // Handle the error appropriately
+    }
+  }
 
   let usernameTyped = false;
   let emailTyped = false;
@@ -153,12 +172,18 @@
   let step = 1; // To track the current step of registration
 
   const goToNextStep = () => {
-    step++;
+    if (step1Successful) {
+      step++;
+    }
   };
 
   const goToPreviousStep = () => {
     step--;
   };
+
+  onDestroy(() => {
+    unsubscribe();
+  });
 </script>
 
 {#if $modalStore.showModal}
@@ -483,8 +508,10 @@
               $themeStore === "dark"
                 ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
                 : "bg-light-primary hover:bg-light-primary2 text-light-text"
+            } ${
+              !allRequiredFieldsFilled ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            on:click={() => modalStore.closeModal()}
+            on:click={registerUser}
           >
             Register
           </button>
