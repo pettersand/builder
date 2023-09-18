@@ -17,8 +17,7 @@ class CustomUserManager(BaseUserManager):
         is_superuser=False,
         **extra_fields
     ):
-        if not email:
-            raise ValueError("The Email field must be set")
+
         email = self.normalize_email(email)
         user = self.model(
             username=username,

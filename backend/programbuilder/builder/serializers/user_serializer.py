@@ -2,6 +2,7 @@
 
 from rest_framework import serializers
 from builder.models import User
+from datetime import date
 
 
 class Step1Serializer(serializers.Serializer):
@@ -23,11 +24,17 @@ class Step1Serializer(serializers.Serializer):
 
 
 class Step2Serializer(serializers.Serializer):
-    # Your fields for step 2 go here. For example:
     first_name = serializers.CharField(max_length=30)
     last_name = serializers.CharField(max_length=30)
-    # Add more fields as needed
+    dob = serializers.DateField()
+    country = serializers.CharField(max_length=30)
+    gender = serializers.CharField(required=False)
+    bioSex = serializers.CharField(required=False)
+    isTrainer = serializers.BooleanField(required=False)
+    hasTrainer = serializers.BooleanField(required=False)
+    terms = serializers.BooleanField()
 
-    def validate(self, data):
-        # Your custom validation logic for step 2 goes here
-        return data
+    def validate_terms(self, value):
+        if not value:
+            raise serializers.ValidationError("You must agree to the terms of service.")
+        return value
