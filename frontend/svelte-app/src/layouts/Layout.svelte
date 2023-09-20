@@ -10,6 +10,7 @@
   import LoginRegister from "../components/LoginRegisterModal.svelte";
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
+  import ErrorModal from "../components/ErrorModal.svelte";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
 
@@ -51,6 +52,7 @@
   {/if}
 {/if}
 <TopBar />
+<ErrorModal />
 
 <div
   class={$themeStore === "dark"

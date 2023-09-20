@@ -10,6 +10,7 @@
   } from "../utilities/modalUtilities";
   import { registrationStore } from "../stores/registrationStore";
   import axios from "axios";
+  import { showMessage } from "../stores/messageStore";
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
@@ -45,14 +46,6 @@
 
   async function sendDataToBackend() {
     try {
-      console.log("Sending data to backend:", {
-        // Log the data being sent to the backend
-        username: step1Data.username,
-        email: step1Data.email,
-        password: step1Data.password,
-        confirmPassword: step1Data.confirmPassword,
-      });
-
       const response = await axios.post(
         "http://localhost:8000/api/register_step_1/",
         {
@@ -67,11 +60,22 @@
         console.log("Data sent successfully", response.data);
         step1Successful = true;
         step++;
-        // Navigate to the next step or show a success message
+        // Navigate to the next step
       }
     } catch (error) {
       console.error("An error occurred while sending data", error);
-      // Handle the error appropriately
+      if (error.response && error.response.data) {
+        let errorMessage = "";
+        if (typeof error.response.data === "object") {
+          const key = Object.keys(error.response.data)[0];
+          errorMessage = error.response.data[key];
+        } else {
+          errorMessage = error.response.data;
+        }
+        showMessage(errorMessage, "error");
+      } else {
+        showMessage("An unknown error occurred", "error");
+      }
     }
   }
 
@@ -86,12 +90,22 @@
       if (response.status === 200) {
         console.log("Registration successful", response.data);
         registrationSuccessful = true;
-
-        // Navigate to the next step or show a success message
+        showMessage("Registration successful!", "confirmation");
       }
     } catch (error) {
       console.error("An error occurred while sending data", error);
-      // Handle the error appropriately
+      if (error.response && error.response.data) {
+        let errorMessage = "";
+        if (typeof error.response.data === "object") {
+          const key = Object.keys(error.response.data)[0];
+          errorMessage = error.response.data[key];
+        } else {
+          errorMessage = error.response.data;
+        }
+        showMessage(errorMessage, "error");
+      } else {
+        showMessage("An unknown error occurred", "error");
+      }
     }
   }
 
