@@ -9,6 +9,7 @@ const initialState = {
   theme: localStorage.getItem("theme") || "dark",
   level: "Beginner" as Level,
   currentPage: localStorage.getItem("currentPage") || "Dashboard",
+  isAuthenticated: false,
 };
 
 const globalStore = writable(initialState);

@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import login
 from builder.models import User, UserProfile, Role, UserRole
 from builder.serializers import Step1Serializer, Step2Serializer
 
@@ -83,6 +84,7 @@ class RegisterStep2View(APIView):
 
             UserRole.objects.create(user=user, role=role)
 
+            login(request, user)
             print("Done!")
             return Response(
                 {"message": "Data is valid, registration complete"},

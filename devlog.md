@@ -85,3 +85,8 @@ and security of the data and app in general.
 Working on step 2 registration. Data validation, and setting up the flow of data between front and back. Goal for today is to complete
 the registration process, and starting work on login functionality - this will allow me to start populating the database with
 workout program templates.
+
+## 20/09-23
+
+Finalized registration process with error and confirmation handling. Working now on login, logout with Django session based login.
+Will likely incorporate token based or OAuth at a later point in development.
