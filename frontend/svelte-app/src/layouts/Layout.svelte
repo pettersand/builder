@@ -26,9 +26,12 @@
     const checkAuthStatus = async () => {
       try {
         console.log("Started CheckAuth");
-        const response = await axios.get("/api/check_auth_status/", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "http://localhost:8000/api/check_auth_status/",
+          {
+            withCredentials: true,
+          }
+        );
         if (response.data.isAuthenticated) {
           console.log("true");
           globalStore.setAuthenticationStatus(true);
@@ -57,7 +60,7 @@
 
   async function logout() {
     try {
-      const response = await axios.post("/api/logout_view/");
+      const response = await axios.post("http://localhost:8000/api/logout/");
       if (response.status === 200) {
         globalStore.setAuthenticationStatus(false);
         showMessage("You have been logged out", "confirmation");

@@ -137,7 +137,10 @@
     }
 
     try {
-      const response = await axios.post("/api/login/", payload);
+      const response = await axios.post(
+        "http://localhost:8000/api/login/",
+        payload
+      );
 
       if (response.status === 200) {
         globalStore.setAuthenticationStatus(true);

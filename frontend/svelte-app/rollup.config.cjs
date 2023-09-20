@@ -2,6 +2,7 @@ const { spawn } = require("child_process");
 const svelte = require("rollup-plugin-svelte");
 const commonjs = require("@rollup/plugin-commonjs");
 const terser = require("@rollup/plugin-terser");
+const servePlugin = require("rollup-plugin-serve");
 const resolve = require("@rollup/plugin-node-resolve");
 const livereload = require("rollup-plugin-livereload");
 const typescript = require("@rollup/plugin-typescript");
@@ -14,7 +15,7 @@ const postcssConfig = require("./postcss.config.cjs");
 const production = !process.env.ROLLUP_WATCH;
 console.log("Is this production?", production);
 
-function serve() {
+/* function serve() {
   let server;
 
   function toExit() {
@@ -33,7 +34,7 @@ function serve() {
       process.on("exit", toExit);
     },
   };
-}
+} */
 
 module.exports = {
   input: "src/main.ts",
@@ -70,7 +71,19 @@ module.exports = {
       sourceMap: !production,
       inlineSources: !production,
     }),
-    !production && serve(),
+    !production &&
+      servePlugin({
+        open: true,
+        contentBase: "public",
+        host: "localhost",
+        port: 5000,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        proxy: {
+          "/api": "http://localhost:8000",
+        },
+      }),
     !production && livereload("public"),
     production && terser(),
   ],
