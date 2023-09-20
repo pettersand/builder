@@ -4,6 +4,7 @@
   import { onDestroy } from "svelte";
   import themeStore from "../stores/themeStore";
   import modalStore from "../stores/modalStore";
+  import globalStore from "../stores/globalStore";
   import {
     handleKeyboardEvent,
     handleClickOutside,
@@ -89,6 +90,7 @@
       );
       if (response.status === 200) {
         console.log("Registration successful", response.data);
+        globalStore.setAuthenticationStatus(true);
         registrationSuccessful = true;
         showMessage("Registration successful!", "confirmation");
         modalStore.closeModal();
@@ -107,6 +109,44 @@
       } else {
         showMessage("An unknown error occurred", "error");
       }
+    }
+  }
+
+  let loginField = "";
+  let loginPassword = "";
+
+  function isEmail(str) {
+    return str.includes("@");
+  }
+
+  interface LoginPayload {
+    password: string;
+    username?: string;
+    email?: string;
+  }
+
+  async function handleLogin() {
+    const payload: LoginPayload = {
+      password: loginPassword,
+    };
+
+    if (isEmail(loginField)) {
+      payload.email = loginField;
+    } else {
+      payload.username = loginField;
+    }
+
+    try {
+      const response = await axios.post("/api/login/", payload);
+
+      if (response.status === 200) {
+        globalStore.setAuthenticationStatus(true);
+        console.log("Login successful");
+        showMessage("Login successful!", "confirmation");
+        modalStore.closeModal();
+      }
+    } catch (error) {
+      console.error("An error occurred during login:", error);
     }
   }
 
@@ -225,8 +265,61 @@
         X
       </button>
       <div class="login-section flex flex-col w-1/2 border-r-2 border-black">
-        <h2>Login</h2>
-        <!-- Login Fields -->
+        <h2 class="text-center w-full p-2">Login</h2>
+        <div class="w-full p-4">
+          <!-- Username or Email Field -->
+          <label for="login-username-email" class="block text-sm font-medium">
+            Username or Email
+          </label>
+          <input
+            id="loginField"
+            name="loginField"
+            type="text"
+            placeholder="Username or Email"
+            bind:value={loginField}
+            class={`w-full p-2 mb-2 rounded border ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Password Field -->
+          <label for="login-password" class="block text-sm font-medium">
+            Password
+          </label>
+          <input
+            id="login-password"
+            name="loginPassword"
+            type="password"
+            placeholder="Password"
+            bind:value={loginPassword}
+            class={`w-full p-2 mb-2 rounded border ${
+              $themeStore === "dark"
+                ? "bg-dark-input text-dark-text"
+                : "bg-light-input text-light-text"
+            }`}
+          />
+
+          <!-- Remember Me Checkbox -->
+          <div class="flex items-center">
+            <input id="remember-me" type="checkbox" class="mr-2" />
+            <label for="remember-me" class="text-sm">Remember Me</label>
+          </div>
+
+          <!-- Forgot Password -->
+          <div class="text-right text-sm">
+            <span>Forgot Password?</span>
+          </div>
+
+          <!-- Login Button -->
+          <button
+            class="w-full p-2 mt-4 bg-blue-500 text-white rounded"
+            on:click={handleLogin}
+          >
+            Login
+          </button>
+        </div>
       </div>
       <div class="register-section flex flex-col w-1/2 items-center">
         {#if step === 1}

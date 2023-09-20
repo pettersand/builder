@@ -9,7 +9,7 @@ const initialState = {
   theme: localStorage.getItem("theme") || "dark",
   level: "Beginner" as Level,
   currentPage: localStorage.getItem("currentPage") || "Dashboard",
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("isAuthenticated") === "true" || false,
 };
 
 const globalStore = writable(initialState);
@@ -18,6 +18,7 @@ const globalStore = writable(initialState);
 globalStore.subscribe((state) => {
   localStorage.setItem("theme", state.theme);
   localStorage.setItem("currentPage", state.currentPage);
+  localStorage.setItem("isAuthenticated", state.isAuthenticated.toString());
 });
 
 // Define methods to update the store

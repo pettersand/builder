@@ -32,8 +32,19 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # FOR DEVELOPMENT ONLY!
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5000",
+    "http://0.0.0.0:5000",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5000",  # Your frontend's address and port
+]
+
+SESSION_COOKIE_SAMESITE = "None"
+# SET TO TRUE IN PRODUCTION!
+SESSION_COOKIE_SECURE = False
 
 # Application definition
 

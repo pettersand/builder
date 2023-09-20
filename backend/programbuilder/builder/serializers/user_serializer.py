@@ -42,3 +42,27 @@ class Step2Serializer(serializers.Serializer):
         if not value:
             raise serializers.ValidationError("You must agree to the terms of service.")
         return value
+
+
+class LoginSerializer(serializers.Serializer):
+    print("Login Serializer Started")
+    username = serializers.CharField(max_length=150, required=False)
+    email = serializers.EmailField(max_length=254, required=False)
+    password = serializers.CharField(write_only=True, min_length=6)
+
+    def validate(self, data):
+        username = data.get("username")
+        email = data.get("email")
+        password = data.get("password")
+
+        if not username and not email:
+            raise serializers.ValidationError(
+                "Either username or email must be provided."
+            )
+
+        if not password:
+            raise serializers.ValidationError(
+                {"password": "Password must be provided."}
+            )
+
+        return data

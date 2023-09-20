@@ -12,22 +12,28 @@
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
   import ErrorModal from "../components/ErrorModal.svelte";
+  import { showMessage } from "../stores/messageStore";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
-  let isAuthenticated = false;
+  let currentAuth = localStorage.getItem("isAuthenticated") === "true";
 
   onMount(() => {
     const unsubscribeGlobal = globalStore.subscribe((state) => {
       currentView = state.currentPage;
-      isAuthenticated = state.isAuthenticated;
+      currentAuth = state.isAuthenticated;
     });
     // Check authentication status
     const checkAuthStatus = async () => {
       try {
-        const response = await axios.get("/api/check_auth_status/");
+        console.log("Started CheckAuth");
+        const response = await axios.get("/api/check_auth_status/", {
+          withCredentials: true,
+        });
         if (response.data.isAuthenticated) {
+          console.log("true");
           globalStore.setAuthenticationStatus(true);
         } else {
+          console.log("false");
           globalStore.setAuthenticationStatus(false);
         }
       } catch (error) {
@@ -54,7 +60,7 @@
       const response = await axios.post("/api/logout_view/");
       if (response.status === 200) {
         globalStore.setAuthenticationStatus(false);
-        // Optionally, redirect the user to the login page or show a logout message
+        showMessage("You have been logged out", "confirmation");
       }
     } catch (error) {
       console.error("An error occurred during logout:", error);
@@ -105,7 +111,7 @@
     </div>
     <div class="icons">
       <!-- Login/Register and Log Out buttons -->
-      {#if isAuthenticated}
+      {#if $globalStore.isAuthenticated}
         <button class="auth-button" on:click={logout}> Logout </button>
       {:else}
         <button class="auth-button" on:click={openLoginModal}>

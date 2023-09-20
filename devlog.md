@@ -89,4 +89,5 @@ workout program templates.
 ## 20/09-23
 
 Finalized registration process with error and confirmation handling. Working now on login, logout with Django session based login.
-Will likely incorporate token based or OAuth at a later point in development.
+Will likely incorporate token based or OAuth at a later point in development.Ran into some issues with backend functions not being called by the frontend, concerning user
+authentication, logouts, and logins.

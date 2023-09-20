@@ -3,11 +3,31 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
+from django.http import JsonResponse
 from builder.models import User, UserProfile, Role, UserRole
-from builder.serializers import Step1Serializer, Step2Serializer
+from builder.serializers import Step1Serializer, Step2Serializer, LoginSerializer
+
+
+class CheckAuthStatus(APIView):
+    def get(self, request):
+        print("Started Auth")
+        if request.user.is_authenticated:
+            print("true")
+            return JsonResponse({"isAuthenticated": True})
+        else:
+            print("false")
+            return JsonResponse({"isAuthenticated": False})
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        print("Logout View Triggered")
+        logout(request)
+        return Response(
+            {"message": "Logged out successfully"}, status=status.HTTP_200_OK
+        )
 
 
 class RegisterStep1View(APIView):
@@ -101,3 +121,35 @@ class RegisterStep2View(APIView):
                 errors.update({"step2": step2_serializer.errors})
 
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginView(APIView):
+    def post(self, request):
+        print("Login View Started")
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            username = serializer.validated_data.get("username")
+            email = serializer.validated_data.get("email")
+            password = serializer.validated_data.get("password")
+
+            # Try to authenticate the user
+            if username:
+                user = authenticate(username=username, password=password)
+            else:
+                user = User.objects.filter(email=email).first()
+                if user:
+                    user = authenticate(username=user.username, password=password)
+
+            if user:
+                login(request, user)
+                print("Logged in")
+                return Response(
+                    {"message": "Login successful"},
+                    status=status.HTTP_200_OK,
+                )
+            else:
+                return Response(
+                    {"message": "Invalid credentials"},
+                    status=status.HTTP_401_UNAUTHORIZED,
+                )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
