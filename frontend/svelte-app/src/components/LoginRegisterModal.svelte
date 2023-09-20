@@ -91,6 +91,7 @@
         console.log("Registration successful", response.data);
         registrationSuccessful = true;
         showMessage("Registration successful!", "confirmation");
+        modalStore.closeModal();
       }
     } catch (error) {
       console.error("An error occurred while sending data", error);
