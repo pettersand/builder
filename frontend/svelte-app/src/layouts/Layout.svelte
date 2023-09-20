@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
   import globalStore from "../stores/globalStore";
+  import axios from "axios";
   import modalStore from "../stores/modalStore";
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import Dashboard from "../pages/Dashboard.svelte";
@@ -13,11 +14,32 @@
   import ErrorModal from "../components/ErrorModal.svelte";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
+  let isAuthenticated = false;
 
   onMount(() => {
     const unsubscribeGlobal = globalStore.subscribe((state) => {
       currentView = state.currentPage;
+      isAuthenticated = state.isAuthenticated;
     });
+    // Check authentication status
+    const checkAuthStatus = async () => {
+      try {
+        const response = await axios.get("/api/check_auth_status/");
+        if (response.data.isAuthenticated) {
+          globalStore.setAuthenticationStatus(true);
+        } else {
+          globalStore.setAuthenticationStatus(false);
+        }
+      } catch (error) {
+        console.error(
+          "An error occurred while checking authentication status:",
+          error
+        );
+      }
+    };
+
+    // Calls the function to check authentication status
+    checkAuthStatus();
     return () => {
       unsubscribeGlobal();
     };
@@ -25,6 +47,18 @@
 
   function openLoginModal() {
     modalStore.toggleModalWithContent("loginRegister", "Login / Register");
+  }
+
+  async function logout() {
+    try {
+      const response = await axios.post("/api/logout_view/");
+      if (response.status === 200) {
+        globalStore.setAuthenticationStatus(false);
+        // Optionally, redirect the user to the login page or show a logout message
+      }
+    } catch (error) {
+      console.error("An error occurred during logout:", error);
+    }
   }
 
   function toggleDarkMode() {
@@ -45,9 +79,7 @@
     <BaseModal
       modalContent={$modalStore.modalContent}
       onClose={() => modalStore.toggleModalWithContent("", "")}
-      onConfirm={() => {
-        /* Your confirm action here */
-      }}
+      onConfirm={() => {}}
     />
   {/if}
 {/if}
@@ -73,10 +105,13 @@
     </div>
     <div class="icons">
       <!-- Login/Register and Log Out buttons -->
-
-      <button class="auth-button" on:click={openLoginModal}>
-        Login / Register
-      </button>
+      {#if isAuthenticated}
+        <button class="auth-button" on:click={logout}> Logout </button>
+      {:else}
+        <button class="auth-button" on:click={openLoginModal}>
+          Login / Register
+        </button>
+      {/if}
 
       <!-- Light Switch for dark/light mode  -->
       <div

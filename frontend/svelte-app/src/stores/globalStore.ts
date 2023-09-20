@@ -37,6 +37,11 @@ const methods = {
       return { ...state, currentPage: newPage };
     });
   },
+  setAuthenticationStatus: (authStatus: boolean) => {
+    globalStore.update((state) => {
+      return { ...state, isAuthenticated: authStatus };
+    });
+  },
 };
 
 export default {
