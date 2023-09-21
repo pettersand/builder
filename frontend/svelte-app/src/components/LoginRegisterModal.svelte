@@ -1,22 +1,29 @@
 <!-- LoginRegisterModal.svelte -->
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { onDestroy } from "svelte";
+  // Svelte imports
+  import { onMount, onDestroy } from "svelte";
+
+  // Store imports
   import themeStore from "../stores/themeStore";
   import modalStore from "../stores/modalStore";
   import globalStore from "../stores/globalStore";
+  import { registrationStore } from "../stores/registrationStore";
+  import { showMessage } from "../stores/messageStore";
+
+  // Utility imports
   import {
     handleKeyboardEvent,
     handleClickOutside,
   } from "../utilities/modalUtilities";
-  import { registrationStore } from "../stores/registrationStore";
-  import axios from "axios";
-  import { showMessage } from "../stores/messageStore";
 
+  // Third-party imports
+  import axios from "axios";
+
+  // State variables with type annotations
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
-  let registrationSuccessful = false;
-  let step1Successful = false;
+  let registrationSuccessful: boolean = false;
+  let step1Successful: boolean = false;
 
   // Form fields
   let step1Data = {
