@@ -6,15 +6,17 @@ const servePlugin = require("rollup-plugin-serve");
 const resolve = require("@rollup/plugin-node-resolve");
 const livereload = require("rollup-plugin-livereload");
 const typescript = require("@rollup/plugin-typescript");
+const replace = require("@rollup/plugin-replace");
 const sveltePreprocess = require("svelte-preprocess");
 const postcss = require("rollup-plugin-postcss");
 const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 const postcssConfig = require("./postcss.config.cjs");
+const dotenv = require("dotenv");
 
 const production = !process.env.ROLLUP_WATCH;
 console.log("Is this production?", production);
-
+dotenv.config();
 /* function serve() {
   let server;
 
@@ -45,6 +47,13 @@ module.exports = {
     file: "public/build/bundle.js",
   },
   plugins: [
+    replace({
+      process: JSON.stringify({
+        env: {
+          API_URL: process.env.API_URL,
+        },
+      }),
+    }),
     postcss({
       extract: "postcss.css",
       minimize: production,
@@ -77,12 +86,6 @@ module.exports = {
         contentBase: "public",
         host: "localhost",
         port: 5000,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-        proxy: {
-          "/api": "http://localhost:8000",
-        },
       }),
     !production && livereload("public"),
     production && terser(),

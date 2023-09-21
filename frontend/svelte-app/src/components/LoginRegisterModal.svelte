@@ -8,6 +8,7 @@
   import modalStore from "../stores/modalStore";
   import globalStore from "../stores/globalStore";
   import { registrationStore } from "../stores/registrationStore";
+  import type { Step1Data, Step2Data } from "../stores/registrationStore";
   import { showMessage } from "../stores/messageStore";
 
   // Utility imports
@@ -18,6 +19,7 @@
 
   // Third-party imports
   import axios from "axios";
+  const apiUrl = process.env.API_URL;
 
   // State variables with type annotations
   let modalRef: HTMLElement;
@@ -25,15 +27,23 @@
   let registrationSuccessful: boolean = false;
   let step1Successful: boolean = false;
 
-  // Form fields
-  let step1Data = {
+  // Subscribe to the store
+  const unsubscribe = registrationStore.subscribe((data) => {
+    console.log("Subscribed to store, received data:", data);
+    if (data.step1) {
+      step1Data = data.step1;
+    }
+  });
+
+  // Form fields with type annotations
+  let step1Data: Step1Data = {
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
 
-  let step2Data = {
+  let step2Data: Step2Data = {
     firstName: "",
     lastName: "",
     dob: "",
@@ -44,24 +54,28 @@
     hasTrainer: false,
     terms: false,
   };
-  // Subscribe to the store
-  const unsubscribe = registrationStore.subscribe((data) => {
-    console.log("Subscribed to store, received data:", data);
-    if (data.step1) {
-      step1Data = data.step1;
-    }
-  });
 
-  async function sendDataToBackend() {
+  // Utility function for error handling
+  function handleError(error: any) {
+    let errorMessage = "";
+    if (error.response && error.response.data) {
+      if (typeof error.response.data === "object") {
+        const key = Object.keys(error.response.data)[0];
+        errorMessage = error.response.data[key];
+      } else {
+        errorMessage = error.response.data;
+      }
+      showMessage(errorMessage, "error");
+    } else {
+      showMessage("An unknown error occurred", "error");
+    }
+  }
+
+  async function sendDataToBackend(): Promise<void> {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/register_step_1/",
-        {
-          username: step1Data.username,
-          email: step1Data.email,
-          password: step1Data.password,
-          confirmPassword: step1Data.confirmPassword,
-        }
+        process.env.API_URL + "/register_step_1/",
+        step1Data
       );
 
       if (response.status === 200) {
@@ -71,19 +85,7 @@
         // Navigate to the next step
       }
     } catch (error) {
-      console.error("An error occurred while sending data", error);
-      if (error.response && error.response.data) {
-        let errorMessage = "";
-        if (typeof error.response.data === "object") {
-          const key = Object.keys(error.response.data)[0];
-          errorMessage = error.response.data[key];
-        } else {
-          errorMessage = error.response.data;
-        }
-        showMessage(errorMessage, "error");
-      } else {
-        showMessage("An unknown error occurred", "error");
-      }
+      handleError(error);
     }
   }
 

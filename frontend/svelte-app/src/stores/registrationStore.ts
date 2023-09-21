@@ -1,13 +1,13 @@
 import { writable } from "svelte/store";
 
-interface Step1Data {
+export interface Step1Data {
   username: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
-interface Step2Data {
+export interface Step2Data {
     firstName: string,
     lastName: string,
     dob: string,
