@@ -1,9 +1,9 @@
 <!-- LoginRegisterModal.svelte -->
 <script lang="ts">
-  // Svelte imports
+  // Svelte lifecycle imports
   import { onMount, onDestroy } from "svelte";
 
-  // Store imports
+  // State management imports
   import themeStore from "../stores/themeStore";
   import modalStore from "../stores/modalStore";
   import globalStore from "../stores/globalStore";
@@ -11,31 +11,33 @@
   import type { Step1Data, Step2Data } from "../stores/registrationStore";
   import { showMessage } from "../stores/messageStore";
 
-  // Utility imports
+  // Utility function imports
   import {
     handleKeyboardEvent,
     handleClickOutside,
   } from "../utilities/modalUtilities";
+  import { loginUser } from "../utilities/userAPI";
 
-  // Third-party imports
+  // Third-party library imports
   import axios from "axios";
-  const apiUrl = process.env.API_URL;
+  import App from "../App.svelte";
 
-  // State variables with type annotations
+  // Initialize state variables with type annotations
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
   let registrationSuccessful: boolean = false;
   let step1Successful: boolean = false;
+  let step = 1;
 
-  // Subscribe to the store
+  // Subscribe to the registration store
   const unsubscribe = registrationStore.subscribe((data) => {
-    console.log("Subscribed to store, received data:", data);
+    console.log("Subscribed to registration store, received data:", data);
     if (data.step1) {
       step1Data = data.step1;
     }
   });
 
-  // Form fields with type annotations
+  // Initialize form fields with type annotations
   let step1Data: Step1Data = {
     username: "",
     email: "",
@@ -55,6 +57,76 @@
     terms: false,
   };
 
+  // Regex patterns for email and password validation
+  const emailRegex = new RegExp(
+    "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+  );
+  const passwordRegex = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
+
+  // State variables for input validation
+  let usernameTyped = false;
+  let emailTyped = false;
+  let passwordTyped = false;
+  let confirmPasswordTyped = false;
+  let usernameValid = false;
+  let emailValid = false;
+  let passwordValid = false;
+  let confirmPasswordValid = false;
+  let passwordsMatch = false;
+
+  // Interface for Login input
+  interface LoginPayload {
+    password: string;
+    username?: string;
+    email?: string;
+  }
+
+  // Login form fields
+  let loginField = "";
+  let loginPassword = "";
+
+  // State variable for tracking required fields
+  let allRequiredFieldsFilled = false;
+
+  // Reactive statement to check if all required fields are filled
+  $: {
+    allRequiredFieldsFilled =
+      step2Data.firstName &&
+      step2Data.lastName &&
+      step2Data.dob &&
+      step2Data.country &&
+      step2Data.terms;
+  }
+
+  // Function to handle form validation
+  function checkValidity(event: Event) {
+    const input = event.target as HTMLInputElement;
+    step1Data[input.name] = input.value;
+
+    // Validate input based on its name attribute
+    switch (input.name) {
+      case "username":
+        usernameValid = input.checkValidity();
+        usernameTyped = true;
+        break;
+      case "email":
+        emailValid = emailRegex.test(input.value);
+        emailTyped = true;
+        break;
+      case "password":
+        passwordValid = passwordRegex.test(input.value);
+        passwordTyped = true;
+        break;
+      case "confirmPassword":
+        confirmPasswordValid = passwordRegex.test(input.value);
+        confirmPasswordTyped = true;
+        passwordsMatch =
+          (document.getElementById("password") as HTMLInputElement).value ===
+          input.value;
+        break;
+    }
+  }
+
   // Utility function for error handling
   function handleError(error: any) {
     let errorMessage = "";
@@ -71,7 +143,51 @@
     }
   }
 
+  // Function to handle outside clicks for modal
+  const handleOutsideClick = (event: MouseEvent) => {
+    handleClickOutside(event, modalRef, modalBox, () => {
+      modalStore.toggleModalWithContent("", "");
+    });
+  };
+
+  // Function to handle keyboard events for modal
+  const handleKey = (event: KeyboardEvent) => {
+    handleKeyboardEvent(
+      event,
+      () => {},
+      () => {
+        modalStore.toggleModalWithContent("", "");
+      }
+    );
+  };
+
+  // Attach event listeners on component mount
+  onMount(() => {
+    window.addEventListener("click", handleOutsideClick);
+    window.addEventListener("keydown", handleKey);
+
+    // Cleanup event listeners on component destroy
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("keydown", handleKey);
+    };
+  });
+
+  // Function to navigate to the next step
+  const goToNextStep = () => {
+    if (step1Successful) {
+      step++;
+    }
+  };
+
+  // Function to navigate to the previous step
+  const goToPreviousStep = () => {
+    step--;
+  };
+
+  // Function to send data to the backend to check for existing user
   async function sendDataToBackend(): Promise<void> {
+    console.log("Sending data for existing user check", step1Data);
     try {
       const response = await axios.post(
         process.env.API_URL + "/register_step_1/",
@@ -89,13 +205,12 @@
     }
   }
 
-  async function registerUser() {
-    const allData = { step1: step1Data, step2: step2Data };
-    console.log("Data frontend sending", allData);
+  // Function to register the user with step 1 and 2 data
+  async function registerUser(): Promise<void> {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/register_step_2/",
-        allData
+        process.env.API_URL + "/register_step_2/",
+        { step1: step1Data, step2: step2Data }
       );
       if (response.status === 200) {
         console.log("Registration successful", response.data);
@@ -105,151 +220,44 @@
         modalStore.closeModal();
       }
     } catch (error) {
-      console.error("An error occurred while sending data", error);
-      if (error.response && error.response.data) {
-        let errorMessage = "";
-        if (typeof error.response.data === "object") {
-          const key = Object.keys(error.response.data)[0];
-          errorMessage = error.response.data[key];
-        } else {
-          errorMessage = error.response.data;
-        }
-        showMessage(errorMessage, "error");
-      } else {
-        showMessage("An unknown error occurred", "error");
-      }
+      handleError(error);
     }
   }
 
-  let loginField = "";
-  let loginPassword = "";
-
-  function isEmail(str) {
+  // Function to handle login form input type
+  function isEmail(str: string): boolean {
     return str.includes("@");
   }
 
-  interface LoginPayload {
-    password: string;
-    username?: string;
-    email?: string;
-  }
-
-  async function handleLogin() {
-    const payload: LoginPayload = {
+  // Function to handle login
+  async function handleLogin(): Promise<void> {
+    console.log("Login Process Started");
+    const payload: Partial<LoginPayload> = {
       password: loginPassword,
     };
 
+    // Determine if loginField is an email or username
     if (isEmail(loginField)) {
+      console.log("email detected");
       payload.email = loginField;
     } else {
+      console.log("username detected");
       payload.username = loginField;
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/login/",
-        payload
-      );
-
-      if (response.status === 200) {
-        globalStore.setAuthenticationStatus(true);
-        console.log("Login successful");
-        showMessage("Login successful!", "confirmation");
-        modalStore.closeModal();
-      }
+      console.log("Sending with axios", payload);
+      const data = await loginUser(payload);
+      globalStore.setAuthenticationStatus(true);
+      console.log("Login successful", data);
+      showMessage("Login successful!", "confirmation");
+      modalStore.closeModal();
     } catch (error) {
-      console.error("An error occurred during login:", error);
+      handleError(error);
     }
   }
 
-  let usernameTyped = false;
-  let emailTyped = false;
-  let passwordTyped = false;
-  let confirmPasswordTyped = false;
-  let usernameValid = false;
-  let emailValid = false;
-  let passwordValid = false;
-  let confirmPasswordValid = false;
-  let passwordsMatch = false;
-
-  function checkValidity(event: Event) {
-    const input = event.target as HTMLInputElement;
-    step1Data[input.name] = input.value;
-    const emailRegex = new RegExp(
-      "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-    );
-    const passwordRegex = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
-
-    if (input.name === "username") {
-      usernameValid = input.checkValidity();
-      usernameTyped = true;
-    } else if (input.name === "email") {
-      emailValid = emailRegex.test(input.value);
-      emailTyped = true;
-    } else if (input.name === "password") {
-      passwordValid = passwordRegex.test(input.value);
-      passwordTyped = true;
-    } else if (input.name === "confirmPassword") {
-      confirmPasswordValid = passwordRegex.test(input.value);
-      confirmPasswordTyped = true;
-      const passwordInput = document.getElementById(
-        "password"
-      ) as HTMLInputElement;
-      passwordsMatch = passwordInput.value === input.value;
-    }
-  }
-
-  let allRequiredFieldsFilled = false;
-
-  $: {
-    allRequiredFieldsFilled =
-      step2Data.firstName &&
-      step2Data.lastName &&
-      step2Data.dob &&
-      step2Data.country &&
-      step2Data.terms;
-  }
-
-  const handleOutsideClick = (event: MouseEvent) => {
-    handleClickOutside(event, modalRef, modalBox, () => {
-      modalStore.toggleModalWithContent("", "");
-    });
-  };
-
-  const handleKey = (event: KeyboardEvent) => {
-    handleKeyboardEvent(
-      event,
-      () => {
-        // Confirm logic here
-      },
-      () => {
-        modalStore.toggleModalWithContent("", "");
-      }
-    );
-  };
-
-  onMount(() => {
-    window.addEventListener("click", handleOutsideClick);
-    window.addEventListener("keydown", handleKey);
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-      window.removeEventListener("keydown", handleKey);
-    };
-  });
-
-  let step = 1; // To track the current step of registration
-
-  const goToNextStep = () => {
-    if (step1Successful) {
-      step++;
-    }
-  };
-
-  const goToPreviousStep = () => {
-    step--;
-  };
-
+  // Unsubscribe from the store on component destroy
   onDestroy(() => {
     unsubscribe();
   });

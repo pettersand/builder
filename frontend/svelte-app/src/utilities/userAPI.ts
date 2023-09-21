@@ -1,20 +1,12 @@
 // src/utils/userAPI.ts
-import { api } from './api';
+import api from "./api";
+import type { LoginPayload } from "../types";
 
-export const checkExistingUser = async (username: string, email: string) => {
+export const loginUser = async (payload: Partial<LoginPayload>) => {
   try {
-    const response = await api.post('check-user/', { username, email });
+    const response = await api.post("/login/", payload);
     return response.data;
   } catch (error) {
-    console.error(error);
-  }
-};
-
-export const registerNewUser = async (userData: any) => {
-  try {
-    const response = await api.post('register/', userData);
-    return response.data;
-  } catch (error) {
-    console.error(error);
+    throw error;
   }
 };

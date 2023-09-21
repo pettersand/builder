@@ -18,3 +18,9 @@ export type MainComponentMap = {
 export type OptionsComponentMap = {
   [key: string]: typeof SvelteComponent | ComponentWithLevel;
 };
+
+export type LoginPayload = {
+  username?: string;
+  email?: string;
+  password: string;
+};

@@ -47,7 +47,9 @@ module.exports = {
     file: "public/build/bundle.js",
   },
   plugins: [
+    console.log(process.env.API_URL),
     replace({
+      preventAssignment: true,
       process: JSON.stringify({
         env: {
           API_URL: process.env.API_URL,
