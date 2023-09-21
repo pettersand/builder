@@ -39,11 +39,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5000",  # Your frontend's address and port
+    "http://localhost:5000",
 ]
 
-SESSION_COOKIE_SAMESITE = "None"
-# SET TO TRUE IN PRODUCTION!
+
+# SET TO TRUE IN PRODUCTION! CHECK SETTINGS - change for .env
+SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = False
 
 # Application definition
