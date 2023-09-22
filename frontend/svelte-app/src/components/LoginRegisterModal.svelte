@@ -16,11 +16,11 @@
     handleKeyboardEvent,
     handleClickOutside,
   } from "../utilities/modalUtilities";
-  import { loginUser, registerUser } from "../utilities/userAPI";
-
-  // Third-party library imports
-  import axios from "axios";
-  import App from "../App.svelte";
+  import {
+    checkExistingUser,
+    loginUser,
+    registerUser,
+  } from "../utilities/userAPI";
 
   // Initialize state variables with type annotations
   let modalRef: HTMLElement;
@@ -189,17 +189,10 @@
   async function sendDataToBackend(): Promise<void> {
     console.log("Sending data for existing user check", step1Data);
     try {
-      const response = await axios.post(
-        process.env.API_URL + "/register_step_1/",
-        step1Data
-      );
-
-      if (response.status === 200) {
-        console.log("Data sent successfully", response.data);
-        step1Successful = true;
-        step++;
-        // Navigate to the next step
-      }
+      const data = await checkExistingUser(step1Data);
+      console.log("Data sent successfully", data);
+      step1Successful = true;
+      step++;
     } catch (error) {
       handleError(error);
     }
@@ -209,11 +202,11 @@
   async function register(): Promise<void> {
     try {
       const data = await registerUser(step1Data, step2Data);
-        console.log("Registration successful", data);
-        globalStore.setAuthenticationStatus(true);
-        registrationSuccessful = true;
-        showMessage("Registration successful!", "confirmation");
-        modalStore.closeModal();
+      console.log("Registration successful", data);
+      globalStore.setAuthenticationStatus(true);
+      registrationSuccessful = true;
+      showMessage("Registration successful!", "confirmation");
+      modalStore.closeModal();
     } catch (error) {
       handleError(error);
     }
@@ -273,6 +266,7 @@
       bind:this={modalBox}
     >
       <button
+        aria-label="Close Modal"
         class="absolute top-0 right-0 p-2 rounded-full"
         on:click={() => modalStore.closeModal()}
       >
@@ -282,7 +276,7 @@
         <h2 class="text-center w-full p-2">Login</h2>
         <div class="w-full p-4">
           <!-- Username or Email Field -->
-          <label for="login-username-email" class="block text-sm font-medium">
+          <label for="loginField" class="block text-sm font-medium">
             Username or Email
           </label>
           <input
@@ -299,7 +293,7 @@
           />
 
           <!-- Password Field -->
-          <label for="login-password" class="block text-sm font-medium">
+          <label for="loginPassword" class="block text-sm font-medium">
             Password
           </label>
           <input

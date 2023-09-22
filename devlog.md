@@ -95,3 +95,6 @@ authentication, logouts, and logins.
 ## 21/09-23
 
 Started cleaning up the recent code for login and registration. Working on axios routing through to backend without having to hardcode the url.
+
+## 22/09-23 
+finished refactoring of the LoginRegisterModal component, and cleaned up the API flow. 
