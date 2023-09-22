@@ -24,3 +24,22 @@ export type LoginPayload = {
   email?: string;
   password: string;
 };
+
+export type Step1Data = {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export type Step2Data = {
+  firstName: string,
+  lastName: string,
+  dob: string,
+  country: string,
+  gender: string,
+  bioSex: string,
+  isTrainer: boolean,
+  hasTrainer: boolean,
+  terms: boolean,
+}

@@ -16,7 +16,7 @@
     handleKeyboardEvent,
     handleClickOutside,
   } from "../utilities/modalUtilities";
-  import { loginUser } from "../utilities/userAPI";
+  import { loginUser, registerUser } from "../utilities/userAPI";
 
   // Third-party library imports
   import axios from "axios";
@@ -206,19 +206,14 @@
   }
 
   // Function to register the user with step 1 and 2 data
-  async function registerUser(): Promise<void> {
+  async function register(): Promise<void> {
     try {
-      const response = await axios.post(
-        process.env.API_URL + "/register_step_2/",
-        { step1: step1Data, step2: step2Data }
-      );
-      if (response.status === 200) {
-        console.log("Registration successful", response.data);
+      const data = await registerUser(step1Data, step2Data);
+        console.log("Registration successful", data);
         globalStore.setAuthenticationStatus(true);
         registrationSuccessful = true;
         showMessage("Registration successful!", "confirmation");
         modalStore.closeModal();
-      }
     } catch (error) {
       handleError(error);
     }
@@ -246,7 +241,6 @@
     }
 
     try {
-      console.log("Sending with axios", payload);
       const data = await loginUser(payload);
       globalStore.setAuthenticationStatus(true);
       console.log("Login successful", data);
@@ -648,7 +642,7 @@
             } ${
               !allRequiredFieldsFilled ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            on:click={registerUser}
+            on:click={register}
           >
             Register
           </button>
