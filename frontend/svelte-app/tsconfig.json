@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "types": ["jest", "node"],
     "sourceMap": true,
     "ignoreDeprecations": "5.0",
     "module": "ESNext",
