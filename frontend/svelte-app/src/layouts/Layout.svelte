@@ -14,6 +14,8 @@
   import ErrorModal from "../components/ErrorModal.svelte";
   import { showMessage } from "../stores/messageStore";
 
+  import { logoutUser } from "../utilities/api";
+
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
 
@@ -58,13 +60,13 @@
     modalStore.toggleModalWithContent("loginRegister", "Login / Register");
   }
 
-  async function logout() {
+  async function logout(): Promise<void> {
+    console.log("User logging out");
     try {
-      const response = await axios.post("http://localhost:8000/api/logout/");
-      if (response.status === 200) {
-        globalStore.setAuthenticationStatus(false);
-        showMessage("You have been logged out", "confirmation");
-      }
+      const data = await logoutUser();
+      console.log("User logged out successfully", data);
+      globalStore.setAuthenticationStatus(false);
+      showMessage("You have been logged out", "confirmation");
     } catch (error) {
       console.error("An error occurred during logout:", error);
     }

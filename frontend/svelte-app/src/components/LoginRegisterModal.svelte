@@ -322,7 +322,11 @@
 
           <!-- Login Button -->
           <button
-            class="w-full p-2 mt-4 bg-blue-500 text-white rounded"
+            class={`px-4 py-2 mr-2 rounded-full ${
+              $themeStore === "dark"
+                ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
+                : "bg-light-primary hover:bg-light-primary2 text-light-text"
+            }`}
             on:click={handleLogin}
           >
             Login

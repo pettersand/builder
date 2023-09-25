@@ -25,7 +25,7 @@ export const registerUser = async (step1Data: Step1Data, step2Data: Step2Data) =
 
 export const checkExistingUser = async (step1Data: Step1Data) => {
   try {
-    const response = await api.post("/register_step_1", {
+    const response = await api.post("/register_step_1/", {
       step1: step1Data, 
     });
     return response.data;
@@ -33,3 +33,12 @@ export const checkExistingUser = async (step1Data: Step1Data) => {
     throw error;
   }
 }
+
+export const logoutUser = async (): Promise<any> => {
+  try {
+    const response = await api.post("/logout/");
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
