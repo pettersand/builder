@@ -1,4 +1,4 @@
-// src/utils/userAPI.ts
+// userAPI.ts
 import api from "./api";
 import type { LoginPayload, Step1Data, Step2Data } from "../types";
 

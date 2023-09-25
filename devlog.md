@@ -103,3 +103,4 @@ finished refactoring of the LoginRegisterModal component, and cleaned up the API
 ## 25/09-23
 
 Continued implementing new API flow design on other functions for user based API calls.
+Started work on frontend testing with jest.

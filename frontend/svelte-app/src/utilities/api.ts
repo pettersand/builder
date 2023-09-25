@@ -1,4 +1,4 @@
-// src/utilities/api.ts
+// api.ts
 export * from './userAPI';
 import axios from 'axios';
 
