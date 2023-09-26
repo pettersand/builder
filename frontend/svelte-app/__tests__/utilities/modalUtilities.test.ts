@@ -1,4 +1,3 @@
-import { mock } from "node:test";
 import { handleKeyboardEvent, handleClickOutside } from "../../src/utilities/modalUtilities";
 
 describe('modalUtilities', () => {
@@ -19,7 +18,7 @@ describe('modalUtilities', () => {
       });
   
       it('calls action when "Space" key is pressed', () => {
-        const event = new KeyboardEvent("keydown", { key: "Space" });
+        const event = new KeyboardEvent("keydown", { key: " " });
         handleKeyboardEvent(event, mockAction, mockCloseModal);
         expect(mockAction).toHaveBeenCalledTimes(1);
         expect(mockCloseModal).toHaveBeenCalledTimes(0);
@@ -65,10 +64,15 @@ describe('modalUtilities', () => {
         mockModalBox.appendChild(mockTargetElement);
         const event = new MouseEvent("click", {});
         Object.defineProperty(event, "target", { writable: false, value: mockTargetElement});
+        handleClickOutside(event, mockModalRef, mockModalBox, mockOnClose);
+        expect(mockOnClose).toHaveBeenCalledTimes(0);
       });
   
       it('does not call onClose when clicking outside modalRef', () => {
-        // Your test code here
+        const event = new MouseEvent("click", {});
+        Object.defineProperty(event, "target", { writable: false, value: mockTargetElement});
+        handleClickOutside(event, mockModalRef, mockModalBox, mockOnClose);
+        expect(mockOnClose).toHaveBeenCalledTimes(0);
       });
     });
   });
