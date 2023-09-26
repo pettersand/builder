@@ -7,6 +7,7 @@ export const loginUser = async (payload: Partial<LoginPayload>) => {
     const response = await api.post("/login/", payload);
     return response.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
@@ -37,6 +38,15 @@ export const checkExistingUser = async (step1Data: Step1Data) => {
 export const logoutUser = async (): Promise<any> => {
   try {
     const response = await api.post("/logout/");
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const checkAuthentication = async (): Promise<any> => {
+  try {
+    const response = await api.post("/check_auth_status/");
     return response;
   } catch (error) {
     throw error;

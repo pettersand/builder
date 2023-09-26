@@ -3,7 +3,6 @@
   import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
   import globalStore from "../stores/globalStore";
-  import axios from "axios";
   import modalStore from "../stores/modalStore";
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import Dashboard from "../pages/Dashboard.svelte";
@@ -14,43 +13,40 @@
   import ErrorModal from "../components/ErrorModal.svelte";
   import { showMessage } from "../stores/messageStore";
 
-  import { logoutUser } from "../utilities/api";
+  import { checkAuthentication, logoutUser } from "../utilities/userAPI";
 
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
+
+  // Check authentication status
+  async function checkAuthStatus(): Promise<void> {
+    try {
+      console.log("Started CheckAuth");
+      const response = await checkAuthentication();
+      if (response.data.isAuthenticated) {
+        console.log("true");
+        globalStore.setAuthenticationStatus(true);
+      } else {
+        console.log("false");
+        globalStore.setAuthenticationStatus(false);
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while checking authentication status:",
+        error
+      );
+    }
+  }
 
   onMount(() => {
     const unsubscribeGlobal = globalStore.subscribe((state) => {
       currentView = state.currentPage;
       currentAuth = state.isAuthenticated;
     });
-    // Check authentication status
-    const checkAuthStatus = async () => {
-      try {
-        console.log("Started CheckAuth");
-        const response = await axios.get(
-          "http://localhost:8000/api/check_auth_status/",
-          {
-            withCredentials: true,
-          }
-        );
-        if (response.data.isAuthenticated) {
-          console.log("true");
-          globalStore.setAuthenticationStatus(true);
-        } else {
-          console.log("false");
-          globalStore.setAuthenticationStatus(false);
-        }
-      } catch (error) {
-        console.error(
-          "An error occurred while checking authentication status:",
-          error
-        );
-      }
-    };
 
     // Calls the function to check authentication status
     checkAuthStatus();
+
     return () => {
       unsubscribeGlobal();
     };

@@ -104,3 +104,9 @@ finished refactoring of the LoginRegisterModal component, and cleaned up the API
 
 Continued implementing new API flow design on other functions for user based API calls.
 Started work on frontend testing with jest.
+
+## 26/09-23
+
+Added tests for utilities files first. Taking a bottom up approach to test writing. When done
+I will be writing tests as I develop, making it a test driven development. Aiming for around 80%
+test coverage.
