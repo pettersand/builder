@@ -110,3 +110,7 @@ Started work on frontend testing with jest.
 Added tests for utilities files first. Taking a bottom up approach to test writing. When done
 I will be writing tests as I develop, making it a test driven development. Aiming for around 80%
 test coverage.
+
+## 27/09-23
+
+Finished writing tests for userAPI, started writing tests for Layout.svelte functions.

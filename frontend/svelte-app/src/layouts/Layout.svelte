@@ -1,22 +1,45 @@
 <!-- Layout.svelte -->
 <script lang="ts">
+  // Svelte imports
   import { onMount } from "svelte";
-  import themeStore from "../stores/themeStore";
-  import globalStore from "../stores/globalStore";
-  import modalStore from "../stores/modalStore";
-  import { handleKeyboardEvent } from "../utilities/modalUtilities";
+
+  // Component imports
   import Dashboard from "../pages/Dashboard.svelte";
   import Builder from "../pages/Builder.svelte";
   import LoginRegister from "../components/LoginRegisterModal.svelte";
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
   import ErrorModal from "../components/ErrorModal.svelte";
+
+  // Store imports
+  import themeStore from "../stores/themeStore";
+  import globalStore from "../stores/globalStore";
+  import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
 
+  // Utility and API imports
+  import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import { checkAuthentication, logoutUser } from "../utilities/userAPI";
 
+  // Local state
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
+
+  // Lifecycle hooks
+  onMount(() => {
+    const unsubscribeGlobal = globalStore.subscribe((state) => {
+      currentView = state.currentPage;
+      currentAuth = state.isAuthenticated;
+    });
+
+    checkAuthStatus();
+
+    return () => {
+      unsubscribeGlobal();
+    };
+  });
+
+  // Functions
 
   // Check authentication status
   async function checkAuthStatus(): Promise<void> {
@@ -37,20 +60,6 @@
       );
     }
   }
-
-  onMount(() => {
-    const unsubscribeGlobal = globalStore.subscribe((state) => {
-      currentView = state.currentPage;
-      currentAuth = state.isAuthenticated;
-    });
-
-    // Calls the function to check authentication status
-    checkAuthStatus();
-
-    return () => {
-      unsubscribeGlobal();
-    };
-  });
 
   function openLoginModal() {
     modalStore.toggleModalWithContent("loginRegister", "Login / Register");
