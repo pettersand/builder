@@ -63,12 +63,129 @@ describe("userAPI", () => {
   });
 
   describe("registerUser", () => {
-    it("should return user data when registration is successful", async () => {});
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
 
-    it("should throw an error when registration fails", async () => {});
+    const step1Data = {
+      username: "john_doe",
+      email: "john.doe@example.com",
+      password: "password123",
+      confirmPassword: "password123",
+    };
+
+    const step2Data = {
+      firstName: "John",
+      lastName: "Doe",
+      dob: "1990-01-01",
+      country: "USA",
+      gender: "Male",
+      bioSex: "Male",
+      isTrainer: false,
+      hasTrainer: false,
+      terms: true,
+    };
+
+    it("should return confirmation when registration is successful", async () => {
+      (api.post as jest.Mock).mockResolvedValue({
+        data: { message: "Data is valid, registration complete" },
+        status: 200,
+      });
+      const result = await registerUser(step1Data, step2Data);
+      expect(api.post).toHaveBeenCalledWith("/register_step_2/", {
+        step1: step1Data,
+        step2: step2Data,
+      });
+      expect(result).toEqual({
+        message: "Data is valid, registration complete",
+      });
+    });
+
+    it("should throw an error when registration fails", async () => {
+      const invalidStep1Data = {
+        ...step1Data,
+        username: "", // Invalid username
+      };
+
+      (api.post as jest.Mock).mockRejectedValue({
+        response: {
+          data: { step1: { username: ["This field may not be blank."] } },
+          status: 400,
+        },
+      });
+      await expect(
+        registerUser(invalidStep1Data, step2Data)
+      ).rejects.toMatchObject({
+        response: {
+          data: { step1: { username: ["This field may not be blank."] } },
+          status: 400,
+        },
+      });
+    });
+
+    it("should throw an error when step2Data is invalid", async () => {
+      const invalidStep2Data = {
+        ...step2Data,
+        firstName: "", // Invalid first name
+      };
+
+      (api.post as jest.Mock).mockRejectedValue({
+        response: {
+          data: { step2: { firstName: ["This field may not be blank."] } },
+          status: 400,
+        },
+      });
+
+      await expect(
+        registerUser(step1Data, invalidStep2Data)
+      ).rejects.toMatchObject({
+        response: {
+          data: { step2: { firstName: ["This field may not be blank."] } },
+          status: 400,
+        },
+      });
+    });
+
+    it("should throw an error when API returns a server error", async () => {
+      (api.post as jest.Mock).mockRejectedValue({
+        response: {
+          data: { message: "Internal Server Error" },
+          status: 500,
+        },
+      });
+
+      await expect(registerUser(step1Data, step2Data)).rejects.toMatchObject({
+        response: {
+          data: { message: "Internal Server Error" },
+          status: 500,
+        },
+      });
+    });
   });
 
-  describe("checkExistingUser", () => {});
-  describe("logoutUser", () => {});
-  describe("checkAuthentication", () => {});
+  describe("logoutUser", () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("should successfully logout the user", async () => {
+      (api.post as jest.Mock).mockResolvedValue({ status: 200 });
+      const result = await logoutUser();
+      expect(result.status).toEqual(200);
+    });
+  });
+
+  describe("checkAuthentication", () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+    it("should return auth status", async () => {
+      (api.post as jest.Mock).mockResolvedValue({
+        data: { isAuthenticated: true },
+        status: 200,
+      });
+      const result = await checkAuthentication();
+      expect(result.data.isAuthenticated).toBe(true);
+    });
+  });
 });

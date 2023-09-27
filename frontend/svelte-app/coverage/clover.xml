@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695743523550" clover="3.2.0">
-  <project timestamp="1695743523550" name="All files">
-    <metrics statements="27" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1" elements="32" coveredelements="12" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
+<coverage generated="1695831905599" clover="3.2.0">
+  <project timestamp="1695831905599" name="All files">
+    <metrics statements="27" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4" elements="32" coveredelements="25" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
     <file name="userAPI.ts" path="C:\Users\pette\Python Projects\builder\frontend\svelte-app\src\utilities\userAPI.ts">
-      <metrics statements="27" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <metrics statements="27" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
       <line num="2" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="3" type="stmt"/>
@@ -12,24 +12,24 @@
       <line num="10" count="2" type="stmt"/>
       <line num="11" count="2" type="stmt"/>
       <line num="15" count="1" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
+      <line num="16" count="4" type="stmt"/>
+      <line num="17" count="4" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="23" count="3" type="stmt"/>
       <line num="27" count="1" type="stmt"/>
       <line num="28" count="0" type="stmt"/>
       <line num="29" count="0" type="stmt"/>
       <line num="32" count="0" type="stmt"/>
       <line num="34" count="0" type="stmt"/>
       <line num="38" count="1" type="stmt"/>
-      <line num="39" count="0" type="stmt"/>
-      <line num="40" count="0" type="stmt"/>
-      <line num="41" count="0" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
       <line num="43" count="0" type="stmt"/>
       <line num="47" count="1" type="stmt"/>
-      <line num="48" count="0" type="stmt"/>
-      <line num="49" count="0" type="stmt"/>
-      <line num="50" count="0" type="stmt"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="50" count="1" type="stmt"/>
       <line num="52" count="0" type="stmt"/>
     </file>
   </project>
