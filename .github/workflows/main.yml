@@ -20,11 +20,14 @@ jobs:
           python-version: "3.x"
 
       - name: Install Python dependencies
-        run: cd backend/programbuilder
+        run: |
+          cd backend/programbuilder
           pip install -r requirements.txt
 
       - name: Run Django tests
-        run: python manage.py test
+        run: |
+          cd backend/programbuilder
+          python manage.py test
 
       # Node.js setup
       - name: Setup Node.js
