@@ -1,5 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+// tailwind.config.ts
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: ["./src/**/*.svelte", "./src/**/*.html"],
   theme: {
     extend: {
@@ -42,3 +45,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;

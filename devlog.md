@@ -114,3 +114,12 @@ test coverage.
 ## 27/09-23
 
 Finished writing tests for userAPI, started writing tests for Layout.svelte functions.
+
+## 28/09-23
+
+Back to trying to fix the mix between js, cjs, ts, and svelte for jester causing issues.
+Stubborn bastards. Back and forth between cjs and esm. Reverted all to ESM, jest still being annoying.
+scripts in package.json did not work either.
+Yeah i will be avoiding mixing ESM and CJS in the future. This was a painful day. Sticking to testing
+ts files only when using jest. Will revisit svelte testing later when dependencies are more in tune. Will focus
+on rigid backend testing and just manually test frontend components.
