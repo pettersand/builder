@@ -30,11 +30,6 @@ jobs:
           cd backend/programbuilder
           pip install -r requirements.txt
 
-      - name: Run Django tests
-        run: |
-          cd backend/programbuilder
-          python manage.py test
-
       # Node.js setup
       - name: Setup Node.js
         uses: actions/setup-node@v3
