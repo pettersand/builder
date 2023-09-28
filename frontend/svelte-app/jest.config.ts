@@ -15,13 +15,16 @@ const config: Config = {
     "^.+\\.svelte$": [
       "svelte-jester",
       {
-        preprocess: true, // Add this line if you're using svelte preprocessors
+        preprocess: true,
       },
     ],
     "^.+\\.ts$": "ts-jest",
+    "^.+\\.js$": "babel-jest",
   },
   moduleFileExtensions: ["js", "ts", "svelte"],
-  transformIgnorePatterns: ["node_modules/(?!(svelte)/)"], // Add this line
+  transformIgnorePatterns: [
+    "node_modules/(?!(svelte|@testing-library/svelte)/)",
+  ],
 };
 
 export default config;
