@@ -25,10 +25,11 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install Python dependencies
+      - name: Install Python dependencies and test backend
         run: |
           cd backend/programbuilder
           pip install -r requirements.txt
+          python manage.py test
 
       # Node.js setup
       - name: Setup Node.js
