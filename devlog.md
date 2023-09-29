@@ -123,3 +123,8 @@ scripts in package.json did not work either.
 Yeah i will be avoiding mixing ESM and CJS in the future. This was a painful day. Sticking to testing
 ts files only when using jest. Will revisit svelte testing later when dependencies are more in tune. Will focus
 on rigid backend testing and just manually test frontend components.
+
+## 29/09-23 
+
+Yesterday was yucky, so continuing work fresh today! There will be no svelte component tests as of now.
+Will start work on writing tests for the django 
