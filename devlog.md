@@ -121,14 +121,14 @@ Back to trying to fix the mix between js, cjs, ts, and svelte for jester causing
 Stubborn bastards. Back and forth between cjs and esm. Reverted all to ESM, jest still being annoying.
 scripts in package.json did not work either.
 Yeah i will be avoiding mixing ESM and CJS in the future. This was a painful day. Sticking to testing
-ts files only when using jest. Will revisit svelte testing later when dependencies are more in tune. Will focus
-on rigid backend testing and just manually test frontend components.
+ts files only when using jest. Will revisit svelte testing later when dependencies are more in tune. Will focus on rigid backend testing and just manually test frontend components.
 
-## 29/09-23 
+## 29/09-23
 
 Yesterday was yucky, so continuing work fresh today! There will be no svelte component tests as of now.
-Will start work on writing tests for the django 
+Will start work on writing tests for the django backend.
 
 ## 02/09-23
 
-Writing tests for backend views. 
+Finished writing tests for backend. Initial testwriting is good for now. Will expand on them as development continues.
+Started planning out how I will populate my database with official workout templates for beginner/intermediate/expert templates. And how I will handle user created custom templates.
