@@ -128,3 +128,7 @@ on rigid backend testing and just manually test frontend components.
 
 Yesterday was yucky, so continuing work fresh today! There will be no svelte component tests as of now.
 Will start work on writing tests for the django 
+
+## 02/09-23
+
+Writing tests for backend views. 
