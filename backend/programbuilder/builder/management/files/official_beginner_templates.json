@@ -1,0 +1,26 @@
+[
+    {
+        "name": "3-Split Strength",
+        "description": "3-Split, 5 Exercises, 12 sessions per block, 2 blocks. Ideal if you train 3x per week. Tracks 24 weeks of training. Emphasis on Strength",
+        "training_days": 3,
+        "exercises_per_day": 5,
+        "sessions": 12,
+        "blocks": 2
+    },
+    {
+        "name": "Full Body Intro",
+        "description": "1 Unique training day, 6 exercises, for 10 sessions. Ideal for full body programs without too much complexity. Beginner friendly.",
+        "training_days": 1,
+        "exercises_per_day": 6,
+        "sessions": 10,
+        "blocks": 1
+    },
+    {
+        "name": "2-Split Hypertrophy",
+        "description": "2 Unique training days, 7 exercises, for 10 sessions. Great for adding variation! Fits well with 2-4 sessions per week.",
+        "training_days": 2,
+        "exercises_per_day": 7,
+        "sessions": 10,
+        "blocks": 1
+    }
+]
