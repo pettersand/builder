@@ -4,4 +4,5 @@ from .user_views import (
     RegisterStep2View,
     LogoutView,
     CheckAuthStatus,
+    OfficialTemplateList,
 )

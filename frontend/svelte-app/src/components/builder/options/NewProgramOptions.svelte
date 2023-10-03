@@ -1,6 +1,6 @@
 <!-- NewProgramOptions.svelte -->
 <script lang="ts">
-  import type { Level } from "../../../types/index"; // Add this line
+  import type { Level } from "../../../types/index";
   let activeOption = "newProgram"; // Default active option
   export let level: Level; // Use the imported Level type
   import themeStore from "../../../stores/themeStore";

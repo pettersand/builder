@@ -8,6 +8,7 @@ from builder.views import (
     CheckAuthStatus,
     LogoutView,
     LoginView,
+    OfficialTemplateList,
 )
 
 
@@ -19,4 +20,9 @@ urlpatterns = [
     path("api/check_auth_status/", CheckAuthStatus.as_view(), name="check_auth_status"),
     path("api/logout/", LogoutView.as_view(), name="logout"),
     path("api/login/", LoginView.as_view(), name="login"),
+    path(
+        "api/official_templates/",
+        OfficialTemplateList.as_view(),
+        name="official_templates",
+    ),
 ]

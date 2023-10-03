@@ -136,3 +136,10 @@ Started planning out how I will populate my database with official workout templ
 ## 03/10-23
 
 Setup GitHub Actions CI workflow for postgresql to allow tests to run correctly.
+Created initial template-focused db tables. And management/commands directory for populating db based on json files.
+Cleaned up syntax and uniformity of all models in relation to user-related functionality.
+Planned path forward in how to visualize templates for user, and how to provide real time feedback on the suitability of their selected template.
+Started work on API endpoints for viewing official templates.
+Finally a day where there was enough time to get some tangible progress done!
+
+Tomorrow I will implement/research authentication requirements and rate limits for API endpoints.
