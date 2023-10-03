@@ -4,5 +4,5 @@ from .user_views import (
     RegisterStep2View,
     LogoutView,
     CheckAuthStatus,
-    OfficialTemplateList,
 )
+from .official_templates_views import OfficialTemplateList
