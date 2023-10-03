@@ -1,9 +1,14 @@
 from django.db import models
-from uuid import uuid4
-from .user import User
+from django.conf import settings
+
 
 class AccountMetrics(models.Model):
-    user = models.OneToOneField(User, related_name='account_metrics', on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        related_name="account_metrics",
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
     total_visits = models.IntegerField(default=0)
     last_login = models.DateTimeField(null=True, blank=True)
     total_programs_created = models.IntegerField(default=0)

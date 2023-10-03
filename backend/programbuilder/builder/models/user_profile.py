@@ -1,9 +1,11 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.conf import settings
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
+    )
     date_of_birth = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
     country = models.CharField(max_length=50, null=True, blank=True)

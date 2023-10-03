@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class OfficialBeginnerTemplate(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -7,6 +8,6 @@ class OfficialBeginnerTemplate(models.Model):
     exercises_per_day = models.IntegerField()
     sessions = models.IntegerField()
     blocks = models.IntegerField()
-    
+
     def __str__(self):
         return self.name
