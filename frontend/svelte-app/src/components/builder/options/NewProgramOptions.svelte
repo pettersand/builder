@@ -8,7 +8,7 @@
 
   let trainingDays = 1;
   let exercisesPerDay = 6;
-  let sessions = 8;
+  let sessions = 10;
   let programBlocks = 1;
 
   // Function to update the store

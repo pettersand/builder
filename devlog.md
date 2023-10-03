@@ -128,7 +128,11 @@ ts files only when using jest. Will revisit svelte testing later when dependenci
 Yesterday was yucky, so continuing work fresh today! There will be no svelte component tests as of now.
 Will start work on writing tests for the django backend.
 
-## 02/09-23
+## 02/10-23
 
 Finished writing tests for backend. Initial testwriting is good for now. Will expand on them as development continues.
 Started planning out how I will populate my database with official workout templates for beginner/intermediate/expert templates. And how I will handle user created custom templates.
+
+## 03/10-23
+
+Setup GitHub Actions CI workflow for postgresql to allow tests to run correctly.
