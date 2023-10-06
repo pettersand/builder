@@ -142,4 +142,10 @@ Planned path forward in how to visualize templates for user, and how to provide 
 Started work on API endpoints for viewing official templates.
 Finally a day where there was enough time to get some tangible progress done!
 
-Tomorrow I will implement/research authentication requirements and rate limits for API endpoints.
+Next I will implement/research authentication requirements and rate limits for API endpoints.
+
+## 06/10-23
+
+Found a bug in step1 registration and user authentication. Squashed it.
+Will implement permissions, rate limiting, etc at a later point. More research needed on security best practices.
+Instead continued work on showing the Official Templates on the builder page.

@@ -33,7 +33,7 @@ class LogoutView(APIView):
 class RegisterStep1View(APIView):
     def post(self, request):
         print("Step 1 Validation")
-        serializer = Step1Serializer(data=request.data)
+        serializer = Step1Serializer(data=request.data.get("step1", {}))
         if serializer.is_valid():
             username = serializer.validated_data.get("username")
             email = serializer.validated_data.get("email")

@@ -12,7 +12,10 @@ export const loginUser = async (payload: Partial<LoginPayload>) => {
   }
 };
 
-export const registerUser = async (step1Data: Step1Data, step2Data: Step2Data) => {
+export const registerUser = async (
+  step1Data: Step1Data,
+  step2Data: Step2Data
+) => {
   try {
     const response = await api.post("/register_step_2/", {
       step1: step1Data,
@@ -27,13 +30,13 @@ export const registerUser = async (step1Data: Step1Data, step2Data: Step2Data) =
 export const checkExistingUser = async (step1Data: Step1Data) => {
   try {
     const response = await api.post("/register_step_1/", {
-      step1: step1Data, 
+      step1: step1Data,
     });
     return response.data;
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const logoutUser = async (): Promise<any> => {
   try {
@@ -46,7 +49,7 @@ export const logoutUser = async (): Promise<any> => {
 
 export const checkAuthentication = async (): Promise<any> => {
   try {
-    const response = await api.post("/check_auth_status/");
+    const response = await api.get("/check_auth_status/");
     return response;
   } catch (error) {
     throw error;

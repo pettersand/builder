@@ -89,7 +89,7 @@
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Templates
       </h2>
-      <span>Browse Layouts</span>
+      <span>Browse Official Tempaltes</span>
       <br />
       <span>Browse Programs</span>
       <br />
