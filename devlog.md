@@ -149,3 +149,7 @@ Next I will implement/research authentication requirements and rate limits for A
 Found a bug in step1 registration and user authentication. Squashed it.
 Will implement permissions, rate limiting, etc at a later point. More research needed on security best practices.
 Instead continued work on showing the Official Templates on the builder page.
+
+## 10/10-23 
+
+Took some time to focus on my CV and job application process. Watch this space. Full focus this week. 
