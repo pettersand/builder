@@ -163,17 +163,27 @@
         ? "bg-dark-bg border-dark-text navbar"
         : "bg-light-bg navbar"}
     >
-      <div class="menu">
-        <h3>Menu</h3>
-        <button>Admin</button>
+      <div class="menu border-b">
+        <Icon icon="ri:menu-fill" class="toggle-icon" />
+        <button class="text-gray-400">Admin</button>
         <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
         <button on:click={() => (currentView = "Builder")}>Builder</button>
-        <button>Workout</button>
-        <button>PT Dashboard</button>
-        <button>PT Session</button>
+        <button class="text-gray-400">Workout</button>
+        <button class="text-gray-400">PT Dashboard</button>
+        <button class="text-gray-400">PT Session</button>
       </div>
-      <div class="menu">
-        <button>SubHeaders Here</button>
+      <div class="menu flex-grow">
+        <Icon icon="ion:options-sharp" />
+        <button class="text-gray-400">Option 1</button>
+        <button class="text-gray-400">Option 2</button>
+        <button class="text-gray-400">Option 3</button>
+      </div>
+
+      <div class="menu border-t">
+        <button class="text-gray-400">Help</button>
+        <button class="text-gray-400">Privacy Policy</button>
+        <button class="text-gray-400">Contact</button>
+        <button class="text-gray-400">Documentation</button>
       </div>
     </div>
     {#if currentView === "Dashboard"}
@@ -199,7 +209,7 @@
   }
 
   .navbar {
-    @apply p-4 flex-col justify-between items-start;
+    @apply flex flex-col justify-between items-start border-r;
   }
 
   .icons {
@@ -207,7 +217,11 @@
   }
 
   .menu {
-    @apply flex flex-col items-start gap-4;
+    @apply flex flex-col items-start gap-4 p-4 w-full;
+  }
+
+  .sub-menu {
+    @apply flex flex-col items-start gap-4 w-full mt-2;
   }
 
   .toggle-container {
@@ -221,10 +235,6 @@
 
   .toggle-ball.move {
     @apply translate-x-[124%];
-  }
-
-  .toggle-icon {
-    @apply w-8 h-8;
   }
 
   main {
