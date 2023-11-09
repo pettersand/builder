@@ -109,11 +109,14 @@
 >
   <header
     class={$themeStore === "dark"
-      ? "bg-dark-header-footer border-dark-text header"
-      : "bg-light-header header"}
+      ? "bg-dark-bg2 header"
+      : "bg-light-bg2 header"}
   >
     <div class="title">
       <span><b>BUILDER</b></span>
+    </div>
+    <div class="text-red-600">
+      <span><b>!! CURRENTLY UNDER DEVELOPMENT !!</b></span>
     </div>
     <div class="icons">
       <!-- Login/Register and Log Out buttons -->
@@ -128,8 +131,8 @@
       <!-- Light Switch for dark/light mode  -->
       <div
         class={$themeStore === "dark"
-          ? "toggle-container bg-dark-header border border-dark-primary3"
-          : "toggle-container bg-light-bg2 border border-light-card2"}
+          ? "toggle-container bg-dark-header border border-dark-primary3 shadow-inner"
+          : "toggle-container bg-light-bg2 border border-light-card2 shadow-inner"}
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
@@ -138,7 +141,7 @@
         <div
           class={$themeStore === "dark"
             ? "toggle-ball bg-dark-primary border-dark-primary3"
-            : "toggle-ball bg-light-header border-light-card2 move"}
+            : "toggle-ball bg-light-accent border-light-card2 move"}
         >
           {#if $themeStore === "dark"}
             <box-icon name="moon" class="toggle-icon" />
@@ -153,12 +156,20 @@
   <main class="flex">
     <div
       class={$themeStore === "dark"
-        ? "bg-dark-header-footer border-dark-text navbar"
-        : "bg-light-header navbar"}
+        ? "bg-dark-bg border-dark-text navbar"
+        : "bg-light-bg navbar"}
     >
       <div class="menu">
+        <h3>Menu</h3>
+        <button>Admin</button>
         <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
         <button on:click={() => (currentView = "Builder")}>Builder</button>
+        <button>Workout</button>
+        <button>PT Dashboard</button>
+        <button>PT Session</button>
+      </div>
+      <div class="menu">
+        <button>SubHeaders Here</button>
       </div>
     </div>
     {#if currentView === "Dashboard"}
@@ -211,7 +222,7 @@
   .toggle-icon {
     @apply w-7 h-7;
   }
-  
+
   main {
     @apply flex-grow;
   }

@@ -22,8 +22,9 @@ const config: Config = {
         "dark-primary3": "rgb(91, 131, 152)",
 
         // Light Mode
-        "light-bg": "rgb(114, 166, 213)",
-        "light-bg2": "rgb(165, 209, 245)",
+        "light-bg": "rgb(236, 244, 245)",
+        "light-bg2": "rgb(225, 243, 248)",
+        "light-accent": "rgb(68, 155, 189)",
         "light-bg3": "rgb(204, 203, 225)",
         "light-header": "rgb(150, 197, 235)",
         "light-text": "rgb(4, 11, 22)",
