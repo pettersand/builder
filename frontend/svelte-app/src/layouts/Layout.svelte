@@ -21,6 +21,9 @@
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import { checkAuthentication, logoutUser } from "../utilities/userAPI";
 
+  // Icon imports
+  import Icon from "@iconify/svelte";
+
   // Local state
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
@@ -112,21 +115,8 @@
       ? "bg-dark-bg2 header"
       : "bg-light-bg2 header"}
   >
-    <div class="title">
-      <span><b>BUILDER</b></span>
-    </div>
-    <div class="text-red-600">
-      <span><b>!! CURRENTLY UNDER DEVELOPMENT !!</b></span>
-    </div>
     <div class="icons">
-      <!-- Login/Register and Log Out buttons -->
-      {#if $globalStore.isAuthenticated}
-        <button class="auth-button" on:click={logout}> Logout </button>
-      {:else}
-        <button class="auth-button" on:click={openLoginModal}>
-          Login / Register
-        </button>
-      {/if}
+      <span><b>BUILDER</b></span>
 
       <!-- Light Switch for dark/light mode  -->
       <div
@@ -144,12 +134,26 @@
             : "toggle-ball bg-light-accent border-light-card2 move"}
         >
           {#if $themeStore === "dark"}
-            <box-icon name="moon" class="toggle-icon" />
+            <Icon icon="ri:moon-fill" class="toggle-icon" />
           {:else}
-            <box-icon name="sun" class="toggle-icon" />
+            <Icon icon="ri:sun-fill" class="toggle-icon" />
           {/if}
         </div>
       </div>
+    </div>
+
+    <div class="text-red-600">
+      <span><b>!! CURRENTLY UNDER DEVELOPMENT !!</b></span>
+    </div>
+    <div class="icons">
+      <!-- Login/Register and Log Out buttons -->
+      {#if $globalStore.isAuthenticated}
+        <button class="auth-button" on:click={logout}> Logout </button>
+      {:else}
+        <button class="auth-button" on:click={openLoginModal}>
+          Login / Register
+        </button>
+      {/if}
     </div>
   </header>
 
@@ -199,7 +203,7 @@
   }
 
   .icons {
-    @apply flex flex-row gap-4;
+    @apply flex flex-row gap-4 items-center;
   }
 
   .menu {
@@ -220,7 +224,7 @@
   }
 
   .toggle-icon {
-    @apply w-7 h-7;
+    @apply w-8 h-8;
   }
 
   main {
