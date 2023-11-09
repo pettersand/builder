@@ -157,3 +157,7 @@ Took some time to focus on my CV and job application process. Watch this space. 
 ## 09/11-23
 
 Back in business after taking time to focus on more pressing projects. I've learned some new things since I last worked on this project, and Im taking that with me. I will be refactoring the app and reworking the layout / design of it, while ensuring to use tailwind in a better way, playing on its strengths.
+
+Created: Tailwind.main.css for base styles.
+
+Reworked: Layout.svelte

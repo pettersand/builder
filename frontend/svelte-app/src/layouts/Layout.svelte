@@ -104,20 +104,16 @@
 
 <div
   class={$themeStore === "dark"
-    ? "bg-gradient-to-tr from-black to-dark-bg2 via-dark-bg text-dark-text layout"
-    : "bg-gradient-to-tr from-light-bg to-light-bg2 via-light-bg3 text-light-text layout"}
+    ? "bg-dark-bg text-dark-text layout"
+    : "bg-light-bg text-light-text layout"}
 >
   <header
     class={$themeStore === "dark"
-      ? "bg-dark-header-footer bg-opacity-40 border-dark-text header"
-      : "bg-light-header bg-opacity-70 header"}
+      ? "bg-dark-header-footer border-dark-text header"
+      : "bg-light-header header"}
   >
-    <div class="menu">
-      <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
-      <button on:click={() => (currentView = "Builder")}>Builder</button>
-    </div>
     <div class="title">
-      <span><b>BUILD'R</b></span>
+      <span><b>BUILDER</b></span>
     </div>
     <div class="icons">
       <!-- Login/Register and Log Out buttons -->
@@ -155,6 +151,16 @@
   </header>
 
   <main class="flex">
+    <div
+      class={$themeStore === "dark"
+        ? "bg-dark-header-footer border-dark-text navbar"
+        : "bg-light-header navbar"}
+    >
+      <div class="menu">
+        <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
+        <button on:click={() => (currentView = "Builder")}>Builder</button>
+      </div>
+    </div>
     {#if currentView === "Dashboard"}
       <Dashboard />
     {:else if currentView === "Builder"}
@@ -170,28 +176,42 @@
   }
 
   .layout {
-    @apply flex flex-col h-screen font-muli p-6 gap-4;
+    @apply flex flex-col h-screen font-muli;
   }
+
   .header {
-    @apply p-4 flex justify-between items-center border-b rounded-lg;
+    @apply p-4 flex justify-between items-center border-b;
   }
-  .menu,
+
+  .navbar {
+    @apply p-4 flex-col justify-between items-start;
+  }
+
   .icons {
-    @apply flex space-x-4;
+    @apply flex flex-row gap-4;
   }
+
+  .menu {
+    @apply flex flex-col items-start gap-4;
+  }
+
   .toggle-container {
     @apply inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8;
   }
+
   .toggle-ball {
     @apply w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center;
     padding: 2px;
   }
+
   .toggle-ball.move {
-    @apply translate-x-[124%]; /* Adjust this value */
+    @apply translate-x-[124%];
   }
+
   .toggle-icon {
     @apply w-7 h-7;
   }
+  
   main {
     @apply flex-grow;
   }
