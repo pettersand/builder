@@ -13,15 +13,14 @@
   });
 </script>
 
-<main class="flex flex-row flex-grow gap-4">
-  <div class="flex flex-col w-full gap-4">
+<main class="flex flex-row flex-grow">
+  <div class="flex flex-col w-full">
     <UserStats />
-    <div class="flex flex-row flex-grow gap-4">
+    <div class="flex flex-row flex-grow">
       <Workout />
       <CardLayout />
     </div>
   </div>
-  <Sidebar />
 </main>
 
 <style>

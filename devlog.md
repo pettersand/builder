@@ -160,4 +160,4 @@ Back in business after taking time to focus on more pressing projects. I've lear
 
 Created: Tailwind.main.css for base styles.
 
-Reworked: Layout.svelte
+Reworked: Layout.svelte, Dashboard.svelte

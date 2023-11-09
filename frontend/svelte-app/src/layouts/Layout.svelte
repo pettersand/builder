@@ -220,10 +220,6 @@
     @apply flex flex-col items-start gap-4 p-4 w-full;
   }
 
-  .sub-menu {
-    @apply flex flex-col items-start gap-4 w-full mt-2;
-  }
-
   .toggle-container {
     @apply inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8;
   }
