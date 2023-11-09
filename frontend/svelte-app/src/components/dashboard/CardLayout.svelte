@@ -9,7 +9,7 @@
   >
     <div
       class={`header-bar ${
-        $themeStore === "dark" ? "bg-dark-card2" : "bg-light-card2"
+        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
       <h2 class="text-lg font-semibold text-center">Calendar</h2>
@@ -45,7 +45,7 @@
   >
     <div
       class={`header-bar  ${
-        $themeStore === "dark" ? "bg-dark-card2" : "bg-light-card2"
+        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
       <h2 class="text-lg font-semibold text-center">Goals</h2>
@@ -78,5 +78,6 @@
   .header-bar {
     width: 100%;
     padding: 0.5rem 0;
+    border-bottom: 1px solid lightblue;
   }
 </style>
