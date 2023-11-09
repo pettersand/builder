@@ -150,6 +150,10 @@ Found a bug in step1 registration and user authentication. Squashed it.
 Will implement permissions, rate limiting, etc at a later point. More research needed on security best practices.
 Instead continued work on showing the Official Templates on the builder page.
 
-## 10/10-23 
+## 10/10-23
 
-Took some time to focus on my CV and job application process. Watch this space. Full focus this week. 
+Took some time to focus on my CV and job application process. Watch this space. Full focus this week.
+
+## 09/11-23
+
+Back in business after taking time to focus on more pressing projects. I've learned some new things since I last worked on this project, and Im taking that with me. I will be refactoring the app and reworking the layout / design of it, while ensuring to use tailwind in a better way, playing on its strengths.
