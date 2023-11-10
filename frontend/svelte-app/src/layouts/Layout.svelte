@@ -152,10 +152,9 @@
   <main class="flex flex-grow">
     <div class="flex flex-col justify-between items-start border-r bg-bg">
       <div class="flex flex-col items-start gap-4 p-4 w-full border-b">
-        <Icon icon="ri:menu-fill" class="toggle-icon" />
-        <button class="text-gray-400">Admin</button>
-        <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
-          <button  class="icon-label" on:click={() => (currentView = "Builder")}
+        <button class="text-gray-400 icon-label"><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button>
+        <button class="icon-label" on:click={() => (currentView = "Dashboard")}><Icon icon="clarity:dashboard-solid" width="25" height="25" />Dashboard</button>
+          <button class="icon-label" on:click={() => (currentView = "Builder")}
             ><Icon
               icon="ion:hammer-sharp"
               width="25"
@@ -163,9 +162,10 @@
             />Builder</button
           >
 
-        <button class="text-gray-400">Workout</button>
-        <button class="text-gray-400">PT Dashboard</button>
-        <button class="text-gray-400">PT Session</button>
+        <button class="text-gray-400 icon-label"><Icon icon="healthicons:exercise-weights" width="25" height="25" />
+          Workout</button>
+        <button class="text-gray-400 icon-label"><Icon icon="material-symbols:manage-accounts" width="25" height="25" />PT Dashboard</button>
+        <button class="text-gray-400 icon-label"><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button>
       </div>
       <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow">
         <Icon icon="ion:options-sharp" />
