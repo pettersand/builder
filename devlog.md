@@ -172,3 +172,16 @@ Layout.svelte, Dashboard.svelte + components
 - Uniform tailwind usage
 - Reusable components to svelte
 - Common styling to tailwind.main.css
+
+## 10/11-23
+
+Working on improving the structure of my app. Due to lots of mistakes made in the initial setup, i am considering restarting and just copying over the components after better setting up the project.
+
+### Issues:
+
+custom CSS was being applied above imports, something wrong with processing of css and postcss files. Removed complexity, and will build up again. At least its working now.
+
+### Reworked:
+
+CSS structure
+

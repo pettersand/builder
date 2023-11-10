@@ -81,10 +81,14 @@
   }
 
   function toggleDarkMode() {
-    themeStore.update((currentTheme) =>
-      currentTheme === "dark" ? "light" : "dark"
-    );
+  if ($themeStore === "dark") {
+    $themeStore = "light";
+    document.documentElement.classList.remove("dark");
+  } else {
+    $themeStore = "dark";
+    document.documentElement.classList.add("dark");
   }
+}
 
   function handleKeydown(event: KeyboardEvent) {
     handleKeyboardEvent(event, toggleDarkMode, () => {});
@@ -112,23 +116,19 @@
 
       <!-- Light Switch for dark/light mode  -->
       <div
-        class={$themeStore === "dark"
-          ? "inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 bg-dark-header border border-dark-primary3 shadow-inner"
-          : "inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 bg-light-bg2 border border-light-card2 shadow-inner"}
+        class="inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 shadow-inner border border-card2 bg-card  "
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
         tabindex="0"
       >
         <div
-          class={$themeStore === "dark"
-            ? "w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-dark-primary border-dark-primary3"
-            : "w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-light-accent border-light-card2 move"}
+          class="w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-accent2 border-accent2 {$themeStore === 'dark' ? 'translate-x-9' : ''} "
         >
           {#if $themeStore === "dark"}
-            <Icon icon="ri:moon-fill" class="toggle-icon" />
+            <Icon icon="ri:moon-fill" class="text-bg" />
           {:else}
-            <Icon icon="ri:sun-fill" class="toggle-icon" />
+            <Icon icon="ri:sun-fill" class="text-bg" />
           {/if}
         </div>
       </div>
@@ -155,15 +155,13 @@
         <Icon icon="ri:menu-fill" class="toggle-icon" />
         <button class="text-gray-400">Admin</button>
         <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
-        <div class="icon-label">
-          <button on:click={() => (currentView = "Builder")}
+          <button  class="icon-label" on:click={() => (currentView = "Builder")}
             ><Icon
               icon="ion:hammer-sharp"
               width="25"
               height="25"
             />Builder</button
           >
-        </div>
 
         <button class="text-gray-400">Workout</button>
         <button class="text-gray-400">PT Dashboard</button>
@@ -192,5 +190,3 @@
   </main>
 </div>
 
-<style>
-</style>
