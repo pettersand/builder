@@ -1,5 +1,7 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import './theme.postcss';
-@import './app.postcss';
+/* main.css */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "./app.postcss";
+@import "./tailwind.main.css";

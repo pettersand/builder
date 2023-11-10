@@ -1,12 +1,9 @@
 <script lang="ts">
-	import Layout from './layouts/Layout.svelte';
-	export let name: string;
+  import Layout from "./layouts/Layout.svelte";
 </script>
-  
-<Layout>
 
-</Layout>
+<Layout />
 
 <style>
-/* Add your App-specific styles here */
+  
 </style>

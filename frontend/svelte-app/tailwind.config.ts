@@ -1,5 +1,7 @@
 // tailwind.config.ts
 
+// Use this file to define design tokens and tailwind configuration
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -7,9 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        muli: ["Muli", "sans-serif"],
+        oswald: ["Oswald", "sans-serif"],
       },
       colors: {
+        // Theme Colors
+        bg: "var(--bg)",
+        bg2: "var(--bg2)",
+        accent: "var(--accent)",
+        accent2: "var(--accent2)",
+        contrast: "var(--contrast)",
+        contrast2: "var(--contrast2)",
+        card: "var(--card)",
+        card2: "var(--card2)",
+        headline: "var(--headline)",
+        paragraph: "var(--paragraph)",
+
         // Dark Mode
         "dark-bg": "rgb(1, 5, 12)",
         "dark-bg2": "rgb(23, 39, 62)",

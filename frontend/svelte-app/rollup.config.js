@@ -33,13 +33,7 @@ export default {
         env: {},
       }),
     }),
-    postcss({
-      extract: "postcss.css",
-      minimize: production,
-      sourceMap: !production,
-      extensions: [".postcss", ".css"],
-      plugins: [tailwindcss, autoprefixer],
-    }),
+
     svelte({
       preprocess: sveltePreprocess({
         postcss: postcssConfig.plugins,
@@ -48,6 +42,13 @@ export default {
       compilerOptions: {
         dev: !production,
       },
+    }),
+    postcss({
+      extract: "postcss.css",
+      minimize: production,
+      sourceMap: !production,
+      extensions: [".postcss", ".css"],
+      plugins: [tailwindcss, autoprefixer],
     }),
     resolve({
       browser: true,

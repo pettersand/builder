@@ -105,16 +105,8 @@
 <TopBar />
 <ErrorModal />
 
-<div
-  class={$themeStore === "dark"
-    ? "bg-dark-bg text-dark-text layout"
-    : "bg-light-bg text-light-text layout"}
->
-  <header
-    class={$themeStore === "dark"
-      ? "bg-dark-bg2 header"
-      : "bg-light-bg2 header"}
-  >
+<div class="layout bg-bg2 text-accent">
+  <header class="bg-accent header">
     <div class="icons">
       <span><b>BUILDER</b></span>
 
@@ -167,7 +159,16 @@
         <Icon icon="ri:menu-fill" class="toggle-icon" />
         <button class="text-gray-400">Admin</button>
         <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
-        <button on:click={() => (currentView = "Builder")}>Builder</button>
+        <div class="icon-label">
+          <button on:click={() => (currentView = "Builder")}
+            ><Icon
+              icon="ion:hammer-sharp"
+              width="25"
+              height="25"
+            />Builder</button
+          >
+        </div>
+
         <button class="text-gray-400">Workout</button>
         <button class="text-gray-400">PT Dashboard</button>
         <button class="text-gray-400">PT Session</button>
@@ -197,11 +198,11 @@
 
 <style>
   :global(body) {
-    @apply flex flex-col font-muli;
+    @apply flex flex-col font-oswald;
   }
 
   .layout {
-    @apply flex flex-col h-screen font-muli;
+    @apply flex flex-col h-screen font-oswald;
   }
 
   .header {
