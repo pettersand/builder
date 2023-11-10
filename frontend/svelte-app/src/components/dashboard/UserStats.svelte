@@ -4,15 +4,11 @@
 </script>
 
 <div
-  class={`user-stats-container flex h-[200px] border-b ${
-    $themeStore === "dark" ? "bg-dark-bg" : "bg-light-bg"
-  }`}
+  class="flex h-[200px] border-b border-paragraph mb-4"
 >
   <!-- First Area -->
   <div
-    class={`stats-area flex-1 p-4 border-r ${
-      $themeStore === "dark" ? "border-dark-text" : "border-light-text"
-    }`}
+    class="custom-border-right flex-1 p-4"
   >
     <h2 class="text-lg font-semibold flex items-center mb-4">
       <Icon icon="healthicons:gym-outline" width="50" height="50" />Workouts
@@ -28,9 +24,7 @@
 
   <!-- Second Area -->
   <div
-    class={`stats-area flex-1 p-4 border-r ${
-      $themeStore === "dark" ? "border-dark-text" : "border-light-text"
-    }`}
+    class="custom-border-right flex-1 p-4"
   >
     <h2 class="text-lg font-semibold flex items-center mb-4">
       <Icon
@@ -48,7 +42,9 @@
   </div>
 
   <!-- Third Area -->
-  <div class="stats-area flex-1 p-4">
+  <div
+    class="flex-1 p-4 border-r"
+  >
     <h2 class="text-lg font-semibold flex items-center mb-4">
       <Icon icon="game-icons:progression" width="45" height="45" />Progress
     </h2>

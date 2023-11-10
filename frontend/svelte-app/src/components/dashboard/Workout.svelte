@@ -2,16 +2,11 @@
   import themeStore from "../../stores/themeStore";
 </script>
 
-<!-- Add bg-dark-header-footer or bg-light-header-footer based on the theme -->
 <div
-  class={`flex flex-col flex-grow max-w-[350px] h-full border-r ${
-    $themeStore === "dark" ? "bg-dark-card" : "bg-light-card"
-  }`}
+  class="flex flex-col flex-grow max-w-md bg-card2 ml-4 shadow-xl"
 >
   <div
-    class={`w-full p-2 border-b  ${
-      $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
-    }`}
+    class="bg-bg2 p-2 border-b"
   >
     <h2 class="text-lg font-semibold text-center">Workout</h2>
   </div>

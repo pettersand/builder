@@ -2,15 +2,13 @@
   import themeStore from "../../stores/themeStore";
 </script>
 
-<div class="grid grid-cols-2 flex-grow">
+<div class="grid grid-cols-2 flex-grow gap-4">
   <!-- Card 1 -->
   <div
-    class={`card  ${$themeStore === "dark" ? "bg-dark-card" : "bg-light-card"}`}
+    class="bg-card2 shadow-xl"
   >
     <div
-      class={`w-full p-2 border-b ${
-        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
-      }`}
+      class="bg-bg2 p-2 border-b"
     >
       <h2 class="text-lg font-semibold text-center">Calendar</h2>
     </div>
@@ -21,14 +19,10 @@
 
   <!-- Card 2 -->
   <div
-    class={`card border-l ${
-      $themeStore === "dark" ? "bg-dark-card" : "bg-light-card"
-    }`}
+    class="bg-card2 shadow-xl"
   >
     <div
-      class={`w-full p-2 border-b  ${
-        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
-      }`}
+      class="bg-bg2 p-2 border-b"
     >
       <h2 class="text-lg font-semibold text-center">Graphs</h2>
     </div>
@@ -39,14 +33,10 @@
 
   <!-- Card 3 -->
   <div
-    class={`card border-t ${
-      $themeStore === "dark" ? "bg-dark-card" : "bg-light-card"
-    }`}
+    class="bg-card2 shadow-xl"
   >
     <div
-      class={`w-full p-2 border-b  ${
-        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
-      }`}
+      class="bg-bg2 p-2 border-b"
     >
       <h2 class="text-lg font-semibold text-center">Goals</h2>
     </div>
@@ -57,14 +47,10 @@
 
   <!-- Card 4 -->
   <div
-    class={`card border-l border-t ${
-      $themeStore === "dark" ? "bg-dark-card" : "bg-light-card"
-    }`}
+    class="bg-card2 shadow-xl"
   >
     <div
-      class={`w-full p-2 border-b  ${
-        $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
-      }`}
+      class="bg-bg2 p-2 border-b"
     >
       <h2 class="text-lg font-semibold text-center">Progress</h2>
     </div>

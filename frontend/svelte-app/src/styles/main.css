@@ -10,7 +10,6 @@
   --card2: #f8f8f8;
   --headline: #1f1717;
   --paragraph: #423f3f;
-
 }
 
 /* Dark theme colors */
@@ -25,9 +24,16 @@
   --card2: #16161a;
   --headline: #e2e2e2;
   --paragraph: #94a1b2;
-
 }
 
 .icon-label {
   @apply flex flex-row items-center gap-2;
+}
+
+.dash-card {
+  @apply flex flex-col gap-4 p-4 rounded-lg shadow-md;
+}
+
+.custom-border-right {
+  @apply border-r border-gray-400 border-opacity-25;
 }
