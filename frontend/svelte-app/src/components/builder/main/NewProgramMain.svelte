@@ -40,11 +40,7 @@
 </script>
 
 <div
-  class={`flex flex-col items-start border rounded-tl-md border-2  ${
-    $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text border-dark-bg"
-      : "bg-light-header text-light-text  border-light-bg2"
-  }`}
+  class="flex flex-col items-start border rounded-tl-md border-2 bg-bg2"
 >
   {#each rows as row}
     <div class="flex flex-row items-start">

@@ -72,11 +72,7 @@
 
 <main class="flex flex-grow flex-col h-screen">
   <div
-    class={`flex rounded-md p-2 ${
-      $themeStore === "dark"
-        ? "bg-dark-card text-dark-text"
-        : "bg-light-card2 text-light-text"
-    }`}
+    class="flex rounded-md p-2 bg-bg" 
   >
     <nav class="flex flex-col items-start pr-4 text-left">
       {#each ["newProgram", "editProgram", "savedTemplates", "preMadePrograms"] as option}
@@ -84,9 +80,7 @@
           on:click={() => setActiveOption(option)}
           class={`p-2 transition duration-300 ease-in-out rounded-md hover:border hover:border-opacity-50 ${
             activeOption === option
-              ? $themeStore === "dark"
-                ? "bg-opacity-30 bg-dark-primary2"
-                : "bg-opacity-30 bg-light-primary3"
+              ? "bg-accent2 font-bold text-bg"
               : ""
           }`}
         >

@@ -32,11 +32,7 @@
   <div class="flex flex-row justify-between">
     <!-- Custom Setup -->
     <div
-      class={`w-1/4 p-4 ${
-        $themeStore === "dark"
-          ? "bg-dark-card border-dark-text"
-          : "bg-light-card2 border-light-text"
-      }`}
+      class="w-1/4 p-4 bg-bg"
     >
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Custom Setup
@@ -52,11 +48,7 @@
             id="trainingDays"
             type="number"
             on:input={updateStore}
-            class={`w-1/3 p-1 text-xs border rounded-md ${
-              $themeStore === "dark"
-                ? "bg-dark-primary3 opacity-50 border-dark-primary"
-                : "bg-light-card opacity-50 border-light-primary"
-            }`}
+            class="w-1/3 p-1 text-xs border rounded-md" 
           />
         </div>
         <!-- Exercises Per Day -->
@@ -69,27 +61,19 @@
             id="exercisesPerDay"
             type="number"
             on:input={updateStore}
-            class={`w-1/3 p-1 text-xs border rounded-md ${
-              $themeStore === "dark"
-                ? "bg-dark-primary3 opacity-50 border-dark-primary"
-                : "bg-light-card opacity-50 border-light-primary"
-            }`}
+            class="w-1/3 p-1 text-xs border rounded-md" 
           />
         </div>
       </div>
     </div>
     <!-- Templates -->
     <div
-      class={`w-1/4 p-4 ${
-        $themeStore === "dark"
-          ? "bg-dark-card border-dark-text"
-          : "bg-light-card2 border-light-text"
-      }`}
+      class="w-1/4 p-4 bg-bg"
     >
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Templates
       </h2>
-      <span>Browse Official Tempaltes</span>
+      <span>Browse Official Templates</span>
       <br />
       <span>Browse Programs</span>
       <br />
@@ -99,11 +83,7 @@
     </div>
     <!-- Exercise Picker -->
     <div
-      class={`w-1/4 p-4 ${
-        $themeStore === "dark"
-          ? "bg-dark-card border-dark-text"
-          : "bg-light-card2 border-light-text"
-      }`}
+      class="w-1/4 p-4 bg-bg"
     >
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Exercise Picker
@@ -118,11 +98,7 @@
     </div>
     <!-- Options -->
     <div
-      class={`w-1/4 p-4 ${
-        $themeStore === "dark"
-          ? "bg-dark-card border-dark-text"
-          : "bg-light-card2 border-light-text"
-      }`}
+      class="w-1/4 p-4 bg-bg"
     >
       <h2 class="text-center text-sm border-b-2 border-opacity-50">Options</h2>
       <span>Save Program</span>

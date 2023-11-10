@@ -1,7 +1,7 @@
 /* main.css */
 :root {
-  --bg: #ecf4f5;
-  --bg2: #e1f3f8;
+  --bg: #fafafa;
+  --bg2: #f0f0f0;
   --accent: #a21414;
   --accent2: #c54444;
   --contrast: #14a2a2;
@@ -14,8 +14,8 @@
 
 /* Dark theme colors */
 .dark {
-  --bg: #242629;
-  --bg2: #16161a;
+  --bg: #16161a;
+  --bg2: #242629;
   --accent: #a21414;
   --accent2: #c54444;
   --contrast: #14a2a2;

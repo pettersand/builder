@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="flex h-[200px] border-b border-paragraph mb-4"
+  class="flex h-[200px] border-b border-gray-400 border-opacity-25 bg-bg"
 >
   <!-- First Area -->
   <div

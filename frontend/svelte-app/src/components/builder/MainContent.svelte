@@ -9,9 +9,7 @@
 </script>
 
 <div
-  class={`flex rounded-md mt-4 p-4 ${
-    $themeStore === "dark" ? "bg-dark-card" : "bg-light-card2"
-  }`}
+  class="flex rounded-md mt-4 p-4 bg-bg2" 
 >
 <svelte:component this={componentToRender} level={$globalStore.level} />
 </div>

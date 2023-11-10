@@ -13,10 +13,10 @@
   });
 </script>
 
-<main class="flex flex-row flex-grow bg-bg">
+<main class="flex flex-row flex-grow bg-bg2">
   <div class="flex flex-col w-full">
     <UserStats />
-    <div class="flex flex-row flex-grow gap-4">
+    <div class="flex flex-row flex-grow gap-4 p-3">
       <Workout />
       <CardLayout />
     </div>

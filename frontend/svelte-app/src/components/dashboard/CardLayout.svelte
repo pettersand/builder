@@ -5,12 +5,12 @@
 <div class="grid grid-cols-2 flex-grow gap-4">
   <!-- Card 1 -->
   <div
-    class="bg-card2 shadow-xl"
+    class="bg-bg shadow-xl"
   >
     <div
-      class="bg-bg2 p-2 border-b"
+      class="bg-bg p-2 border-b"
     >
-      <h2 class="text-lg font-semibold text-center">Calendar</h2>
+      <h2 class="text-lg p-2 font-semibold text-start">Calendar</h2>
     </div>
     <div class="p-4">
       <p>Content here...</p>
@@ -19,12 +19,12 @@
 
   <!-- Card 2 -->
   <div
-    class="bg-card2 shadow-xl"
+    class="bg-bg shadow-xl"
   >
     <div
-      class="bg-bg2 p-2 border-b"
+      class="bg-bg p-2 border-b"
     >
-      <h2 class="text-lg font-semibold text-center">Graphs</h2>
+      <h2 class="text-lg p-2 font-semibold text-start">Graphs</h2>
     </div>
     <div class="p-4">
       <p>Content here...</p>
@@ -33,12 +33,12 @@
 
   <!-- Card 3 -->
   <div
-    class="bg-card2 shadow-xl"
+    class="bg-bg shadow-xl"
   >
     <div
-      class="bg-bg2 p-2 border-b"
+      class="bg-bg p-2 border-b"
     >
-      <h2 class="text-lg font-semibold text-center">Goals</h2>
+      <h2 class="text-lg p-2 font-semibold text-start">Goals</h2>
     </div>
     <div class="p-4">
       <p>Content here...</p>
@@ -47,12 +47,12 @@
 
   <!-- Card 4 -->
   <div
-    class="bg-card2 shadow-xl"
+    class="bg-bg shadow-xl"
   >
     <div
-      class="bg-bg2 p-2 border-b"
+      class="bg-bg p-2 border-b"
     >
-      <h2 class="text-lg font-semibold text-center">Progress</h2>
+      <h2 class="text-lg p-2 font-semibold text-start">Progress</h2>
     </div>
     <div class="p-4">
       <p>Content here...</p>
