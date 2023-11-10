@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { OptionsComponentMap } from "../../types/index"; // Add this line
+  import type { OptionsComponentMap } from "../../types/index";
   export let activeOption: string;
   export let optionToOptionsComponent: OptionsComponentMap;
   import globalStore from "../../stores/globalStore";

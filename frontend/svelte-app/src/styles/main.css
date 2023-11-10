@@ -9,7 +9,7 @@
   --card: #e4e4e4;
   --card2: #f8f8f8;
   --headline: #1f1717;
-  --paragraph: #423f3f;
+  --paragraph: #444653;
 }
 
 /* Dark theme colors */
@@ -36,4 +36,16 @@
 
 .custom-border-right {
   @apply border-r border-gray-400 border-opacity-25;
+}
+
+.custom-border-bottom {
+  @apply border-b border-gray-400 border-opacity-25;
+}
+
+.custom-border-left {
+  @apply border-l border-gray-400 border-opacity-25;
+}
+
+.custom-border-top {
+  @apply border-t border-gray-400 border-opacity-25;
 }

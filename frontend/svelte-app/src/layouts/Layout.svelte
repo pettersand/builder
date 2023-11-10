@@ -10,6 +10,7 @@
   import BaseModal from "../components/BaseModal.svelte";
   import TopBar from "../components/TopBar.svelte";
   import ErrorModal from "../components/ErrorModal.svelte";
+  import SubOptions from "./SubOptions.svelte";
 
   // Store imports
   import themeStore from "../stores/themeStore";
@@ -110,7 +111,7 @@
 <ErrorModal />
 
 <div class="flex flex-col h-screen font-oswald bg-bg2 text-headline">
-  <header class="bg-bg p-4 flex justify-between items-center border-b">
+  <header class="bg-bg p-4 flex justify-between items-center custom-border-bottom">
     <div class="flex flex-row gap-4 items-center">
       <span><b>BUILDER</b></span>
 
@@ -123,7 +124,7 @@
         tabindex="0"
       >
         <div
-          class="w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-accent2 border-accent2 {$themeStore === 'dark' ? 'translate-x-9' : ''} "
+          class="w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-accent2 border-accent {$themeStore === 'dark' ? 'translate-x-9' : ''} "
         >
           {#if $themeStore === "dark"}
             <Icon icon="ri:moon-fill" class="text-bg" />
@@ -142,7 +143,7 @@
       {#if $globalStore.isAuthenticated}
         <button class="auth-button" on:click={logout}> Logout </button>
       {:else}
-        <button class="auth-button" on:click={openLoginModal}>
+        <button class="auth-button font-bold" on:click={openLoginModal}>
           Login / Register
         </button>
       {/if}
@@ -150,8 +151,8 @@
   </header>
 
   <main class="flex flex-grow">
-    <div class="flex flex-col justify-between items-start border-r bg-bg">
-      <div class="flex flex-col items-start gap-4 p-4 w-full border-b">
+    <div class="flex flex-col justify-between items-start custom-border-right bg-bg">
+      <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-bottom">
         <button class="text-gray-400 icon-label"><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button>
         <button class="icon-label" on:click={() => (currentView = "Dashboard")}><Icon icon="clarity:dashboard-solid" width="25" height="25" />Dashboard</button>
           <button class="icon-label" on:click={() => (currentView = "Builder")}
@@ -167,14 +168,10 @@
         <button class="text-gray-400 icon-label"><Icon icon="material-symbols:manage-accounts" width="25" height="25" />PT Dashboard</button>
         <button class="text-gray-400 icon-label"><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button>
       </div>
-      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow">
-        <Icon icon="ion:options-sharp" />
-        <button class="text-gray-400">Option 1</button>
-        <button class="text-gray-400">Option 2</button>
-        <button class="text-gray-400">Option 3</button>
-      </div>
+      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow"><SubOptions /></div>
+      
 
-      <div class="flex flex-col items-start gap-4 p-4 w-full border-t">
+      <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-top">
         <button class="text-gray-400">Help</button>
         <button class="text-gray-400">Privacy Policy</button>
         <button class="text-gray-400">Contact</button>

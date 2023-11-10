@@ -72,13 +72,13 @@
 
 <main class="flex flex-grow flex-col h-screen">
   <div
-    class="flex rounded-md p-2 bg-bg" 
+    class="flex p-2 bg-bg custom-border-bottom" 
   >
     <nav class="flex flex-col items-start pr-4 text-left">
       {#each ["newProgram", "editProgram", "savedTemplates", "preMadePrograms"] as option}
         <button
           on:click={() => setActiveOption(option)}
-          class={`p-2 transition duration-300 ease-in-out rounded-md hover:border hover:border-opacity-50 ${
+          class={`p-2 transition duration-300 ease-in-out hover:bg-bg2 ${
             activeOption === option
               ? "bg-accent2 font-bold text-bg"
               : ""
