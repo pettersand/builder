@@ -8,7 +8,7 @@
     class={`card  ${$themeStore === "dark" ? "bg-dark-card" : "bg-light-card"}`}
   >
     <div
-      class={`header-bar ${
+      class={`w-full p-2 border-b ${
         $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
@@ -26,7 +26,7 @@
     }`}
   >
     <div
-      class={`header-bar  ${
+      class={`w-full p-2 border-b  ${
         $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
@@ -44,7 +44,7 @@
     }`}
   >
     <div
-      class={`header-bar  ${
+      class={`w-full p-2 border-b  ${
         $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
@@ -62,7 +62,7 @@
     }`}
   >
     <div
-      class={`header-bar  ${
+      class={`w-full p-2 border-b  ${
         $themeStore === "dark" ? "bg-dark-bg2" : "bg-light-bg2"
       }`}
     >
@@ -75,9 +75,4 @@
 </div>
 
 <style>
-  .header-bar {
-    width: 100%;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid lightblue;
-  }
 </style>

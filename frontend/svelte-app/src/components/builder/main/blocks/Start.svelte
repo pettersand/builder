@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class={`start-block rounded-tl-md ${
+  class={`w-52 h-8 flex justify-center items-center border rounded-tl-md ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text"
       : "bg-light-header text-light-text"
@@ -14,12 +14,5 @@
 </div>
 
 <style>
-  .start-block {
-    width: 200px; /* Set width */
-    height: 30px; /* Set height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-  }
+
 </style>

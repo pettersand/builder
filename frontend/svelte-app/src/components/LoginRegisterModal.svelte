@@ -651,11 +651,4 @@
 {/if}
 
 <style>
-  .bg-dark-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .bg-light-overlay {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  /* Add your additional styles here */
 </style>

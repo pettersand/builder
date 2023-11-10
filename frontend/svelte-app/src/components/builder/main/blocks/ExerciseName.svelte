@@ -22,7 +22,7 @@
 </script>
 
 <input
-  class={`exercise-input ${
+  class={`w-52 h-8 pl-2 text-left border ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text"
       : "bg-light-card2 text-light-text"
@@ -35,12 +35,4 @@
 />
 
 <style>
-  .exercise-input {
-    width: 200px;
-    height: 30px;
-    padding-left: 5px;
-    text-align: flex-start;
-    border: 2px solid black;
-    font-weight: bold;
-  }
 </style>

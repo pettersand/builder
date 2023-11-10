@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class={`day-or-exercise-block ${
+  class={`w-52 h-8 pl-2 text-left border ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text"
       : "bg-light-header text-light-text"
@@ -23,13 +23,5 @@
 </div>
 
 <style>
-  .day-or-exercise-block {
-    width: 200px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    font-weight: bold;
-  }
+
 </style>

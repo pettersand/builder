@@ -40,14 +40,14 @@
 </script>
 
 <div
-  class={`main-content rounded-tl-md border-2  ${
+  class={`flex flex-col items-start border rounded-tl-md border-2  ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text border-dark-bg"
       : "bg-light-header text-light-text  border-light-bg2"
   }`}
 >
   {#each rows as row}
-    <div class="block-row">
+    <div class="flex flex-row items-start">
       {#each row as block}
         {#if block.type === "Start"}
           <Start label={block.label} />
@@ -68,15 +68,4 @@
 </div>
 
 <style>
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border: 3px solid;
-  }
-  .block-row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
 </style>

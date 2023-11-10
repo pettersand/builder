@@ -105,16 +105,16 @@
 <TopBar />
 <ErrorModal />
 
-<div class="layout bg-bg2 text-accent">
-  <header class="bg-accent header">
-    <div class="icons">
+<div class="flex flex-col h-screen font-oswald bg-bg2 text-headline">
+  <header class="bg-bg p-4 flex justify-between items-center border-b">
+    <div class="flex flex-row gap-4 items-center">
       <span><b>BUILDER</b></span>
 
       <!-- Light Switch for dark/light mode  -->
       <div
         class={$themeStore === "dark"
-          ? "toggle-container bg-dark-header border border-dark-primary3 shadow-inner"
-          : "toggle-container bg-light-bg2 border border-light-card2 shadow-inner"}
+          ? "inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 bg-dark-header border border-dark-primary3 shadow-inner"
+          : "inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 bg-light-bg2 border border-light-card2 shadow-inner"}
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
@@ -122,8 +122,8 @@
       >
         <div
           class={$themeStore === "dark"
-            ? "toggle-ball bg-dark-primary border-dark-primary3"
-            : "toggle-ball bg-light-accent border-light-card2 move"}
+            ? "w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-dark-primary border-dark-primary3"
+            : "w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-light-accent border-light-card2 move"}
         >
           {#if $themeStore === "dark"}
             <Icon icon="ri:moon-fill" class="toggle-icon" />
@@ -137,7 +137,7 @@
     <div class="text-red-600">
       <span><b>!! CURRENTLY UNDER DEVELOPMENT !!</b></span>
     </div>
-    <div class="icons">
+    <div class="flex flex-row gap-4 items-center">
       <!-- Login/Register and Log Out buttons -->
       {#if $globalStore.isAuthenticated}
         <button class="auth-button" on:click={logout}> Logout </button>
@@ -149,13 +149,9 @@
     </div>
   </header>
 
-  <main class="flex">
-    <div
-      class={$themeStore === "dark"
-        ? "bg-dark-bg border-dark-text navbar"
-        : "bg-light-bg navbar"}
-    >
-      <div class="menu border-b">
+  <main class="flex flex-grow">
+    <div class="flex flex-col justify-between items-start border-r bg-bg">
+      <div class="flex flex-col items-start gap-4 p-4 w-full border-b">
         <Icon icon="ri:menu-fill" class="toggle-icon" />
         <button class="text-gray-400">Admin</button>
         <button on:click={() => (currentView = "Dashboard")}>Dashboard</button>
@@ -173,14 +169,14 @@
         <button class="text-gray-400">PT Dashboard</button>
         <button class="text-gray-400">PT Session</button>
       </div>
-      <div class="menu flex-grow">
+      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow">
         <Icon icon="ion:options-sharp" />
         <button class="text-gray-400">Option 1</button>
         <button class="text-gray-400">Option 2</button>
         <button class="text-gray-400">Option 3</button>
       </div>
 
-      <div class="menu border-t">
+      <div class="flex flex-col items-start gap-4 p-4 w-full border-t">
         <button class="text-gray-400">Help</button>
         <button class="text-gray-400">Privacy Policy</button>
         <button class="text-gray-400">Contact</button>
@@ -197,44 +193,4 @@
 </div>
 
 <style>
-  :global(body) {
-    @apply flex flex-col font-oswald;
-  }
-
-  .layout {
-    @apply flex flex-col h-screen font-oswald;
-  }
-
-  .header {
-    @apply p-4 flex justify-between items-center border-b;
-  }
-
-  .navbar {
-    @apply flex flex-col justify-between items-start border-r;
-  }
-
-  .icons {
-    @apply flex flex-row gap-4 items-center;
-  }
-
-  .menu {
-    @apply flex flex-col items-start gap-4 p-4 w-full;
-  }
-
-  .toggle-container {
-    @apply inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8;
-  }
-
-  .toggle-ball {
-    @apply w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center;
-    padding: 2px;
-  }
-
-  .toggle-ball.move {
-    @apply translate-x-[124%];
-  }
-
-  main {
-    @apply flex-grow;
-  }
 </style>

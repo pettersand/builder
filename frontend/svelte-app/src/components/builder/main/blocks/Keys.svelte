@@ -9,25 +9,11 @@
       : "bg-light-header text-light-text"
   }`}
 >
-  <div class="key sets">s</div>
-  <div class="key reps">r</div>
-  <div class="key weight">kg</div>
+  <div class="h-8 flex justify-center items-center border w-9">s</div>
+  <div class="h-8 flex justify-center items-center border w-16">r</div>
+  <div class="h-8 flex justify-center items-center border w-16">kg</div>
 </div>
 
 <style>
-  .key {
-    height: 30px; /* 50px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    font-weight: bold;
-  }
-  .sets {
-    width: 35px; /* 50px */
-  }
-  .reps,
-  .weight {
-    width: 65px; /* 75px */
-  }
+
 </style>

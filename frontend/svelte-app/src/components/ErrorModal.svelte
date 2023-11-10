@@ -57,5 +57,5 @@
 {/if}
 
 <style>
-  /* Add your styles here */
+
 </style>

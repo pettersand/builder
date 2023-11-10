@@ -75,11 +75,4 @@
 </div>
 
 <style>
-  .bg-dark-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .bg-light-overlay {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  /* Add your dark and light theme styles for card, text, and buttons here */
 </style>

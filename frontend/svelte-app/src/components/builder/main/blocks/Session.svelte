@@ -5,7 +5,7 @@
 </script>
 
 <div
-  class={`session-block ${
+  class={`w-44 h-8 flex justify-center items-center border ${
     $themeStore === "dark"
       ? "bg-dark-bg2 text-dark-text"
       : "bg-light-header text-light-text"
@@ -15,13 +15,5 @@
 </div>
 
 <style>
-  .session-block {
-    width: 165px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    font-weight: bold;
-  }
+
 </style>

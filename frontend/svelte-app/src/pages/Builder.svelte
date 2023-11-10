@@ -119,8 +119,4 @@
 
 <!-- Modal styles -->
 <style>
-  .modal {
-    position: relative;
-    border-radius: 8px;
-  }
 </style>
