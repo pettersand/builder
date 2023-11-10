@@ -183,5 +183,10 @@ custom CSS was being applied above imports, something wrong with processing of c
 
 ### Reworked:
 
-CSS structure
+CSS structure, Tailwind Config, Styling for all pages, toggle
 
+### Next Session:
+
+- Code options handling
+- Builder component styling
+- Refactor components
