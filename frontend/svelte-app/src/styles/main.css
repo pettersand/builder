@@ -27,7 +27,7 @@
 }
 
 .icon-label {
-  @apply flex flex-row items-center gap-2;
+  @apply flex flex-row items-center gap-2 pt-4 pb-4 pl-2 pr-4 w-full;
 }
 
 .dash-card {

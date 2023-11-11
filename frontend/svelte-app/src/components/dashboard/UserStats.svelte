@@ -3,15 +3,16 @@
   import Icon from "@iconify/svelte";
 </script>
 
-<div
-  class="flex h-52 custom-border-bottom bg-bg"
->
+<div class="flex h-52 custom-border-bottom bg-bg">
   <!-- First Area -->
-  <div
-    class="custom-border-right flex-1"
-  >
+  <div class="custom-border-right flex-1">
     <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
-      <Icon icon="healthicons:gym-outline" width="50" height="50" />Workouts
+      <Icon
+        icon="healthicons:gym-outline"
+        width="50"
+        height="50"
+        class="text-contrast"
+      />Workouts
     </h2>
     <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
       <p>Workouts completed: 10</p>
@@ -23,14 +24,13 @@
   </div>
 
   <!-- Second Area -->
-  <div
-    class="custom-border-right flex-1"
-  >
+  <div class="custom-border-right flex-1">
     <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
       <Icon
         icon="healthicons:exercise-weights"
         width="50"
         height="50"
+        class="text-contrast"
       />Exercises
     </h2>
     <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
@@ -42,11 +42,14 @@
   </div>
 
   <!-- Third Area -->
-  <div
-    class="flex-1"
-  >
+  <div class="flex-1">
     <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
-      <Icon icon="game-icons:progression" width="45" height="45" />Progress
+      <Icon
+        icon="game-icons:progression"
+        width="45"
+        height="45"
+        class="text-contrast mr-2"
+      />Progress
     </h2>
     <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
       <p>Strength Gained: 10%</p>

@@ -190,3 +190,8 @@ CSS structure, Tailwind Config, Styling for all pages, toggle
 - Code options handling
 - Builder component styling
 - Refactor components
+
+## 11/11-23
+
+Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly.
+

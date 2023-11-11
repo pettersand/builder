@@ -82,14 +82,14 @@
   }
 
   function toggleDarkMode() {
-  if ($themeStore === "dark") {
-    $themeStore = "light";
-    document.documentElement.classList.remove("dark");
-  } else {
-    $themeStore = "dark";
-    document.documentElement.classList.add("dark");
+    if ($themeStore === "dark") {
+      $themeStore = "light";
+      document.documentElement.classList.remove("dark");
+    } else {
+      $themeStore = "dark";
+      document.documentElement.classList.add("dark");
+    }
   }
-}
 
   function handleKeydown(event: KeyboardEvent) {
     handleKeyboardEvent(event, toggleDarkMode, () => {});
@@ -111,20 +111,25 @@
 <ErrorModal />
 
 <div class="flex flex-col h-screen font-oswald bg-bg2 text-headline">
-  <header class="bg-bg p-4 flex justify-between items-center custom-border-bottom">
+  <header
+    class="bg-bg p-4 flex justify-between items-center custom-border-bottom"
+  >
     <div class="flex flex-row gap-4 items-center">
       <span><b>BUILDER</b></span>
 
       <!-- Light Switch for dark/light mode  -->
       <div
-        class="inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 shadow-inner border border-card2 bg-card  "
+        class="inline-flex items-center rounded-full cursor-pointer transition-all duration-500 ease-in-out w-16 h-8 shadow-inner border border-card2 bg-card"
         on:click={toggleDarkMode}
         on:keydown={handleKeydown}
         role="button"
         tabindex="0"
       >
         <div
-          class="w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-accent2 border-accent {$themeStore === 'dark' ? 'translate-x-9' : ''} "
+          class="w-7 h-7 rounded-full border-2 cursor-pointer transition-all duration-500 ease-in-out flex items-center justify-center bg-accent2 border-accent {$themeStore ===
+          'dark'
+            ? 'translate-x-9'
+            : ''} "
         >
           {#if $themeStore === "dark"}
             <Icon icon="ri:moon-fill" class="text-bg" />
@@ -151,25 +156,50 @@
   </header>
 
   <main class="flex flex-grow">
-    <div class="flex flex-col justify-between items-start custom-border-right bg-bg">
-      <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-bottom">
-        <button class="text-gray-400 icon-label"><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button>
-        <button class="icon-label" on:click={() => (currentView = "Dashboard")}><Icon icon="clarity:dashboard-solid" width="25" height="25" />Dashboard</button>
-          <button class="icon-label" on:click={() => (currentView = "Builder")}
-            ><Icon
-              icon="ion:hammer-sharp"
-              width="25"
-              height="25"
-            />Builder</button
-          >
+    <div
+      class="flex flex-col justify-between items-start custom-border-right bg-bg"
+    >
+      <div class="flex flex-col items-start gap-4 w-full custom-border-bottom">
+        <button class="text-gray-400 icon-label"
+          ><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button
+        >
+        <button
+          class="icon-label hover:bg-card"
+          on:click={() => (currentView = "Dashboard")}
+          ><Icon
+            icon="clarity:dashboard-solid"
+            width="25"
+            height="25"
+          />Dashboard</button
+        >
+        <button
+          class="icon-label hover:bg-card"
+          on:click={() => (currentView = "Builder")}
+          ><Icon
+            icon="ion:hammer-sharp"
+            width="25"
+            height="25"
+          />Builder</button
+        >
 
-        <button class="text-gray-400 icon-label"><Icon icon="healthicons:exercise-weights" width="25" height="25" />
-          Workout</button>
-        <button class="text-gray-400 icon-label"><Icon icon="material-symbols:manage-accounts" width="25" height="25" />PT Dashboard</button>
-        <button class="text-gray-400 icon-label"><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button>
+        <button class="text-gray-400 icon-label"
+          ><Icon icon="healthicons:exercise-weights" width="25" height="25" />
+          Workout</button
+        >
+        <button class="text-gray-400 icon-label"
+          ><Icon
+            icon="material-symbols:manage-accounts"
+            width="25"
+            height="25"
+          />PT Dashboard</button
+        >
+        <button class="text-gray-400 icon-label"
+          ><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button
+        >
       </div>
-      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow"><SubOptions /></div>
-      
+      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow">
+        <SubOptions />
+      </div>
 
       <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-top">
         <button class="text-gray-400">Help</button>
@@ -186,4 +216,3 @@
     <slot />
   </main>
 </div>
-
