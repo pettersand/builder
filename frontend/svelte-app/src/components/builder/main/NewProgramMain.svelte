@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Level } from "../../../types/index";
-  import themeStore from "../../../stores/themeStore";
   import Start from "./blocks/Start.svelte";
   import Day from "./blocks/Day.svelte";
   import ExerciseName from "./blocks/ExerciseName.svelte";
@@ -39,9 +38,11 @@
   });
 </script>
 
-<div class="flex flex-col items-start box-border border border-headline rounded-tl-md">
+<div
+  class="flex flex-col items-start border border-black rounded-tl-md"
+>
   {#each rows as row}
-    <div class="flex flex-row w-full h-8 items-start ">
+    <div class="flex flex-row w-full h-8 items-start">
       {#each row as block}
         {#if block.type === "Start"}
           <Start label={block.label} />

@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="flex flex-1 h-full border-r border-headline">
+<div class="flex flex-1 h-full border-r border-black">
   <input
     class="h-full border-r border-b border-gray-300 text-center w-1/5"
     type="text"

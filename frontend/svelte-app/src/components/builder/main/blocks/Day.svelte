@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="w-52 h-full pl-2 items-center text-left font-bold border-l border-r border-b border-headline bg-contrast"
+  class="w-52 h-full pl-2 pt-1 items-center text-left font-bold border-r border-t border-black bg-contrast"
 >
   {label}
 </div>

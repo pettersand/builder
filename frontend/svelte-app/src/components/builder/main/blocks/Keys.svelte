@@ -2,19 +2,19 @@
 </script>
 
 <div
-  class="flex flex-1 h-full justify-stretch bg-contrast2 font-bold border-t border-r border-b border-headline"
+  class="flex flex-1 h-full bg-contrast2 font-bold border-t border-r border-b border-black"
 >
   <div
-    class="h-full flex w-1/5 justify-center items-center border-r border-headline border-opacity-25"
+    class=" flex w-1/5 justify-center items-center border-r border-black border-opacity-25"
   >
     s
   </div>
   <div
-    class="h-full flex w-2/5 justify-center items-center border-r border-headline border-opacity-10"
+    class=" flex w-2/5 justify-center items-center border-r border-black border-opacity-10"
   >
     r
   </div>
-  <div class="h-full flex w-2/5 justify-center items-center">kg</div>
+  <div class=" flex w-2/5 justify-center items-center">kg</div>
 </div>
 
 <style>

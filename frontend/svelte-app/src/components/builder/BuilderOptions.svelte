@@ -22,7 +22,7 @@
     on:click={() => setActiveOption("newProgram")}
   >
     <Icon icon="mingcute:file-new-fill" width="25" height="25" />
-    New Program
+    Simple Program
   </button>
   <button
     class={`icon-label whitespace-nowrap hover:bg-card ${
@@ -31,7 +31,7 @@
     on:click={() => setActiveOption("editProgram")}
   >
     <Icon icon="clarity:note-edit-solid" width="25" height="25" />
-    Edit Program
+    Advanced Program
   </button>
   <button
     class={`icon-label whitespace-nowrap hover:bg-card ${
@@ -40,6 +40,24 @@
     on:click={() => setActiveOption("manageTemplates")}
   >
     <Icon icon="material-symbols:manage-search" width="25" height="25" />
-    Manage Templates
+    Templates
+  </button>
+  <button
+    class={`icon-label whitespace-nowrap hover:bg-card ${
+      state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
+    }`}
+    on:click={() => setActiveOption("manageTemplates")}
+  >
+    <Icon icon="material-symbols:manage-search" width="25" height="25" />
+    Programs
+  </button>
+  <button
+    class={`icon-label whitespace-nowrap hover:bg-card ${
+      state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
+    }`}
+    on:click={() => setActiveOption("manageTemplates")}
+  >
+    <Icon icon="material-symbols:manage-search" width="25" height="25" />
+    Custom
   </button>
 </div>
