@@ -1,19 +1,13 @@
 <!-- Session.svelte -->
 <script lang="ts">
-  import themeStore from "../../../../stores/themeStore";
-  export let label: string = "Session"; // Default label
+  export let label: string = "Session";
 </script>
 
 <div
-  class={`w-44 h-8 flex justify-center items-center border ${
-    $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text"
-      : "bg-light-header text-light-text"
-  }`}
+  class="w-44 h-8 flex flex-1 justify-center items-center font-bold bg-contrast2 border border-headline"
 >
   {label}
 </div>
 
 <style>
-
 </style>
