@@ -22,7 +22,7 @@
 </script>
 
 <input
-  class="w-52 h-full text-left bg-contrast2 text-headline border-r border-t border-black"
+  class="w-52 h-full pl-2 text-left font-bold bg-contrast2 text-headline border-r border-t border-black"
   type="text"
   placeholder="Add Exercise"
   value={exerciseName}

@@ -15,6 +15,9 @@
 </script>
 
 <div class="flex flex-col items-start w-full flex-grow">
+  <span class="font-bold text-lg items-center p-2 mb-2 w-full"
+    >Builder Options</span
+  >
   <button
     class={`icon-label whitespace-nowrap hover:bg-card ${
       state.activeOption === "newProgram" ? "bg-card font-bold" : ""
@@ -25,7 +28,7 @@
     Simple Program
   </button>
   <button
-    class={`icon-label whitespace-nowrap hover:bg-card ${
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
       state.activeOption === "editProgram" ? "bg-card font-bold" : ""
     }`}
     on:click={() => setActiveOption("editProgram")}
@@ -34,7 +37,7 @@
     Advanced Program
   </button>
   <button
-    class={`icon-label whitespace-nowrap hover:bg-card ${
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
       state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
     }`}
     on:click={() => setActiveOption("manageTemplates")}
@@ -43,7 +46,7 @@
     Templates
   </button>
   <button
-    class={`icon-label whitespace-nowrap hover:bg-card ${
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
       state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
     }`}
     on:click={() => setActiveOption("manageTemplates")}
@@ -52,7 +55,7 @@
     Programs
   </button>
   <button
-    class={`icon-label whitespace-nowrap hover:bg-card ${
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
       state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
     }`}
     on:click={() => setActiveOption("manageTemplates")}

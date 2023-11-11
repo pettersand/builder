@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Level } from "../../../types/index";
   import Start from "./blocks/Start.svelte";
   import Day from "./blocks/Day.svelte";
   import ExerciseName from "./blocks/ExerciseName.svelte";
@@ -9,7 +8,6 @@
   import { generateBlocksAndRows } from "./blocks/BlockUtils";
   import programOptions from "../../../stores/programOptionsStore";
 
-  export let level: Level;
   let activeOption = "newProgram"; //
 
   let trainingDays;

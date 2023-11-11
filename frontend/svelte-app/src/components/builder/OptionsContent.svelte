@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="p-1 flex-grow bg-bg1"
+  class=" flex-grow bg-bg1"
 >
   <svelte:component this={componentToRender} level={$globalStore.level} />
 </div>

@@ -2,11 +2,11 @@
   import { onMount } from "svelte";
   import MainContent from "../components/builder/MainContent.svelte";
   import OptionsContent from "../components/builder/OptionsContent.svelte";
-  import NewProgramOptions from "../components/builder/options/NewProgramOptions.svelte";
+  import NewProgramOptions from "../components/builder/options/SimpleProgramOptions.svelte";
   import EditProgramOptions from "../components/builder/options/EditProgramOptions.svelte";
   import SavedTemplatesOptions from "../components/builder/options/SavedTemplatesOptions.svelte";
   import PreMadeProgramsOptions from "../components/builder/options/PreMadeProgramsOptions.svelte";
-  import NewProgramMain from "../components/builder/main/NewProgramMain.svelte";
+  import NewProgramMain from "../components/builder/main/SimpleProgram.svelte";
   import EditProgramMain from "../components/builder/main/EditProgramMain.svelte";
   import SavedTemplatesMain from "../components/builder/main/SavedTemplatesMain.svelte";
   import PreMadeProgramMain from "../components/builder/main/PreMadeProgramMain.svelte";
@@ -64,7 +64,7 @@
 </script>
 
 <main class="flex flex-grow flex-col max-h-screen">
-  <div class="flex p-2 bg-bg custom-border-bottom">
+  <div class="flex bg-bg custom-border-bottom">
     <OptionsContent bind:activeOption {optionToOptionsComponent} />
   </div>
   <MainContent {activeOption} {optionToMainComponent} />

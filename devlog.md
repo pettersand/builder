@@ -193,12 +193,19 @@ CSS structure, Tailwind Config, Styling for all pages, toggle
 
 ## 11/11-23
 
-Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly.
+Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly. I ended up reworking the structure for building a template and program, organizing it in a cleaner way. Separated Simple programs from Advanced programs, removed intermediate - will allow advanced program builder to be highly customizable.
 
 ### Created:
 
 1. builderStore.ts
+2. FileOptions.svelte
+3. SimpleProgramOptions.svelte
 
 ### Reworked:
 
-Sub Options handling, Moved Builder Options handling,
+Sub Options handling, Moved Builder Options handling, simplified builder process
+
+### Next Session:
+
+- Finish Simple program template case
+- Work on saving templates, browsing, etc
