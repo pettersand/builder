@@ -16,7 +16,7 @@
 
 <div class="flex flex-col items-start w-full flex-grow">
   <button
-    class={`icon-label hover:bg-card ${
+    class={`icon-label whitespace-nowrap hover:bg-card ${
       state.activeOption === "newProgram" ? "bg-accent2 font-bold" : ""
     }`}
     on:click={() => setActiveOption("newProgram")}
@@ -25,7 +25,7 @@
     New Program
   </button>
   <button
-    class={`icon-label hover:bg-card ${
+    class={`icon-label whitespace-nowrap hover:bg-card ${
       state.activeOption === "editProgram" ? "bg-accent2 font-bold" : ""
     }`}
     on:click={() => setActiveOption("editProgram")}
@@ -34,7 +34,7 @@
     Edit Program
   </button>
   <button
-    class={`icon-label hover:bg-card ${
+    class={`icon-label whitespace-nowrap hover:bg-card ${
       state.activeOption === "manageTemplates" ? "bg-accent2 font-bold" : ""
     }`}
     on:click={() => setActiveOption("manageTemplates")}

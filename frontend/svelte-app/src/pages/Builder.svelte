@@ -14,6 +14,7 @@
   import globalStore from "../stores/globalStore";
   import modalStore from "../stores/modalStore";
   import themeStore from "../stores/themeStore";
+  import { builderState } from "../stores/builderStore";
   import type { Level } from "../types/index";
   import type { MainComponentMap, OptionsComponentMap } from "../types/index";
 
@@ -27,7 +28,12 @@
     modalContent = state.modalContent;
   });
 
-  let activeOption: string = "newProgram"; // Default active option
+  // Subscribe to builderStore for activeOption
+  let activeOption;
+  builderState.subscribe(($builderState) => {
+    activeOption = $builderState.activeOption;
+  });
+
   let selectedLevel: Level = "Beginner";
 
   const optionToMainComponent: MainComponentMap = {
@@ -44,17 +50,10 @@
     preMadePrograms: PreMadeProgramsOptions,
   };
 
-  const setActiveOption = (option: string) => {
-    activeOption = option;
-    if (option === "newProgram") {
-      modalStore.toggleModalWithContent("levelSelect", "Select Level");
-    }
-  };
-
   const onClose = () => {
     modalStore.closeModal();
   };
-  
+
   const onConfirm = () => {
     globalStore.setLevel(selectedLevel);
     modalStore.closeModal();
@@ -71,30 +70,14 @@
 </script>
 
 <main class="flex flex-grow flex-col h-screen">
-  <div
-    class="flex p-2 bg-bg custom-border-bottom" 
-  >
-    <nav class="flex flex-col items-start pr-4 text-left">
-      {#each ["newProgram", "editProgram", "savedTemplates", "preMadePrograms"] as option}
-        <button
-          on:click={() => setActiveOption(option)}
-          class={`p-2 transition duration-300 ease-in-out hover:bg-bg2 ${
-            activeOption === option
-              ? "bg-accent2 font-bold text-bg"
-              : ""
-          }`}
-        >
-          {capitalizeFirstLetter(option.replace(/([A-Z])/g, " $1"))}
-        </button>
-      {/each}
-    </nav>
+  <div class="flex p-2 bg-bg custom-border-bottom">
     <OptionsContent bind:activeOption {optionToOptionsComponent} />
   </div>
   <MainContent {activeOption} {optionToMainComponent} />
 
   <!-- Modal HTML structure -->
-  {#if showModal && modalType === 'levelSelect'}
-    <BaseModal modalContent={modalContent} {onClose} {onConfirm}>
+  {#if showModal && modalType === "levelSelect"}
+    <BaseModal {modalContent} {onClose} {onConfirm}>
       {#each ["Beginner", "Intermediate", "Expert"] as level}
         <label class="inline-flex items-center mt-3">
           <input

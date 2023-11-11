@@ -201,4 +201,4 @@ Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, r
 
 ### Reworked:
 
-Sub Options handling,
+Sub Options handling, Moved Builder Options handling,

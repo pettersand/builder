@@ -148,10 +148,15 @@
       {#if $globalStore.isAuthenticated}
         <button class="auth-button" on:click={logout}> Logout </button>
       {:else}
-        <button class="auth-button font-bold" on:click={openLoginModal}>
+        <button
+          class="auth-button font-bold bg-accent2 p-2 pl-4 pr-4 rounded-full"
+          on:click={openLoginModal}
+        >
           Login / Register
         </button>
       {/if}
+      <Icon icon="clarity:notification-solid" width="25" height="25" />
+      <Icon icon="fa-solid:user-friends" width="25" height="25" />
     </div>
   </header>
 
