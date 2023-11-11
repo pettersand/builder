@@ -22,11 +22,7 @@
 </script>
 
 <input
-  class={`w-52 h-8 pl-2 text-left border ${
-    $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text"
-      : "bg-light-card2 text-light-text"
-  }`}
+  class="w-52 h-full text-left bg-contrast2 text-headline border-r border-l border-b border-headline"
   type="text"
   placeholder="Add Exercise"
   value={exerciseName}

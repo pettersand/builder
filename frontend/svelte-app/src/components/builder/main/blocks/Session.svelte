@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="w-44 h-8 flex flex-1 justify-center items-center font-bold bg-contrast2 border border-headline"
+  class="w-44 h-full flex flex-1 justify-center items-center font-bold bg-contrast border-r border-t border-headline"
 >
   {label}
 </div>

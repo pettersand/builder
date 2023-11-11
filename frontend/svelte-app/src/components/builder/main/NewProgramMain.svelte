@@ -39,9 +39,9 @@
   });
 </script>
 
-<div class="flex flex-col items-start border rounded-tl-md border-2 bg-bg2">
+<div class="flex flex-col items-start box-border border border-headline rounded-tl-md">
   {#each rows as row}
-    <div class="flex flex-row w-full items-start">
+    <div class="flex flex-row w-full h-8 items-start ">
       {#each row as block}
         {#if block.type === "Start"}
           <Start label={block.label} />

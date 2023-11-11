@@ -12,16 +12,10 @@
 </script>
 
 <div
-  class={`w-52 h-8 pl-2 text-left border ${
-    $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text"
-      : "bg-light-header text-light-text"
-  }`}
+  class="w-52 h-full pl-2 items-center text-left font-bold border-l border-r border-b border-headline bg-contrast"
 >
-  <!-- Use the label prop here -->
   {label}
 </div>
 
 <style>
-
 </style>

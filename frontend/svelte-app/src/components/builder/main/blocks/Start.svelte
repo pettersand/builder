@@ -4,15 +4,10 @@
 </script>
 
 <div
-  class={`w-52 h-8 flex justify-center items-center border rounded-tl-md ${
-    $themeStore === "dark"
-      ? "bg-dark-bg2 text-dark-text"
-      : "bg-light-header text-light-text"
-  }`}
+  class="w-52 h-full flex justify-center items-center border border-headline rounded-tl-md bg-contrast font-bold"
 >
   <b>{label}</b>
 </div>
 
 <style>
-
 </style>
