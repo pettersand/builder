@@ -146,10 +146,15 @@
     <div class="flex flex-row gap-4 items-center">
       <!-- Login/Register and Log Out buttons -->
       {#if $globalStore.isAuthenticated}
-        <button class="auth-button" on:click={logout}> Logout </button>
+        <button
+          class="font-bold bg-contrast2 p-2 pl-4 pr-4 rounded-full"
+          on:click={logout}
+        >
+          Logout
+        </button>
       {:else}
         <button
-          class="auth-button font-bold bg-accent2 p-2 pl-4 pr-4 rounded-full"
+          class="font-bold bg-accent2 p-2 pl-4 pr-4 rounded-full"
           on:click={openLoginModal}
         >
           Login / Register

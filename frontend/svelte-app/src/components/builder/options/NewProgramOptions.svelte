@@ -1,14 +1,14 @@
 <!-- NewProgramOptions.svelte -->
 <script lang="ts">
   import type { Level } from "../../../types/index";
-  let activeOption = "newProgram"; // Default active option
-  export let level: Level; // Use the imported Level type
+  let activeOption = "newProgram"; 
+  export let level: Level; 
   import themeStore from "../../../stores/themeStore";
   import programOptions from "../../../stores/programOptionsStore";
 
   let trainingDays = 1;
   let exercisesPerDay = 6;
-  let sessions = 10;
+  let sessions = 8;
   let programBlocks = 1;
 
   // Function to update the store
@@ -31,9 +31,7 @@
 {#if level === "Beginner"}
   <div class="flex flex-row justify-between">
     <!-- Custom Setup -->
-    <div
-      class="w-1/4 p-4 bg-bg"
-    >
+    <div class="w-1/4 p-4 bg-bg">
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Custom Setup
       </h2>
@@ -48,7 +46,7 @@
             id="trainingDays"
             type="number"
             on:input={updateStore}
-            class="w-1/3 p-1 text-xs border rounded-md" 
+            class="w-1/3 p-1 text-xs border rounded-md"
           />
         </div>
         <!-- Exercises Per Day -->
@@ -61,15 +59,13 @@
             id="exercisesPerDay"
             type="number"
             on:input={updateStore}
-            class="w-1/3 p-1 text-xs border rounded-md" 
+            class="w-1/3 p-1 text-xs border rounded-md"
           />
         </div>
       </div>
     </div>
     <!-- Templates -->
-    <div
-      class="w-1/4 p-4 bg-bg"
-    >
+    <div class="w-1/4 p-4 bg-bg">
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Templates
       </h2>
@@ -82,9 +78,7 @@
       <span>Saved Programs</span>
     </div>
     <!-- Exercise Picker -->
-    <div
-      class="w-1/4 p-4 bg-bg"
-    >
+    <div class="w-1/4 p-4 bg-bg">
       <h2 class="text-center text-sm border-b-2 border-opacity-50">
         Exercise Picker
       </h2>
@@ -97,9 +91,7 @@
       <span>Box for Options</span>
     </div>
     <!-- Options -->
-    <div
-      class="w-1/4 p-4 bg-bg"
-    >
+    <div class="w-1/4 p-4 bg-bg">
       <h2 class="text-center text-sm border-b-2 border-opacity-50">Options</h2>
       <span>Save Program</span>
       <br />

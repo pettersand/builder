@@ -9,7 +9,7 @@
   import CellBlock from "./blocks/CellBlock.svelte";
   import { generateBlocksAndRows } from "./blocks/BlockUtils";
   import programOptions from "../../../stores/programOptionsStore";
-  
+
   export let level: Level;
   let activeOption = "newProgram"; //
 
@@ -39,11 +39,9 @@
   });
 </script>
 
-<div
-  class="flex flex-col items-start border rounded-tl-md border-2 bg-bg2"
->
+<div class="flex flex-col items-start border rounded-tl-md border-2 bg-bg2">
   {#each rows as row}
-    <div class="flex flex-row items-start">
+    <div class="flex flex-row w-full items-start">
       {#each row as block}
         {#if block.type === "Start"}
           <Start label={block.label} />

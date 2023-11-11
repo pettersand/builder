@@ -13,7 +13,6 @@
   import BaseModal from "../components/BaseModal.svelte";
   import globalStore from "../stores/globalStore";
   import modalStore from "../stores/modalStore";
-  import themeStore from "../stores/themeStore";
   import { builderState } from "../stores/builderStore";
   import type { Level } from "../types/index";
   import type { MainComponentMap, OptionsComponentMap } from "../types/index";
@@ -59,17 +58,12 @@
     modalStore.closeModal();
   };
 
-  // Function to capitalize the first letter of each word in a string
-  function capitalizeFirstLetter(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   onMount(() => {
-    globalStore.setCurrentPage("Builder"); // Set the current page to 'Builder'
+    globalStore.setCurrentPage("Builder");
   });
 </script>
 
-<main class="flex flex-grow flex-col h-screen">
+<main class="flex flex-grow flex-col max-h-screen">
   <div class="flex p-2 bg-bg custom-border-bottom">
     <OptionsContent bind:activeOption {optionToOptionsComponent} />
   </div>
@@ -94,6 +88,5 @@
   {/if}
 </main>
 
-<!-- Modal styles -->
 <style>
 </style>
