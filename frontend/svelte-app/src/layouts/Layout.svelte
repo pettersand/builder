@@ -159,12 +159,14 @@
     <div
       class="flex flex-col justify-between items-start custom-border-right bg-bg"
     >
-      <div class="flex flex-col items-start gap-4 w-full custom-border-bottom">
+      <div class="flex flex-col items-start w-full custom-border-bottom">
         <button class="text-gray-400 icon-label"
           ><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button
         >
         <button
-          class="icon-label hover:bg-card"
+          class="icon-label hover:bg-card {currentView === 'Dashboard'
+            ? 'bg-accent2 font-bold'
+            : ''}"
           on:click={() => (currentView = "Dashboard")}
           ><Icon
             icon="clarity:dashboard-solid"
@@ -173,7 +175,9 @@
           />Dashboard</button
         >
         <button
-          class="icon-label hover:bg-card"
+          class="icon-label hover:bg-card {currentView === 'Builder'
+            ? 'bg-accent2 font-bold'
+            : ''}"
           on:click={() => (currentView = "Builder")}
           ><Icon
             icon="ion:hammer-sharp"
