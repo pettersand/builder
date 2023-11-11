@@ -34,7 +34,7 @@
 
 </script>
 
-<div class="flex flex-col items-start gap-4 w-full flex-grow">
+<div class="flex flex-col items-start w-full flex-grow">
   {#if componentMap[currentView]}
     <svelte:component this={componentMap[currentView]} />
   {/if}

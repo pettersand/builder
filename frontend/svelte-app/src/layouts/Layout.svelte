@@ -160,7 +160,7 @@
       class="flex flex-col justify-between items-start custom-border-right bg-bg"
     >
       <div class="flex flex-col items-start w-full custom-border-bottom">
-        <button class="text-gray-400 icon-label"
+        <button class="text-gray-400 icon-label hover:bg-card"
           ><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button
         >
         <button
@@ -186,22 +186,22 @@
           />Builder</button
         >
 
-        <button class="text-gray-400 icon-label"
+        <button class="text-gray-400 icon-label hover:bg-card"
           ><Icon icon="healthicons:exercise-weights" width="25" height="25" />
           Workout</button
         >
-        <button class="text-gray-400 icon-label"
+        <button class="text-gray-400 icon-label hover:bg-card"
           ><Icon
             icon="material-symbols:manage-accounts"
             width="25"
             height="25"
           />PT Dashboard</button
         >
-        <button class="text-gray-400 icon-label"
+        <button class="text-gray-400 icon-label hover:bg-card"
           ><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button
         >
       </div>
-      <div class="flex flex-col items-start gap-4 p-4 w-full flex-grow">
+      <div class="flex flex-col items-start w-full flex-grow">
         <SubOptions />
       </div>
 

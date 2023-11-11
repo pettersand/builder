@@ -195,3 +195,10 @@ CSS structure, Tailwind Config, Styling for all pages, toggle
 
 Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly.
 
+### Created:
+
+1. builderStore.ts
+
+### Reworked:
+
+Sub Options handling,
