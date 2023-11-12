@@ -209,3 +209,19 @@ Sub Options handling, Moved Builder Options handling, simplified builder process
 
 - Finish Simple program template case
 - Work on saving templates, browsing, etc
+
+## 12/11-23
+
+Back to work on features rather than just ui changes. Making last changes now, then finishing the branch. Ended up feeling like the user experience was not up to par, reworking to be more linear and clear for both solo and pro use. Spent the day drawing, planning, brainstorming.
+
+### Brainstorm:
+
+After really defining user stories I have decided to rework the Builder for the fitness professional. Keeping it very simple for the solo user, but adding a more step by step approach for fitness professionals, bringing in data from clients, and a more professional setup. Solo users will have a step by step process with more hand-holding, suggestions, etc.
+
+### Created:
+
+- Directory for solo / professional
+- SoloMain, SoloOptions.svelte
+- ProMainSimple, ProOptionsSimple.svelte
+- SimpleClient.svelte (step 1)
+- Miro Brainstorm MindMap

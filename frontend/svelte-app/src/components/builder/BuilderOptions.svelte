@@ -28,6 +28,15 @@
     Simple Program
   </button>
   <button
+    class={`icon-label whitespace-nowrap hover:bg-card ${
+      state.activeOption === "newProgram" ? "bg-card font-bold" : ""
+    }`}
+    on:click={() => setActiveOption("newProgram")}
+  >
+    <Icon icon="mingcute:file-new-fill" width="25" height="25" />
+    Pro Simple
+  </button>
+  <button
     class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
       state.activeOption === "editProgram" ? "bg-card font-bold" : ""
     }`}

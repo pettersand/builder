@@ -35,9 +35,15 @@
       class="flex flex-row w-full justify-evenly custom-border-bottom text-lg font-bold"
     >
       <button class="bg-card w-full p-2 custom-border-right hover:bg-card">
-        1. Template
+        1. Client
       </button>
-      <button class=" w-full p-2 hover:bg-card"> 2. Program </button>
+      <button class="w-full p-2 custom-border-right hover:bg-card">
+        2. Template
+      </button>
+      <button class=" w-full p-2 custom-border-right hover:bg-card">
+        3. Program
+      </button>
+      <button class=" w-full p-2 hover:bg-card"> 4. Edit </button>
     </div>
 
     <!-- Options bottom container -->
@@ -58,7 +64,7 @@
               id="trainingDays"
               type="number"
               on:input={updateStore}
-              class="w-1/3 p-1 text-xs border rounded-md"
+              class="w-1/3 p-1 text-sm border rounded-md bg-bg2"
             />
           </div>
           <!-- Exercises Per Day -->
@@ -69,7 +75,7 @@
               id="exercisesPerDay"
               type="number"
               on:input={updateStore}
-              class="w-1/3 p-1 text-xs border rounded-md"
+              class="w-1/3 p-1 text-sm border rounded-md bg-bg2"
             />
           </div>
         </div>
