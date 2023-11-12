@@ -225,3 +225,13 @@ After really defining user stories I have decided to rework the Builder for the 
 - ProMainSimple, ProOptionsSimple.svelte
 - SimpleClient.svelte (step 1)
 - Miro Brainstorm MindMap
+- ProBuilder.svelte, ProSubOptions.svelte
+
+### Reworked:
+
+I've decided to separate Solo and Pro user components completely, rather than relying on conditional rendering down the line. Keeping concerns isolated to each user role.
+
+### Next Session:
+
+- Populate ProSubOptions.svelte
+- Populate ProBuilder.svelte + Components

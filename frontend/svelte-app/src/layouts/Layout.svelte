@@ -11,13 +11,15 @@
   import TopBar from "../components/TopBar.svelte";
   import ErrorModal from "../components/ErrorModal.svelte";
   import SubOptions from "./SubOptions.svelte";
+  import ProBuilder from "../pages/ProBuilder.svelte";
+  import ProSubOptions from "./ProSubOptions.svelte";
 
   // Store imports
   import themeStore from "../stores/themeStore";
   import globalStore from "../stores/globalStore";
   import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
-  import { user } from "../stores/userStore";
+  import { user as userStore } from "../stores/userStore";
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
@@ -28,6 +30,7 @@
 
   // Local state
   let currentView = localStorage.getItem("currentPage") || "Dashboard";
+  let currentUserRole = "Solo";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
 
   // Lifecycle hooks
@@ -37,10 +40,17 @@
       currentAuth = state.isAuthenticated;
     });
 
+    // Subscribe to userStore for user role
+    const unsubscribeUser = userStore.subscribe(($user) => {
+      currentUserRole =
+        $user.roles && $user.roles.includes("Trainer") ? "Trainer" : "Solo";
+    });
+
     checkAuthStatus();
 
     return () => {
       unsubscribeGlobal();
+      unsubscribeUser();
     };
   });
 
@@ -54,14 +64,14 @@
       if (response.data.isAuthenticated) {
         console.log("Authenticated with roles: ", response.data.roles);
         globalStore.setAuthenticationStatus(true);
-        user.set({
+        userStore.set({
           isLoggedIn: true,
           roles: response.data.roles,
         });
       } else {
         console.log("Not authenticated");
         globalStore.setAuthenticationStatus(false);
-        user.set({ isLoggedIn: false, roles: [] });
+        userStore.set({ isLoggedIn: false, roles: [] });
       }
     } catch (error) {
       console.error("Error checking authentication status:", error);
@@ -187,35 +197,53 @@
             height="25"
           />Dashboard</button
         >
-        <button
-          class="icon-label hover:bg-card {currentView === 'Builder'
-            ? 'bg-accent2 font-bold'
-            : ''}"
-          on:click={() => (currentView = "Builder")}
-          ><Icon
-            icon="ion:hammer-sharp"
-            width="25"
-            height="25"
-          />Builder</button
-        >
-
         <button class="text-gray-400 icon-label hover:bg-card"
           ><Icon icon="healthicons:exercise-weights" width="25" height="25" />
           Workout</button
         >
-        <button class="text-gray-400 icon-label hover:bg-card"
-          ><Icon
-            icon="material-symbols:manage-accounts"
-            width="25"
-            height="25"
-          />PT Dashboard</button
-        >
-        <button class="text-gray-400 icon-label hover:bg-card"
-          ><Icon icon="ion:calendar-sharp" width="25" height="25" />PT Session</button
-        >
+        {#if currentUserRole === "Trainer"}
+          <button
+            class="icon-label hover:bg-card {currentView === 'ProBuilder'
+              ? 'bg-accent2 font-bold'
+              : ''}"
+            on:click={() => (currentView = "ProBuilder")}
+            ><Icon
+              icon="ion:hammer-sharp"
+              width="25"
+              height="25"
+            />Builder</button
+          >
+          <button class="text-gray-400 icon-label hover:bg-card"
+            ><Icon
+              icon="material-symbols:manage-accounts"
+              width="25"
+              height="25"
+            />Management</button
+          >
+          <button class="text-gray-400 icon-label hover:bg-card"
+            ><Icon icon="ion:calendar-sharp" width="25" height="25" />
+            Session</button
+          >
+        {:else}
+          <button
+            class="icon-label hover:bg-card {currentView === 'Builder'
+              ? 'bg-accent2 font-bold'
+              : ''}"
+            on:click={() => (currentView = "Builder")}
+            ><Icon
+              icon="ion:hammer-sharp"
+              width="25"
+              height="25"
+            />Builder</button
+          >
+        {/if}
       </div>
       <div class="flex flex-col items-start w-full flex-grow">
-        <SubOptions />
+        {#if currentUserRole === "Trainer"}
+          <ProSubOptions />
+        {:else}
+          <SubOptions />
+        {/if}
       </div>
 
       <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-top">
@@ -229,6 +257,8 @@
       <Dashboard />
     {:else if currentView === "Builder"}
       <Builder />
+    {:else if currentView === "ProBuilder"}
+      <ProBuilder />
     {/if}
     <slot />
   </main>
