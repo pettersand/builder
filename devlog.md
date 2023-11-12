@@ -1,3 +1,93 @@
+## 12/11-23
+
+Back to work on features rather than just ui changes. Making last changes now, then finishing the branch. Ended up feeling like the user experience was not up to par, reworking to be more linear and clear for both solo and pro use. Spent the day drawing, planning, brainstorming.
+
+### Brainstorm:
+
+After really defining user stories I have decided to rework the Builder for the fitness professional. Keeping it very simple for the solo user, but adding a more step by step approach for fitness professionals, bringing in data from clients, and a more professional setup. Solo users will have a step by step process with more hand-holding, suggestions, etc.
+
+### Created:
+
+- Directory for solo / professional
+- SoloMain, SoloOptions.svelte
+- ProMainSimple, ProOptionsSimple.svelte
+- SimpleClient.svelte (step 1)
+- Miro Brainstorm MindMap
+- ProBuilder.svelte, ProSubOptions.svelte
+
+### Reworked:
+
+I've decided to separate Solo and Pro user components completely, rather than relying on conditional rendering down the line. Keeping concerns isolated to each user role.
+
+### Next Session:
+
+- Populate ProSubOptions.svelte
+- Populate ProBuilder.svelte + Components
+- Start with client sheet
+- Create "clients" and add to Trainer
+
+## 11/11-23
+
+Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly. I ended up reworking the structure for building a template and program, organizing it in a cleaner way. Separated Simple programs from Advanced programs, removed intermediate - will allow advanced program builder to be highly customizable.
+
+### Created:
+
+1. builderStore.ts
+2. FileOptions.svelte
+3. SimpleProgramOptions.svelte
+
+### Reworked:
+
+Sub Options handling, Moved Builder Options handling, simplified builder process
+
+### Next Session:
+
+- Finish Simple program template case
+- Work on saving templates, browsing, etc
+
+## 10/11-23
+
+Working on improving the structure of my app. Due to lots of mistakes made in the initial setup, i am considering restarting and just copying over the components after better setting up the project.
+
+### Issues:
+
+custom CSS was being applied above imports, something wrong with processing of css and postcss files. Removed complexity, and will build up again. At least its working now.
+
+### Reworked:
+
+CSS structure, Tailwind Config, Styling for all pages, toggle
+
+### Next Session:
+
+- Code options handling
+- Builder component styling
+- Refactor components
+
+## 09/11-23
+
+Back in business after taking time to focus on more pressing projects. I've learned some new things since I last worked on this project, and Im taking that with me. I will be refactoring the app and reworking the layout / design of it, while ensuring to use tailwind in a better way, playing on its strengths.
+
+### Created:
+
+Tailwind.main.css for base styles.
+
+### Reworked:
+
+Layout.svelte, Dashboard.svelte + components
+
+### Next Session:
+
+- Refactor theme toggle
+- Uniform tailwind usage
+- Reusable components to svelte
+- Common styling to tailwind.main.css
+
+## 10/10-23
+
+Took some time to focus on my CV and job application process. Watch this space. Full focus this week.
+
+# Old entries below, in reverse order
+
 ## 26-27/08-23
 
 Initial setup of Django, Svelte, Tailwind, and Docker.
@@ -149,91 +239,3 @@ Next I will implement/research authentication requirements and rate limits for A
 Found a bug in step1 registration and user authentication. Squashed it.
 Will implement permissions, rate limiting, etc at a later point. More research needed on security best practices.
 Instead continued work on showing the Official Templates on the builder page.
-
-## 10/10-23
-
-Took some time to focus on my CV and job application process. Watch this space. Full focus this week.
-
-## 09/11-23
-
-Back in business after taking time to focus on more pressing projects. I've learned some new things since I last worked on this project, and Im taking that with me. I will be refactoring the app and reworking the layout / design of it, while ensuring to use tailwind in a better way, playing on its strengths.
-
-### Created:
-
-Tailwind.main.css for base styles.
-
-### Reworked:
-
-Layout.svelte, Dashboard.svelte + components
-
-### Next Session:
-
-- Refactor theme toggle
-- Uniform tailwind usage
-- Reusable components to svelte
-- Common styling to tailwind.main.css
-
-## 10/11-23
-
-Working on improving the structure of my app. Due to lots of mistakes made in the initial setup, i am considering restarting and just copying over the components after better setting up the project.
-
-### Issues:
-
-custom CSS was being applied above imports, something wrong with processing of css and postcss files. Removed complexity, and will build up again. At least its working now.
-
-### Reworked:
-
-CSS structure, Tailwind Config, Styling for all pages, toggle
-
-### Next Session:
-
-- Code options handling
-- Builder component styling
-- Refactor components
-
-## 11/11-23
-
-Continuing the UI overhaul. Aiming to set more clearly defined coloring rules, refactoring code, and reworking the options rendering to affect states properly. I ended up reworking the structure for building a template and program, organizing it in a cleaner way. Separated Simple programs from Advanced programs, removed intermediate - will allow advanced program builder to be highly customizable.
-
-### Created:
-
-1. builderStore.ts
-2. FileOptions.svelte
-3. SimpleProgramOptions.svelte
-
-### Reworked:
-
-Sub Options handling, Moved Builder Options handling, simplified builder process
-
-### Next Session:
-
-- Finish Simple program template case
-- Work on saving templates, browsing, etc
-
-## 12/11-23
-
-Back to work on features rather than just ui changes. Making last changes now, then finishing the branch. Ended up feeling like the user experience was not up to par, reworking to be more linear and clear for both solo and pro use. Spent the day drawing, planning, brainstorming.
-
-### Brainstorm:
-
-After really defining user stories I have decided to rework the Builder for the fitness professional. Keeping it very simple for the solo user, but adding a more step by step approach for fitness professionals, bringing in data from clients, and a more professional setup. Solo users will have a step by step process with more hand-holding, suggestions, etc.
-
-### Created:
-
-- Directory for solo / professional
-- SoloMain, SoloOptions.svelte
-- ProMainSimple, ProOptionsSimple.svelte
-- SimpleClient.svelte (step 1)
-- Miro Brainstorm MindMap
-- ProBuilder.svelte, ProSubOptions.svelte
-
-### Reworked:
-
-I've decided to separate Solo and Pro user components completely, rather than relying on conditional rendering down the line. Keeping concerns isolated to each user role.
-
-### Next Session:
-
-- Populate ProSubOptions.svelte
-- Populate ProBuilder.svelte + Components
-- Start with client sheet
-- Create "clients" and add to Trainer
