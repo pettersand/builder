@@ -235,3 +235,5 @@ I've decided to separate Solo and Pro user components completely, rather than re
 
 - Populate ProSubOptions.svelte
 - Populate ProBuilder.svelte + Components
+- Start with client sheet
+- Create "clients" and add to Trainer
