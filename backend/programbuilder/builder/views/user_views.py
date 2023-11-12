@@ -12,13 +12,17 @@ from builder.serializers import Step1Serializer, Step2Serializer, LoginSerialize
 
 class CheckAuthStatus(APIView):
     def get(self, request):
-        print("Started Auth")
+        response_data = {"isAuthenticated": request.user.is_authenticated}
         if request.user.is_authenticated:
-            print("true")
-            return JsonResponse({"isAuthenticated": True})
-        else:
-            print("false")
-            return JsonResponse({"isAuthenticated": False})
+            user_roles = (
+                UserRole.objects.filter(user=request.user)
+                .select_related("role")
+                .values_list("role__name", flat=True)
+            )
+            print("Roles", user_roles)
+            response_data["roles"] = list(user_roles)
+            print("Response Data", response_data)
+        return JsonResponse(response_data)
 
 
 class LogoutView(APIView):
@@ -142,9 +146,14 @@ class LoginView(APIView):
 
             if user:
                 login(request, user)
-                print("Logged in")
+                user_roles = (
+                    UserRole.objects.filter(user=user)
+                    .select_related("role")
+                    .values_list("role__name", flat=True)
+                )
+                roles = list(user_roles)
                 return Response(
-                    {"message": "Login successful"},
+                    {"message": "Login successful", "roles": roles},
                     status=status.HTTP_200_OK,
                 )
             else:

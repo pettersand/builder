@@ -17,6 +17,7 @@
   import globalStore from "../stores/globalStore";
   import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
+  import { user } from "../stores/userStore";
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
@@ -51,17 +52,19 @@
       console.log("Started CheckAuth");
       const response = await checkAuthentication();
       if (response.data.isAuthenticated) {
-        console.log("true");
+        console.log("Authenticated with roles: ", response.data.roles);
         globalStore.setAuthenticationStatus(true);
+        user.set({
+          isLoggedIn: true,
+          roles: response.data.roles,
+        });
       } else {
-        console.log("false");
+        console.log("Not authenticated");
         globalStore.setAuthenticationStatus(false);
+        user.set({ isLoggedIn: false, roles: [] });
       }
     } catch (error) {
-      console.error(
-        "An error occurred while checking authentication status:",
-        error
-      );
+      console.error("Error checking authentication status:", error);
     }
   }
 

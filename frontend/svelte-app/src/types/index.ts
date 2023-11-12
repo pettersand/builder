@@ -30,16 +30,21 @@ export type Step1Data = {
   email: string;
   password: string;
   confirmPassword: string;
-}
+};
 
 export type Step2Data = {
-  firstName: string,
-  lastName: string,
-  dob: string,
-  country: string,
-  gender: string,
-  bioSex: string,
-  isTrainer: boolean,
-  hasTrainer: boolean,
-  terms: boolean,
-}
+  firstName: string;
+  lastName: string;
+  dob: string;
+  country: string;
+  gender: string;
+  bioSex: string;
+  isTrainer: boolean;
+  hasTrainer: boolean;
+  terms: boolean;
+};
+
+export type UserType = {
+  isLoggedIn: boolean;
+  roles: string[];
+};

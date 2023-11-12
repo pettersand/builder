@@ -10,6 +10,7 @@
   import { registrationStore } from "../stores/registrationStore";
   import type { Step1Data, Step2Data } from "../stores/registrationStore";
   import { showMessage } from "../stores/messageStore";
+  import { user } from "../stores/userStore";
 
   // Utility function imports
   import {
@@ -236,6 +237,10 @@
     try {
       const data = await loginUser(payload);
       globalStore.setAuthenticationStatus(true);
+      user.set({
+        isLoggedIn: true,
+        roles: data.roles,
+      });
       console.log("Login successful", data);
       showMessage("Login successful!", "confirmation");
       modalStore.closeModal();
