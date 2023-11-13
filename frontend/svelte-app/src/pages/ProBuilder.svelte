@@ -57,7 +57,7 @@
   </div>
   <MainContent {activeOption} {optionToMainComponent} />
 
-  <!-- Modal HTML structure -->
+  <!-- Modal -->
   {#if showModal && modalType === "levelSelect"}
     <BaseModal {modalContent} {onClose} {onConfirm}>
       {#each ["Beginner", "Intermediate", "Expert"] as level}

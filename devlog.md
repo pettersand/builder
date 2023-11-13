@@ -8,6 +8,9 @@ Made currentPage handling more strict.
 
 ### Created:
 
+- clientStore.ts
+- proBuilderStore.ts
+
 ### Worked on:
 
 - ProOptionsSimple
