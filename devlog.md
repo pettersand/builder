@@ -12,6 +12,7 @@ Made currentPage handling more strict.
 - proBuilderStore.ts
 - trainer_client.py model
 - trainer_views.py
+- trainer_serializer.py
 
 ### Worked on:
 
