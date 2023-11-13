@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { clients as clientStore } from "../../../../../stores/clientStore";
+  import {
+    clients as clientStore,
+    activeClient,
+  } from "../../../../../stores/clientStore";
 
   let searchTerm = "";
 
@@ -12,6 +15,16 @@
     });
   });
 
+  const setActiveClient = (clientObj) => {
+    activeClient.set(clientObj.client);
+  };
+
+  const handleKeyPress = (event, clientObj) => {
+    if (event.key === "Enter" || event.key === " ") {
+      setActiveClient(clientObj);
+    }
+  };
+
   $: filteredClients = clients.filter((clientObj) =>
     clientObj.client.first_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -21,37 +34,62 @@
   <div
     class="flex flex-row w-full justify-evenly custom-border-bottom text-lg font-bold"
   >
-    <button class="bg-card w-full p-2 custom-border-right hover:bg-card">
+    <button class="bg-card w-full p-1 custom-border-right hover:bg-card">
       1. Setup
     </button>
-    <button class="w-full p-2 custom-border-right hover:bg-card">
+    <button class="w-full p-1 custom-border-right hover:bg-card">
       2. Template
     </button>
-    <button class=" w-full p-2 custom-border-right hover:bg-card">
+    <button class=" w-full p-1 custom-border-right hover:bg-card">
       3. Program
     </button>
-    <button class=" w-full p-2 hover:bg-card"> 4. Final </button>
+    <button class=" w-full p-1 hover:bg-card"> 4. Final </button>
   </div>
 
   <!-- Main Container -->
   <div class="flex flex-row h-full w-full justify-center">
     <!-- Client Options Container -->
-    <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
-      <span class="font-bold">Client</span>
-      <input
-        type="text"
-        bind:value={searchTerm}
-        placeholder="Search clients..."
-        class="mb-1 p-2 border rounded"
-      />
+    <div
+      class="flex flex-row justify-between w-1/3 gap-4 p-4 custom-border-right"
+    >
+      <div class="flex flex-col gap-4">
+        {#if $activeClient}
+          <span class="font-bold">Active Client</span>
+          <p class="text-lg">
+            {$activeClient.first_name}
+            {$activeClient.last_name}
+          </p>
+          <p>
+            {$activeClient.email}
+          </p>
+          <p>Age, Gender, {$activeClient.status}</p>
+        {:else}
+          <span class="font-bold">Select Client</span>
+        {/if}
+      </div>
 
-      <div class="overflow-y-auto max-h-full">
-        {#each filteredClients as clientObj}
-          <div class="p-1 hover:bg-gray-200">
-            {clientObj.client.first_name}
-            {clientObj.client.last_name}
-          </div>
-        {/each}
+      <div class="gap-1 overflow-y-scroll w-full border">
+        <input
+          type="text"
+          bind:value={searchTerm}
+          placeholder="Search clients..."
+          class="p-1 border rounded w-full"
+        />
+
+        <div
+          class="overflow-y-auto max-h-60 divide-y divide-gray-300 zebra-striped"
+        >
+          {#each filteredClients as clientObj}
+            <div
+              class="p-2 cursor-pointer"
+              on:click={() => setActiveClient(clientObj)}
+              on:keydown={(event) => handleKeyPress(event, clientObj)}
+            >
+              {clientObj.client.first_name}
+              {clientObj.client.last_name}
+            </div>
+          {/each}
+        </div>
       </div>
     </div>
 
