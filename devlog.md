@@ -1,3 +1,7 @@
+## 13/11-23
+
+Tidying up some state stores and building up Pro Builder from the ground up.
+
 ## 12/11-23
 
 Back to work on features rather than just ui changes. Making last changes now, then finishing the branch. Ended up feeling like the user experience was not up to par, reworking to be more linear and clear for both solo and pro use. Spent the day drawing, planning, brainstorming.

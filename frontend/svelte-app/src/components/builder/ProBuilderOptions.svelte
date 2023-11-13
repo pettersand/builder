@@ -20,12 +20,22 @@
   >
   <button
     class={`icon-label whitespace-nowrap hover:bg-card ${
-      state.activeOption === "newProgram" ? "bg-card font-bold" : ""
+      state.activeOption === "simplePro" ? "bg-card font-bold" : ""
     }`}
-    on:click={() => setActiveOption("newProgram")}
+    on:click={() => setActiveOption("simplePro")}
   >
     <Icon icon="mingcute:file-new-fill" width="25" height="25" />
-    Simple Program
+    Simple Builder
+  </button>
+
+  <button
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
+      state.activeOption === "advancedPro" ? "bg-card font-bold" : ""
+    }`}
+    on:click={() => setActiveOption("advancedPro")}
+  >
+    <Icon icon="clarity:note-edit-solid" width="25" height="25" />
+    Advanced Program
   </button>
   <button
     class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
@@ -38,11 +48,20 @@
   </button>
   <button
     class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
-      state.activeOption === "manageTemplates" ? "bg-card font-bold" : ""
+      state.activeOption === "managePrograms" ? "bg-card font-bold" : ""
     }`}
-    on:click={() => setActiveOption("manageTemplates")}
+    on:click={() => setActiveOption("managePrograms")}
   >
     <Icon icon="material-symbols:manage-search" width="25" height="25" />
     Programs
+  </button>
+  <button
+    class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
+      state.activeOption === "customizeVariables" ? "bg-card font-bold" : ""
+    }`}
+    on:click={() => setActiveOption("customizeVariables")}
+  >
+    <Icon icon="material-symbols:manage-search" width="25" height="25" />
+    Customize
   </button>
 </div>

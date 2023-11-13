@@ -12,7 +12,6 @@
   import ErrorModal from "../components/ErrorModal.svelte";
   import SubOptions from "./SubOptions.svelte";
   import ProBuilder from "../pages/ProBuilder.svelte";
-  import ProSubOptions from "./ProSubOptions.svelte";
 
   // Store imports
   import themeStore from "../stores/themeStore";
@@ -37,6 +36,7 @@
   onMount(() => {
     const unsubscribeGlobal = globalStore.subscribe((state) => {
       currentView = state.currentPage;
+      console.log("Current view in Layout:", currentView);
       currentAuth = state.isAuthenticated;
     });
 
@@ -211,7 +211,7 @@
               icon="ion:hammer-sharp"
               width="25"
               height="25"
-            />Builder</button
+            />ProBuilder</button
           >
           <button class="text-gray-400 icon-label hover:bg-card"
             ><Icon
@@ -239,11 +239,7 @@
         {/if}
       </div>
       <div class="flex flex-col items-start w-full flex-grow">
-        {#if currentUserRole === "Trainer"}
-          <ProSubOptions />
-        {:else}
-          <SubOptions />
-        {/if}
+        <SubOptions />
       </div>
 
       <div class="flex flex-col items-start gap-4 p-4 w-full custom-border-top">
