@@ -20,9 +20,9 @@
   >
   <button
     class={`icon-label whitespace-nowrap hover:bg-card ${
-      state.activeOption === "simplePro" ? "bg-card font-bold" : ""
+      state.activeOption === "newProgram" ? "bg-card font-bold" : ""
     }`}
-    on:click={() => setActiveOption("simplePro")}
+    on:click={() => setActiveOption("newProgram")}
   >
     <Icon icon="mingcute:file-new-fill" width="25" height="25" />
     Simple Builder
@@ -35,7 +35,7 @@
     on:click={() => setActiveOption("advancedPro")}
   >
     <Icon icon="clarity:note-edit-solid" width="25" height="25" />
-    Advanced Program
+    Advanced Builder
   </button>
   <button
     class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
