@@ -19,10 +19,12 @@
   import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
   import { user as userStore } from "../stores/userStore";
+  import { setClients } from "../stores/clientStore";
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
   import { checkAuthentication, logoutUser } from "../utilities/userAPI";
+  import { fetchTrainersClients } from "../utilities/clientAPI";
 
   // Icon imports
   import Icon from "@iconify/svelte";
@@ -59,6 +61,7 @@
     try {
       console.log("Started CheckAuth");
       const response = await checkAuthentication();
+
       if (response.data.isAuthenticated) {
         console.log("Authenticated with roles: ", response.data.roles);
         globalStore.setAuthenticationStatus(true);
@@ -66,6 +69,11 @@
           isLoggedIn: true,
           roles: response.data.roles,
         });
+        if (response.data.roles.includes("Trainer")) {
+          const clients = await fetchTrainersClients();
+          console.log("Trainer clients:", clients);
+          setClients(clients);
+        }
       } else {
         console.log("Not authenticated");
         globalStore.setAuthenticationStatus(false);

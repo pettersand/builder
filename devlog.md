@@ -1,6 +1,6 @@
 ## 13/11-23
 
-Tidying up some state stores and building up Pro Builder from the ground up.
+Tidying up some state stores and building up Pro Builder from the ground up. Setup backend model, view, serializer and url for getting client information and client list. To be used in the building process for Trainers.
 
 ### Reworked:
 
@@ -13,6 +13,7 @@ Made currentPage handling more strict.
 - trainer_client.py model
 - trainer_views.py
 - trainer_serializer.py
+- clientAPI.py
 
 ### Worked on:
 
