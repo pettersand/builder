@@ -10,6 +10,8 @@ Made currentPage handling more strict.
 
 - clientStore.ts
 - proBuilderStore.ts
+- trainer_client.py model
+- trainer_views.py
 
 ### Worked on:
 

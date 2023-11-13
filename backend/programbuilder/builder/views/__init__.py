@@ -6,3 +6,4 @@ from .user_views import (
     CheckAuthStatus,
 )
 from .official_templates_views import OfficialTemplateList
+from .trainer_views import TrainerClientsView
