@@ -35,7 +35,7 @@
     on:click={() => setActiveOption("advancedPro")}
   >
     <Icon icon="clarity:note-edit-solid" width="25" height="25" />
-    Advanced Builder
+    Advanced Program
   </button>
   <button
     class={`icon-label text-gray-400 whitespace-nowrap hover:bg-card ${
