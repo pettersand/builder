@@ -28,15 +28,13 @@
   import Icon from "@iconify/svelte";
 
   // Local state
-  let currentView = localStorage.getItem("currentPage") || "Dashboard";
+
   let currentUserRole = "Solo";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
 
   // Lifecycle hooks
   onMount(() => {
     const unsubscribeGlobal = globalStore.subscribe((state) => {
-      currentView = state.currentPage;
-      console.log("Current view in Layout:", currentView);
       currentAuth = state.isAuthenticated;
     });
 
@@ -187,10 +185,11 @@
           ><Icon icon="ri:admin-fill" width="25" height="25" />Admin</button
         >
         <button
-          class="icon-label hover:bg-card {currentView === 'Dashboard'
+          class="icon-label hover:bg-card {$globalStore.currentPage ===
+          'Dashboard'
             ? 'bg-accent2 font-bold'
             : ''}"
-          on:click={() => (currentView = "Dashboard")}
+          on:click={() => globalStore.setCurrentPage("Dashboard")}
           ><Icon
             icon="clarity:dashboard-solid"
             width="25"
@@ -203,10 +202,11 @@
         >
         {#if currentUserRole === "Trainer"}
           <button
-            class="icon-label hover:bg-card {currentView === 'ProBuilder'
+            class="icon-label hover:bg-card {$globalStore.currentPage ===
+            'ProBuilder'
               ? 'bg-accent2 font-bold'
               : ''}"
-            on:click={() => (currentView = "ProBuilder")}
+            on:click={() => globalStore.setCurrentPage("ProBuilder")}
             ><Icon
               icon="ion:hammer-sharp"
               width="25"
@@ -226,10 +226,11 @@
           >
         {:else}
           <button
-            class="icon-label hover:bg-card {currentView === 'Builder'
+            class="icon-label hover:bg-card {$globalStore.currentPage ===
+            'Builder'
               ? 'bg-accent2 font-bold'
               : ''}"
-            on:click={() => (currentView = "Builder")}
+            on:click={() => globalStore.setCurrentPage("Builder")}
             ><Icon
               icon="ion:hammer-sharp"
               width="25"
@@ -249,11 +250,11 @@
         <button class="text-gray-400">Documentation</button>
       </div>
     </div>
-    {#if currentView === "Dashboard"}
+    {#if $globalStore.currentPage === "Dashboard"}
       <Dashboard />
-    {:else if currentView === "Builder"}
+    {:else if $globalStore.currentPage === "Builder"}
       <Builder />
-    {:else if currentView === "ProBuilder"}
+    {:else if $globalStore.currentPage === "ProBuilder"}
       <ProBuilder />
     {/if}
     <slot />
