@@ -52,7 +52,7 @@
     <div
       class="flex flex-row justify-between w-1/3 gap-4 p-4 custom-border-right"
     >
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 w-1/2">
         {#if $activeClient}
           <span class="font-bold">Active Client</span>
           <p class="text-lg">
@@ -68,7 +68,7 @@
         {/if}
       </div>
 
-      <div class="gap-1 overflow-y-scroll w-full border">
+      <div class="gap-1 overflow-y-scroll w-1/2 border">
         <input
           type="text"
           bind:value={searchTerm}
