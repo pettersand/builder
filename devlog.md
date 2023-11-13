@@ -9,7 +9,7 @@ Made currentPage handling more strict. Created base layout for first step in Pro
 ### Created:
 
 - clientStore.ts
-- proBuilderStore.ts
+- proBuilderStore.ts - !! Removed this and integrated all in builderStore.ts instead
 - trainer_client.py model
 - trainer_views.py
 - trainer_serializer.py
@@ -18,8 +18,16 @@ Made currentPage handling more strict. Created base layout for first step in Pro
 ### Worked on:
 
 - ProOptionsSimple
-- ProMainSimple
 - SimpleClientOptions
+- Client data handling
+
+### Next Session:
+
+- Create model, view, serializer, url for client data
+- Populate model for clients
+- Create design for SimpleClientMain.svelte
+- Integrate client data into Main containers
+- If time, start on editing and saving of data - and save + continue for step 2 Templates
 
 ## 12/11-23
 
