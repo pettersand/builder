@@ -9,17 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TrainerSerializer(serializers.ModelSerializer):
-    trainer = UserSerializer(read_only=True)
     client = UserSerializer(read_only=True)
 
     class Meta:
         model = TrainerClient
         fields = [
-            "id",
-            "trainer",
             "client",
             "status",
-            "consent",
-            "created_at",
-            "updated_at",
         ]

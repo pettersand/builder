@@ -4,7 +4,7 @@ Tidying up some state stores and building up Pro Builder from the ground up. Set
 
 ### Reworked:
 
-Made currentPage handling more strict.
+Made currentPage handling more strict. Created base layout for first step in Pro Builder.
 
 ### Created:
 
