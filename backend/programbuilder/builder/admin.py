@@ -6,6 +6,7 @@ from .models import (
     UserRole,
     OfficialBeginnerTemplate,
     TrainerClient,
+    AccountMetrics,
 )
 
 admin.site.register(User)
@@ -14,3 +15,4 @@ admin.site.register(Role)
 admin.site.register(UserRole)
 admin.site.register(OfficialBeginnerTemplate)
 admin.site.register(TrainerClient)
+admin.site.register(AccountMetrics)

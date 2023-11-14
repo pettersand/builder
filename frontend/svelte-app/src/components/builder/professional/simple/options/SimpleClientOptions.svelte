@@ -81,7 +81,7 @@
         >
           {#each filteredClients as clientObj}
             <div
-              class="p-2 cursor-pointer"
+              class="p-1 cursor-pointer"
               on:click={() => setActiveClient(clientObj)}
               on:keydown={(event) => handleKeyPress(event, clientObj)}
             >

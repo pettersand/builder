@@ -1,3 +1,7 @@
+## 14/11-23
+
+Continuing development on client setup, aka step1 of simple builder.
+
 ## 13/11-23
 
 Tidying up some state stores and building up Pro Builder from the ground up. Setup backend model, view, serializer and url for getting client information and client list. To be used in the building process for Trainers.
