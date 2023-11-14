@@ -1,6 +1,20 @@
 ## 14/11-23
 
-Continuing development on client setup, aka step1 of simple builder.
+Continuing development on client setup, aka step1 of simple builder. Spent the day working on a python program to fetch price data so I can sell an old album collection. So not as much time for development of Builder today. Set up the basis for more client data, and will continute working on that tomorrow.
+
+### Created:
+
+- client_note.py
+- program.py
+
+### Next Session:
+
+- Modify client_note model to practice data migrations
+- Create view, serializer, url for client data
+- Populate model for clients
+- Create design for SimpleClientMain.svelte
+- Integrate client data into Main containers
+- If time, start on editing and saving of data - and save + continue for step 2 Templates
 
 ## 13/11-23
 
