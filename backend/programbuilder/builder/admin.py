@@ -7,6 +7,8 @@ from .models import (
     OfficialBeginnerTemplate,
     TrainerClient,
     AccountMetrics,
+    ClientNote,
+    Program,
 )
 
 admin.site.register(User)
@@ -16,3 +18,5 @@ admin.site.register(UserRole)
 admin.site.register(OfficialBeginnerTemplate)
 admin.site.register(TrainerClient)
 admin.site.register(AccountMetrics)
+admin.site.register(ClientNote)
+admin.site.register(Program)

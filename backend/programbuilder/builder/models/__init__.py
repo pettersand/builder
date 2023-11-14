@@ -6,3 +6,5 @@ from .user_profile import UserProfile
 from .official_templates import OfficialBeginnerTemplate
 from .user_template_selection import UserTemplateSelection
 from .trainer_client import TrainerClient
+from .client_note import ClientNote
+from .program import Program
