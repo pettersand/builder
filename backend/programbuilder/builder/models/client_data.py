@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.postgres.fields import JSONField
 from .trainer_client import TrainerClient
 
 
@@ -99,6 +100,30 @@ class ClientInjuries(models.Model):
 
     def __str__(self):
         return f"{self.injury_name} - {self.get_status_display()}"
+
+
+class ClientPreferences(models.Model):
+    trainer_client = models.ForeignKey(
+        TrainerClient, on_delete=models.CASCADE, related_name="preferences"
+    )
+    details = JSONField(default=dict)
+
+    def __str__(self):
+        return f"Preferences for {self.trainer_client.client.username}"
+
+
+class ClientNotes(models.Model):
+    trainer_client = models.ForeignKey(
+        TrainerClient, on_delete=models.CASCADE, related_name="notes"
+    )
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    related_program = models.ForeignKey(
+        "Program", on_delete=models.SET_NULL, null=True, blank=True
+    )
+
+    def __str__(self):
+        return f"Note for {self.trainer_client.trainer.username} by {self.trainer_client.client.username}"
 
 
 class ClientData(models.Model):
