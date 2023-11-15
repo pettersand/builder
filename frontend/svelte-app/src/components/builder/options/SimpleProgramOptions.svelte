@@ -1,7 +1,7 @@
 <!-- NewProgramOptions.svelte -->
 <script lang="ts">
   import programOptions from "../../../stores/programOptionsStore";
-  import FileOptions from "./FIleOptions.svelte";
+  import FileOptions from "./FileOptions.svelte";
 
   let trainingDays = 1;
   let exercisesPerDay = 6;
