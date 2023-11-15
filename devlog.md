@@ -1,6 +1,10 @@
 ## 15/11-23
 
-Client data will be populated and fetched for the first step to display, today. 
+Client data will be populated and fetched for the first step to display, today.
+
+### Issues:
+
+Had an old messy issue waiting for me in my database. I cleaned that up and started fresh with proper migrations.
 
 ## 14/11-23
 

@@ -8,6 +8,6 @@
   $: componentToRender = optionToMainComponent[activeOption] as any;
 </script>
 
-<div class="flex rounded-md mt-4 p-4 bg-bg2">
+<div class="flex rounded-md mt-4 p-4 h-full bg-bg2">
   <svelte:component this={componentToRender} level={$globalStore.level} />
 </div>
