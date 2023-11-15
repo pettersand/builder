@@ -3,19 +3,41 @@
 
 <div class="gap-4 w-full h-full flex flex-row">
   <div
-    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-2 shadow-xl"
+    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 shadow-xl"
   >
-    <span>Program History</span>
+    <span class="font-bold text-lg">Program History</span>
   </div>
   <div
-    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-2 shadow-xl"
+    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 gap-2 shadow-xl"
   >
-    <span class="h-1/2">Client Data</span>
-    <span class="h-1/2">Notes</span>
+    <div class="h-1/2 flex flex-col custom-border-bottom">
+      <span class="font-bold text-lg">Client Data</span>
+      <div class="flex flex-col justify-evenly">
+        <span>Goals</span>
+        <span>Preferences</span>
+        <span>Injuries</span>
+        <span>Strength</span>
+        <span>Completion Stats</span>
+        <span>Progress Stats</span>
+      </div>
+    </div>
+
+    <div class="h-1/2 flex flex-col">
+      <span class="font-bold text-lg">Notes</span>
+    </div>
   </div>
   <div
-    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-2 shadow-xl"
+    class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 shadow-xl"
   >
-    <span>Program Notes</span>
+    <span class="font-bold text-lg">Program Notes</span>
+    <div class="flex flex-col">
+      <span>Custom Name</span>
+      <span>Focus</span>
+      <span>Phase</span>
+      <span>Program Notes</span>
+      <button class="border-4 rounded-lg border-accent2 p-2 font-bold w-1/3"
+        >Add Custom</button
+      >
+    </div>
   </div>
 </div>

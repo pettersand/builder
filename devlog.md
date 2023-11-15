@@ -6,6 +6,11 @@ Client data will be populated and fetched for the first step to display, today.
 
 Had an old messy issue waiting for me in my database. I cleaned that up and started fresh with proper migrations.
 
+### Worked on:
+
+1. SimpleMain area for step1. Made the choice to set up client data inputs first. Allowing client to enter a basic placeholder goal, preferences, injuries.
+2. Client Data Inputs to fetch in step1.
+
 ## 14/11-23
 
 Continuing development on client setup, aka step1 of simple builder. Spent the day working on a python program to fetch price data so I can sell an old album collection. So not as much time for development of Builder today. Set up the basis for more client data, and will continute working on that tomorrow.
