@@ -9,6 +9,10 @@ from .models import (
     AccountMetrics,
     TrainerNote,
     Program,
+    ClientGoals,
+    ClientInjuries,
+    ClientPreferences,
+    ClientNotes,
 )
 
 admin.site.register(User)
@@ -20,3 +24,7 @@ admin.site.register(TrainerClient)
 admin.site.register(AccountMetrics)
 admin.site.register(TrainerNote)
 admin.site.register(Program)
+admin.site.register(ClientGoals)
+admin.site.register(ClientInjuries)
+admin.site.register(ClientPreferences)
+admin.site.register(ClientNotes)
