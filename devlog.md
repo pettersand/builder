@@ -10,6 +10,14 @@ Had an old messy issue waiting for me in my database. I cleaned that up and star
 
 1. SimpleMain area for step1. Decided to more clearly define my data flow, to ensure I set this up iteratively.
 2. Miro dataflow for simple pro builder.
+3. Set up clientData models, populating tomorrow - then implementing.
+
+### Next Session:
+
+- Structure admin panel more appropriately
+- Views, urls, serializers for client data
+- Frontend API calls for client data
+- Include in clientStore
 
 ## 14/11-23
 
