@@ -3,7 +3,7 @@ from django.db import models
 from .trainer_client import TrainerClient
 
 
-class ClientNote(models.Model):
+class TrainerNote(models.Model):
     trainer_client = models.ForeignKey(
         TrainerClient, on_delete=models.CASCADE, related_name="notes"
     )

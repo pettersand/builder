@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.postgres.fields import JSONField
 from .trainer_client import TrainerClient
 
 
@@ -10,11 +9,14 @@ class ClientGoals(models.Model):
     )
     content = models.TextField()
     goal_type = models.CharField(
-        max_length=6,
+        max_length=7,
         choices=[
             ("long", "Long"),
             ("med", "Medium"),
             ("short", "Short"),
+            ("long", "Long"),
+            ("longer", "Longer"),
+            ("longest", "Longest"),
         ],
     )
     date_created = models.DateTimeField(auto_now_add=True)
@@ -96,7 +98,7 @@ class ClientInjuries(models.Model):
     notes = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ["-date_of_injury"]  # most recent first
+        ordering = ["-date_of_injury"]
 
     def __str__(self):
         return f"{self.injury_name} - {self.get_status_display()}"
@@ -106,7 +108,7 @@ class ClientPreferences(models.Model):
     trainer_client = models.ForeignKey(
         TrainerClient, on_delete=models.CASCADE, related_name="preferences"
     )
-    details = JSONField(default=dict)
+    details = models.JSONField(default=dict)
 
     def __str__(self):
         return f"Preferences for {self.trainer_client.client.username}"
@@ -114,7 +116,7 @@ class ClientPreferences(models.Model):
 
 class ClientNotes(models.Model):
     trainer_client = models.ForeignKey(
-        TrainerClient, on_delete=models.CASCADE, related_name="notes"
+        TrainerClient, on_delete=models.CASCADE, related_name="client_notes"
     )
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
