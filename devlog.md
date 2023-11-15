@@ -1,3 +1,7 @@
+## 15/11-23
+
+Client data will be populated and fetched for the first step to display, today. 
+
 ## 14/11-23
 
 Continuing development on client setup, aka step1 of simple builder. Spent the day working on a python program to fetch price data so I can sell an old album collection. So not as much time for development of Builder today. Set up the basis for more client data, and will continute working on that tomorrow.
