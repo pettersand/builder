@@ -4,6 +4,7 @@
     clients as clientStore,
     activeClient,
   } from "../../../../../stores/clientStore";
+  import { fetchClientData } from "../../../../../utilities/clientAPI";
 
   let searchTerm = "";
 
@@ -15,8 +16,17 @@
     });
   });
 
-  const setActiveClient = (clientObj) => {
+  const setActiveClient = async (clientObj) => {
     activeClient.set(clientObj.client);
+
+    try {
+      const clientData = await fetchClientData(clientObj.client.id);
+      activeClient.update((client) => {
+        return { ...client, clientDetails: clientData };
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleKeyPress = (event, clientObj) => {

@@ -33,6 +33,11 @@ class ClientNotesSerializer(serializers.ModelSerializer):
 
 
 class ClientDataSerializer(serializers.ModelSerializer):
+    goals = ClientGoalsSerializer(many=True, read_only=True)
+    injuries = ClientInjuriesSerializer(many=True, read_only=True)
+    preferences = ClientPreferencesSerializer(many=True, read_only=True)
+    notes = ClientNotesSerializer(many=True, read_only=True)
+
     class Meta:
         model = ClientData
-        fields = "__all__"
+        fields = ["goals", "injuries", "preferences", "notes"]
