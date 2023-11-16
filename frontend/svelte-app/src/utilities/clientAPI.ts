@@ -13,10 +13,10 @@ export const fetchTrainersClients = async (): Promise<any> => {
 
 export const fetchClientData = async (clientId: string): Promise<any> => {
   try {
-    const response = await api.get(`/client_data/${clientId}`);
+    const response = await api.get(`/client_data/?clientId=${clientId}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching client data");
+    console.error("Error fetching client data", error);
     throw error;
   }
 };

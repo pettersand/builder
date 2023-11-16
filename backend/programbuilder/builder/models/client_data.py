@@ -129,12 +129,10 @@ class ClientData(models.Model):
     trainer_client = models.OneToOneField(
         TrainerClient, on_delete=models.CASCADE, related_name="client_data"
     )
-    goals = models.ForeignKey(ClientGoals, on_delete=models.SET_NULL, null=True)
-    injuries = models.ForeignKey(ClientInjuries, on_delete=models.SET_NULL, null=True)
-    preferences = models.ForeignKey(
-        ClientPreferences, on_delete=models.SET_NULL, null=True
-    )
-    notes = models.ForeignKey(ClientNotes, on_delete=models.SET_NULL, null=True)
+    goals = models.ManyToManyField(ClientGoals, blank=True)
+    injuries = models.ManyToManyField(ClientInjuries, blank=True)
+    preferences = models.ManyToManyField(ClientPreferences, blank=True)
+    notes = models.ManyToManyField(ClientNotes, blank=True)
 
     def __str__(self):
         return f"Data for {self.trainer_client.client.username}"

@@ -1,4 +1,16 @@
 <script lang="ts">
+  import {
+    activeClient,
+    clients as clientStore,
+  } from "../../../../../stores/clientStore";
+
+  let clientDetails;
+
+  $: if ($activeClient) {
+    clientDetails = $activeClient.clientDetails;
+  } else {
+    clientDetails = null;
+  }
 </script>
 
 <div class="gap-4 w-full h-full flex flex-row">
@@ -12,14 +24,20 @@
   >
     <div class="h-1/2 flex flex-col custom-border-bottom">
       <span class="font-bold text-lg">Client Data</span>
-      <div class="flex flex-col justify-evenly">
-        <span>Goals</span>
-        <span>Preferences</span>
-        <span>Injuries</span>
-        <span>Strength</span>
-        <span>Completion Stats</span>
-        <span>Progress Stats</span>
-      </div>
+      {#if clientDetails}
+        <div class="flex flex-col justify-evenly">
+          {#if clientDetails.goals}
+            <span>Goals: {clientDetails.goals}</span>
+          {:else}
+            <span>No Goals Data</span>
+          {/if}
+          <span>Preferences</span>
+          <span>Injuries</span>
+          <span>Strength</span>
+          <span>Completion Stats</span>
+          <span>Progress Stats</span>
+        </div>
+      {/if}
     </div>
 
     <div class="h-1/2 flex flex-col">

@@ -16,6 +16,7 @@
     });
   });
 
+  // Sets active client and fetches client data
   const setActiveClient = async (clientObj) => {
     activeClient.set(clientObj.client);
 

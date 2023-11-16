@@ -33,6 +33,7 @@ class ClientNotesSerializer(serializers.ModelSerializer):
 
 
 class ClientDataSerializer(serializers.ModelSerializer):
+    print("ClientDataSerializer Started")
     goals = ClientGoalsSerializer(many=True, read_only=True)
     injuries = ClientInjuriesSerializer(many=True, read_only=True)
     preferences = ClientPreferencesSerializer(many=True, read_only=True)

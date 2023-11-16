@@ -1,4 +1,5 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView
+from rest_framework.response import Response
 from builder.models import (
     ClientGoals,
     ClientNotes,
@@ -49,9 +50,14 @@ class ClientPreferencesView(ListCreateAPIView):
         )
 
 
-class ClientDataView(ListCreateAPIView):
-    queryset = ClientData.objects.all()
+class ClientDataView(ListAPIView):
     serializer_class = ClientDataSerializer
+    print("ClientDataView Started")
 
     def get_queryset(self):
-        return ClientData.objects.filter(trainer_client__trainer=self.request.user)
+        client_id = self.request.query_params.get("clientId")
+        print("Client_id: ", client_id)
+        return ClientData.objects.filter(
+            trainer_client__trainer=self.request.user,
+            trainer_client__client_id=client_id,
+        )

@@ -7,6 +7,10 @@ Going to a networking event later, so not as much time for programming.
 1. Updated model classes return for admin panel legibility.
 2. Views, Serializer, Urls for new models.
 
+### Issues:
+
+Ran into som hiccups with conditional GET requests from the frontend to fetch all client data.
+
 ## 15/11-23
 
 Client data will be populated and fetched for the first step to display, today.
