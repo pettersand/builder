@@ -11,6 +11,10 @@ from builder.views import (
     OfficialTemplateList,
     TrainerClientsView,
     ClientGoalView,
+    ClientDataView,
+    ClientInjuriesView,
+    ClientNotesView,
+    ClientPreferencesView,
 )
 
 
@@ -29,4 +33,12 @@ urlpatterns = [
     ),
     path("api/trainer_clients/", TrainerClientsView.as_view(), name="trainer_clients"),
     path("api/client_goals/", ClientGoalView.as_view(), name="client_goals"),
+    path("api/client_notes/", ClientNotesView.as_view(), name="client_notes"),
+    path("api/client_injuries/", ClientInjuriesView.as_view(), name="client_injuries"),
+    path(
+        "api/client_preferences/",
+        ClientPreferencesView.as_view(),
+        name="client_preferences",
+    ),
+    path("api/client_data/", ClientDataView.as_view(), name="client_data"),
 ]
