@@ -12,3 +12,6 @@ class UserRole(models.Model):
 
     class Meta:
         unique_together = ("user", "role")
+
+    def __str__(self) -> str:
+        return f"{self.user.username} - {self.role.name}"

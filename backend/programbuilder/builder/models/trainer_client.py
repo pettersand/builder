@@ -22,3 +22,6 @@ class TrainerClient(models.Model):
 
     class Meta:
         unique_together = ("trainer", "client")
+
+    def __str__(self):
+        return f"{self.trainer.username} - {self.client.username}"

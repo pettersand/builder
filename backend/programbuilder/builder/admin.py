@@ -13,7 +13,19 @@ from .models import (
     ClientInjuries,
     ClientPreferences,
     ClientNotes,
+    ClientData,
 )
+
+
+class ClientDataAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ("Basic Info", {"fields": ("trainer_client",)}),
+        ("Client Goals", {"fields": ("goals",)}),
+        ("Client Injuries", {"fields": ("injuries",)}),
+        ("Client Preferences", {"fields": ("preferences",)}),
+        ("Client Notes", {"fields": ("notes",)}),
+    )
+
 
 admin.site.register(User)
 admin.site.register(UserProfile)
@@ -28,3 +40,4 @@ admin.site.register(ClientGoals)
 admin.site.register(ClientInjuries)
 admin.site.register(ClientPreferences)
 admin.site.register(ClientNotes)
+admin.site.register(ClientData, ClientDataAdmin)
