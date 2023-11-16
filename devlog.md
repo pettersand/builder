@@ -9,7 +9,7 @@ Going to a networking event later, so not as much time for programming.
 
 ### Issues:
 
-Ran into som hiccups with conditional GET requests from the frontend to fetch all client data.
+Ran into som hiccups with conditional GET requests from the frontend to fetch all client data. Sorted by changing model relationships to ManyToManyField for ClientData calls.
 
 ## 15/11-23
 

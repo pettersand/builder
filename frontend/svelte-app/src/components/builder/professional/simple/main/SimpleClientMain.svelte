@@ -6,7 +6,8 @@
 
   let clientDetails;
 
-  $: if ($activeClient) {
+  $: if ($activeClient && $activeClient.clientDetails) {
+    console.log($activeClient);
     clientDetails = $activeClient.clientDetails;
   } else {
     clientDetails = null;
@@ -26,8 +27,8 @@
       <span class="font-bold text-lg">Client Data</span>
       {#if clientDetails}
         <div class="flex flex-col justify-evenly">
-          {#if clientDetails.goals}
-            <span>Goals: {clientDetails.goals}</span>
+          {#if clientDetails}
+            <span>Goals: {clientDetails.clientDetails}</span>
           {:else}
             <span>No Goals Data</span>
           {/if}
