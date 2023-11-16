@@ -14,9 +14,6 @@ class ClientGoals(models.Model):
             ("long", "Long"),
             ("med", "Medium"),
             ("short", "Short"),
-            ("long", "Long"),
-            ("longer", "Longer"),
-            ("longest", "Longest"),
         ],
     )
     date_created = models.DateTimeField(auto_now_add=True)

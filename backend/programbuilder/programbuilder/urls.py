@@ -10,6 +10,7 @@ from builder.views import (
     LoginView,
     OfficialTemplateList,
     TrainerClientsView,
+    ClientGoalView,
 )
 
 
@@ -27,4 +28,5 @@ urlpatterns = [
         name="official_templates",
     ),
     path("api/trainer_clients/", TrainerClientsView.as_view(), name="trainer_clients"),
+    path("api/client_goals/", ClientGoalView.as_view(), name="client_goals"),
 ]

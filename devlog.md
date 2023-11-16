@@ -1,3 +1,12 @@
+## 16/11-23
+
+Going to a networking event later, so not as much time for programming.
+
+### Worked On:
+
+1. Updated model classes return for admin panel legibility.
+2. Views, Serializer, Urls for new models.
+
 ## 15/11-23
 
 Client data will be populated and fetched for the first step to display, today.

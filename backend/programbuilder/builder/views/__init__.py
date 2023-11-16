@@ -7,3 +7,4 @@ from .user_views import (
 )
 from .official_templates_views import OfficialTemplateList
 from .trainer_views import TrainerClientsView
+from .client_views import ClientGoalView
