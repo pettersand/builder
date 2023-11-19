@@ -23,17 +23,43 @@
   <div
     class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 gap-2 shadow-xl"
   >
-    <div class="h-1/2 flex flex-col custom-border-bottom">
+    <div class="h-1/2 flex flex-col gap-4 custom-border-bottom">
       <span class="font-bold text-lg">Client Data</span>
       {#if clientDetails}
-        <div class="flex flex-col justify-evenly">
-          {#if clientDetails}
-            <span>Goals: {clientDetails.clientDetails}</span>
-          {:else}
-            <span>No Goals Data</span>
-          {/if}
-          <span>Preferences</span>
-          <span>Injuries</span>
+        <div class="flex flex-col gap-4 justify-evenly">
+          <div>
+            <span class="font-bold">Goals:</span>
+            {#if clientDetails.goals && clientDetails.goals.length}
+              {#each clientDetails.goals as goal}
+                <p>{goal.content} (Due: {goal.goal_date})</p>
+              {/each}
+            {:else}
+              <p>No Goals Data</p>
+            {/if}
+          </div>
+
+          <div>
+            <span class="font-bold">Injuries:</span>
+            {#if clientDetails.injuries && clientDetails.injuries.length}
+              {#each clientDetails.injuries as injury}
+                <p>{injury.injury_name} - {injury.site}</p>
+              {/each}
+            {:else}
+              <p>No Injuries Data</p>
+            {/if}
+          </div>
+
+          <div>
+            <span class="font-bold">Preferences:</span>
+            {#if clientDetails.preferences && clientDetails.preferences.length}
+              {#each clientDetails.preferences as preference}
+                <p>{JSON.stringify(preference.details)}</p>
+              {/each}
+            {:else}
+              <p>No Preferences Data</p>
+            {/if}
+          </div>
+
           <span>Strength</span>
           <span>Completion Stats</span>
           <span>Progress Stats</span>
@@ -42,7 +68,16 @@
     </div>
 
     <div class="h-1/2 flex flex-col">
-      <span class="font-bold text-lg">Notes</span>
+      <div>
+        <span class="font-bold">Notes:</span>
+        {#if clientDetails.notes && clientDetails.notes.length}
+          {#each clientDetails.notes as note}
+            <p>{note.content}</p>
+          {/each}
+        {:else}
+          <p>No Notes Data</p>
+        {/if}
+      </div>
     </div>
   </div>
   <div
