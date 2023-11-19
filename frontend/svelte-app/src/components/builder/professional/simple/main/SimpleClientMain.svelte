@@ -12,6 +12,38 @@
   } else {
     clientDetails = null;
   }
+
+  function formatDate(dateString: string): string {
+    const options: Intl.DateTimeFormatOptions = {
+      month: "long",
+      day: "numeric",
+    };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
+  }
+
+  function calculateTimeToGoal(goalDate: string): string {
+    const today = new Date();
+    const dueDate = new Date(goalDate);
+    const diffTime = Math.abs(dueDate.getTime() - today.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diffWeeks = Math.floor(diffDays / 7);
+    const diffMonths = Math.floor(diffDays / 30);
+    return `${diffMonths} months, ${diffWeeks % 4} weeks, ${diffDays % 7} days`;
+  }
+
+  const goalTypeMap = {
+    short: "Short Term",
+    med: "Medium Term",
+    long: "Long Term",
+  };
+
+  function sortGoals(goals) {
+    return goals.slice().sort((a, b) => {
+      const order = ["short", "med", "long"];
+      return order.indexOf(a.goal_type) - order.indexOf(b.goal_type);
+    });
+  }
 </script>
 
 <div class="gap-4 w-full h-full flex flex-row">
@@ -34,15 +66,18 @@
         <div class="flex flex-col gap-4 justify-evenly custom-border-bottom">
           <span class="font-bold">Goals:</span>
           {#if clientDetails.goals && clientDetails.goals.length}
-            {#each clientDetails.goals as goal}
-              <div class="flex flex-row justify-between bg-card">
+            {#each sortGoals(clientDetails.goals) as goal}
+              <div class="flex flex-col justify-between bg-card">
                 <div class="flex flex-col">
-                  <p>{goal.goal_type} Due: {goal.goal_date}</p>
+                  <p>
+                    {goalTypeMap[goal.goal_type]} - Due: {formatDate(
+                      goal.goal_date
+                    )}
+                  </p>
                   <p>{goal.content}</p>
                 </div>
-                <div class="flex flex-col">
-                  <p>Time To Goal</p>
-                </div>
+
+                <p>Deadline: {calculateTimeToGoal(goal.goal_date)}</p>
               </div>
             {/each}
           {:else}
@@ -58,17 +93,6 @@
             {/each}
           {:else}
             <p>No Injuries Data</p>
-          {/if}
-        </div>
-
-        <div class="flex flex-col gap-4 justify-evenly">
-          <span class="font-bold">Preferences:</span>
-          {#if clientDetails.preferences && clientDetails.preferences.length}
-            {#each clientDetails.preferences as preference}
-              <p>{JSON.stringify(preference.details)}</p>
-            {/each}
-          {:else}
-            <p>No Preferences Data</p>
           {/if}
         </div>
 

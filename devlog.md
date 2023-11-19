@@ -8,6 +8,11 @@ Still struggling with getting the proper client data back from the API call. We 
 
 - The issue came down to the queryset being empty when attempting to use ClientData as a hub for all the client related models. Decided to declutter it, and query the models for each data set individually for this process. Would allow for more flexibility in editing and calling individual data points in the future too.
 
+### Worked On:
+
+1. Fixed the fetching of client data
+2. Presentation and design of client data
+
 ## 16/11-23
 
 Going to a networking event later, so not as much time for programming.
