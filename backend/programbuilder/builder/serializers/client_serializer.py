@@ -9,9 +9,12 @@ from builder.models import (
 
 
 class ClientGoalsSerializer(serializers.ModelSerializer):
+    print("ClientGoalsSerializer Started")
+
     class Meta:
         model = ClientGoals
         fields = "__all__"
+        print("ClientGoalsSerializer Ended")
 
 
 class ClientInjuriesSerializer(serializers.ModelSerializer):

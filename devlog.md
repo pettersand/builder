@@ -1,3 +1,13 @@
+## 19/11-23
+
+Busy weekend. Did planning & design work on tablet.
+
+### Issues:
+
+Still struggling with getting the proper client data back from the API call. We are calling multiple tables connected to the client/trainer relationship, and the corresponding Data for the client chosen from a list. Though getting back empty lists.
+
+- The issue came down to the queryset being empty when attempting to use ClientData as a hub for all the client related models. Decided to declutter it, and query the models for each data set individually for this process. Would allow for more flexibility in editing and calling individual data points in the future too.
+
 ## 16/11-23
 
 Going to a networking event later, so not as much time for programming.

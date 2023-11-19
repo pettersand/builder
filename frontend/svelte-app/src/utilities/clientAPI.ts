@@ -14,6 +14,7 @@ export const fetchTrainersClients = async (): Promise<any> => {
 export const fetchClientData = async (clientId: string): Promise<any> => {
   try {
     const response = await api.get(`/client_data/?clientId=${clientId}`);
+    console.log("Client data", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching client data", error);

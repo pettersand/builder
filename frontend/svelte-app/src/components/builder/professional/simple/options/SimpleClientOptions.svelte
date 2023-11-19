@@ -22,6 +22,7 @@
 
     try {
       const clientData = await fetchClientData(clientObj.client.id);
+      console.log("Fetched Client Data:", clientData);
       activeClient.update((client) => {
         return { ...client, clientDetails: clientData };
       });
