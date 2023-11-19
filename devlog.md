@@ -12,6 +12,15 @@ Still struggling with getting the proper client data back from the API call. We 
 
 1. Fixed the fetching of client data
 2. Presentation and design of client data
+3. Planning of development cycle
+4. Detailing steps for further development in Miro
+
+### Next Session:
+
+- Work towards finishing MVP program builder
+- Set self as client
+- Setup data handling for "saving" step 1
+- Implement template creation, and saving
 
 ## 16/11-23
 

@@ -124,6 +124,7 @@
       <span>Custom Name</span>
       <span>Focus</span>
       <span>Phase</span>
+      <span>Avoid</span>
       <span>Program Notes</span>
       <button class="border-4 rounded-lg border-accent2 p-2 font-bold w-1/3"
         >Add Custom</button
