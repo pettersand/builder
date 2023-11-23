@@ -1,6 +1,15 @@
 ## 23/11-23
 
-Busy still. Focused on my job search. Though finally some time for project work again. 
+Busy still. Focused on my job search. Though finally some time for project work again.
+
+### Worked On:
+
+1. Added self as client for testing purposes.
+2. Set up data handling for saving step 1, and planned data flow / process
+
+### Thoughts:
+
+Since I will be gunning for a MVP first, planning out the data flow proved to be difficult. I've opted for keeping it simple, and ensuring I can add to it in more detail on my second pass of the Builder process. So Foundation now, and then heavy data flow and planning once I can start testing and adding the workout program to the first step, as well as more comprehensive client data. I made this choice simply because the program data is a part of step1, and not having any program data will affect the thought process of the development.
 
 ## 19/11-23
 
