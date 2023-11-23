@@ -3,6 +3,7 @@
   import {
     clients as clientStore,
     activeClient,
+    setActiveTrainerAsClient,
   } from "../../../../../stores/clientStore";
   import { fetchClientData } from "../../../../../utilities/clientAPI";
 
@@ -30,6 +31,10 @@
       console.log(error);
     }
   };
+
+  function selectTrainerAsClient() {
+    setActiveTrainerAsClient();
+  }
 
   const handleKeyPress = (event, clientObj) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -91,6 +96,13 @@
         <div
           class="overflow-y-auto max-h-60 divide-y divide-gray-300 zebra-striped"
         >
+          <div
+            class="p-1 cursor-pointer"
+            on:click={selectTrainerAsClient}
+            on:keydown={selectTrainerAsClient}
+          >
+            Myself
+          </div>
           {#each filteredClients as clientObj}
             <div
               class="p-1 cursor-pointer"

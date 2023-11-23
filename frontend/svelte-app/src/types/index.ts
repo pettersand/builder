@@ -47,4 +47,9 @@ export type Step2Data = {
 export type UserType = {
   isLoggedIn: boolean;
   roles: string[];
+  id?: string;
+  username?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
 };

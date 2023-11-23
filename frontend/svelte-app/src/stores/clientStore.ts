@@ -1,5 +1,6 @@
 // clientStore.ts
-import { writable } from "svelte/store";
+import { writable, get } from "svelte/store";
+import { user as userStore } from "./userStore";
 
 export const clients = writable([]);
 
@@ -11,6 +12,14 @@ export const setClients = (clientData: any[]) => {
 const getInitialActiveClient = () => {
   const storedValue = localStorage.getItem("activeClient");
   return storedValue ? JSON.parse(storedValue) : null;
+};
+
+export const setActiveTrainerAsClient = () => {
+  const trainerDetails = get(userStore);
+  activeClient.set({
+    client: { ...trainerDetails, isSelf: true },
+    clientDetails: null,
+  });
 };
 
 export const activeClient = writable(getInitialActiveClient());

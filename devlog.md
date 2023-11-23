@@ -1,3 +1,7 @@
+## 23/11-23
+
+Busy still. Focused on my job search. Though finally some time for project work again. 
+
 ## 19/11-23
 
 Busy weekend. Did planning & design work on tablet.
