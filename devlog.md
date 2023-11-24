@@ -1,3 +1,13 @@
+## 24/11-23
+
+Still mostly working on really structuring my data flow well with Miro. This will improve the maintainability and ease the implementation of the code and refactors/improvements in the future.
+
+### Worked On:
+
+1. Data Flow diagrams, planning, saving process
+2. Future iterations implementation strategy
+3. Brainstorm around JSON structure for program metrics
+
 ## 23/11-23
 
 Busy still. Focused on my job search. Though finally some time for project work again.
