@@ -5,12 +5,12 @@ I have a better understanding of the data flow I'm aiming for now, and will star
 ### Worked On:
 
 1. Finalizing data flow thoughts
-2. Implementing Program Notes component + store
+2. Implementing Program Notes component
+3. Adding reactive data handling in builderStore for programNotes
 
 ### Created:
 
 - ProgramNotes.svelte // Component for handling the Program notes input/data
--
 
 ## 24/11-23
 

@@ -1,15 +1,20 @@
 <script lang="ts">
-  let customName = "";
-  let focus = "";
-  let phase = "";
-  let considerations = "";
-  let programNotes = "";
+  import { programNotes } from "../../../../../../stores/builderStore";
+
+  let { customName, focus, phase, considerations, notes } = $programNotes;
+
+  $: programNotes.set({
+    customName,
+    focus,
+    phase,
+    considerations,
+    notes,
+  });
 
   const addCustom = () => {
     // Handle the addition of custom data
-    // For now, we'll just log the values
-    console.log({ customName, focus, phase, considerations, programNotes });
-    // Here you can also add logic to store these values in localStorage or a store
+    // For now, it just log the values
+    console.log({ customName, focus, phase, considerations, notes });
   };
 </script>
 
@@ -55,11 +60,8 @@
   </div>
 
   <div class="flex flex-col">
-    <label for="programNotes">Program Notes:</label>
-    <textarea
-      id="programNotes"
-      bind:value={programNotes}
-      class="p-2 border rounded-lg"
+    <label for="notes">Program Notes:</label>
+    <textarea id="notes" bind:value={notes} class="p-2 border rounded-lg"
     ></textarea>
   </div>
 

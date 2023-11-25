@@ -18,3 +18,15 @@ proStepState.subscribe((value) => {
 export const builderState = writable({
   activeOption: "newProgram",
 });
+
+// Store for program notes
+const getInitialProgramNotes = () => {
+  const storedValue = localStorage.getItem("programNotes");
+  return storedValue ? JSON.parse(storedValue) : "";
+};
+
+export const programNotes = writable(getInitialProgramNotes());
+
+programNotes.subscribe((value) => {
+  localStorage.setItem("programNotes", JSON.stringify(value));
+});
