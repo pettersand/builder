@@ -1,3 +1,12 @@
+## 25/11-23
+
+I have a better understanding of the data flow I'm aiming for now, and will start iteratively implementing it and planning out the JSON structure. Still a bit stumped on how I want to handle going from a reactive template, to a more constant cell format for adding exercises and assigning "location" tags for the cells.
+
+### Worked On.
+
+1. Finalizing data flow thoughts
+2. Implementing Program Notes saving, back and front
+
 ## 24/11-23
 
 Still mostly working on really structuring my data flow well with Miro. This will improve the maintainability and ease the implementation of the code and refactors/improvements in the future.
