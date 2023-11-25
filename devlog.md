@@ -12,6 +12,12 @@ I have a better understanding of the data flow I'm aiming for now, and will star
 
 - ProgramNotes.svelte // Component for handling the Program notes input/data
 
+### Next Session:
+
+- API Endpoint for initial Program creation
+- Saving programNotes and moving to step 2
+- Base layout / design / data for step 2 - Templates
+
 ## 24/11-23
 
 Still mostly working on really structuring my data flow well with Miro. This will improve the maintainability and ease the implementation of the code and refactors/improvements in the future.
