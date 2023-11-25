@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ProgramNotes from "./components/ProgramNotes.svelte";
   import {
     activeClient,
     clients as clientStore,
@@ -120,15 +121,6 @@
     class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 shadow-xl"
   >
     <span class="font-bold text-lg">Program Notes</span>
-    <div class="flex flex-col">
-      <span>Custom Name</span>
-      <span>Focus</span>
-      <span>Phase</span>
-      <span>Avoid</span>
-      <span>Program Notes</span>
-      <button class="border-4 rounded-lg border-accent2 p-2 font-bold w-1/3"
-        >Add Custom</button
-      >
-    </div>
+    <ProgramNotes />
   </div>
 </div>

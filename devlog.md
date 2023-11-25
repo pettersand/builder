@@ -2,10 +2,15 @@
 
 I have a better understanding of the data flow I'm aiming for now, and will start iteratively implementing it and planning out the JSON structure. Still a bit stumped on how I want to handle going from a reactive template, to a more constant cell format for adding exercises and assigning "location" tags for the cells.
 
-### Worked On.
+### Worked On:
 
 1. Finalizing data flow thoughts
-2. Implementing Program Notes saving, back and front
+2. Implementing Program Notes component + store
+
+### Created:
+
+- ProgramNotes.svelte // Component for handling the Program notes input/data
+-
 
 ## 24/11-23
 
