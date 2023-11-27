@@ -1,3 +1,7 @@
+## 27/11-23
+
+Spending most of my time researching topics related to an upcoming interview. Hopefully more time and energy for this project later this week!
+
 ## 25/11-23
 
 I have a better understanding of the data flow I'm aiming for now, and will start iteratively implementing it and planning out the JSON structure. Still a bit stumped on how I want to handle going from a reactive template, to a more constant cell format for adding exercises and assigning "location" tags for the cells.
