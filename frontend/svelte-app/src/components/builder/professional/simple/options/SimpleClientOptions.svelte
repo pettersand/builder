@@ -10,6 +10,8 @@
     programNotes,
   } from "../../../../../stores/builderStore";
   import { fetchClientData } from "../../../../../utilities/clientAPI";
+  import { user } from "../../../../../stores/userStore";
+  import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm = "";
 
@@ -43,6 +45,22 @@
   const handleKeyPress = (event, clientObj) => {
     if (event.key === "Enter" || event.key === " ") {
       setActiveClient(clientObj);
+    }
+  };
+
+  const handleContinue = async () => {
+    // Save the program notes
+    const programData = {
+      creator: $user.id,
+      client: $activeClient.id,
+      status: "draft",
+      program_data: $programNotes,
+    };
+    try {
+      const response = await postProgramData(programData);
+      console.log("Program created:", response);
+    } catch (error) {
+      console.log("Error creating program:", error);
     }
   };
 
@@ -130,7 +148,9 @@
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">Continue</span>
       <div>Click to save & continue</div>
-      <button class="bg-accent2 p-4 font-bold text-lg">Continue</button>
+      <button class="bg-accent2 p-4 font-bold text-lg" on:click={handleContinue}
+        >Continue</button
+      >
     </div>
   </div>
 </div>
