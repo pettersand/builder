@@ -1,3 +1,12 @@
+## 28/11-23
+
+Another research heavy day, though hoping to get some more functions up for the data flow of program notes.
+
+### Created:
+
+- program_views.py
+- program_serializer.py
+
 ## 27/11-23
 
 Spending most of my time researching topics related to an upcoming interview. Hopefully more time and energy for this project later this week!

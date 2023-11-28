@@ -14,3 +14,4 @@ from .client_views import (
     ClientPreferencesView,
     ClientDataView,
 )
+from .program_views import CreateProgramView

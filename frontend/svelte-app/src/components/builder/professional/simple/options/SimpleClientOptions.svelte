@@ -5,7 +5,10 @@
     activeClient,
     setActiveTrainerAsClient,
   } from "../../../../../stores/clientStore";
-  import { programNotes } from "../../../../../stores/builderStore";
+  import {
+    builderState,
+    programNotes,
+  } from "../../../../../stores/builderStore";
   import { fetchClientData } from "../../../../../utilities/clientAPI";
 
   let searchTerm = "";

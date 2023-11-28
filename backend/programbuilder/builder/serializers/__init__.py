@@ -7,3 +7,4 @@ from .client_serializer import (
     ClientPreferencesSerializer,
     ClientInjuriesSerializer,
 )
+from .program_serializer import ProgramSerializer
