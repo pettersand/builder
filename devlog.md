@@ -1,3 +1,11 @@
+## 29/11-23
+
+Rough getting back into it. Hoping to make progress on the saving process tonight.
+
+### Issues:
+
+I've worked myself a bit into a corner, I believe. By trying to rush an MVP, I've added some issues to the saving functionality. Since the current model and app assumes a creator and a user, whereas I currently wish to create one for myself.Though I did work around this, and can continue setting up the MVP. I am determined on doing it this way, since I know of all the valuable insight I will get on the first "pass" of the function. Allowing me to go back to step 1 and cleanly create the process more thoroughly with all the new information and insight I will have.
+
 ## 28/11-23
 
 Another research heavy day, though hoping to get some more functions up for the data flow of program notes.

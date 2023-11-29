@@ -6,13 +6,11 @@ class ProgramSerializer(serializers.ModelSerializer):
     class Meta:
         model = Program
         fields = [
-            "creator",
             "user",
-            "created_at",
-            "updated_at",
             "status",
             "program_data",
         ]
+        extra_kwargs = {"user": {"required": False}}  # Makes 'user' field optional
 
     def create(self, validated_data):
         return Program.objects.create(**validated_data)

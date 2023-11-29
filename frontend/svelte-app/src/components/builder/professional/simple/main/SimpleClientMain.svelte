@@ -107,7 +107,7 @@
     <div class="h-1/2 flex flex-col">
       <div>
         <span class="font-bold">Notes:</span>
-        {#if clientDetails.notes && clientDetails.notes.length}
+        {#if clientDetails && clientDetails.notes && clientDetails.notes.length}
           {#each clientDetails.notes as note}
             <p>{note.content}</p>
           {/each}

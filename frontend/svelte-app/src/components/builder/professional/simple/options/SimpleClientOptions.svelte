@@ -51,11 +51,10 @@
   const handleContinue = async () => {
     // Save the program notes
     const programData = {
-      creator: $user.id,
-      client: $activeClient.id,
       status: "draft",
       program_data: $programNotes,
     };
+    console.log("Program Data:", programData);
     try {
       const response = await postProgramData(programData);
       console.log("Program created:", response);
