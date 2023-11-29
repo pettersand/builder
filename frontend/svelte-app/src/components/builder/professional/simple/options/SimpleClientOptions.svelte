@@ -52,7 +52,9 @@
     // Save the program notes
     const programData = {
       status: "draft",
-      program_data: $programNotes,
+      program_data: {
+        programNotes: $programNotes,
+      },
     };
     console.log("Program Data:", programData);
     try {

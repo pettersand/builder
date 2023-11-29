@@ -6,6 +6,13 @@ Rough getting back into it. Hoping to make progress on the saving process tonigh
 
 I've worked myself a bit into a corner, I believe. By trying to rush an MVP, I've added some issues to the saving functionality. Since the current model and app assumes a creator and a user, whereas I currently wish to create one for myself.Though I did work around this, and can continue setting up the MVP. I am determined on doing it this way, since I know of all the valuable insight I will get on the first "pass" of the function. Allowing me to go back to step 1 and cleanly create the process more thoroughly with all the new information and insight I will have.
 
+Furthermore, I reworked the way I will handle saving as JSON, giving more initial control to the backend, and letting the sent data from frontend to append to this instead.
+
+### Worked On:
+
+1. Settings self as client
+2. Saving step 1 Data
+
 ## 28/11-23
 
 Another research heavy day, though hoping to get some more functions up for the data flow of program notes.
