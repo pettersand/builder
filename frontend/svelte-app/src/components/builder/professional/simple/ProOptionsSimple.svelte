@@ -15,5 +15,7 @@
   <FileOptions />
   {#if activeStep === "step1"}
     <SimpleClientOptions />
+  {:else if activeStep === "step2"}
+    <div>Step 2</div>
   {/if}
 </div>

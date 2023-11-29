@@ -1,6 +1,6 @@
 ## 29/11-23
 
-Rough getting back into it. Hoping to make progress on the saving process tonight.
+Rough getting back into it. Hoping to make progress on the saving process tonight. This whole process has felt rather messy to me, so after getting step1 sorted, I've decided to rework the project structure a bit, to centralize and provide a better overview of my file relationships. So will draft up a structure on my tab, and work on this more later.
 
 ### Issues:
 
@@ -12,6 +12,12 @@ Furthermore, I reworked the way I will handle saving as JSON, giving more initia
 
 1. Settings self as client
 2. Saving step 1 Data
+3. Planning reformat of folder/file structure
+
+### Next Session:
+
+- Keep reworking the folder structure to clean it up
+- Then continue with the builder steps
 
 ## 28/11-23
 
