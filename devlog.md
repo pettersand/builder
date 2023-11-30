@@ -1,3 +1,7 @@
+## 30/11-23
+
+Another day of planning, sketching, and structuring. Creating a roadmap for development and defining phases, with sub-components and milestones to reach. I need to work more structured due to the complexity and vastness of this project. So day spent in Miro, hence the lack of commits.
+
 ## 29/11-23
 
 Rough getting back into it. Hoping to make progress on the saving process tonight. This whole process has felt rather messy to me, so after getting step1 sorted, I've decided to rework the project structure a bit, to centralize and provide a better overview of my file relationships. So will draft up a structure on my tab, and work on this more later.
