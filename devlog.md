@@ -1,6 +1,6 @@
 ## 03/11-23
 
-Lots of events and other things occupying the last few days. Hopefully next week will be better. The plan is laid out, so I'm ready to start iterating on the functions.
+Lots of events and other things occupying the last few days. Hopefully next week will be better. The plan is laid out, so I'm ready to start iterating on the functions. Joined in the advent of code event as well, which takes up some of my coding time. Also have to start sending out more frequent job applications.
 
 ## 30/11-23
 
