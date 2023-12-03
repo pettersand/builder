@@ -1,3 +1,7 @@
+## 03/11-23
+
+Lots of events and other things occupying the last few days. Hopefully next week will be better. The plan is laid out, so I'm ready to start iterating on the functions.
+
 ## 30/11-23
 
 Another day of planning, sketching, and structuring. Creating a roadmap for development and defining phases, with sub-components and milestones to reach. I need to work more structured due to the complexity and vastness of this project. So day spent in Miro, hence the lack of commits.
