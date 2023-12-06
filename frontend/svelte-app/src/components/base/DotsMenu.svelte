@@ -45,7 +45,7 @@
   </button>
   {#if show}
     <div
-      class="absolute right-0 mt-2 bg-bg2 border border-gray-200 rounded shadow-lg z-10"
+      class="absolute right-0 mt-2 bg-bg2 border border-paragraph rounded shadow-xl z-10"
     >
       <ul class="text-paragraph">
         <slot />

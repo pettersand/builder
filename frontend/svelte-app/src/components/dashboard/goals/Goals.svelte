@@ -26,21 +26,21 @@
     </h2>
     <DotsMenu on:select={handleSelect}>
       <li
-        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"
         on:click={() => handleSelect("New Goal")}
         on:keydown={(event) => handleKeydown(event, "New Goal")}
       >
         New Goal
       </li>
       <li
-        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"
         on:click={() => handleSelect("Edit Goal")}
         on:keydown={(event) => handleKeydown(event, "Edit Goal")}
       >
         Edit Goal
       </li>
       <li
-        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"
         on:click={() => handleSelect("Manage Goals")}
         on:keydown={(event) => handleKeydown(event, "Manage Goals")}
       >

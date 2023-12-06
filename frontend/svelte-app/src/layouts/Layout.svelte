@@ -166,10 +166,10 @@
       <!-- Login/Register and Log Out buttons -->
       {#if $globalStore.isAuthenticated}
         <button
-          class="font-bold bg-contrast2 p-2 pl-4 pr-4 rounded-full"
+          class="font-bold bg-card2 py-2 px-5 rounded-full ring-4 ring-accent2 filter-drop-shadow hover:bg-accent2 hover:text-bg hover:border-accent2"
           on:click={logout}
         >
-          Logout
+          Log Out
         </button>
       {:else}
         <button
