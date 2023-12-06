@@ -6,6 +6,13 @@ Between advent of code, a set back affecting my motivation, and social activitie
 
 1. Component for setting Goals for self user.
 2. Component for tripple-dot menus. Reusable.
+3. Design if "no goals"
+
+### Next Session:
+
+- Add functionality to Create Goal / New Goal
+- API Endpoint
+- Research Caching - Get user data on login
 
 ### Created:
 
