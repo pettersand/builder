@@ -4,7 +4,13 @@ Between advent of code, a set back affecting my motivation, and social activitie
 
 ### Worked On:
 
-1. Placeholder component for setting Goals for self user.
+1. Component for setting Goals for self user.
+2. Component for tripple-dot menus. Reusable.
+
+### Created:
+
+- DotsMenu.svelte
+- Goals.svelte
 
 ## 04/11-23
 

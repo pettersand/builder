@@ -1,5 +1,18 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
+  import DotsMenu from "../../base/DotsMenu.svelte";
+
+  const handleSelect = (item) => {
+    console.log("Selected:", item);
+    // Item selection logic here
+  };
+
+  const handleKeydown = (event, item) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleSelect(item);
+      event.preventDefault();
+    }
+  };
 </script>
 
 <div class="bg-bg shadow-xl">
@@ -11,9 +24,29 @@
         height="35"
       />Goals
     </h2>
-    <button>
-      <Icon icon="radix-icons:dots-vertical" width="30" height="30" />
-    </button>
+    <DotsMenu on:select={handleSelect}>
+      <li
+        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        on:click={() => handleSelect("New Goal")}
+        on:keydown={(event) => handleKeydown(event, "New Goal")}
+      >
+        New Goal
+      </li>
+      <li
+        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        on:click={() => handleSelect("Edit Goal")}
+        on:keydown={(event) => handleKeydown(event, "Edit Goal")}
+      >
+        Edit Goal
+      </li>
+      <li
+        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+        on:click={() => handleSelect("Manage Goals")}
+        on:keydown={(event) => handleKeydown(event, "Manage Goals")}
+      >
+        Manage Goals
+      </li>
+    </DotsMenu>
   </div>
   <div
     class="flex flex-col h-2/3 text-center items-center justify-center gap-2 p-4 text-paragraph text-lg font-bold"
