@@ -1,3 +1,11 @@
+## 06/11-23
+
+Between advent of code, a set back affecting my motivation, and social activities; This project has been neglected for the last few weeks. However, I did finish planning out my roadmap and the specifics I was stuck on. So back at it again with a better routine and plan for working regularly on this project. Though for the next few weeks or months, most of my time will be spent on courses and coding practice outside of project work.
+
+### Worked On:
+
+1. Placeholder component for setting Goals for self user.
+
 ## 04/11-23
 
 Rough patch.
