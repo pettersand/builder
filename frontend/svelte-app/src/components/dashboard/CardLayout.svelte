@@ -1,5 +1,4 @@
-<script>
-  import themeStore from "../../stores/themeStore";
+<script lang="ts">
   import Goals from "./goals/Goals.svelte";
 </script>
 

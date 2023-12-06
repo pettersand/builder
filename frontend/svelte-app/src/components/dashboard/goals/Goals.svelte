@@ -49,13 +49,13 @@
     </DotsMenu>
   </div>
   <div
-    class="flex flex-col text-center items-center justify-center gap-2 p-4 text-paragraph text-lg font-bold"
+    class="flex flex-col text-center items-center gap-2 p-4 text-paragraph text-lg font-bold"
   >
     <p class="text-xl text-red-600">Uh oh!</p>
     <p>It looks like you do not have any goals set at the moment!</p>
     <p>But don't worry, we'll get you started.</p>
     <button
-      class="flex text-center bg-accent2 text-headline py-2 px-4 rounded-full font-bold mt-4 whitespace-nowrap"
+      class="text-center bg-accent2 text-headline py-2 px-4 rounded-full font-bold mt-4 whitespace-nowrap"
       >Create Goal!</button
     >
     <div class="flex flex-col w-1/2 mt-4 gap-2 p-4 bg-card border shadow-xl">
