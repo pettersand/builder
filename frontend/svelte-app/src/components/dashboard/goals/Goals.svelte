@@ -1,10 +1,16 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
   import DotsMenu from "../../base/DotsMenu.svelte";
+  import modalStore from "../../../stores/modalStore";
+  import NewGoal from "./NewGoal.svelte";
 
   const handleSelect = (item) => {
-    console.log("Selected:", item);
+    console.log("Testing");
     // Item selection logic here
+  };
+
+  const openNewGoalModal = () => {
+    modalStore.openModal(NewGoal);
   };
 
   const handleKeydown = (event, item) => {
@@ -55,8 +61,8 @@
     <p>It looks like you do not have any goals set at the moment!</p>
     <p>But don't worry, we'll get you started.</p>
     <button
-      class="text-center bg-accent2 text-headline py-2 px-4 rounded-full font-bold mt-4 whitespace-nowrap" 
-      >Create Goals!</button
+      class="text-center bg-accent2 text-headline py-2 px-4 rounded-full font-bold mt-4 whitespace-nowrap"
+      on:click={openNewGoalModal}>Create Goals!</button
     >
     <div class="flex flex-col w-1/2 mt-4 gap-2 p-4 bg-card border shadow-xl">
       <p class="text-sm text-start">

@@ -4,28 +4,21 @@ import { writable } from "svelte/store";
 // Initialize the state
 const initialState = {
   showModal: false,
-  modalContent: "",
-  modalType: "",
+  ModalComponent: null,
 };
 
 const modalStore = writable(initialState);
 
 // Define methods to update the store
 const methods = {
-  toggleModalWithContent: (type: string, content: string) => {
-    modalStore.update((state) => {
-      return {
-        ...state,
-        showModal: !state.showModal,
-        modalType: type,
-        modalContent: content,
-      };
+  openModal: (ModalComponent) => {
+    modalStore.set({
+      showModal: true,
+      ModalComponent,
     });
   },
   closeModal: () => {
-    modalStore.update((state) => {
-      return { ...state, showModal: false, modalType: "", modalContent: "" };
-    });
+    modalStore.set({ ...initialState });
   },
 };
 

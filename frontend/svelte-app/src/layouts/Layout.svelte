@@ -85,7 +85,7 @@
   }
 
   function openLoginModal() {
-    modalStore.toggleModalWithContent("loginRegister", "Login / Register");
+    console.log("Opening login modal");
   }
 
   async function logout(): Promise<void> {
@@ -113,18 +113,14 @@
   function handleKeydown(event: KeyboardEvent) {
     handleKeyboardEvent(event, toggleDarkMode, () => {});
   }
+
+  $: ModalComponent = $modalStore.ModalComponent;
 </script>
 
-{#if $modalStore.showModal}
-  {#if $modalStore.modalType === "loginRegister"}
-    <LoginRegister />
-  {:else if $modalStore.modalType === "levelCheck"}
-    <BaseModal
-      modalContent={$modalStore.modalContent}
-      onClose={() => modalStore.toggleModalWithContent("", "")}
-      onConfirm={() => {}}
-    />
-  {/if}
+{#if $modalStore.showModal && ModalComponent}
+  <BaseModal onClose={modalStore.closeModal}>
+    <svelte:component this={ModalComponent} />
+  </BaseModal>
 {/if}
 <TopBar />
 <ErrorModal />

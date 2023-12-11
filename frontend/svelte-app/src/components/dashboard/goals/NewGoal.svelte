@@ -6,4 +6,4 @@
   import BaseModal from "../../BaseModal.svelte";
 </script>
 
-<div class="flex flex-col bg-dark-overlay border"></div>
+<div class="flex flex-col bg-dark-overlay border">New Goal Modal</div>

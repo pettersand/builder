@@ -7,9 +7,9 @@
   import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
 
-  export let modalContent: string;
+  export let modalContent: string = "";
   export let onClose: () => void;
-  export let onConfirm: () => void;
+  export let onConfirm: () => void = () => {};
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
