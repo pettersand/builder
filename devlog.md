@@ -1,6 +1,6 @@
 ## 11/12-23
 
-Focusing more on courses. Will get some work done today, though!
+Focusing more on courses. Will try to get some work done here today. Though my brain isn't functioning as it should recently. Hard to get the ball rolling.
 
 ### Worked On:
 
