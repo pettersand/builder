@@ -14,14 +14,19 @@ const modalStore = writable(initialState);
 const methods = {
   toggleModalWithContent: (type: string, content: string) => {
     modalStore.update((state) => {
-      return { ...state, showModal: !state.showModal, modalType: type, modalContent: content };
+      return {
+        ...state,
+        showModal: !state.showModal,
+        modalType: type,
+        modalContent: content,
+      };
     });
   },
   closeModal: () => {
     modalStore.update((state) => {
       return { ...state, showModal: false, modalType: "", modalContent: "" };
     });
-  }
+  },
 };
 
 export default {

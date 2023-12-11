@@ -1,3 +1,15 @@
+## 11/12-23
+
+Focusing more on courses. Will get some work done today, though!
+
+### Worked On:
+
+1. Functionality to Create Goal / New Goal
+
+### Issues:
+
+My brain has not been braining today. Extremely low focus, feels like my thoughts are lagging. And my overview of things to do is foggy at best.
+
 ## 06/11-23
 
 Between advent of code, a set back affecting my motivation, and social activities; This project has been neglected for the last few weeks. However, I did finish planning out my roadmap and the specifics I was stuck on. So back at it again with a better routine and plan for working regularly on this project. Though for the next few weeks or months, most of my time will be spent on courses and coding practice outside of project work.
