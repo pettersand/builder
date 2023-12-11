@@ -1,9 +1,13 @@
 <script lang="ts">
-  import {
-    handleClickOutside,
-    handleKeyboardEvent,
-  } from "../../../utilities/modalUtilities";
-  import BaseModal from "../../BaseModal.svelte";
+  const longTermGoal = {
+    dueDate: "",
+    goal: "",
+  };
+
+  const shortTermGoal = {
+    dueDate: "",
+    goal: "",
+  };
 </script>
 
 <div class="flex flex-col items-start p-2 gap-4 bg-bg custom-border-bottom">
@@ -22,7 +26,12 @@
       />
     </div>
   </div>
+  <div class="flex w-full items-center justify-center">
+    <button class="bg-accent2 rounded-lg p-2 font-bold">ADD GOAL</button
+    >
+  </div>
 </div>
+
 <div class="flex flex-col items-start p-2 gap-4 bg-bg custom-border-bottom">
   <div class="text-lg font-bold">Short Term Goal</div>
 
@@ -38,5 +47,9 @@
         class="border border-paragraph rounded-lg p-2"
       />
     </div>
+  </div>
+  <div class="flex w-full items-center justify-center">
+    <button class="bg-accent2 rounded-lg p-2 font-bold">ADD GOAL</button
+    >
   </div>
 </div>

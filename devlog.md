@@ -4,7 +4,14 @@ Focusing more on courses. Will get some work done today, though!
 
 ### Worked On:
 
-1. Functionality to Create Goal / New Goal
+1. New Goal design
+2. BaseModal re-design / altered usage
+
+### Next Session:
+
+- Base Button, reusable
+- Continue on newGoal
+- POST & GET with conditional rendering
 
 ### Issues:
 
