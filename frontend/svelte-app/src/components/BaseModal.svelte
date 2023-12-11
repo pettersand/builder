@@ -31,20 +31,11 @@
 </script>
 
 <div
-  class={`fixed inset-0 flex items-center justify-center z-50 rounded-lg ${
-    $themeStore === "dark" ? "bg-dark-overlay" : "bg-light-overlay"
-  }`}
+  class="fixed inset-0 flex bg-black bg-opacity-50 items-center justify-center z-50 rounded-lg"
   bind:this={modalRef}
 >
-  <div
-    class={`modal p-6 w-1/3 rounded-lg ${
-      $themeStore === "dark"
-        ? "bg-dark-card text-dark-text"
-        : "bg-light-card text-light-text"
-    }`}
-    bind:this={modalBox}
-  >
-    <button class="absolute top-0 right-0 p-2 rounded-full" on:click={onClose}>
+  <div class="bg-bg2 text-headline p-4 w-1/3 rounded-lg" bind:this={modalBox}>
+    <button class="flex w-full justify-end font-bold p-2 rounded-full" on:click={onClose}>
       X
     </button>
     <h2 class="text-2xl mb-4">{modalContent}</h2>
