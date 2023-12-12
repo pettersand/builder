@@ -58,7 +58,7 @@ export const checkAuthentication = async (): Promise<any> => {
 
 export const newLongTermGoal = async (goalData: any): Promise<any> => {
   try {
-    const response = await api.post("/long_term_goals/", goalData);
+    const response = await api.post("/new_simple_goal/", goalData);
     return response.data;
   } catch (error) {
     throw error;

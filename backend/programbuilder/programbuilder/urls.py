@@ -16,6 +16,7 @@ from builder.views import (
     ClientNotesView,
     ClientPreferencesView,
     CreateProgramView,
+    NewSimpleGoal,
 )
 
 
@@ -43,4 +44,5 @@ urlpatterns = [
     ),
     path("api/client_data/", ClientDataView.as_view(), name="client_data"),
     path("api/create_program/", CreateProgramView.as_view(), name="create_program"),
+    path("api/new_simple_goal/", NewSimpleGoal.as_view(), name="new_simple_goal"),
 ]

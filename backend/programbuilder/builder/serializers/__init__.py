@@ -8,3 +8,4 @@ from .client_serializer import (
     ClientInjuriesSerializer,
 )
 from .program_serializer import ProgramSerializer
+from .goals_serializer import NewGoalSerializer
