@@ -9,3 +9,4 @@ from .trainer_client import TrainerClient
 from .client_note import TrainerNote
 from .program import Program
 from .client_data import *
+from .goals import *
