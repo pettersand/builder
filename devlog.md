@@ -1,3 +1,11 @@
+## 12/12-23
+
+Some more work on the basic goal setting.
+
+### Worked On:
+
+1. New goal data flow, planning
+
 ## 11/12-23
 
 Focusing more on courses. Will try to get some work done here today. Though my brain isn't functioning as it should recently. Hard to get the ball rolling.

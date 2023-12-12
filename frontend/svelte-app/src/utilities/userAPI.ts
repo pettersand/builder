@@ -55,3 +55,12 @@ export const checkAuthentication = async (): Promise<any> => {
     throw error;
   }
 };
+
+export const newLongTermGoal = async (goalData: any): Promise<any> => {
+  try {
+    const response = await api.post("/long_term_goals/", goalData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
