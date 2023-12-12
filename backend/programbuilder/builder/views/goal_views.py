@@ -11,13 +11,13 @@ class NewSimpleGoal(APIView):
         serializer = NewGoalSerializer(data=request.data)
         if serializer.is_valid():
             new_goal = SimpleGoal.objects.create(
-                user=request.user,
+                user_id=request.user,
                 created_for=request.user,
                 type=serializer.validated_data["type"],
                 content=serializer.validated_data["content"],
                 status="active",
                 goal_date=serializer.validated_data["goal_date"],
-                private=True, 
+                private=serializer.validated_data["private"],
             )
             return Response(
                 NewGoalSerializer(new_goal).data,

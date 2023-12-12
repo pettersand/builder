@@ -21,9 +21,10 @@
 
   const addLongTermGoal = async () => {
     const goalData = {
-      dueDate: longTermGoal.dueDate,
-      goal: longTermGoal.goal,
+      goal_date: longTermGoal.dueDate,
+      content: longTermGoal.goal,
       type: "long",
+      private: true,
     };
     console.log("Long Term Goal:", goalData);
     try {
