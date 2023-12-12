@@ -30,6 +30,8 @@
         height="35"
       />Goals
     </h2>
+
+    <!-- Settings Menu -->
     <DotsMenu on:select={handleSelect}>
       <li
         class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"

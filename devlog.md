@@ -1,10 +1,25 @@
 ## 12/12-23
 
-Some more work on the basic goal setting.
+Some more work on the basic goal setting data flow.
 
 ### Worked On:
 
 1. New goal data flow, planning
+2. Backend files for NewGoal
+3. Fetching goal data, and data persistance/caching/storage
+
+### Created:
+
+- New SimpleGoal, model/serializer/view/url
+- Frontend API request
+- dashboardStore.ts
+
+### Next Session:
+
+- Continue work on data handling/persistance
+- Fetching Goal Data, conditional rendering
+- Fetching Goal Data (self), step 1 builder
+- dashboardStore usage + session storage
 
 ## 11/12-23
 
