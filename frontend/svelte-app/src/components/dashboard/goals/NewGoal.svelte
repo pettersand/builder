@@ -1,6 +1,12 @@
 <script lang="ts">
   import { newLongTermGoal } from "../../../utilities/api";
 
+  interface Goal {
+    dueDate: Date;
+    goal: string;
+    type: string;
+  }
+
   const longTermGoal = {
     dueDate: "",
     goal: "",
