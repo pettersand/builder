@@ -15,4 +15,4 @@ from .client_views import (
     ClientDataView,
 )
 from .program_views import CreateProgramView
-from goal_views import NewSimpleGoal
+from .goal_views import NewSimpleGoal

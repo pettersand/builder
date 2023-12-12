@@ -4,17 +4,12 @@ from builder.models import SimpleGoal
 from datetime import date
 
 
-class NewGoalSerializer(serializers.Serializer):
-    type = serializers.CharField(max_length=5)
-    content = serializers.CharField(max_length=100)
-    goal_date = serializers.DateField()
-    private = serializers.BooleanField()
+class NewGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SimpleGoal
+        fields = ["type", "content", "goal_date", "private"]
 
-    def validate(self, data):
-        print("New Goal Serializer Validate Called")
-        goal_date = data.get("goal_date")
-        if goal_date < date.today():
-            raise serializers.ValidationError(
-                {"goal_date": "Goal date must be in the future."}
-            )
-        return data
+    def validate_goal_date(self, value):
+        if value < date.today():
+            raise serializers.ValidationError("Goal date must be in the future.")
+        return value
