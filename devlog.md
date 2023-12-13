@@ -1,3 +1,12 @@
+## 13/13-23
+
+Continuing work on goals. Aiming to fetch and display goals, and implementing sessionStorage. Spent the last part of yesterday researching caching and storage solutions. Well things changed and I ended up working on planning in Miro. Visualized page components, and their relationships, and development status. Also planned out data flow and storage.
+
+### Worked On:
+
+1. Miro workflow, dev plan for components, planning
+2. Storage research, visualization for pages
+
 ## 12/12-23
 
 Some more work on the basic goal setting data flow.
