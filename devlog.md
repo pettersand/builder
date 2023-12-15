@@ -1,3 +1,7 @@
+## 15/12-23
+
+New PC. So lots of setup and installation going on. Will get back on the dev train once things are in place. 
+
 ## 13/13-23
 
 Continuing work on goals. Aiming to fetch and display goals, and implementing sessionStorage. Spent the last part of yesterday researching caching and storage solutions. Well things changed and I ended up working on planning in Miro. Visualized page components, and their relationships, and development status. Also planned out data flow and storage.
