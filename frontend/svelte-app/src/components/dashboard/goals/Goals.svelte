@@ -3,6 +3,17 @@
   import DotsMenu from "../../base/DotsMenu.svelte";
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
+  import { construct_svelte_component } from "svelte/internal";
+
+const getGoals = async () => {
+  let goals = sessionStorage.getItem("goals");
+
+  if (!goals) {
+    console.log("No goals found");
+  }
+
+  return goals;
+}
 
   const handleSelect = (item) => {
     console.log("Testing");

@@ -36,7 +36,7 @@
     try {
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
-      updateGoalsStorage(response.data);
+      updateGoalsStorage(goalData);
     } catch (error) {
       console.log("Error creating goal:", error);
     }
