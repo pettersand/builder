@@ -3,6 +3,14 @@
 Happy new year! Christmas shenanigans, some days off, and focus on courses has stolen my attention from project work. Back at it now and will be working more on this going forward. 
     However, the first few days will be spent updating my interactive resume, and gathering screenshots of this projects progress to display as a gallery for recruiters to view. 
 
+### Worked On:
+1. Setting up new PostgreSQL server
+2. Cleaning up and installing dependencies
+
+### Next Session:
+- Get login modal up and running again, after old changes
+- Create sample users and clients
+
 ## 15/12-23
 
 New PC. So lots of setup and installation going on. Will get back on the dev train once things are in place. 
