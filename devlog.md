@@ -6,6 +6,8 @@ Happy new year! Christmas shenanigans, some days off, and focus on courses has s
 ### Worked On:
 1. Setting up new PostgreSQL server
 2. Cleaning up and installing dependencies
+3. Fixed login
+4. Started work on sessionStorage for goals
 
 ### Next Session:
 - Get login modal up and running again, after old changes

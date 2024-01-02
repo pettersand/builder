@@ -14,6 +14,7 @@ from .models import (
     ClientPreferences,
     ClientNotes,
     ClientData,
+    SimpleGoal,
 )
 
 
@@ -41,3 +42,4 @@ admin.site.register(ClientInjuries)
 admin.site.register(ClientPreferences)
 admin.site.register(ClientNotes)
 admin.site.register(ClientData, ClientDataAdmin)
+admin.site.register(SimpleGoal)

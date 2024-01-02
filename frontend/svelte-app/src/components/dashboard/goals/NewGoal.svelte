@@ -19,6 +19,12 @@
     type: "short",
   };
 
+  const updateGoalsStorage = (newGoal) => {
+    const currentGoals = JSON.parse(sessionStorage.getItem("goals")) || [];
+    currentGoals.push(newGoal);
+    sessionStorage.setItem("goals", JSON.stringify(currentGoals));
+  }
+
   const addLongTermGoal = async () => {
     const goalData = {
       goal_date: longTermGoal.dueDate,
@@ -30,6 +36,7 @@
     try {
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
+      updateGoalsStorage(response.data);
     } catch (error) {
       console.log("Error creating goal:", error);
     }
