@@ -85,7 +85,7 @@
   }
 
   function openLoginModal() {
-    console.log("Opening login modal");
+    modalStore.openModal(LoginRegister);
   }
 
   async function logout(): Promise<void> {
