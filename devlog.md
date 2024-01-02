@@ -1,3 +1,7 @@
+## 02/01-24
+
+Happy new year! Christmas shenanigans, some days off, and focus on courses has stolen my attention from project work. Back at it now and will be working more on this going forward. 
+
 ## 15/12-23
 
 New PC. So lots of setup and installation going on. Will get back on the dev train once things are in place. 
