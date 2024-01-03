@@ -14,12 +14,9 @@ class NewGoalSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Goal date must be in the future.")
         return value
 
-class fethGoalsSerializer(serializers.ModelSerializer):
+class FetchGoalsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SimpleGoal
         fields = ["type", "content", "goal_date", "status"]
 
-    def validate_goal_date(self, value):
-        if value < date.today():
-            raise serializers.ValidationError("Goal date must be in the future.")
-        return value
+    
