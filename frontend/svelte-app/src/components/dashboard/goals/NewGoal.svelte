@@ -1,54 +1,42 @@
 <script lang="ts">
   import { newLongTermGoal } from "../../../utilities/api";
+  import type { FrontendGoal, BackendGoal } from "./types";
+  import { frontToBackGoal } from "./types";
 
-  interface Goal {
-    dueDate: string;
-    goal: string;
-    type: "long" | "short";
-    status?: "active" | "completed" | "abandoned";
-  }
-
-  interface GoalData {
-    goal_date: string;
-    content: string;
-    type: "long" | "short";
-    private: boolean;
-  }
-
-  const longTermGoal: Goal = {
+  const longTermGoal: FrontendGoal = {
     dueDate: "",
     goal: "",
     type: "long",
   };
 
-  const shortTermGoal: Goal = {
+  const shortTermGoal: FrontendGoal = {
     dueDate: "",
     goal: "",
     type: "short",
   };
 
-  const updateGoalsStorage = (newGoal: Goal): void => {
-    const currentGoals: Goal[] = JSON.parse(sessionStorage.getItem("goals") || "[]");
+  const updateGoalsStorage = (newGoal: FrontendGoal): void => {
+    const currentGoals: FrontendGoal[] = JSON.parse(sessionStorage.getItem("goals") || "[]");
     currentGoals.push(newGoal);
     sessionStorage.setItem("goals", JSON.stringify(currentGoals));
   }
 
   const addLongTermGoal = async () => {
-    const goalData: GoalData = {
-      goal_date: longTermGoal.dueDate,
-      content: longTermGoal.goal,
+    const goalData: BackendGoal = frontToBackGoal({
+      dueDate: longTermGoal.dueDate,
+      goal: longTermGoal.goal,
       type: "long",
-      private: true,
-    };
+    });
     console.log("Long Term Goal:", goalData);
     try {
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
-      const goalForStorage: Goal = {
-        dueDate: goalData.goal_date,
-        goal: goalData.content,
-        type: goalData.type,
-        status: "active",
+
+      const goalForStorage: FrontendGoal = {
+        dueDate: longTermGoal.dueDate,
+        goal: longTermGoal.goal,
+        type: "long",
+        status: "active"
       };
       updateGoalsStorage(goalForStorage);
     } catch (error) {

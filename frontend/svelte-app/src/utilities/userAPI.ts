@@ -1,13 +1,7 @@
 // userAPI.ts
 import api from "./api";
 import type { LoginPayload, Step1Data, Step2Data } from "../types";
-
-interface GoalData {
-  goal_date: string;
-  content: string;
-  type: string;
-  private: boolean;
-}
+import type { BackendGoal } from "../components/dashboard/goals/types";
 
 export const loginUser = async (payload: Partial<LoginPayload>) => {
   try {
@@ -63,7 +57,7 @@ export const checkAuthentication = async (): Promise<any> => {
   }
 };
 
-export const newLongTermGoal = async (goalData: GoalData): Promise<any> => {
+export const newLongTermGoal = async (goalData: BackendGoal): Promise<any> => {
   try {
     const response = await api.post("/new_simple_goal/", goalData);
     return response.data;
