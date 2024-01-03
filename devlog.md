@@ -10,8 +10,8 @@ Happy new year! Christmas shenanigans, some days off, and focus on courses has s
 4. Started work on sessionStorage for goals
 
 ### Next Session:
-- Get login modal up and running again, after old changes
 - Create sample users and clients
+- Create fetch for goals, sessionStorage check
 
 ## 15/12-23
 

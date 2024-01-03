@@ -1,19 +1,12 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import Icon from "@iconify/svelte";
   import DotsMenu from "../../base/DotsMenu.svelte";
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
   import { construct_svelte_component } from "svelte/internal";
 
-const getGoals = async () => {
-  let goals = sessionStorage.getItem("goals");
-
-  if (!goals) {
-    console.log("No goals found");
-  }
-
-  return goals;
-}
+  let goalsData;
 
   const handleSelect = (item) => {
     console.log("Testing");
@@ -30,6 +23,15 @@ const getGoals = async () => {
       event.preventDefault();
     }
   };
+
+  onMount(() => {
+    const storedGoals = sessionStorage.getItem("goals");
+    if (storedGoals) {
+      goalsData = JSON.parse(storedGoals);
+    } else {
+      console.log("Fetching Goals");
+    }
+  })
 </script>
 
 <div class="bg-bg shadow-xl">
