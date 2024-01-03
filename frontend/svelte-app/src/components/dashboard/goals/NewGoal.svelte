@@ -2,18 +2,18 @@
   import { newLongTermGoal } from "../../../utilities/api";
 
   interface Goal {
-    dueDate: Date;
+    dueDate: string;
     goal: string;
-    type: string;
+    type: "long" | "short";
   }
 
-  const longTermGoal = {
+  const longTermGoal: Goal = {
     dueDate: "",
     goal: "",
     type: "long",
   };
 
-  const shortTermGoal = {
+  const shortTermGoal: Goal = {
     dueDate: "",
     goal: "",
     type: "short",

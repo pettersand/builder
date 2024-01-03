@@ -46,7 +46,7 @@
       fetchGoals();
     }
   })
-  
+
 </script>
 
 <div class="bg-bg shadow-xl">
@@ -87,6 +87,7 @@
   <div
     class="flex flex-col text-center items-center gap-2 p-4 text-paragraph text-lg font-bold"
   >
+  {#if !goalsData}
     <p class="text-xl text-red-600">Uh oh!</p>
     <p>It looks like you do not have any goals set at the moment!</p>
     <p>But don't worry, we'll get you started.</p>
@@ -105,5 +106,9 @@
         more likely to reach their goal. Convinced? Great. Let's go!
       </p>
     </div>
+    {:else}
+    {/if}
   </div>
+
+
 </div>
