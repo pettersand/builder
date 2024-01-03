@@ -5,6 +5,14 @@
     dueDate: string;
     goal: string;
     type: "long" | "short";
+    status?: "active" | "completed" | "abandoned";
+  }
+
+  interface GoalData {
+    goal_date: string;
+    content: string;
+    type: "long" | "short";
+    private: boolean;
   }
 
   const longTermGoal: Goal = {
@@ -19,14 +27,14 @@
     type: "short",
   };
 
-  const updateGoalsStorage = (newGoal) => {
-    const currentGoals = JSON.parse(sessionStorage.getItem("goals")) || [];
+  const updateGoalsStorage = (newGoal: Goal): void => {
+    const currentGoals: Goal[] = JSON.parse(sessionStorage.getItem("goals") || "[]");
     currentGoals.push(newGoal);
     sessionStorage.setItem("goals", JSON.stringify(currentGoals));
   }
 
   const addLongTermGoal = async () => {
-    const goalData = {
+    const goalData: GoalData = {
       goal_date: longTermGoal.dueDate,
       content: longTermGoal.goal,
       type: "long",
@@ -36,7 +44,13 @@
     try {
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
-      updateGoalsStorage(goalData);
+      const goalForStorage: Goal = {
+        dueDate: goalData.goal_date,
+        goal: goalData.content,
+        type: goalData.type,
+        status: "active",
+      };
+      updateGoalsStorage(goalForStorage);
     } catch (error) {
       console.log("Error creating goal:", error);
     }

@@ -7,7 +7,14 @@
   import { getGoals } from "../../../utilities/api";
   import { construct_svelte_component } from "svelte/internal";
 
-  let goalsData;
+  interface Goal {
+    goal: string;
+    type: string;
+    status: string;
+    dueDate: Date;
+  }
+
+  let goalsData: Goal[];
 
   const handleSelect = (item) => {
     console.log("Testing");
@@ -27,14 +34,17 @@
 
   async function fetchGoals(): Promise<void> {
     try {
+      sessionStorage.removeItem("goals");
+
       const response = await getGoals();
       console.log("Goals:", response);
+      
       goalsData = response.data;
+      sessionStorage.setItem("goals", JSON.stringify(goalsData));
     } catch (error) {
       console.error("Error fetching goals:", error);
     }
-
-  }
+  };
 
 
   onMount(() => {
@@ -45,7 +55,7 @@
       console.log("Fetching Goals");
       fetchGoals();
     }
-  })
+  });
 
 </script>
 
@@ -106,8 +116,12 @@
         more likely to reach their goal. Convinced? Great. Let's go!
       </p>
     </div>
-    {:else}
-    {/if}
+  {:else}
+    <div>
+
+
+    </div>
+  {/if}
   </div>
 
 

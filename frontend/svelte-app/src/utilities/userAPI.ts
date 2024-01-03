@@ -2,6 +2,13 @@
 import api from "./api";
 import type { LoginPayload, Step1Data, Step2Data } from "../types";
 
+interface GoalData {
+  goal_date: string;
+  content: string;
+  type: string;
+  private: boolean;
+}
+
 export const loginUser = async (payload: Partial<LoginPayload>) => {
   try {
     const response = await api.post("/login/", payload);
@@ -56,7 +63,7 @@ export const checkAuthentication = async (): Promise<any> => {
   }
 };
 
-export const newLongTermGoal = async (goalData: any): Promise<any> => {
+export const newLongTermGoal = async (goalData: GoalData): Promise<any> => {
   try {
     const response = await api.post("/new_simple_goal/", goalData);
     return response.data;
