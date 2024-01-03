@@ -1,3 +1,10 @@
+## 03/01-24
+
+Continuing work on goal data flow. Organizing and structuring what data will be saved to session storage, and ensuring I minimize API calls for data already fetched. 
+
+### Worked On:
+1. Goals.svelte checking/fetching goalsData
+
 ## 02/01-24
 
 Happy new year! Christmas shenanigans, some days off, and focus on courses has stolen my attention from project work. Back at it now and will be working more on this going forward. 

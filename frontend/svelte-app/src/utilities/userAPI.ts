@@ -64,3 +64,12 @@ export const newLongTermGoal = async (goalData: any): Promise<any> => {
     throw error;
   }
 };
+
+export const getGoals = async (): Promise<any> => {
+  try { 
+    const response = await api.get("/get_goals/");
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}; 

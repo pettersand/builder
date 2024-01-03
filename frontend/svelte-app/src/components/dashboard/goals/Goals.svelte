@@ -4,6 +4,7 @@
   import DotsMenu from "../../base/DotsMenu.svelte";
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
+  import { getGoals } from "../../../utilities/api";
   import { construct_svelte_component } from "svelte/internal";
 
   let goalsData;
@@ -24,14 +25,28 @@
     }
   };
 
+  async function fetchGoals(): Promise<void> {
+    try {
+      const response = await getGoals();
+      console.log("Goals:", response);
+      goalsData = response.data;
+    } catch (error) {
+      console.error("Error fetching goals:", error);
+    }
+
+  }
+
+
   onMount(() => {
     const storedGoals = sessionStorage.getItem("goals");
     if (storedGoals) {
       goalsData = JSON.parse(storedGoals);
     } else {
       console.log("Fetching Goals");
+      fetchGoals();
     }
   })
+  
 </script>
 
 <div class="bg-bg shadow-xl">
