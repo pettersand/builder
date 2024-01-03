@@ -5,16 +5,11 @@
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
   import { getGoals } from "../../../utilities/api";
+  import type { FrontendGoal, BackendGoal } from "./types";
+  import { backToFrontGoal, frontToBackGoal } from "./types";
   import { construct_svelte_component } from "svelte/internal";
 
-  interface Goal {
-    goal: string;
-    type: string;
-    status: string;
-    dueDate: Date;
-  }
-
-  let goalsData: Goal[];
+  let goalsData: FrontendGoal[];
 
   const handleSelect = (item) => {
     console.log("Testing");
@@ -38,9 +33,11 @@
 
       const response = await getGoals();
       console.log("Goals:", response);
-      
-      goalsData = response.data;
+
+      const backendGoals: BackendGoal[] = response.data;
+      goalsData = backendGoals.map(backToFrontGoal);
       sessionStorage.setItem("goals", JSON.stringify(goalsData));
+      
     } catch (error) {
       console.error("Error fetching goals:", error);
     }
