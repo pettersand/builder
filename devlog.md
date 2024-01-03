@@ -4,6 +4,11 @@ Continuing work on goal data flow. Organizing and structuring what data will be 
 
 ### Worked On:
 1. Goals.svelte checking/fetching goalsData
+2. NewGoals.svelte 
+3. Redefined and structured variable name conversion between front/back
+
+### Created:
+- goals/types.ts
 
 ## 02/01-24
 

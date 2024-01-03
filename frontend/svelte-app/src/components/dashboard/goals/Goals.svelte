@@ -37,7 +37,7 @@
       const backendGoals: BackendGoal[] = response.data;
       goalsData = backendGoals.map(backToFrontGoal);
       sessionStorage.setItem("goals", JSON.stringify(goalsData));
-      
+
     } catch (error) {
       console.error("Error fetching goals:", error);
     }
@@ -91,17 +91,15 @@
       </li>
     </DotsMenu>
   </div>
-  <div
-    class="flex flex-col text-center items-center gap-2 p-4 text-paragraph text-lg font-bold"
-  >
+  <div class="flex flex-col text-center items-center gap-2 p-4 text-paragraph text-lg font-bold">
   {#if !goalsData}
+    <!-- Display when no goals are set -->
     <p class="text-xl text-red-600">Uh oh!</p>
     <p>It looks like you do not have any goals set at the moment!</p>
     <p>But don't worry, we'll get you started.</p>
     <button
       class="text-center bg-accent2 text-headline py-2 px-4 rounded-full font-bold mt-4 whitespace-nowrap"
-      on:click={openNewGoalModal}>Create Goals!</button
-    >
+      on:click={openNewGoalModal}>Create Goals!</button>
     <div class="flex flex-col w-1/2 mt-4 gap-2 p-4 bg-card border shadow-xl">
       <p class="text-sm text-start">
         PS: Setting goals will help you find purpose with your training, and
@@ -114,12 +112,20 @@
       </p>
     </div>
   {:else}
-    <div>
-
-
+    <!-- Display when there are goals -->
+    <div class="flex flex-col gap-4">
+      <p>Goals Found</p>
+      {#each goalsData as goal}
+        <div class="p-4 bg-card rounded-lg shadow-md">
+          <h3 class="text-lg font-bold">{goal.type} Term Goal</h3>
+          <p>Goal: {goal.goal}</p>
+          <p>Due Date: {goal.dueDate}</p>
+          <p>Status: {goal.status}</p>
+        </div>
+      {/each}
     </div>
   {/if}
-  </div>
+</div>
 
 
 </div>
