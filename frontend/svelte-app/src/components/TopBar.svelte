@@ -11,7 +11,7 @@
     if (message && message.type === "confirmation") {
       setTimeout(() => {
         hideMessage();
-      }, 3000); // Hide after 3 seconds
+      }, 1500); // Hides after 3 seconds
     }
   });
 
