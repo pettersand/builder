@@ -1,3 +1,10 @@
+## 04/01-24
+
+Adding ability to manage goals with editing and deletion functionality. 
+
+### Worked On:
+1. DotsMenu functionality
+
 ## 03/01-24
 
 Continuing work on goal data flow. Organizing and structuring what data will be saved to session storage, and ensuring I minimize API calls for data already fetched. 

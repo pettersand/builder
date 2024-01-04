@@ -4,6 +4,7 @@
   import DotsMenu from "../../base/DotsMenu.svelte";
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
+  import ManageGoal from "./ManageGoal.svelte";
   import { getGoals } from "../../../utilities/api";
   import type { FrontendGoal, BackendGoal } from "./types";
   import { backToFrontGoal, frontToBackGoal } from "./types";
@@ -12,8 +13,16 @@
   let goalsData: FrontendGoal[];
 
   const handleSelect = (item) => {
-    console.log("Testing");
-    // Item selection logic here
+    switch (item) {
+      case "New Goal":
+        modalStore.openModal(NewGoal);
+        break;
+      case "Manage Goals":
+        modalStore.openModal(ManageGoal);
+        break;
+      default:
+        console.log("No action for this item", item);
+    }
   };
 
   const openNewGoalModal = () => {
@@ -76,13 +85,6 @@
         on:keydown={(event) => handleKeydown(event, "New Goal")}
       >
         New Goal
-      </li>
-      <li
-        class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"
-        on:click={() => handleSelect("Edit Goal")}
-        on:keydown={(event) => handleKeydown(event, "Edit Goal")}
-      >
-        Edit Goal
       </li>
       <li
         class="px-4 py-2 hover:bg-card cursor-pointer whitespace-nowrap"
