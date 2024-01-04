@@ -29,12 +29,14 @@
 
   async function fetchGoals(): Promise<void> {
     try {
+      console.log("Fetching Goals");
       sessionStorage.removeItem("goals");
 
       const response = await getGoals();
       console.log("Goals:", response);
 
-      const backendGoals: BackendGoal[] = response.data;
+      const backendGoals: BackendGoal[] = response;
+      console.log("Backend Goals:", backendGoals);
       goalsData = backendGoals.map(backToFrontGoal);
       sessionStorage.setItem("goals", JSON.stringify(goalsData));
 
