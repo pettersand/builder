@@ -4,6 +4,13 @@ Adding ability to manage goals with editing and deletion functionality.
 
 ### Worked On:
 1. DotsMenu functionality
+2. Fetching data for ManageGoal
+
+### Created:
+- ManageGoal.svelte
+
+### Next Session:
+- Include id in goal data for editing/deletion
 
 ## 03/01-24
 
