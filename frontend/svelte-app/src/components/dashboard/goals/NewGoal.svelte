@@ -3,6 +3,14 @@
   import type { FrontendGoal, BackendGoal } from "./types";
   import { frontToBackGoal } from "./types";
 
+/** 
+  * * Handles adding of new simple goals for logged in user
+  * TODO: Add constructor for type to simplify function calls 
+  * TODO: Add function for short term goals
+  * TODO: Validate input
+  * TODO: Add error/confirmation handling
+*/
+
   const longTermGoal: FrontendGoal = {
     dueDate: "",
     goal: "",

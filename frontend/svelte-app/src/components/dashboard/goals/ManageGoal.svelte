@@ -3,6 +3,12 @@ import { onMount } from "svelte";
 import type { FrontendGoal } from "./types";
 import Icon from '@iconify/svelte';
 
+/** 
+ * * Handles management of goals for logged in user, in current iteration only deletion
+ * * Will be expanded to include editing and altering status
+ * TODO: Add id to fetch request for goals data
+ * TODO: Add deletion of goals
+*/
 
 let goalsData: FrontendGoal[];
 
