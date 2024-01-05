@@ -1,3 +1,7 @@
+## 05/01-24
+
+Focusing on udemy course on TypeScript today. Might code more tonight. 
+
 ## 04/01-24
 
 Adding ability to manage goals with editing and deletion functionality. 
