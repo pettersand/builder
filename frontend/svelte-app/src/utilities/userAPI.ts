@@ -74,3 +74,12 @@ export const getGoals = async (): Promise<any> => {
     throw error;
   }
 }; 
+
+export const deleteUserGoal = async (goalId: number): Promise<any> => {
+  try {
+    const response = await api.post("/delete_goal/", { id: goalId });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

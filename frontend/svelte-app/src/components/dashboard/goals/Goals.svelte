@@ -10,6 +10,13 @@
   import { backToFrontGoal, frontToBackGoal } from "./types";
   import { construct_svelte_component } from "svelte/internal";
 
+/**
+ * * Card for disaplying goals for logged in user
+ * TODO: Only show active goals
+ * TODO: Improve design, containers for short vs long term goals, perhaps only show select few
+*/ 
+ 
+
   let goalsData: FrontendGoal[];
 
   const handleSelect = (item) => {
