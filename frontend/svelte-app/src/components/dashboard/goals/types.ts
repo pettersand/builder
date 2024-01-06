@@ -27,11 +27,14 @@ export const backToFrontGoal = (backendGoal: BackendGoal): FrontendGoal => ({
     private: backendGoal.private,
 });
 
-export const frontToBackGoal = (frontendGoal: FrontendGoal): BackendGoal => ({ 
-    id: frontendGoal.id,
-    goal_date: frontendGoal.dueDate,
-    content: frontendGoal.goal,
-    type: frontendGoal.type,
-    status: frontendGoal.status,
-    private: frontendGoal.private,
-});
+export const frontToBackGoal = (frontendGoal: FrontendGoal): BackendGoal => {
+    const backendGoal: BackendGoal = {
+      goal_date: frontendGoal.dueDate,
+      content: frontendGoal.goal,
+
+      // Only includes 'type' and 'status' if they are defined in frontendGoal
+      ...(frontendGoal.type && { type: frontendGoal.type }),
+      ...(frontendGoal.status && { status: frontendGoal.status }),
+    };
+    return backendGoal;
+  };

@@ -19,7 +19,7 @@ class NewSimpleGoal(APIView):
                 content=serializer.validated_data["content"],
                 status="active",
                 goal_date=serializer.validated_data["goal_date"],
-                private=serializer.validated_data["private"],
+                private=True,
             )
             return Response(
                 GoalSerializer(new_goal).data,

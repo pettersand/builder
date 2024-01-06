@@ -7,7 +7,7 @@ from datetime import date
 class NewGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = SimpleGoal
-        fields = ["type", "content", "goal_date", "private"]
+        fields = ["type", "content", "goal_date"]
 
     def validate_goal_date(self, value):
         if value < date.today():

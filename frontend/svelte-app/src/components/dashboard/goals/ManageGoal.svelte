@@ -7,7 +7,7 @@
   /**
    * * Handles management of goals for logged in user, in current iteration only deletion
    * * Will be expanded to include editing and altering status
-   * TODO: Add deletion of goals, + backend code
+   * TODO: Ensure sessionStorage updates upon deletion
    */
 
   let goalsData: FrontendGoal[];
@@ -19,7 +19,7 @@
 
         if (response.status === 200) {
             console.log("Goal deleted");
-            goalsData = goalsData.filter((goal) => goal.id !== goalId);
+            goalsData = [...goalsData.filter((goal) => goal.id !== goalId)];
             sessionStorage.setItem("goals", JSON.stringify(goalsData));
         }
 

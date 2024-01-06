@@ -3,13 +3,13 @@
   import type { FrontendGoal, BackendGoal } from "./types";
   import { backToFrontGoal, frontToBackGoal } from "./types";
 
-/** 
-  * * Handles adding of new simple goals for logged in user
-  * TODO: Add constructor for type to simplify function calls 
-  * TODO: Add function for short term goals
-  * TODO: Validate input
-  * TODO: Add error/confirmation handling
-*/
+  /**
+   * * Handles adding of new simple goals for logged in user
+   * TODO: Add constructor for type to simplify function calls
+   * TODO: Add function for short term goals
+   * TODO: Validate input
+   * TODO: Add error/confirmation handling
+   */
 
   const longTermGoal: FrontendGoal = {
     dueDate: "",
@@ -24,10 +24,12 @@
   };
 
   const updateGoalsStorage = (newGoal: FrontendGoal): void => {
-    const currentGoals: FrontendGoal[] = JSON.parse(sessionStorage.getItem("goals") || "[]");
+    const currentGoals: FrontendGoal[] = JSON.parse(
+      sessionStorage.getItem("goals") || "[]"
+    );
     currentGoals.push(newGoal);
     sessionStorage.setItem("goals", JSON.stringify(currentGoals));
-  }
+  };
 
   const addLongTermGoal = async () => {
     const goalData: BackendGoal = frontToBackGoal({
@@ -40,7 +42,7 @@
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
 
-      const goalForStorage: FrontendGoal = backToFrontGoal(response);
+      const goalForStorage: FrontendGoal = backToFrontGoal(response.data);
       updateGoalsStorage(goalForStorage);
     } catch (error) {
       console.log("Error creating goal:", error);
