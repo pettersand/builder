@@ -77,7 +77,7 @@ export const getGoals = async (): Promise<any> => {
 
 export const deleteUserGoal = async (goalId: number): Promise<any> => {
   try {
-    const response = await api.post("/delete_goal/", { id: goalId });
+    const response = await api.delete(`/delete_goal/${goalId}`);
     return response.data;
   } catch (error) {
     throw error;

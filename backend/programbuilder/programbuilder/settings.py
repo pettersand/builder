@@ -30,13 +30,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# ! SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
-# FOR DEVELOPMENT ONLY!
+# ! FOR DEVELOPMENT ONLY!
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5000",
@@ -48,7 +48,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-# SET TO TRUE IN PRODUCTION! CHECK SETTINGS - change for .env
+# ! SET TO TRUE IN PRODUCTION! CHECK SETTINGS - change for .env
 SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = False
 

@@ -1,9 +1,10 @@
 # goal_views.py
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from builder.models import SimpleGoal
-from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer, DeleteGoalSerializer
+from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -35,14 +36,7 @@ class FetchGoals(APIView):
 class DeleteGoal(APIView):
     permission_classes = [IsAuthenticated]
 
-    def delete(self, request, *args, **kwargs):
-        serializer = DeleteGoalSerializer(data=request.data)
-        if serializer.is_valid():
-            goal_id = serializer.validated_data['id']
-            goal = SimpleGoal.objects.filter(id=goal_id, user_id=request.user)
-            if goal.exists():
-                goal.delete()
-                return Response({'id': goal_id}, status=status.HTTP_200_OK)
-            else:
-                return Response({'error': 'Goal not found or not authorized to delete.'}, status=status.HTTP_404_NOT_FOUND)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, goal_id):
+        goal = get_object_or_404(SimpleGoal, id=goal_id, user_id=request.user)
+        goal.delete()
+        return Response({'id': goal_id}, status=status.HTTP_200_OK)
