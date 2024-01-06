@@ -14,6 +14,7 @@ class NewGoalSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Goal date must be in the future.")
         return value
 
+
 class FetchGoalsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SimpleGoal
@@ -29,3 +30,18 @@ class GoalSerializer(serializers.ModelSerializer):
         if value < date.today():
             raise serializers.ValidationError("Goal date must be in the future.")
         return value
+    
+
+class DeleteGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SimpleGoal
+        fields = ["id"]
+
+    def validate_id(self, value):
+        if not SimpleGoal.objects.filter(id=value).exists():
+            raise serializers.ValidationError("Goal does not exist.")
+        return value
+
+    def delete(self):
+        SimpleGoal.objects.filter(id=self.validated_data["id"]).delete()
+        return True

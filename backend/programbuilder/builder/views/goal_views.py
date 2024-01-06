@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from builder.models import SimpleGoal
-from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer
+from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer, DeleteGoalSerializer
 
 
 class NewSimpleGoal(APIView):
@@ -30,3 +30,11 @@ class FetchGoals(APIView):
         goals = SimpleGoal.objects.filter(user_id=request.user)
         serializer = FetchGoalsSerializer(goals, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class DeleteGoal(APIView):
+    def post(self, request):
+        serializer = DeleteGoalSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

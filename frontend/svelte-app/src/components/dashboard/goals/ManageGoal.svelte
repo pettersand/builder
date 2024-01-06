@@ -7,8 +7,7 @@
   /**
    * * Handles management of goals for logged in user, in current iteration only deletion
    * * Will be expanded to include editing and altering status
-   * TODO: Add id to fetch request for goals data
-   * TODO: Add deletion of goals
+   * TODO: Add deletion of goals, + backend code
    */
 
   let goalsData: FrontendGoal[];
@@ -17,6 +16,13 @@
     console.log("Deleting Goal:", goalId);
     try {
         const response = await deleteUserGoal(goalId);
+
+        if (response.status === 200) {
+            console.log("Goal deleted");
+            goalsData = goalsData.filter((goal) => goal.id !== goalId);
+            sessionStorage.setItem("goals", JSON.stringify(goalsData));
+        }
+
     } catch (error) {
         console.error("Error deleting goal:", error);
     }
