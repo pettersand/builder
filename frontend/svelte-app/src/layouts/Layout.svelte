@@ -93,6 +93,9 @@
     try {
       const data = await logoutUser();
       console.log("User logged out successfully", data);
+
+      sessionStorage.clear();
+      
       globalStore.setAuthenticationStatus(false);
       showMessage("You have been logged out", "confirmation");
     } catch (error) {

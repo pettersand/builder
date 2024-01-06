@@ -1,7 +1,7 @@
 <script lang="ts">
   import { newLongTermGoal } from "../../../utilities/api";
   import type { FrontendGoal, BackendGoal } from "./types";
-  import { frontToBackGoal } from "./types";
+  import { backToFrontGoal, frontToBackGoal } from "./types";
 
 /** 
   * * Handles adding of new simple goals for logged in user
@@ -40,12 +40,7 @@
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
 
-      const goalForStorage: FrontendGoal = {
-        dueDate: longTermGoal.dueDate,
-        goal: longTermGoal.goal,
-        type: "long",
-        status: "active"
-      };
+      const goalForStorage: FrontendGoal = backToFrontGoal(response);
       updateGoalsStorage(goalForStorage);
     } catch (error) {
       console.log("Error creating goal:", error);

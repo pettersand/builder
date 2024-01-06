@@ -4,6 +4,7 @@ Adding some comments today, with explanations and TODO's etc.
 
 ### Worked On:
 1. Adding comments
+2. Adding id to response data for goals
 
 ## 05/01-24
 
