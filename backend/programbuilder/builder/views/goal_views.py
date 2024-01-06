@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from builder.models import SimpleGoal
 from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer, DeleteGoalSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class NewSimpleGoal(APIView):
@@ -32,9 +33,16 @@ class FetchGoals(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
 class DeleteGoal(APIView):
-    def post(self, request):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
         serializer = DeleteGoalSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.delete()
-            return Response(status=status.HTTP_200_OK)
+            goal_id = serializer.validated_data['id']
+            goal = SimpleGoal.objects.filter(id=goal_id, user_id=request.user)
+            if goal.exists():
+                goal.delete()
+                return Response({'id': goal_id}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Goal not found or not authorized to delete.'}, status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

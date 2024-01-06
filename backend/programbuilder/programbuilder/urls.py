@@ -18,6 +18,7 @@ from builder.views import (
     CreateProgramView,
     NewSimpleGoal,
     FetchGoals,
+    DeleteGoal,
 )
 
 
@@ -47,4 +48,5 @@ urlpatterns = [
     path("api/create_program/", CreateProgramView.as_view(), name="create_program"),
     path("api/new_simple_goal/", NewSimpleGoal.as_view(), name="new_simple_goal"),
     path("api/get_goals/", FetchGoals.as_view(), name="get_goals"),
+    path("api/delete_goal/", DeleteGoal.as_view(), name="delete_goal"),
 ]
