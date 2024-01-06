@@ -1,3 +1,10 @@
+## 06/01-24
+
+Adding some comments today, with explanations and TODO's etc. 
+
+### Worked On:
+1. Adding comments
+
 ## 05/01-24
 
 Focusing on udemy course on TypeScript today. Might code more tonight. 

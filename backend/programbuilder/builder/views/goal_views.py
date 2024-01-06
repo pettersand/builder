@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from builder.models import SimpleGoal
-from builder.serializers import NewGoalSerializer, FetchGoalsSerializer
+from builder.serializers import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer
 
 
 class NewSimpleGoal(APIView):
@@ -20,7 +20,7 @@ class NewSimpleGoal(APIView):
                 private=serializer.validated_data["private"],
             )
             return Response(
-                NewGoalSerializer(new_goal).data,
+                GoalSerializer(new_goal).data,
                 status=status.HTTP_201_CREATED,
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

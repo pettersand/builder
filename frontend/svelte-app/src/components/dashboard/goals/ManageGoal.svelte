@@ -12,6 +12,9 @@ import Icon from '@iconify/svelte';
 
 let goalsData: FrontendGoal[];
 
+const deleteGoal = async (goalId) => {
+    console.log("Deleting Goal:", goalId);
+}
 
 onMount(() => {
   const storedGoals = sessionStorage.getItem("goals");

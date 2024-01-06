@@ -6,6 +6,10 @@
 
   let message: MessageState | null = null;
 
+  /**
+   * * Handles confirmation messages
+    */
+
   const unsubscribe = messageStore.subscribe(($message) => {
     message = $message;
     if (message && message.type === "confirmation") {
