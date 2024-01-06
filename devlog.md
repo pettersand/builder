@@ -1,10 +1,17 @@
 ## 06/01-24
 
-Adding some comments today, with explanations and TODO's etc. 
+Adding some comments today, with explanations and TODO's etc. And continuing work on the deletion and data handling. Running into some issues with types between front and back, and the response. But found a good solution in the end. 
 
 ### Worked On:
 1. Adding comments
 2. Adding id to response data for goals
+3. Deletion / newGoal fix
+
+### Next Session:
+- Fix reactive rendering to changes
+- Fix sessionStorage update on deletion
+- Fix CI/CD pipeline
+- Fix failing tests
 
 ## 05/01-24
 
