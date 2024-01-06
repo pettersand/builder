@@ -38,12 +38,14 @@
       type: "long",
     });
     console.log("Long Term Goal:", goalData);
+
     try {
       const response = await newLongTermGoal(goalData);
       console.log("New Goal Added", response);
 
-      const goalForStorage: FrontendGoal = backToFrontGoal(response.data);
+      const goalForStorage: FrontendGoal = backToFrontGoal(response);
       updateGoalsStorage(goalForStorage);
+      console.error("Invalid or empty response:", response);
     } catch (error) {
       console.log("Error creating goal:", error);
     }

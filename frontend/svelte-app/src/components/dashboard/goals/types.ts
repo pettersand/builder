@@ -20,11 +20,10 @@ export interface BackendGoal {
 
 export const backToFrontGoal = (backendGoal: BackendGoal): FrontendGoal => ({
     id: backendGoal.id,
-    dueDate: backendGoal.goal_date,
-    goal: backendGoal.content,
     type: backendGoal.type,
+    goal: backendGoal.content,
+    dueDate: backendGoal.goal_date,
     status: backendGoal.status,
-    private: backendGoal.private,
 });
 
 export const frontToBackGoal = (frontendGoal: FrontendGoal): BackendGoal => {
