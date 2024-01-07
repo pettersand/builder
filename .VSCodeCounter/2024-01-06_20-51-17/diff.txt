@@ -1,0 +1,188 @@
+Date : 2024-01-06 20:51:17
+Directory : c:\Development\Projects\builder\backend\programbuilder\builder
+Total : 115 files,  -1614 codes, -81 comments, -162 blanks, all -1857 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Python     |         42 |      1,334 |         19 |        266 |      1,619 |
+| JSON       |          1 |         26 |          0 |          0 |         26 |
+| CSS        |          2 |        -54 |         -2 |        -12 |        -68 |
+| TypeScript |         22 |       -457 |        -42 |       -101 |       -600 |
+| Svelte     |         48 |     -2,463 |        -56 |       -315 |     -2,834 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                          | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                             |        115 |     -1,614 |        -81 |       -162 |     -1,857 |
+| . (Files)                                                                                                                                     |          3 |         45 |          0 |          8 |         53 |
+| ..                                                                                                                                            |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..                                                                                                                                         |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..\..                                                                                                                                      |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..\..\frontend                                                                                                                             |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..\..\frontend\svelte-app                                                                                                                  |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..\..\frontend\svelte-app\src                                                                                                              |         72 |     -2,974 |       -100 |       -428 |     -3,502 |
+| ..\..\..\frontend\svelte-app\src (Files)                                                                                                      |          4 |        -21 |         -1 |         -6 |        -28 |
+| ..\..\..\frontend\svelte-app\src\components                                                                                                   |         45 |     -2,089 |        -61 |       -262 |     -2,412 |
+| ..\..\..\frontend\svelte-app\src\components (Files)                                                                                           |          4 |       -745 |        -15 |        -69 |       -829 |
+| ..\..\..\frontend\svelte-app\src\components\base                                                                                              |          1 |        -48 |          0 |         -8 |        -56 |
+| ..\..\..\frontend\svelte-app\src\components\builder                                                                                           |         30 |       -789 |        -26 |       -117 |       -932 |
+| ..\..\..\frontend\svelte-app\src\components\builder (Files)                                                                                   |          4 |       -132 |          0 |        -15 |       -147 |
+| ..\..\..\frontend\svelte-app\src\components\builder\main                                                                                      |         11 |       -206 |         -9 |        -41 |       -256 |
+| ..\..\..\frontend\svelte-app\src\components\builder\main (Files)                                                                              |          4 |        -56 |          0 |        -12 |        -68 |
+| ..\..\..\frontend\svelte-app\src\components\builder\main\blocks                                                                               |          7 |       -150 |         -9 |        -29 |       -188 |
+| ..\..\..\frontend\svelte-app\src\components\builder\options                                                                                   |          5 |       -104 |         -8 |        -12 |       -124 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional                                                                              |          8 |       -347 |         -9 |        -47 |       -403 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple                                                                       |          8 |       -347 |         -9 |        -47 |       -403 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple (Files)                                                               |          2 |        -32 |          0 |         -8 |        -40 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple\main                                                                  |          2 |       -174 |         -6 |        -22 |       -202 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple\main (Files)                                                          |          1 |       -109 |         -6 |        -12 |       -127 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple\main\components                                                       |          1 |        -65 |          0 |        -10 |        -75 |
+| ..\..\..\frontend\svelte-app\src\components\builder\professional\simple\options                                                               |          4 |       -141 |         -3 |        -17 |       -161 |
+| ..\..\..\frontend\svelte-app\src\components\builder\solo                                                                                      |          2 |          0 |          0 |         -2 |         -2 |
+| ..\..\..\frontend\svelte-app\src\components\dashboard                                                                                         |         10 |       -507 |        -20 |        -68 |       -595 |
+| ..\..\..\frontend\svelte-app\src\components\dashboard (Files)                                                                                 |          5 |       -179 |        -13 |        -22 |       -214 |
+| ..\..\..\frontend\svelte-app\src\components\dashboard\goals                                                                                   |          4 |       -327 |         -5 |        -44 |       -376 |
+| ..\..\..\frontend\svelte-app\src\components\dashboard\utils                                                                                   |          1 |         -1 |         -2 |         -2 |         -5 |
+| ..\..\..\frontend\svelte-app\src\layouts                                                                                                      |          2 |       -272 |         -3 |        -35 |       -310 |
+| ..\..\..\frontend\svelte-app\src\pages                                                                                                        |          3 |       -170 |         -2 |        -30 |       -202 |
+| ..\..\..\frontend\svelte-app\src\stores                                                                                                       |         10 |       -182 |        -21 |        -53 |       -256 |
+| ..\..\..\frontend\svelte-app\src\styles                                                                                                       |          1 |        -51 |         -2 |        -11 |        -64 |
+| ..\..\..\frontend\svelte-app\src\types                                                                                                        |          1 |        -46 |         -1 |         -9 |        -56 |
+| ..\..\..\frontend\svelte-app\src\utilities                                                                                                    |          6 |       -143 |         -9 |        -22 |       -174 |
+| management                                                                                                                                    |          3 |         49 |          0 |          5 |         54 |
+| management\commands                                                                                                                           |          2 |         23 |          0 |          5 |         28 |
+| management\files                                                                                                                              |          1 |         26 |          0 |          0 |         26 |
+| migrations                                                                                                                                    |          7 |        303 |          6 |         38 |        347 |
+| models                                                                                                                                        |         13 |        351 |          1 |         69 |        421 |
+| serializers                                                                                                                                   |          6 |        155 |          2 |         50 |        207 |
+| tests                                                                                                                                         |          4 |        145 |          0 |         31 |        176 |
+| tests (Files)                                                                                                                                 |          2 |         25 |          0 |          9 |         34 |
+| tests\views                                                                                                                                   |          2 |        120 |          0 |         22 |        142 |
+| views                                                                                                                                         |          7 |        312 |         10 |         65 |        387 |
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                      | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Development\Projects\builder\backend\programbuilder\builder\__init__.py                                                                    | Python     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\admin.py                                                                       | Python     |         41 |          0 |          4 |         45 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\apps.py                                                                        | Python     |          4 |          0 |          3 |          7 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\management\commands\__init__.py                                                | Python     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\management\commands\populate_official_templates.py                             | Python     |         23 |          0 |          4 |         27 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\management\files\official_beginner_templates.json                              | JSON       |         26 |          0 |          0 |         26 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0001_initial.py                                                     | Python     |        143 |          1 |          7 |        151 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0002_rename_clientnote_trainernote.py                               | Python     |         11 |          1 |          6 |         18 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0003_clientpreferences_clientnotes_clientinjuries_and_more.py       | Python     |         70 |          1 |          6 |         77 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0004_alter_clientgoals_goal_type.py                                 | Python     |         12 |          1 |          6 |         19 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0005_remove_clientdata_goals_remove_clientdata_injuries_and_more.py | Python     |         43 |          1 |          6 |         50 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\0006_simplegoal.py                                                  | Python     |         24 |          1 |          6 |         31 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\migrations\__init__.py                                                         | Python     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\__init__.py                                                             | Python     |         12 |          0 |          1 |         13 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\account_metrics.py                                                      | Python     |         22 |          0 |          4 |         26 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\client_data.py                                                          | Python     |        120 |          0 |         19 |        139 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\client_note.py                                                          | Python     |         13 |          1 |          4 |         18 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\goals.py                                                                | Python     |         30 |          0 |          4 |         34 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\official_templates.py                                                   | Python     |         10 |          0 |          4 |         14 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\program.py                                                              | Python     |         20 |          0 |          4 |         24 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\role.py                                                                 | Python     |          8 |          0 |          2 |         10 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\trainer_client.py                                                       | Python     |         23 |          0 |          5 |         28 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\user.py                                                                 | Python     |         48 |          0 |         10 |         58 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\user_profile.py                                                         | Python     |         13 |          0 |          4 |         17 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\user_role.py                                                            | Python     |         13 |          0 |          5 |         18 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\models\user_template_selection.py                                              | Python     |         19 |          0 |          3 |         22 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\__init__.py                                                        | Python     |         11 |          0 |          1 |         12 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\client_serializer.py                                               | Python     |         35 |          0 |         13 |         48 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\goals_serializer.py                                                | Python     |         23 |          1 |          9 |         33 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\program_serializer.py                                              | Python     |         20 |          0 |          5 |         25 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\trainer_serializer.py                                              | Python     |         14 |          0 |          6 |         20 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\serializers\user_serializer.py                                                 | Python     |         52 |          1 |         16 |         69 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\tests\__init__.py                                                              | Python     |          0 |          0 |          2 |          2 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\tests\test_urls.py                                                             | Python     |         25 |          0 |          7 |         32 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\tests\views\__init__.py                                                        | Python     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\tests\views\test_user_views.py                                                 | Python     |        120 |          0 |         21 |        141 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\__init__.py                                                              | Python     |         18 |          0 |          1 |         19 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\client_views.py                                                          | Python     |         72 |          3 |         20 |         95 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\goal_views.py                                                            | Python     |         36 |          1 |          5 |         42 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\official_templates_views.py                                              | Python     |         27 |          0 |          7 |         34 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\program_views.py                                                         | Python     |         14 |          0 |          3 |         17 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\trainer_views.py                                                         | Python     |         11 |          1 |          3 |         15 |
+| c:\Development\Projects\builder\backend\programbuilder\builder\views\user_views.py                                                            | Python     |        134 |          5 |         26 |        165 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\App.svelte                                                                            | Svelte     |         -9 |          0 |         -2 |        -11 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\BaseModal.svelte                                                           | Svelte     |        -61 |         -1 |         -8 |        -70 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\ErrorModal.svelte                                                          | Svelte     |        -51 |          0 |        -11 |        -62 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\LoginRegisterModal.svelte                                                  | Svelte     |       -603 |        -14 |        -43 |       -660 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\TopBar.svelte                                                              | Svelte     |        -30 |          0 |         -7 |        -37 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\base\DotsMenu.svelte                                                       | Svelte     |        -48 |          0 |         -8 |        -56 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\BuilderOptions.svelte                                              | Svelte     |        -45 |          0 |         -4 |        -49 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\MainContent.svelte                                                 | Svelte     |        -11 |          0 |         -3 |        -14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\OptionsContent.svelte                                              | Svelte     |        -13 |          0 |         -3 |        -16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\ProBuilderOptions.svelte                                           | Svelte     |        -63 |          0 |         -5 |        -68 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\EditProgramMain.svelte                                        | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\PreMadeProgramMain.svelte                                     | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\SavedTemplatesMain.svelte                                     | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\SimpleProgram.svelte                                          | Svelte     |        -56 |          0 |         -9 |        -65 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\BlockUtils.ts                                          | TypeScript |        -44 |         -6 |         -7 |        -57 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\CellBlock.svelte                                       | Svelte     |        -21 |          0 |         -3 |        -24 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Day.svelte                                             | Svelte     |        -16 |         -1 |         -5 |        -22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\ExerciseName.svelte                                    | Svelte     |        -29 |         -1 |         -5 |        -35 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Keys.svelte                                            | Svelte     |        -19 |          0 |         -3 |        -22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Session.svelte                                         | Svelte     |        -10 |         -1 |         -3 |        -14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Start.svelte                                           | Svelte     |        -11 |          0 |         -3 |        -14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\EditProgramOptions.svelte                                  | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\FileOptions.svelte                                         | Svelte     |        -14 |          0 |         -2 |        -16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\PreMadeProgramsOptions.svelte                              | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\SavedTemplatesOptions.svelte                               | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\SimpleProgramOptions.svelte                                | Svelte     |        -90 |         -8 |         -7 |       -105 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\ProMainSimple.svelte                           | Svelte     |        -14 |          0 |         -4 |        -18 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\ProOptionsSimple.svelte                        | Svelte     |        -18 |          0 |         -4 |        -22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\main\SimpleClientMain.svelte                   | Svelte     |       -109 |         -6 |        -12 |       -127 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\main\components\ProgramNotes.svelte            | Svelte     |        -65 |          0 |        -10 |        -75 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleClientOptions.svelte             | Svelte     |       -141 |         -3 |        -14 |       -158 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleExerciseOptions.svelte           | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleFinalOptions.svelte              | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleTemplateOptions.svelte           | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\solo\SoloMain.svelte                                               | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\solo\SoloOptions.svelte                                            | Svelte     |          0 |          0 |         -1 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\CardLayout.svelte                                                | Svelte     |        -32 |         -4 |         -6 |        -42 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\DashboardOptions.svelte                                          | Svelte     |        -17 |          0 |         -2 |        -19 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\Sidebar.svelte                                                   | Svelte     |        -65 |         -3 |         -7 |        -75 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\UserStats.svelte                                                 | Svelte     |        -52 |         -6 |         -4 |        -62 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\Workout.svelte                                                   | Svelte     |        -13 |          0 |         -3 |        -16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\Goals.svelte                                               | Svelte     |       -122 |         -3 |        -18 |       -143 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\ManageGoal.svelte                                          | Svelte     |        -73 |          0 |         -8 |        -81 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\NewGoal.svelte                                             | Svelte     |       -100 |          0 |        -13 |       -113 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\types.ts                                                   | TypeScript |        -32 |         -2 |         -5 |        -39 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\utils\dashboardStore.ts                                          | TypeScript |         -1 |         -2 |         -2 |         -5 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\global.d.ts                                                                           | TypeScript |          0 |         -1 |          0 |         -1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\layouts\Layout.svelte                                                                 | Svelte     |       -240 |         -3 |        -27 |       -270 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\layouts\SubOptions.svelte                                                             | Svelte     |        -32 |          0 |         -8 |        -40 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\main.ts                                                                               | TypeScript |         -9 |          0 |         -3 |        -12 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\Builder.svelte                                                                  | Svelte     |        -79 |         -1 |        -13 |        -93 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\Dashboard.svelte                                                                | Svelte     |        -24 |          0 |         -4 |        -28 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\ProBuilder.svelte                                                               | Svelte     |        -67 |         -1 |        -13 |        -81 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\builderStore.ts                                                                | TypeScript |        -20 |         -4 |         -9 |        -33 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\clientStore.ts                                                                 | TypeScript |        -21 |         -3 |         -7 |        -31 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\globalStore.ts                                                                 | TypeScript |        -40 |         -4 |         -8 |        -52 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\messageStore.ts                                                                | TypeScript |        -24 |         -2 |         -7 |        -33 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\modalStore.ts                                                                  | TypeScript |        -21 |         -3 |         -5 |        -29 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\proBuilderStore.ts                                                             | TypeScript |         -4 |         -1 |         -3 |         -8 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\programOptionsStore.ts                                                         | TypeScript |         -8 |         -1 |         -2 |        -11 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\registrationStore.ts                                                           | TypeScript |        -32 |          0 |         -6 |        -38 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\themeStore.ts                                                                  | TypeScript |         -6 |         -3 |         -3 |        -12 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\userStore.ts                                                                   | TypeScript |         -6 |          0 |         -3 |         -9 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\styles\main.css                                                                       | CSS        |        -51 |         -2 |        -11 |        -64 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\tailwind.css                                                                          | CSS        |         -3 |          0 |         -1 |         -4 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\types\index.ts                                                                        | TypeScript |        -46 |         -1 |         -9 |        -56 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\api.ts                                                                      | TypeScript |        -12 |         -2 |         -3 |        -17 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\clientAPI.ts                                                                | TypeScript |        -20 |         -1 |         -3 |        -24 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\localStorageUtilities.ts                                                    | TypeScript |         -6 |         -1 |         -2 |         -9 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\modalUtilities.ts                                                           | TypeScript |        -18 |         -3 |         -4 |        -25 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\programAPI.ts                                                               | TypeScript |        -11 |         -1 |         -2 |        -14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\userAPI.ts                                                                  | TypeScript |        -76 |         -1 |         -8 |        -85 |
+| Total                                                                                                                                         |            |     -1,614 |        -81 |       -162 |     -1,857 |
++-----------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

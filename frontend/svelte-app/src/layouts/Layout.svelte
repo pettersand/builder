@@ -12,6 +12,7 @@
   import ErrorModal from "../components/ErrorModal.svelte";
   import SubOptions from "./SubOptions.svelte";
   import ProBuilder from "../pages/ProBuilder.svelte";
+  import Management from "../pages/Management.svelte";
 
   // Store imports
   import themeStore from "../stores/themeStore";
@@ -95,7 +96,7 @@
       console.log("User logged out successfully", data);
 
       sessionStorage.clear();
-      
+
       globalStore.setAuthenticationStatus(false);
       showMessage("You have been logged out", "confirmation");
     } catch (error) {
@@ -220,7 +221,11 @@
               height="25"
             />ProBuilder</button
           >
-          <button class="text-gray-400 icon-label hover:bg-card"
+          <button class="icon-label hover:bg-card {$globalStore.currentPage ===
+            'Management'
+              ? 'bg-accent2 font-bold'
+              : ''}"
+              on:click={() => globalStore.setCurrentPage("Management")}
             ><Icon
               icon="material-symbols:manage-accounts"
               width="25"
@@ -263,6 +268,8 @@
       <Builder />
     {:else if $globalStore.currentPage === "ProBuilder"}
       <ProBuilder />
+    {:else if $globalStore.currentPage === "Management"}
+      <Management />
     {/if}
     <slot />
   </main>

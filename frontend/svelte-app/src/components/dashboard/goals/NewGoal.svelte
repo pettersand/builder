@@ -45,7 +45,7 @@
 
       const goalForStorage: FrontendGoal = backToFrontGoal(response);
       updateGoalsStorage(goalForStorage);
-      console.error("Invalid or empty response:", response);
+      
     } catch (error) {
       console.log("Error creating goal:", error);
     }

@@ -1,0 +1,132 @@
+Date : 2024-01-06 20:50:59
+Directory : c:\Development\Projects\builder\frontend\svelte-app\src
+Total : 75 files,  2718 codes, 96 comments, 385 blanks, all 3199 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Svelte     |         48 |      2,463 |         56 |        315 |      2,834 |
+| TypeScript |         25 |        201 |         38 |         58 |        297 |
+| CSS        |          2 |         54 |          2 |         12 |         68 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                   |         75 |      2,718 |         96 |        385 |      3,199 |
+| . (Files)                                                                                                                           |          4 |         21 |          1 |          6 |         28 |
+| ..                                                                                                                                  |          3 |       -256 |         -4 |        -43 |       -303 |
+| ..\__tests__                                                                                                                        |          3 |       -256 |         -4 |        -43 |       -303 |
+| ..\__tests__\utilities                                                                                                              |          3 |       -256 |         -4 |        -43 |       -303 |
+| components                                                                                                                          |         45 |      2,089 |         61 |        262 |      2,412 |
+| components (Files)                                                                                                                  |          4 |        745 |         15 |         69 |        829 |
+| components\base                                                                                                                     |          1 |         48 |          0 |          8 |         56 |
+| components\builder                                                                                                                  |         30 |        789 |         26 |        117 |        932 |
+| components\builder (Files)                                                                                                          |          4 |        132 |          0 |         15 |        147 |
+| components\builder\main                                                                                                             |         11 |        206 |          9 |         41 |        256 |
+| components\builder\main (Files)                                                                                                     |          4 |         56 |          0 |         12 |         68 |
+| components\builder\main\blocks                                                                                                      |          7 |        150 |          9 |         29 |        188 |
+| components\builder\options                                                                                                          |          5 |        104 |          8 |         12 |        124 |
+| components\builder\professional                                                                                                     |          8 |        347 |          9 |         47 |        403 |
+| components\builder\professional\simple                                                                                              |          8 |        347 |          9 |         47 |        403 |
+| components\builder\professional\simple (Files)                                                                                      |          2 |         32 |          0 |          8 |         40 |
+| components\builder\professional\simple\main                                                                                         |          2 |        174 |          6 |         22 |        202 |
+| components\builder\professional\simple\main (Files)                                                                                 |          1 |        109 |          6 |         12 |        127 |
+| components\builder\professional\simple\main\components                                                                              |          1 |         65 |          0 |         10 |         75 |
+| components\builder\professional\simple\options                                                                                      |          4 |        141 |          3 |         17 |        161 |
+| components\builder\solo                                                                                                             |          2 |          0 |          0 |          2 |          2 |
+| components\dashboard                                                                                                                |         10 |        507 |         20 |         68 |        595 |
+| components\dashboard (Files)                                                                                                        |          5 |        179 |         13 |         22 |        214 |
+| components\dashboard\goals                                                                                                          |          4 |        327 |          5 |         44 |        376 |
+| components\dashboard\utils                                                                                                          |          1 |          1 |          2 |          2 |          5 |
+| layouts                                                                                                                             |          2 |        272 |          3 |         35 |        310 |
+| pages                                                                                                                               |          3 |        170 |          2 |         30 |        202 |
+| stores                                                                                                                              |         10 |        182 |         21 |         53 |        256 |
+| styles                                                                                                                              |          1 |         51 |          2 |         11 |         64 |
+| types                                                                                                                               |          1 |         46 |          1 |          9 |         56 |
+| utilities                                                                                                                           |          6 |        143 |          9 |         22 |        174 |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                            | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Development\Projects\builder\frontend\svelte-app\__tests__\utilities\localStorageUtilities.test.ts                               | TypeScript |        -24 |         -2 |         -7 |        -33 |
+| c:\Development\Projects\builder\frontend\svelte-app\__tests__\utilities\modalUtilities.test.ts                                      | TypeScript |        -61 |         -2 |        -15 |        -78 |
+| c:\Development\Projects\builder\frontend\svelte-app\__tests__\utilities\userAPI.test.ts                                             | TypeScript |       -171 |          0 |        -21 |       -192 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\App.svelte                                                                  | Svelte     |          9 |          0 |          2 |         11 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\BaseModal.svelte                                                 | Svelte     |         61 |          1 |          8 |         70 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\ErrorModal.svelte                                                | Svelte     |         51 |          0 |         11 |         62 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\LoginRegisterModal.svelte                                        | Svelte     |        603 |         14 |         43 |        660 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\TopBar.svelte                                                    | Svelte     |         30 |          0 |          7 |         37 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\base\DotsMenu.svelte                                             | Svelte     |         48 |          0 |          8 |         56 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\BuilderOptions.svelte                                    | Svelte     |         45 |          0 |          4 |         49 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\MainContent.svelte                                       | Svelte     |         11 |          0 |          3 |         14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\OptionsContent.svelte                                    | Svelte     |         13 |          0 |          3 |         16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\ProBuilderOptions.svelte                                 | Svelte     |         63 |          0 |          5 |         68 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\EditProgramMain.svelte                              | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\PreMadeProgramMain.svelte                           | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\SavedTemplatesMain.svelte                           | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\SimpleProgram.svelte                                | Svelte     |         56 |          0 |          9 |         65 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\BlockUtils.ts                                | TypeScript |         44 |          6 |          7 |         57 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\CellBlock.svelte                             | Svelte     |         21 |          0 |          3 |         24 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Day.svelte                                   | Svelte     |         16 |          1 |          5 |         22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\ExerciseName.svelte                          | Svelte     |         29 |          1 |          5 |         35 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Keys.svelte                                  | Svelte     |         19 |          0 |          3 |         22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Session.svelte                               | Svelte     |         10 |          1 |          3 |         14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\main\blocks\Start.svelte                                 | Svelte     |         11 |          0 |          3 |         14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\EditProgramOptions.svelte                        | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\FileOptions.svelte                               | Svelte     |         14 |          0 |          2 |         16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\PreMadeProgramsOptions.svelte                    | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\SavedTemplatesOptions.svelte                     | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\options\SimpleProgramOptions.svelte                      | Svelte     |         90 |          8 |          7 |        105 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\ProMainSimple.svelte                 | Svelte     |         14 |          0 |          4 |         18 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\ProOptionsSimple.svelte              | Svelte     |         18 |          0 |          4 |         22 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\main\SimpleClientMain.svelte         | Svelte     |        109 |          6 |         12 |        127 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\main\components\ProgramNotes.svelte  | Svelte     |         65 |          0 |         10 |         75 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleClientOptions.svelte   | Svelte     |        141 |          3 |         14 |        158 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleExerciseOptions.svelte | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleFinalOptions.svelte    | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\professional\simple\options\SimpleTemplateOptions.svelte | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\solo\SoloMain.svelte                                     | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\builder\solo\SoloOptions.svelte                                  | Svelte     |          0 |          0 |          1 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\CardLayout.svelte                                      | Svelte     |         32 |          4 |          6 |         42 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\DashboardOptions.svelte                                | Svelte     |         17 |          0 |          2 |         19 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\Sidebar.svelte                                         | Svelte     |         65 |          3 |          7 |         75 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\UserStats.svelte                                       | Svelte     |         52 |          6 |          4 |         62 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\Workout.svelte                                         | Svelte     |         13 |          0 |          3 |         16 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\Goals.svelte                                     | Svelte     |        122 |          3 |         18 |        143 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\ManageGoal.svelte                                | Svelte     |         73 |          0 |          8 |         81 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\NewGoal.svelte                                   | Svelte     |        100 |          0 |         13 |        113 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\goals\types.ts                                         | TypeScript |         32 |          2 |          5 |         39 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\components\dashboard\utils\dashboardStore.ts                                | TypeScript |          1 |          2 |          2 |          5 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\global.d.ts                                                                 | TypeScript |          0 |          1 |          0 |          1 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\layouts\Layout.svelte                                                       | Svelte     |        240 |          3 |         27 |        270 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\layouts\SubOptions.svelte                                                   | Svelte     |         32 |          0 |          8 |         40 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\main.ts                                                                     | TypeScript |          9 |          0 |          3 |         12 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\Builder.svelte                                                        | Svelte     |         79 |          1 |         13 |         93 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\Dashboard.svelte                                                      | Svelte     |         24 |          0 |          4 |         28 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\pages\ProBuilder.svelte                                                     | Svelte     |         67 |          1 |         13 |         81 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\builderStore.ts                                                      | TypeScript |         20 |          4 |          9 |         33 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\clientStore.ts                                                       | TypeScript |         21 |          3 |          7 |         31 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\globalStore.ts                                                       | TypeScript |         40 |          4 |          8 |         52 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\messageStore.ts                                                      | TypeScript |         24 |          2 |          7 |         33 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\modalStore.ts                                                        | TypeScript |         21 |          3 |          5 |         29 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\proBuilderStore.ts                                                   | TypeScript |          4 |          1 |          3 |          8 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\programOptionsStore.ts                                               | TypeScript |          8 |          1 |          2 |         11 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\registrationStore.ts                                                 | TypeScript |         32 |          0 |          6 |         38 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\themeStore.ts                                                        | TypeScript |          6 |          3 |          3 |         12 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\stores\userStore.ts                                                         | TypeScript |          6 |          0 |          3 |          9 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\styles\main.css                                                             | CSS        |         51 |          2 |         11 |         64 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\tailwind.css                                                                | CSS        |          3 |          0 |          1 |          4 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\types\index.ts                                                              | TypeScript |         46 |          1 |          9 |         56 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\api.ts                                                            | TypeScript |         12 |          2 |          3 |         17 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\clientAPI.ts                                                      | TypeScript |         20 |          1 |          3 |         24 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\localStorageUtilities.ts                                          | TypeScript |          6 |          1 |          2 |          9 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\modalUtilities.ts                                                 | TypeScript |         18 |          3 |          4 |         25 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\programAPI.ts                                                     | TypeScript |         11 |          1 |          2 |         14 |
+| c:\Development\Projects\builder\frontend\svelte-app\src\utilities\userAPI.ts                                                        | TypeScript |         76 |          1 |          8 |         85 |
+| Total                                                                                                                               |            |      2,718 |         96 |        385 |      3,199 |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

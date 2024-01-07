@@ -1,3 +1,14 @@
+## 07/01-24
+
+Another course focused day on TypeScript. I want to learn to utilize it in a better way as I continue development, hopefully reducing the amount of cleanup and refactoring I will have to do in the future. 
+
+### Worked On:
+1. Notes for next round on goals, moving on for now
+2. Management page, adding base functions and design
+
+### Created:
+- Management.svelte
+
 ## 06/01-24
 
 Adding some comments today, with explanations and TODO's etc. And continuing work on the deletion and data handling. Running into some issues with types between front and back, and the response. But found a good solution in the end. 
