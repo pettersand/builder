@@ -17,8 +17,8 @@
     Dashboard
   </button>
   <button class={`icon-label whitespace-nowrap hover:bg-card"}`}>
-    <Icon icon="material-symbols:manage-accounts" width="25" height="25" />
-    Client Management</button
+    <Icon icon="clarity:group-solid" width="25" height="25" />
+    Clients</button
   >
   <button class={`icon-label whitespace-nowrap text-gray-400 hover:bg-card"}`}>
     <Icon icon="gridicons:stats-alt" width="25" height="25" />

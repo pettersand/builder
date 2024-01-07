@@ -2,7 +2,7 @@
     import Icon from "@iconify/svelte";
 
     /**
-     * * Header for data for the Trainer Dashboard
+     * * Header for data for client Management
      * TODO: Re-design, plan metrics
     */
 </script>
@@ -16,12 +16,11 @@
           width="50"
           height="50"
           class="text-accent2"
-        />Booking
+        />Clients
       </h2>
       <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
-        <p>% of active booked</p>
-        <p>Week: 90%</p>
-        <p>Month: 94%</p>
+        <p>Shows client data, completions, sessions, etc etc</p>
+
         <!-- Add more metrics here -->
       </div>
     </div>
@@ -34,12 +33,11 @@
           width="50"
           height="50"
           class="text-accent2"
-        />Business
+        />Activity
       </h2>
       <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
-        <p>Income: 50 530,00 kr</p>
-        <p>Estimates $ Weekly: 12 000,00 kr</p>
-        <p>Progress Bar</p>
+        <p>Shows client activity, how many active, and so on</p>
+
         <!-- Add more metrics here -->
       </div>
     </div>
@@ -52,12 +50,14 @@
           width="50"
           height="50"
           class="text-accent2"
-        />Sales
+        />Attention
       </h2>
       <div class="grid grid-cols-2 gap-4 p-2 text-paragraph">
-        <p>Consultations: 6</p>
-        <p>Sales: 4</p>
-        <p>New Clients: 2</p>
+        <p>Alerts for client actions required</p>
+        <p>New program needed for x in y weeks</p>
+        <p>Client x has 3 sessions remaining. Create a sales plan?</p>
+        <p>Contact x client. 5 weeks since last session</p>
+
         <!-- Add more metrics here -->
       </div>
     </div>
