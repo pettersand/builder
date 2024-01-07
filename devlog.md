@@ -10,6 +10,8 @@ Another course focused day on TypeScript. I want to learn to utilize it in a bet
 - Management.svelte
 - managementStore.ts
 - TrainerStats.svelte
+- TrainerMain.svelte
+- ClientMain.svelte
 
 ## 06/01-24
 

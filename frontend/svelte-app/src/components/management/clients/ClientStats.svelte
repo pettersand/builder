@@ -12,7 +12,7 @@
     <div class="custom-border-right flex-1">
       <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
         <Icon
-          icon="uis:schedule"
+          icon="clarity:group-solid"
           width="50"
           height="50"
           class="text-accent2"
@@ -29,7 +29,7 @@
     <div class="custom-border-right flex-1">
       <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
         <Icon
-          icon="ic:round-business-center"
+          icon="material-symbols:browse-activity"
           width="50"
           height="50"
           class="text-accent2"
@@ -46,7 +46,7 @@
     <div class="flex-1">
       <h2 class="text-lg font-semibold flex items-center mb-4 p-1">
         <Icon
-          icon="carbon:sales-ops"
+          icon="icon-park-solid:attention"
           width="50"
           height="50"
           class="text-accent2"
