@@ -5,6 +5,7 @@ Another course focused day on TypeScript. I want to learn to utilize it in a bet
 ### Worked On:
 1. Notes for next round on goals, moving on for now
 2. Management page, adding base functions and design
+3. All imports and creation of Main and Stats components for Trainer Dashboard, Client Management
 
 ### Created:
 - Management.svelte

@@ -3,7 +3,9 @@
   import globalStore from "../stores/globalStore";
   import { managementState } from "../components/management/managementStore";
   import TrainerStats from "../components/management/dashboard/TrainerStats.svelte";
+  import TrainerMain from "../components/management/dashboard/TrainerMain.svelte";
   import ClientStats from "../components/management/clients/ClientStats.svelte";
+  import ClientMain from "../components/management/clients/ClientMain.svelte";
 
   let activeOption: string;
   managementState.subscribe(($managementState) => {
@@ -23,8 +25,11 @@
     <ClientStats />
     {/if}
     <div class="flex flex-row flex-grow gap-4 p-3">
-      <p>One</p>
-      <p>Two</p>
+        {#if activeOption === "dashboard"}
+        <TrainerMain />
+        {:else if activeOption === "clients"}
+        <ClientMain />
+        {/if}
     </div>
   </div>
 </main>
