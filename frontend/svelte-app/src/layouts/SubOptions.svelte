@@ -8,6 +8,7 @@
   import DashboardOptions from "../components/dashboard/DashboardOptions.svelte";
   import BuilderOptions from "../components/builder/BuilderOptions.svelte";
   import ProBuilderOptions from "../components/builder/ProBuilderOptions.svelte";
+  import ManagementOptions from "../components/management/ManagementOptions.svelte";
 
   // Local state
   let currentView;
@@ -17,6 +18,7 @@
     Dashboard: DashboardOptions,
     ProBuilder: ProBuilderOptions,
     Builder: BuilderOptions,
+    Management: ManagementOptions,
   };
 
   // Lifecycle hooks
