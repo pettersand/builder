@@ -8,6 +8,8 @@ Another course focused day on TypeScript. I want to learn to utilize it in a bet
 
 ### Created:
 - Management.svelte
+- managementStore.ts
+- TrainerStats.svelte
 
 ## 06/01-24
 
