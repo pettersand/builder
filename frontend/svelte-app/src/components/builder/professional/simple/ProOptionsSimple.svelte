@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { proStepState } from "../../../../stores/builderStore";
 
-  import FileOptions from "../../options/FileOptions.svelte";
   import SimpleClientOptions from "./options/SimpleClientOptions.svelte";
 
   let activeStep: string;
