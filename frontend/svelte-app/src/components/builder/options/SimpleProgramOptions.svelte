@@ -1,7 +1,6 @@
 <!-- NewProgramOptions.svelte -->
 <script lang="ts">
   import programOptions from "../../../stores/programOptionsStore";
-  import FileOptions from "./FileOptions.svelte";
 
   let trainingDays = 1;
   let exercisesPerDay = 6;
@@ -26,7 +25,7 @@
 </script>
 
 <div class="flex flex-row justify-between">
-  <FileOptions />
+
 
   <!-- Options Container -->
   <div class="flex flex-col w-full items-center">
