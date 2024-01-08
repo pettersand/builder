@@ -20,16 +20,16 @@
 <main class="flex flex-row flex-grow bg-bg2">
   <div class="flex flex-col w-full">
     {#if activeOption === "dashboard"}
-    <TrainerStats />
+      <TrainerStats />
     {:else if activeOption === "clients"}
-    <ClientStats />
+      <ClientStats />
     {/if}
-    <div class="flex flex-row flex-grow gap-4 p-3">
-        {#if activeOption === "dashboard"}
+    <div class="flex flex-row flex-grow">
+      {#if activeOption === "dashboard"}
         <TrainerMain />
-        {:else if activeOption === "clients"}
+      {:else if activeOption === "clients"}
         <ClientMain />
-        {/if}
+      {/if}
     </div>
   </div>
 </main>
