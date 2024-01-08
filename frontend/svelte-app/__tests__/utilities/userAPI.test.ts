@@ -9,6 +9,7 @@ import {
 
 jest.mock("../../src/utilities/api", () => ({
   post: jest.fn(),
+  get: jest.fn(),
 }));
 
 describe("userAPI", () => {
@@ -179,8 +180,10 @@ describe("userAPI", () => {
     beforeEach(() => {
       jest.clearAllMocks();
     });
+
     it("should return auth status", async () => {
-      (api.post as jest.Mock).mockResolvedValue({
+      // Mock the 'get' method instead of 'post'
+      (api.get as jest.Mock).mockResolvedValue({
         data: { isAuthenticated: true },
         status: 200,
       });

@@ -4,6 +4,7 @@ Some more coursework on TypeScript. Learning some great tips and usages. As for 
 
 ### Worked On: 
 1. CI/CD Pipeline errors
+2. Fixed backend and frontend tests
 
 ## 07/01-24
 
