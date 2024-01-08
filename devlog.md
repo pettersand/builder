@@ -2,17 +2,23 @@
 
 Some more coursework on TypeScript. Learning some great tips and usages. As for project work I will be fixing the CI/CD pipeline today, then continuing work on Management page. I will be adding more tests as I continue development, ensuring CI/CD stays healthy and functional. 
 
+Today turned into a very productive day. Making clear progress, which feels great! I'm eager to finish the MVP so I can start actually testing this in the real world. 
+
 ### Worked On: 
 1. CI/CD Pipeline errors
 2. Fixed backend and frontend tests
 3. Fixed CI/CD - FileOptions reference was causing isses.
 4. Client data handling. Have to refactor old handling for cleaner data management.
 5. Fixed/Reworked client list fetch, with type
-6. Reworked clientStore
+6. Reworked clientStore.ts
 
 ### Created:
 - Clients.svelte component
 - Client.ts for type/class
+
+### Next Session:
+- More design of Clients.svelte component
+- Create base for ClientData component
 
 ## 07/01-24
 

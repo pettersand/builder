@@ -20,7 +20,6 @@
   import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
   import { user as userStore } from "../stores/userStore";
-  import { setClients } from "../stores/clientStore";
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
@@ -103,9 +102,10 @@
     }
   }
 
-  /** ! For development purposes only
-    * * Clears sessionStorage
-    */
+  /**
+   * ! For development purposes only
+   * * Clears sessionStorage
+   */
   async function clearSessionStorage(): Promise<void> {
     sessionStorage.clear();
   }
@@ -170,11 +170,11 @@
     </div>
     <div class="flex flex-row gap-4 items-center">
       <button
-          class="font-bold bg-card2 py-2 px-5 rounded-full ring-4 ring-accent2 filter-drop-shadow hover:bg-accent2 hover:text-bg hover:border-accent2"
-          on:click={clearSessionStorage}
-        >
-          Clear Storage
-        </button>
+        class="font-bold bg-card2 py-2 px-5 rounded-full ring-4 ring-accent2 filter-drop-shadow hover:bg-accent2 hover:text-bg hover:border-accent2"
+        on:click={clearSessionStorage}
+      >
+        Clear Storage
+      </button>
       <!-- Login/Register and Log Out buttons -->
       {#if $globalStore.isAuthenticated}
         <button
@@ -233,11 +233,12 @@
               height="25"
             />ProBuilder</button
           >
-          <button class="icon-label hover:bg-card {$globalStore.currentPage ===
+          <button
+            class="icon-label hover:bg-card {$globalStore.currentPage ===
             'Management'
               ? 'bg-accent2 font-bold'
               : ''}"
-              on:click={() => globalStore.setCurrentPage("Management")}
+            on:click={() => globalStore.setCurrentPage("Management")}
             ><Icon
               icon="material-symbols:manage-accounts"
               width="25"

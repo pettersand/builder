@@ -1,10 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import {
-    clients as clientStore,
-    activeClient,
-    setActiveTrainerAsClient,
-  } from "../../../../../stores/clientStore";
+  import { clients, activeClient } from "../../../../../stores/clientStore";
   import {
     builderState,
     programNotes,
@@ -14,37 +10,32 @@
   import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm = "";
+  let filteredClients = [];
 
-  // Get the initial list of clients
-  let clients = [];
   onMount(() => {
-    clientStore.subscribe(($clients: any[]) => {
-      clients = $clients;
-    });
+    clients.initialize(); // This will load clients from sessionStorage
   });
 
   // Sets active client and fetches client data
-  const setActiveClient = async (clientObj) => {
-    activeClient.set(clientObj.client);
+  const setActiveClient = async (client) => {
+    activeClient.updateActiveClient(client);
 
     try {
-      const clientData = await fetchClientData(clientObj.client.id);
+      const clientData = await fetchClientData(client.id);
       console.log("Fetched Client Data:", clientData);
-      activeClient.update((client) => {
-        return { ...client, clientDetails: clientData };
-      });
+      activeClient.updateActiveClient({ ...client, clientDetails: clientData });
     } catch (error) {
       console.log(error);
     }
   };
 
-  function selectTrainerAsClient() {
+  /*   function selectTrainerAsClient() {
     setActiveTrainerAsClient();
-  }
+  } */
 
-  const handleKeyPress = (event, clientObj) => {
+  const handleKeyPress = (event, client) => {
     if (event.key === "Enter" || event.key === " ") {
-      setActiveClient(clientObj);
+      setActiveClient(client);
     }
   };
 
@@ -65,8 +56,8 @@
     }
   };
 
-  $: filteredClients = clients.filter((clientObj) =>
-    clientObj.client.first_name.toLowerCase().includes(searchTerm.toLowerCase())
+  $: filteredClients = $clients.filter((client) =>
+    client.firstName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 </script>
 
@@ -96,8 +87,8 @@
         {#if $activeClient}
           <span class="font-bold">Active Client</span>
           <p class="text-lg">
-            {$activeClient.first_name}
-            {$activeClient.last_name}
+            {$activeClient.firstName}
+            {$activeClient.lastName}
           </p>
           <p>
             {$activeClient.email}
@@ -119,21 +110,18 @@
         <div
           class="overflow-y-auto max-h-60 divide-y divide-gray-300 zebra-striped"
         >
-          <div
-            class="p-1 cursor-pointer"
-            on:click={selectTrainerAsClient}
-            on:keydown={selectTrainerAsClient}
-          >
+          <div class="p-1 cursor-pointer">
+            <!-- TODO: Add self select as activeClient -->
             Myself
           </div>
-          {#each filteredClients as clientObj}
+          {#each filteredClients as client}
             <div
               class="p-1 cursor-pointer"
-              on:click={() => setActiveClient(clientObj)}
-              on:keydown={(event) => handleKeyPress(event, clientObj)}
+              on:click={() => setActiveClient(client)}
+              on:keydown={(event) => handleKeyPress(event, client)}
             >
-              {clientObj.client.first_name}
-              {clientObj.client.last_name}
+              {client.firstName}
+              {client.lastName}
             </div>
           {/each}
         </div>
