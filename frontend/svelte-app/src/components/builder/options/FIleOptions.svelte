@@ -1,4 +1,9 @@
 <script lang="ts">
+
+/**
+ * ! Causing CI/CD to fail in rollup. Unsure why.
+ * TODO: Rework when needed.
+*/
 </script>
 
 <div class="flex flex-row items-start custom-border-right p-4">

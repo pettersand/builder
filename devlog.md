@@ -5,6 +5,7 @@ Some more coursework on TypeScript. Learning some great tips and usages. As for 
 ### Worked On: 
 1. CI/CD Pipeline errors
 2. Fixed backend and frontend tests
+3. Fixed CI/CD - FileOptions reference was causing isses.
 
 ## 07/01-24
 
