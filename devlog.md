@@ -19,6 +19,7 @@ Today turned into a very productive day. Making clear progress, which feels grea
 ### Next Session:
 - More design of Clients.svelte component
 - Create base for ClientData component
+- Start work on adding clients
 
 ## 07/01-24
 
