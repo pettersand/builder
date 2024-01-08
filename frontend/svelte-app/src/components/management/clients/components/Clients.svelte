@@ -1,20 +1,26 @@
 <script lang="ts">
-  /**
-   * * Comprehensive Client List
-   * TODO: Import client list from store / database
-   * TODO: Create functions: filter, search, add
-   * TODO: Expand client on click - show more info, setActive client
-   * TODO: Create "Open" button - active client to Data container
-   * TODO: Future: Pagination, Sortable, Booking info
-   */
+    /**
+     * * Comprehensive Client List
+     * TODO: Import client list from store / database
+     * TODO: Create functions: filter, search, add
+     * TODO: Expand client on click - show more info, setActive client
+     * TODO: Create "Open" button - active client to Data container
+     * TODO: Future: Pagination, Sortable, Booking info
+     */
 import { onMount } from "svelte";
+import type { Client } from "../../../../types/Client";
 import { clients as clientStore } from "../../../../stores/clientStore";
 
-let clients = [];
+let clients: Client[] = [];
+
 onMount(() => {
-  clientStore.subscribe(($clients: any[]) => {
-    clients = $clients;
-  });
+    const storedClients = sessionStorage.getItem("clients");
+    if (storedClients) {
+        clients = JSON.parse(storedClients);
+    }
+});
+onMount(() => {
+
 });
 
 
@@ -25,7 +31,8 @@ onMount(() => {
 </div>
 <div class="p-4 text-paragraph">
 {#each clients as client}
-    <p class="whitespace-nowrap">{client.first_name}</p>
+    <p class="whitespace-nowrap">{client.firstName} {client.lastName}</p>
+    
 {/each}
 </div>
 
