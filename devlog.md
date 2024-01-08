@@ -6,6 +6,11 @@ Some more coursework on TypeScript. Learning some great tips and usages. As for 
 1. CI/CD Pipeline errors
 2. Fixed backend and frontend tests
 3. Fixed CI/CD - FileOptions reference was causing isses.
+4. Client data handling. Have to refactor old handling for cleaner data management.
+
+### Created:
+- Clients.svelte component
+- Client.ts for type/class
 
 ## 07/01-24
 

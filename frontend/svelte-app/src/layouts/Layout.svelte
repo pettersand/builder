@@ -32,7 +32,7 @@
 
   // Local state
 
-  let currentUserRole = "Solo";
+  let currentUserRole: string = "Solo";
   let currentAuth = localStorage.getItem("isAuthenticated") === "true";
 
   // Lifecycle hooks
