@@ -9,11 +9,21 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TrainerSerializer(serializers.ModelSerializer):
-    client = UserSerializer(read_only=True)
+    client_id = serializers.UUIDField(source='client.id', read_only=True)
+    username = serializers.CharField(source='client.username', read_only=True)
+    email = serializers.CharField(source='client.email', read_only=True)
+    first_name = serializers.CharField(source='client.first_name', read_only=True)
+    last_name = serializers.CharField(source='client.last_name', read_only=True)
+    status = serializers.CharField()
 
     class Meta:
         model = TrainerClient
         fields = [
-            "client",
+            "client_id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
             "status",
         ]
+        print(fields)

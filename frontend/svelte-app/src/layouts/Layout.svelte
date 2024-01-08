@@ -73,7 +73,6 @@
         if (response.data.roles.includes("Trainer")) {
           const clients = await fetchTrainersClients();
           console.log("Trainer clients:", clients);
-          setClients(clients);
         }
       } else {
         console.log("Not authenticated");

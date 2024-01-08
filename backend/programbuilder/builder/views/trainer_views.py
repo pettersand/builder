@@ -11,4 +11,5 @@ class TrainerClientsView(APIView):
             trainer=request.user, consent=True
         )
         serializer = TrainerSerializer(trainer_clients, many=True)
+        print(serializer.data)
         return Response(serializer.data)
