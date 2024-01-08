@@ -7,6 +7,8 @@ Some more coursework on TypeScript. Learning some great tips and usages. As for 
 2. Fixed backend and frontend tests
 3. Fixed CI/CD - FileOptions reference was causing isses.
 4. Client data handling. Have to refactor old handling for cleaner data management.
+5. Fixed/Reworked client list fetch, with type
+6. Reworked clientStore
 
 ### Created:
 - Clients.svelte component

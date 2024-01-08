@@ -1,30 +1,45 @@
 // clientStore.ts
-import { writable, get } from "svelte/store";
-import { user as userStore } from "./userStore";
 
-export const clients = writable([]);
+/**
+ * * Stores activeClient and client list
+ * TODO: Rework to read from sessionStorage instead of localStorage
+ */
+import { writable } from 'svelte/store';
+import type { Client } from '../types/Client';
 
-export const setClients = (clientData: any[]) => {
-  clients.set(clientData);
-};
+function createClientsStore() {
+  const { subscribe, set, update } = writable<Client[]>([]);
 
-// Function to read the initial active client from localStorage or use default
-const getInitialActiveClient = () => {
-  const storedValue = localStorage.getItem("activeClient");
-  return storedValue ? JSON.parse(storedValue) : null;
-};
+  return {
+    subscribe,
+    set,
+    update,
+    initialize: () => {
+      const storedClients = sessionStorage.getItem('clients');
+      if (storedClients) {
+        set(JSON.parse(storedClients));
+      }
+    }
+  };
+}
 
-export const setActiveTrainerAsClient = () => {
-  const trainerDetails = get(userStore);
-  activeClient.set({
-    client: { ...trainerDetails, isSelf: true },
-    clientDetails: null,
-  });
-};
+function createActiveClientStore() {
+  const { subscribe, set } = writable<Client | null>(getInitialActiveClient());
 
-export const activeClient = writable(getInitialActiveClient());
+  function getInitialActiveClient(): Client | null {
+    const storedValue = sessionStorage.getItem('activeClient');
+    return storedValue ? JSON.parse(storedValue) : null;
+  }
 
-// Subscribe to the store and update localStorage when it changes
-activeClient.subscribe(($activeClient) => {
-  localStorage.setItem("activeClient", JSON.stringify($activeClient));
-});
+  return {
+    subscribe,
+    set,
+    updateActiveClient: (client: Client) => {
+      set(client);
+      sessionStorage.setItem('activeClient', JSON.stringify(client));
+    }
+  };
+}
+
+export const clients = createClientsStore();
+export const activeClient = createActiveClientStore();

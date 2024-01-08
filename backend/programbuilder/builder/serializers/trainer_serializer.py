@@ -26,4 +26,3 @@ class TrainerSerializer(serializers.ModelSerializer):
             "last_name",
             "status",
         ]
-        print(fields)

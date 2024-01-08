@@ -103,6 +103,9 @@
     }
   }
 
+  /** ! For development purposes only
+    * * Clears sessionStorage
+    */
   async function clearSessionStorage(): Promise<void> {
     sessionStorage.clear();
   }
