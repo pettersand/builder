@@ -16,7 +16,7 @@ class UserViewsTestCase(TestCase):
     def test_check_auth_status_authenticated(self):
         response = self.client.get(reverse("check_auth_status"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {"isAuthenticated": True})
+        self.assertEqual(response.json(), {"isAuthenticated": True, "roles": []})
 
     def test_check_auth_status_unauthenticated(self):
         self.client.logout()
@@ -64,7 +64,7 @@ class RegistrationViewsTestCase(TestCase):
     def test_register_step_1_valid(self):
         url = reverse("register_step_1")
         data = self.step1_data
-        response = self.client.post(url, data)
+        response = self.client.post(url, {'step1': self.step1_data}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(), {"message": "Data is valid, proceed to step 2"}
@@ -74,7 +74,7 @@ class RegistrationViewsTestCase(TestCase):
         url = reverse("register_step_1")
         self.step1_data["username"] = "existinguser"
         data = self.step1_data
-        response = self.client.post(url, data)
+        response = self.client.post(url, {'step1': self.step1_data}, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(
             response.json(), {"username": "A user with that username already exists"}
@@ -84,7 +84,7 @@ class RegistrationViewsTestCase(TestCase):
         url = reverse("register_step_1")
         self.step1_data["email"] = "existing@example.com"
         data = self.step1_data
-        response = self.client.post(url, data)
+        response = self.client.post(url, {'step1': self.step1_data}, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(
             response.json(), {"email": "A user with that email already exists"}

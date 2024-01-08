@@ -1,3 +1,10 @@
+## 08/01-24
+
+Some more coursework on TypeScript. Learning some great tips and usages. As for project work I will be fixing the CI/CD pipeline today, then continuing work on Management page. I will be adding more tests as I continue development, ensuring CI/CD stays healthy and functional. 
+
+### Worked On: 
+1. CI/CD Pipeline errors
+
 ## 07/01-24
 
 Another course focused day on TypeScript. I want to learn to utilize it in a better way as I continue development, hopefully reducing the amount of cleanup and refactoring I will have to do in the future. 
