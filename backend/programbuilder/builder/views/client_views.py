@@ -8,6 +8,7 @@ from builder.models import (
     ClientInjuries,
     ClientPreferences,
     TrainerClient,
+    SimpleGoal,
 )
 from builder.serializers import (
     ClientGoalsSerializer,
@@ -15,6 +16,7 @@ from builder.serializers import (
     ClientNotesSerializer,
     ClientPreferencesSerializer,
     ClientInjuriesSerializer,
+    FetchClientGoalsSerializer,
 )
 
 
@@ -66,29 +68,21 @@ class ClientDataView(APIView):
             return Response({"message": "TrainerClient instance not found"}, status=404)
 
         # Fetching and serializing goals, injuries, preferences, and notes
-        goals_data = ClientGoalsSerializer(
-            ClientGoals.objects.filter(trainer_client=trainer_client_instance),
-            many=True,
-        ).data
-        injuries_data = ClientInjuriesSerializer(
-            ClientInjuries.objects.filter(trainer_client=trainer_client_instance),
-            many=True,
-        ).data
-        preferences_data = ClientPreferencesSerializer(
-            ClientPreferences.objects.filter(trainer_client=trainer_client_instance),
-            many=True,
-        ).data
-        notes_data = ClientNotesSerializer(
-            ClientNotes.objects.filter(trainer_client=trainer_client_instance),
-            many=True,
-        ).data
+        goals_data = SimpleGoal.objects.filter(
+            created_for_id=client_id,
+            user_id=request.user
+        ) | SimpleGoal.objects.filter(
+            created_for_id=client_id,
+            private=False
+        )
+        serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
+
 
         # Constructing and returning the response
         response_data = {
-            "goals": goals_data,
-            "injuries": injuries_data,
-            "preferences": preferences_data,
-            "notes": notes_data,
+            "user_id": client_id,
+            "goals": serialized_goals,
         }
 
         return Response(response_data)
+

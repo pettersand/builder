@@ -6,6 +6,8 @@ from .client_serializer import (
     ClientNotesSerializer,
     ClientPreferencesSerializer,
     ClientInjuriesSerializer,
+    FetchClientGoalsSerializer,
+    NestedGoalSerializer,
 )
 from .program_serializer import ProgramSerializer
-from .goals_serializer import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer
+from .goals_serializer import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer, FetchClientGoalsSerializer

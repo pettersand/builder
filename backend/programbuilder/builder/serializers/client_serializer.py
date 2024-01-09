@@ -5,8 +5,28 @@ from builder.models import (
     ClientPreferences,
     ClientNotes,
     ClientData,
+    SimpleGoal,
 )
 
+
+class NestedGoalSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    createdBy = serializers.UUIDField(source="user_id.id")
+    type = serializers.CharField()
+    goal = serializers.CharField(source="content")
+    status = serializers.CharField()
+    dueDate = serializers.DateField(source="goal_date")
+
+class FetchClientGoalsSerializer(serializers.ModelSerializer):
+    goal = NestedGoalSerializer(source="*")
+
+    class Meta:
+        model = SimpleGoal
+        fields = ["goal"]
+
+""" 
+! Cleanup on isle 3. Old code below, check for usage then delete.
+ """
 
 class ClientGoalsSerializer(serializers.ModelSerializer):
     print("ClientGoalsSerializer Started")
@@ -45,3 +65,4 @@ class ClientDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientData
         fields = ["goals", "injuries", "preferences", "notes"]
+

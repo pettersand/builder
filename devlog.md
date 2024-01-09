@@ -4,6 +4,7 @@ Back for another round! Will continue working on the client list and its functio
 
 ### Worked On:
 1. Rendering client list & Setting activeClient + Design
+2. Fetching activeClient clientData for goals + rendering (reworking backend handling)
 
 ### Created:
 - ClientData.svelte
