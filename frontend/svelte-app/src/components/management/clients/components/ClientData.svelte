@@ -8,16 +8,27 @@
    */
 
   let currentClient: string | null;
-  activeClient.subscribe((value) => (currentClient = value));
+  activeClient.subscribe(value => currentClient = value);
+
+  const clientData = [
+    {
+      id: "1",
+      firstName: "John",
+      lastName: "Doe",
+      email: "",
+    }
+    ];
+
+
 </script>
 
 <div class="flex flex-col gap-4">
   <div class="flex justify-between items-center bg-bg p-2 custom-border-bottom">
     <h2 class="text-lg p-2 font-semibold text-start">Client Data</h2>
     {#if currentClient}
-            <p>Active Client ID: {currentClient}</p>
-        {:else}
-            <p>No active client selected</p>
-        {/if}
+      <p>Active Client ID: {currentClient}</p>
+    {:else}
+      <p>No active client selected</p>
+    {/if}
   </div>
 </div>

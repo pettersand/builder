@@ -11,8 +11,16 @@
 import { onMount } from "svelte";
 import Icon from "@iconify/svelte";
 import { clients, activeClient } from "../../../../stores/clientStore";
+import { fetchClientData } from "../../../../utilities/clientAPI";
 
-let currentClient: string = sessionStorage.getItem("activeClient.clientId");
+let currentClient: string | null;
+
+activeClient.subscribe(value => currentClient = value);
+
+function setActiveClient(clientId: string) {
+  activeClient.set(clientId);
+  fetchClientData(clientId);
+}
 
 onMount(() => {
     clients.initialize();
@@ -35,7 +43,7 @@ onMount(() => {
 <div class="text-paragraph">
     {#each $clients as client}
     <div class="flex justify-between items-center custom-border-bottom">
-        <button class="w-full p-2 text-left text-lg hover:bg-card " on:click={() => activeClient.set(client.id)}>
+        <button class="w-full p-2 text-left text-lg hover:bg-card " on:click={() => setActiveClient(client.id)}>
         {client.firstName} {client.lastName}</button>
 
         <!-- TODO: conditional on status - active/inactive/away -->
