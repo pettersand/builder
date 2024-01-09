@@ -18,19 +18,13 @@ let currentClient: string | null;
 activeClient.subscribe(value => currentClient = value);
 
 function setActiveClient(clientId: string) {
-  activeClient.set(clientId);
+  activeClient.updateActiveClient(clientId);
   fetchClientData(clientId);
 }
 
 onMount(() => {
     clients.initialize();
   });
-
-  $: if ($activeClient) {
-    sessionStorage.setItem("activeClient.clientId", $activeClient);
-  }
-
-
 
 </script>
 
