@@ -5,9 +5,15 @@ Back for another round! Will continue working on the client list and its functio
 ### Worked On:
 1. Rendering client list & Setting activeClient + Design
 2. Fetching activeClient clientData for goals + rendering (reworking backend handling)
+3. Reworked serializer, view, added clientData to clientStore
 
 ### Created:
 - ClientData.svelte
+
+### Next Session: 
+- Create goals component, feed it clientData goals
+- Choose clientData render design
+- Start work on adding clients
 
 ## 08/01-24
 
@@ -30,7 +36,7 @@ Today turned into a very productive day. Making clear progress, which feels grea
 ### Next Session:
 - More design of Clients.svelte component
 - Create base for ClientData component
-- Start work on adding clients
+
 
 ## 07/01-24
 
