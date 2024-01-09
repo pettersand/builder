@@ -18,13 +18,14 @@ class NestedGoalSerializer(serializers.Serializer):
     dueDate = serializers.DateField(source="goal_date")
 
 class FetchClientGoalsSerializer(serializers.ModelSerializer):
-    goal = NestedGoalSerializer(source="*")
-    print("FetchClientGoalsSerializer Started")
-    print(goal)
+    createdBy = serializers.UUIDField(source="user_id.id")
+    goal = serializers.CharField(source="content")
+    dueDate = serializers.DateField(source="goal_date")
+    print(createdBy, goal, dueDate)
 
     class Meta:
         model = SimpleGoal
-        fields = ["goal"]
+        fields = ["id", "createdBy", "type", "goal", "status", "dueDate"]
 
 """ 
 ! Cleanup on isle 3. Old code below, check for usage then delete.

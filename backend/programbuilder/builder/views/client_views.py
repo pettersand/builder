@@ -1,6 +1,7 @@
 from rest_framework.generics import ListCreateAPIView, ListAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db.models import Q
 from builder.models import (
     ClientGoals,
     ClientNotes,
@@ -69,14 +70,13 @@ class ClientDataView(APIView):
 
         # Fetching and serializing goals, injuries, preferences, and notes
         goals_data = SimpleGoal.objects.filter(
-            created_for_id=client_id,
-            user_id=request.user
-        ) | SimpleGoal.objects.filter(
-            created_for_id=client_id,
-            private=False
+            Q(created_for_id=client_id, user_id=request.user) |
+            Q(created_for_id=client_id, private=False)
         )
-        serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
+        print("Goals data:", goals_data)
 
+        serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
+        print("Serialized goals:", serialized_goals)
         # Constructing and returning the response
         response_data = {
             "user_id": client_id,

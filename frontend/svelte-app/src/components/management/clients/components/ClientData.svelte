@@ -17,7 +17,7 @@
 
  let currentData: ClientData | null;
  $: if ($clientData) {
-   console.log($clientData);
+   console.log("Client Data Frontend:", $clientData);
    clientData.subscribe(value => currentData = value);
  }
 
