@@ -2,7 +2,6 @@
 
 /**
  * * Stores activeClient and client list
- * TODO: Rework to read from sessionStorage instead of localStorage
  */
 import { writable } from 'svelte/store';
 import type { Client } from '../types/Client';

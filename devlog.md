@@ -1,3 +1,10 @@
+## 09/01-24
+
+Back for another round! Will continue working on the client list and its functionalities. Aiming to set activeClient and rendering relevant information in the Data container
+
+### Worked On:
+1. Rendering client list & Setting activeClient + Design
+
 ## 08/01-24
 
 Some more coursework on TypeScript. Learning some great tips and usages. As for project work I will be fixing the CI/CD pipeline today, then continuing work on Management page. I will be adding more tests as I continue development, ensuring CI/CD stays healthy and functional. 
