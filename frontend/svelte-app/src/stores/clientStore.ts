@@ -23,9 +23,9 @@ function createClientsStore() {
 }
 
 function createActiveClientStore() {
-  const { subscribe, set } = writable<Client | null>(getInitialActiveClient());
+  const { subscribe, set } = writable<string | null>(getInitialActiveClient());
 
-  function getInitialActiveClient(): Client | null {
+  function getInitialActiveClient(): string | null {
     const storedValue = sessionStorage.getItem('activeClient');
     return storedValue ? JSON.parse(storedValue) : null;
   }
@@ -33,7 +33,7 @@ function createActiveClientStore() {
   return {
     subscribe,
     set,
-    updateActiveClient: (client: Client) => {
+    updateActiveClient: (client: string) => {
       set(client);
       sessionStorage.setItem('activeClient', JSON.stringify(client));
     }

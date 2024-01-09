@@ -16,10 +16,11 @@ let currentClient: string = sessionStorage.getItem("activeClient.clientId");
 
 onMount(() => {
     clients.initialize();
-    console.log("activeClient:", sessionStorage.getItem("activeClient"));
-    console.log("currentClient:", currentClient);
   });
 
+  $: if ($activeClient) {
+    sessionStorage.setItem("activeClient.clientId", $activeClient);
+  }
 
 
 
@@ -34,7 +35,7 @@ onMount(() => {
 <div class="text-paragraph">
     {#each $clients as client}
     <div class="flex justify-between items-center custom-border-bottom">
-        <button class="w-full p-2 text-left text-lg hover:bg-card " on:click={() => activeClient.set(client)}>
+        <button class="w-full p-2 text-left text-lg hover:bg-card " on:click={() => activeClient.set(client.id)}>
         {client.firstName} {client.lastName}</button>
 
         <!-- TODO: conditional on status - active/inactive/away -->

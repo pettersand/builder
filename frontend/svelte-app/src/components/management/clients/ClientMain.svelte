@@ -1,6 +1,7 @@
 <script  lang="ts">
     import { onMount } from "svelte";
     import Clients from "./components/Clients.svelte";
+    import ClientData from "./components/ClientData.svelte";
 
     /**
      * * Client Management main content controller
@@ -22,7 +23,7 @@
           <h2 class="w-1/4 text-lg text-center p-2 font-semibold border-r">Data</h2>
           <h2 class="w-1/4 text-gray-500 text-lg text-center p-2 font-semibold border-r">Performance</h2>
           <h2 class="w-1/4 text-gray-500 text-lg text-center p-2 font-semibold ">Calendar</h2>
-          
       </div>
+      <ClientData />
     </div>
 </div>
