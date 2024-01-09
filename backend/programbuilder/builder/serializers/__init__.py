@@ -10,4 +10,4 @@ from .client_serializer import (
     NestedGoalSerializer,
 )
 from .program_serializer import ProgramSerializer
-from .goals_serializer import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer, FetchClientGoalsSerializer
+from .goals_serializer import NewGoalSerializer, FetchGoalsSerializer, GoalSerializer

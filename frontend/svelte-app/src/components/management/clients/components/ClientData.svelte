@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { activeClient } from "../../../../stores/clientStore";
+  import { activeClient, clientData } from "../../../../stores/clientStore";
+  import type { ClientData } from "../../../../types/Client"
 
   /**
    * * Client Data
@@ -10,14 +11,15 @@
   let currentClient: string | null;
   activeClient.subscribe(value => currentClient = value);
 
-  const clientData = [
-    {
-      id: "1",
-      firstName: "John",
-      lastName: "Doe",
-      email: "",
-    }
-    ];
+ $: if ($activeClient) {
+    clientData.fetchClientData($activeClient);
+ }
+
+ let currentData: ClientData | null;
+ $: if ($clientData) {
+   console.log($clientData);
+   clientData.subscribe(value => currentData = value);
+ }
 
 
 </script>
@@ -27,6 +29,7 @@
     <h2 class="text-lg p-2 font-semibold text-start">Client Data</h2>
     {#if currentClient}
       <p>Active Client ID: {currentClient}</p>
+      <p>Active Client Goals: {currentData}</p>
     {:else}
       <p>No active client selected</p>
     {/if}

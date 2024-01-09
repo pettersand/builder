@@ -77,12 +77,12 @@ class ClientDataView(APIView):
         )
         serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
 
-
         # Constructing and returning the response
         response_data = {
             "user_id": client_id,
             "goals": serialized_goals,
         }
+        print("Response data:", response_data)
 
         return Response(response_data)
 

@@ -19,6 +19,8 @@ class NestedGoalSerializer(serializers.Serializer):
 
 class FetchClientGoalsSerializer(serializers.ModelSerializer):
     goal = NestedGoalSerializer(source="*")
+    print("FetchClientGoalsSerializer Started")
+    print(goal)
 
     class Meta:
         model = SimpleGoal

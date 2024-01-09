@@ -2,9 +2,11 @@
 
 /**
  * * Stores activeClient and client list
+ * TODO: Add client data for activeClient
  */
 import { writable } from 'svelte/store';
-import type { Client } from '../types/Client';
+import type { Client, ClientData } from '../types/Client';
+import { fetchClientData } from '../utilities/clientAPI';
 
 function createClientsStore() {
   const { subscribe, set, update } = writable<Client[]>([]);
@@ -33,12 +35,34 @@ function createActiveClientStore() {
   return {
     subscribe,
     set,
-    updateActiveClient: (client: string) => {
-      set(client);
-      sessionStorage.setItem('activeClient', JSON.stringify(client));
+    updateActiveClient: (clientId: string) => {
+      set(clientId);
+      sessionStorage.setItem('activeClient', JSON.stringify(clientId));
+    }
+  };
+}
+
+function createClientDataStore() {
+  const { subscribe, set, update } = writable<ClientData | null>(null);
+
+  return {
+    subscribe,
+    set,
+    update,
+    fetchClientData: async (clientId: string) => {
+      try {
+        // Call your API to fetch client data
+        const response = await fetchClientData(clientId);
+        console.log('Client data response', response)
+        set(response);
+      } catch (error) {
+        console.error('Error fetching client data:', error);
+        set(null);
+      }
     }
   };
 }
 
 export const clients = createClientsStore();
 export const activeClient = createActiveClientStore();
+export const clientData = createClientDataStore();

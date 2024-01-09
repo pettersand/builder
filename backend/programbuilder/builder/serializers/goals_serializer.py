@@ -20,11 +20,6 @@ class FetchGoalsSerializer(serializers.ModelSerializer):
         model = SimpleGoal
         fields = ["id", "type", "content", "goal_date", "status"]
 
-class FetchClientGoalsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SimpleGoal
-        fields = ["id", "created_for" "type", "content", "goal_date", "status"]
-
     
 class GoalSerializer(serializers.ModelSerializer):
     class Meta:
