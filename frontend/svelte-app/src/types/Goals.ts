@@ -42,13 +42,13 @@ export class Goal implements FrontendGoal {
 
   forAPI(): any {
     return {
-        content: this.goal,
-        type: this.type,
-        goal_date: this.dueDate,
-        status: this.status,
-        private: this.private,
-        created_for: this.createdFor,
-        user_id: this.createdBy,
-    }
+      content: this.goal,
+      type: this.type,
+      goal_date: this.dueDate,
+      status: this.status,
+      private: this.private,
+      created_for: this.createdFor,
+      user_id: this.createdBy,
+    };
   }
 }

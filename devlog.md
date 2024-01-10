@@ -4,6 +4,8 @@ Back to work on rendering clientData. Will setup component for goals inside clie
 
 ### Worked On:
 1. GoalsData component
+2. Adding goals for client
+3. Trying to navigate best usage of TypeScript when handling reusable Goal code.
 
 
 ## 09/01-24

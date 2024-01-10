@@ -1,7 +1,10 @@
 <script lang="ts">
-import type { ClientGoal } from "../../../../../types/Client";
+import NewGoal from "../../../../dashboard/goals/NewGoal.svelte";
 
   export let goals = [];
+
+
+ 
 </script>
 
 {#if goals.length === 0}
