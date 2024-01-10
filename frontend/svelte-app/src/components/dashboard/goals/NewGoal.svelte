@@ -1,9 +1,9 @@
 <script lang="ts">
   import { newLongTermGoal } from "../../../utilities/api";
-  /* import type { FrontendGoal, BackendGoal } from "./types"; */
-  /* import { backToFrontGoal, frontToBackGoal } from "./types"; */
-  import type { FrontendGoal } from "../../../types/Goals";
-  import { Goal } from "../../../types/Goals";
+  import type { FrontendGoal, BackendGoal } from "./types";
+  import { backToFrontGoal, frontToBackGoal } from "./types";
+/*   import type { FrontendGoal } from "../../../types/Goals";
+  import { Goal } from "../../../types/Goals"; */
 
   /**
    * * Handles adding of new simple goals for logged in user
@@ -12,6 +12,7 @@
    * TODO: Validate input
    * TODO: Add error/confirmation handling
    */
+
 
   const longTermGoal: FrontendGoal = {
     dueDate: "",

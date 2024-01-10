@@ -7,6 +7,11 @@ Back to work on rendering clientData. Will setup component for goals inside clie
 2. Adding goals for client
 3. Trying to navigate best usage of TypeScript when handling reusable Goal code.
 
+### Issues:
+Spent a lot of time trying to determine the best usage of TypeScript interfaces and classes for my project. Will do some research and continue implementation tomorrow. 
+
+### Next Session:
+- Rework TypeScript usage, define structure to implement in future development.
 
 ## 09/01-24
 
