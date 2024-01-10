@@ -16,6 +16,10 @@ export interface ClientGoal {
     dueDate: Date;
 }
 
+export interface NewClientGoal {
+    
+}
+
 export interface ClientProfile {
     id: number;
     dob: Date;
