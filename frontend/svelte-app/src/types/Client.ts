@@ -16,8 +16,14 @@ export interface ClientGoal {
     dueDate: Date;
 }
 
+export interface ClientProfile {
+    id: number;
+    dob: Date;
+    phoneNumber: string;
+}
+
 
 export interface ClientData {
-    user_id: string; // created_for (client, not trainer)
+    user_id: string; 
     goals: ClientGoal[];
 }

@@ -6,6 +6,7 @@ from builder.models import (
     ClientNotes,
     ClientData,
     SimpleGoal,
+    UserProfile,
 )
 
 
@@ -26,6 +27,12 @@ class FetchClientGoalsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SimpleGoal
         fields = ["id", "createdBy", "type", "goal", "status", "dueDate"]
+
+## TODO: Not yet implemented
+class ClientProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = "__all__"
 
 """ 
 ! Cleanup on isle 3. Old code below, check for usage then delete.

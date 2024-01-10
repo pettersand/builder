@@ -1,9 +1,10 @@
 ## 10/01-24
 
-Back to work on rendering clientData. Will setup component for goals inside clientData.
+Back to work on rendering clientData. Will setup component for goals inside clientData. I've decided to wait with implementation of Add Client, as this will be more pertinent when developing the client user experience. 
 
 ### Worked On:
 1. GoalsData component
+
 
 ## 09/01-24
 

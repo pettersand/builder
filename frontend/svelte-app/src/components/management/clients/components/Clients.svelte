@@ -37,7 +37,7 @@ onMount(() => {
 <div class="text-paragraph">
     {#each $clients as client}
     <div class="flex justify-between items-center custom-border-bottom">
-        <button class="w-full p-2 text-left text-lg hover:bg-card " on:click={() => setActiveClient(client.id)}>
+        <button class="w-full p-2 text-left text-lg hover:bg-card {currentClient === client.id ? 'bg-card' : ''}" on:click={() => setActiveClient(client.id)}>
         {client.firstName} {client.lastName}</button>
 
         <!-- TODO: conditional on status - active/inactive/away -->
