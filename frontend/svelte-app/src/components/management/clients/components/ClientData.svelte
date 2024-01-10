@@ -3,8 +3,6 @@
   import { activeClient, clientData } from "../../../../stores/clientStore";
   import type { ClientData, ClientGoal } from "../../../../types/Client";
   import GoalsData from "./data/GoalsData.svelte";
-  import App from "../../../../App.svelte";
-  import BaseModal from "../../../BaseModal.svelte";
 
   /**
    * * Client Data
@@ -36,7 +34,7 @@
     <h2 class="text-lg p-2 font-semibold text-start">Client Data</h2>
     {#if currentClient}
       <p>Active Client ID: {currentClient}</p>
-      <GoalsData />
+      <GoalsData {goals}/>
     {:else}
       <p>No active client selected</p>
     {/if}
