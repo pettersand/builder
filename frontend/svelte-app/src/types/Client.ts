@@ -7,13 +7,17 @@ export interface Client {
     status: string;
 }
 
+export interface ClientGoal {
+    id: number;
+    createdBy: string; // id (trainer)
+    type: string;
+    goal: string;
+    status: string;
+    dueDate: Date;
+}
+
+
 export interface ClientData {
-    id: string; // created_for (client, not trainer)
-    goal: {
-        createdBy: string; // id (trainer)
-        type: string;
-        goal: string;
-        status: string;
-        dueDate: Date;
-    }
+    user_id: string; // created_for (client, not trainer)
+    goals: ClientGoal[];
 }

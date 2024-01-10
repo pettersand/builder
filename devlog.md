@@ -1,3 +1,10 @@
+## 10/01-24
+
+Back to work on rendering clientData. Will setup component for goals inside clientData.
+
+### Worked On:
+1. GoalsData component
+
 ## 09/01-24
 
 Back for another round! Will continue working on the client list and its functionalities. Aiming to set activeClient and rendering relevant information in the Data container

@@ -1,7 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { activeClient, clientData } from "../../../../stores/clientStore";
-  import type { ClientData } from "../../../../types/Client"
+  import type { ClientData, ClientGoal } from "../../../../types/Client";
+  import GoalsData from "./data/GoalsData.svelte";
+  import App from "../../../../App.svelte";
+  import BaseModal from "../../../BaseModal.svelte";
 
   /**
    * * Client Data
@@ -11,16 +14,20 @@
   let currentClient: string | null;
   activeClient.subscribe(value => currentClient = value);
 
- $: if ($activeClient) {
+  let currentData: ClientData | null;
+  clientData.subscribe(value => currentData = value);
+
+  $: if ($activeClient) {
     clientData.fetchClientData($activeClient);
- }
+  }
 
- let currentData: ClientData | null;
- $: if ($clientData) {
-   console.log("Client Data Frontend:", $clientData);
-   clientData.subscribe(value => currentData = value);
- }
 
+  let goals: ClientGoal[] = [];
+
+  $: if (currentData && currentData.goals) {
+    goals = currentData.goals;
+    console.log("Client Goals:", goals);
+  }
 
 </script>
 
@@ -29,7 +36,7 @@
     <h2 class="text-lg p-2 font-semibold text-start">Client Data</h2>
     {#if currentClient}
       <p>Active Client ID: {currentClient}</p>
-      <p>Active Client Goals: {currentData}</p>
+      <GoalsData />
     {:else}
       <p>No active client selected</p>
     {/if}
