@@ -2,7 +2,7 @@
 
 import { writable } from 'svelte/store';
 import type { Client, ClientData } from './types';
-import { fetchClientData } from './API';
+import { fetchClientData, fetchTrainersClients } from './API';
 
 function createClientsStore() {
     const { subscribe, set, update } = writable<Client[]>([]);
@@ -11,10 +11,13 @@ function createClientsStore() {
       subscribe,
       set,
       update,
-      initialize: () => {
-        const storedClients = sessionStorage.getItem('clients');
-        if (storedClients) {
-          set(JSON.parse(storedClients));
+      fetchAndInitialize: async () => {
+        try {
+          const clients = await fetchTrainersClients();
+          set(clients);
+          sessionStorage.setItem('clients', JSON.stringify(clients));
+        } catch (error) {
+          console.error('Error initializing clients:', error);
         }
       }
     };

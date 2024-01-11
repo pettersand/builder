@@ -11,6 +11,7 @@ Got a lot of work done today. A lot of refactoring and restructuring done.
 4. Refactor Layout to include new structure
 5. Refactor dashboard/Goals.svelte
 6. Refactor BaseModal, created Modal util dir
+7. Refactor client handling
 
 ### Created:
 - utilities/goals
@@ -25,6 +26,11 @@ Got a lot of work done today. A lot of refactoring and restructuring done.
     - --||--
 - utilities/client
     - --||--
+
+### Next Session:
+- Ensure all new API calls work with backend
+- Fix client Data fetching, ensure reactive
+- Test, and remove duplicate code / unused import files
 
 ## 10/01-24
 
