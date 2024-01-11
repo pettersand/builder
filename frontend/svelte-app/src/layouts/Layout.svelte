@@ -23,8 +23,16 @@
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
-  import { checkAuthentication, logoutUser } from "../utilities/userAPI";
+  import { logoutUser } from "../utilities/userAPI"; // Removed checkAuthentication temporarily
   import { fetchTrainersClients } from "../utilities/clientAPI";
+
+  // New imports - implement when ready
+  import {
+    newUserStore,
+    saveUserId,
+    checkAuthentication,
+    type User,
+  } from "../utilities/user";
 
   // Icon imports
   import Icon from "@iconify/svelte";
@@ -64,11 +72,16 @@
 
       if (response.data.isAuthenticated) {
         console.log("Authenticated with roles: ", response.data.roles);
-        globalStore.setAuthenticationStatus(true);
-        userStore.set({
+        globalStore.setAuthenticationStatus(true); // Rework when restructuring globalStore
+
+        newUserStore.updateUser({
           isLoggedIn: true,
           roles: response.data.roles,
+          userId: response.data.userId,
         });
+        saveUserId(response.data.userId);
+
+
         if (response.data.roles.includes("Trainer")) {
           const clients = await fetchTrainersClients();
           console.log("Trainer clients:", clients);
@@ -77,6 +90,7 @@
         console.log("Not authenticated");
         globalStore.setAuthenticationStatus(false);
         userStore.set({ isLoggedIn: false, roles: [] });
+        newUserStore.updateUser({ isLoggedIn: false, roles: [], userId: "" });
       }
     } catch (error) {
       console.error("Error checking authentication status:", error);

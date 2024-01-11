@@ -57,6 +57,9 @@ export const checkAuthentication = async (): Promise<any> => {
   }
 };
 
+/**
+ * ! These have been moved, ensure no usage -> delete.
+ */
 export const newLongTermGoal = async (goalData: BackendGoal): Promise<any> => {
   try {
     const response = await api.post("/new_simple_goal/", goalData);
