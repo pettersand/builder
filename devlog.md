@@ -1,3 +1,15 @@
+## 11/01-24
+
+Created a new custom GPT and defined a clearer structure for data handling and utility file usage. Implementing iteratively, starting with goal handling. 
+
+### Worked On:
+1. Moving all goal utils to util/goal dir, for better reusability/maintainability/structure
+
+### Created:
+- utilities/goals
+- goals/API.ts
+- goals/index.ts
+
 ## 10/01-24
 
 Back to work on rendering clientData. Will setup component for goals inside clientData. I've decided to wait with implementation of Add Client, as this will be more pertinent when developing the client user experience. 
