@@ -1,7 +1,7 @@
 // goals/API.ts
 
 import api from "../api";
-import type { Goal } from "./index";
+import type { Goal } from "./types";
 
 const convertToBackend = (goal: Goal): any => {
   return {
@@ -35,7 +35,7 @@ export const saveGoal = async (goal: Goal): Promise<Goal> => {
     return convertToFrontend(response.data);
   } catch (error) {
     console.error("Error saving goal", error);
-    throw new Error("Error saving goal.");
+    throw new Error('Error saving goal.');
   }
 };
 
@@ -51,7 +51,7 @@ export const getGoals = async (): Promise<Goal[]> => {
 
 export const deleteUserGoal = async (goalId: number): Promise<void> => {
   try {
-    const response = await api.delete(`/delete_goal/${goalId}`);
+    await api.delete(`/delete_goal/${goalId}`);
   } catch (error) {
     console.error("Error deleting goal:", error);
     throw new Error('Error deleting goal.');

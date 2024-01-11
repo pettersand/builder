@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { newLongTermGoal } from "../../../utilities/api";
+  /* import { newLongTermGoal } from "../../../utilities/api";
   import type { FrontendGoal, BackendGoal } from "./types";
   import { backToFrontGoal, frontToBackGoal } from "./types";
 /*   import type { FrontendGoal } from "../../../types/Goals";
@@ -7,11 +7,28 @@
 
   /**
    * * Handles adding of new simple goals for logged in user
-   * TODO: Add constructor for type to simplify function calls
    * TODO: Add function for short term goals
    * TODO: Validate input
    * TODO: Add error/confirmation handling
    */
+
+  import { saveGoal } from "../../../utilities/goals/index";
+  import type { Goal } from "../../../utilities/goals/index";
+
+  let createdBy = "";
+  let createdFor = "";
+
+  let goalForm: Goal = {
+    goal: "",
+    dueDate: new Date(),
+    type: "long",
+    private: false,
+  }
+
+/**
+ * TODO: Create function to determine owner of goal (client or self)
+ * */ 
+  $: createdFor = determineCreator();
 
 
   const longTermGoal: FrontendGoal = {
