@@ -2,12 +2,15 @@
 
 Created a new custom GPT and defined a clearer structure for data handling and utility file usage. Implementing iteratively, starting with goal handling. 
 
+Got a lot of work done today. A lot of refactoring and restructuring done.
+
 ### Worked On:
 1. Moving all goal utils to util/goal dir, for better reusability/maintainability/structure
 2. Reworked NewGoal usage of structure
 3. Reworking user handling, fetching user id on auth check - new structure
 4. Refactor Layout to include new structure
 5. Refactor dashboard/Goals.svelte
+6. Refactor BaseModal, created Modal util dir
 
 ### Created:
 - utilities/goals
@@ -18,6 +21,8 @@ Created a new custom GPT and defined a clearer structure for data handling and u
     - goals/types.ts
 - utilities/user
     - Same as ^
+- utilities/modal
+    - --||--
 
 ## 10/01-24
 

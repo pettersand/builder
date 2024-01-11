@@ -19,16 +19,12 @@
     GoalType,
     type Goal,
   } from "../../../utilities/goals";
-  import { getUserId } from "../../../utilities/user";
 
-  let userId = getUserId();
 
-  //! Temporary until auth request is implemented
-  let tempUserId = "bc7c1679-6a15-47f2-a33d-253b1f286b6f";
+  export let createdForId: string;
 
   let goalForm: Goal = {
-    createdBy: userId,
-    createdFor: userId,
+    createdFor: createdForId,
     goal: "",
     dueDate: new Date(),
     type: GoalType.Long,
