@@ -4,11 +4,18 @@ Created a new custom GPT and defined a clearer structure for data handling and u
 
 ### Worked On:
 1. Moving all goal utils to util/goal dir, for better reusability/maintainability/structure
+2. Reworked NewGoal usage of structure
+3. Reworking user handling, fetching user id on auth check - new structure
 
 ### Created:
 - utilities/goals
-- goals/API.ts
-- goals/index.ts
+    - goals/API.ts
+    - goals/index.ts
+    - goals/store.ts
+    - goals/functions.ts
+    - goals/types.ts
+- utilities/user
+    - Same as ^
 
 ## 10/01-24
 
