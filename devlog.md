@@ -6,6 +6,8 @@ Created a new custom GPT and defined a clearer structure for data handling and u
 1. Moving all goal utils to util/goal dir, for better reusability/maintainability/structure
 2. Reworked NewGoal usage of structure
 3. Reworking user handling, fetching user id on auth check - new structure
+4. Refactor Layout to include new structure
+5. Refactor dashboard/Goals.svelte
 
 ### Created:
 - utilities/goals

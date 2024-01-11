@@ -5,10 +5,12 @@
   import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
   import ManageGoal from "./ManageGoal.svelte";
-  import { getGoals } from "../../../utilities/api";
+
   import type { FrontendGoal, BackendGoal } from "./types";
   import { backToFrontGoal, frontToBackGoal } from "./types";
-  import { construct_svelte_component } from "svelte/internal";
+  import { goalsStore, getGoals} from "../../../utilities/goals";
+  import type { Goal } from "../../../utilities/goals";
+  import { getUserId } from "../../../utilities/user";
 
   /**
    * * Card for disaplying goals for logged in user
@@ -17,9 +19,9 @@
    * TODO: Add reactivity to sessionStorage updates
    */
 
-  let goalsData: FrontendGoal[];
+  let goalsData: Goal[];
 
-  const handleSelect = (item) => {
+  const handleSelect = (item: string) => {
     switch (item) {
       case "New Goal":
         modalStore.openModal(NewGoal);
@@ -33,10 +35,12 @@
   };
 
   const openNewGoalModal = () => {
-    modalStore.openModal(NewGoal);
+    const createdFor = getUserId();
+    modalStore.openModal(NewGoal, { createdFor })
   };
 
-  const handleKeydown = (event, item) => {
+
+  const handleKeydown = (event, item: string) => {
     if (event.key === "Enter" || event.key === " ") {
       handleSelect(item);
       event.preventDefault();
@@ -61,12 +65,13 @@
   }
 
   onMount(() => {
-    const storedGoals = sessionStorage.getItem("goals");
-    if (storedGoals) {
-      goalsData = JSON.parse(storedGoals);
-    } else {
-      console.log("Fetching Goals");
-      fetchGoals();
+    goalsStore.subscribe($goals => {
+      goalsData = $goals;
+    });
+
+    // Fetch goals if not already populated
+    if (!goalsData || goalsData.length === 0) {
+      // Implement a function to fetch goals from the API and update the store
     }
   });
 </script>

@@ -23,10 +23,10 @@
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
-  import { logoutUser } from "../utilities/userAPI"; // Removed checkAuthentication temporarily
+  import { logoutUser } from "../utilities/userAPI"; 
   import { fetchTrainersClients } from "../utilities/clientAPI";
 
-  // New imports - implement when ready
+  // New imports - remove old when ready
   import {
     userStore,
     saveUserId,

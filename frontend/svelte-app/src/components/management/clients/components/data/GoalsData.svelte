@@ -1,5 +1,5 @@
 <script lang="ts">
-import NewGoal from "../../../../dashboard/goals/NewGoal.svelte";
+  import NewGoal from "../../../../dashboard/goals/NewGoal.svelte";
 
   export let goals = [];
 

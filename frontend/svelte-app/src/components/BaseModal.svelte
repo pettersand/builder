@@ -6,10 +6,14 @@
   } from "../utilities/modalUtilities";
   import { onMount } from "svelte";
   import themeStore from "../stores/themeStore";
+  import { modalStore } from "../utilities/modal";
 
   export let modalContent: string = "";
   export let onClose: () => void;
   export let onConfirm: () => void = () => {};
+
+  let props = {};
+  let ModalComponent;
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
@@ -28,6 +32,10 @@
       window.removeEventListener("keydown", handleKeyEvent);
     };
   });
+
+  $: modalStore.subscribe($modal => {
+    ({ props, ModalComponent } = $modal);
+  });
 </script>
 
 <div
@@ -35,10 +43,13 @@
   bind:this={modalRef}
 >
   <div class="bg-bg2 text-headline p-4 w-1/3 rounded-lg" bind:this={modalBox}>
-    <button class="flex w-full justify-end font-bold p-2 rounded-full" on:click={onClose}>
-      X
-    </button>
-    <h2 class="text-2xl mb-4">{modalContent}</h2>
+    <button
+      class="flex w-full justify-end font-bold p-2 rounded-full"
+      on:click={onClose}>X</button
+    >
+    {#if modalContent}
+      <h2 class="text-2xl mb-4">{modalContent}</h2>
+    {/if}
     <slot />
     <div class="mt-4">
       <button
