@@ -21,6 +21,8 @@ class CheckAuthStatus(APIView):
             )
             print("Roles", user_roles)
             response_data["roles"] = list(user_roles)
+
+            response_data["userId"] = request.user.id
             print("Response Data", response_data)
         return JsonResponse(response_data)
 
