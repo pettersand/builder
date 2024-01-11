@@ -1,16 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Icon from "@iconify/svelte";
+
   import DotsMenu from "../../base/DotsMenu.svelte";
-  import modalStore from "../../../stores/modalStore";
   import NewGoal from "./NewGoal.svelte";
   import ManageGoal from "./ManageGoal.svelte";
 
-  import type { FrontendGoal, BackendGoal } from "./types";
-  import { backToFrontGoal, frontToBackGoal } from "./types";
+
   import { goalsStore, getGoals} from "../../../utilities/goals";
   import type { Goal } from "../../../utilities/goals";
   import { getUserId } from "../../../utilities/user";
+  import { modalStore } from "../../../utilities/modal";
 
   /**
    * * Card for disaplying goals for logged in user
@@ -21,7 +21,7 @@
 
   let goalsData: Goal[];
 
-  const handleSelect = (item: string) => {
+  const handleSelect = (item) => {
     switch (item) {
       case "New Goal":
         modalStore.openModal(NewGoal);
@@ -50,29 +50,27 @@
   async function fetchGoals(): Promise<void> {
     try {
       console.log("Fetching Goals");
-      sessionStorage.removeItem("goals");
+      const fetchedGoals = await getGoals();
+      console.log("Goals:", fetchedGoals);
 
-      const response = await getGoals();
-      console.log("Goals:", response);
-
-      const backendGoals: BackendGoal[] = response;
-      console.log("Backend Goals:", backendGoals);
-      goalsData = backendGoals.map(backToFrontGoal);
-      sessionStorage.setItem("goals", JSON.stringify(goalsData));
+      goalsStore.set(fetchedGoals);
     } catch (error) {
       console.error("Error fetching goals:", error);
     }
   }
 
   onMount(() => {
-    goalsStore.subscribe($goals => {
+    const unsubscribe = goalsStore.subscribe($goals => {
       goalsData = $goals;
     });
 
-    // Fetch goals if not already populated
-    if (!goalsData || goalsData.length === 0) {
-      // Implement a function to fetch goals from the API and update the store
+    if (!goalsData.length) {
+      fetchGoals();
     }
+
+    return () => {
+      unsubscribe();
+    };
   });
 </script>
 

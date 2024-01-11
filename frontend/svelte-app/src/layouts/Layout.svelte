@@ -17,7 +17,7 @@
   // Store imports
   import themeStore from "../stores/themeStore";
   import globalStore from "../stores/globalStore";
-  import modalStore from "../stores/modalStore";
+
   import { showMessage } from "../stores/messageStore";
 /*   import { user as userStore } from "../stores/userStore"; */
 
@@ -33,6 +33,7 @@
     checkAuthentication,
     type User,
   } from "../utilities/user";
+  import { modalStore } from "../utilities/modal";
 
   // Icon imports
   import Icon from "@iconify/svelte";
@@ -137,7 +138,7 @@
 </script>
 
 {#if $modalStore.showModal && ModalComponent}
-  <BaseModal onClose={modalStore.closeModal}>
+  <BaseModal>
     <svelte:component this={ModalComponent} />
   </BaseModal>
 {/if}
