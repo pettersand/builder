@@ -19,7 +19,7 @@
   import globalStore from "../stores/globalStore";
   import modalStore from "../stores/modalStore";
   import { showMessage } from "../stores/messageStore";
-  import { user as userStore } from "../stores/userStore";
+/*   import { user as userStore } from "../stores/userStore"; */
 
   // Utility and API imports
   import { handleKeyboardEvent } from "../utilities/modalUtilities";
@@ -28,7 +28,7 @@
 
   // New imports - implement when ready
   import {
-    newUserStore,
+    userStore,
     saveUserId,
     checkAuthentication,
     type User,
@@ -39,25 +39,20 @@
 
   // Local state
 
-  let currentUserRole: string = "Solo";
-  let currentAuth = localStorage.getItem("isAuthenticated") === "true";
+  let currentUserRoles = [];
+  let isAuthenticated = false;
+
 
   // Lifecycle hooks
   onMount(() => {
-    const unsubscribeGlobal = globalStore.subscribe((state) => {
-      currentAuth = state.isAuthenticated;
-    });
-
-    // Subscribe to userStore for user role
-    const unsubscribeUser = userStore.subscribe(($user) => {
-      currentUserRole =
-        $user.roles && $user.roles.includes("Trainer") ? "Trainer" : "Solo";
+    const unsubscribeUser = userStore.subscribe($user => {
+      currentUserRoles = $user.roles;
+      isAuthenticated = $user.isLoggedIn;
     });
 
     checkAuthStatus();
 
     return () => {
-      unsubscribeGlobal();
       unsubscribeUser();
     };
   });
@@ -72,9 +67,7 @@
 
       if (response.data.isAuthenticated) {
         console.log("Authenticated with roles: ", response.data.roles);
-        globalStore.setAuthenticationStatus(true); // Rework when restructuring globalStore
-
-        newUserStore.updateUser({
+        userStore.updateUser({
           isLoggedIn: true,
           roles: response.data.roles,
           userId: response.data.userId,
@@ -85,12 +78,12 @@
         if (response.data.roles.includes("Trainer")) {
           const clients = await fetchTrainersClients();
           console.log("Trainer clients:", clients);
+          // Other trainer specific logic
         }
+
       } else {
         console.log("Not authenticated");
-        globalStore.setAuthenticationStatus(false);
-        userStore.set({ isLoggedIn: false, roles: [] });
-        newUserStore.updateUser({ isLoggedIn: false, roles: [], userId: "" });
+        userStore.updateUser({ isLoggedIn: false, roles: [], userId: "" });
       }
     } catch (error) {
       console.error("Error checking authentication status:", error);
@@ -109,7 +102,7 @@
 
       sessionStorage.clear();
 
-      globalStore.setAuthenticationStatus(false);
+      userStore.updateUser({ isLoggedIn: false, roles: [], userId: "" });
       showMessage("You have been logged out", "confirmation");
     } catch (error) {
       console.error("An error occurred during logout:", error);
@@ -139,6 +132,8 @@
   }
 
   $: ModalComponent = $modalStore.ModalComponent;
+  $: isTrainer = currentUserRoles.includes("Trainer");
+  $: isAdmin = currentUserRoles.includes("Admin");
 </script>
 
 {#if $modalStore.showModal && ModalComponent}
@@ -190,7 +185,7 @@
         Clear Storage
       </button>
       <!-- Login/Register and Log Out buttons -->
-      {#if $globalStore.isAuthenticated}
+      {#if isAuthenticated}
         <button
           class="font-bold bg-card2 py-2 px-5 rounded-full ring-4 ring-accent2 filter-drop-shadow hover:bg-accent2 hover:text-bg hover:border-accent2"
           on:click={logout}
@@ -234,7 +229,7 @@
           ><Icon icon="healthicons:exercise-weights" width="25" height="25" />
           Workout</button
         >
-        {#if currentUserRole === "Trainer"}
+        {#if isTrainer}
           <button
             class="icon-label hover:bg-card {$globalStore.currentPage ===
             'ProBuilder'
@@ -289,14 +284,21 @@
         <button class="text-gray-400">Documentation</button>
       </div>
     </div>
-    {#if $globalStore.currentPage === "Dashboard"}
-      <Dashboard />
-    {:else if $globalStore.currentPage === "Builder"}
-      <Builder />
-    {:else if $globalStore.currentPage === "ProBuilder"}
-      <ProBuilder />
-    {:else if $globalStore.currentPage === "Management"}
-      <Management />
+    {#if isAuthenticated}
+      {#if $globalStore.currentPage === "Dashboard"}
+        <Dashboard />
+      {:else if $globalStore.currentPage === "Builder"}
+        <Builder />
+      {:else if $globalStore.currentPage === "ProBuilder"}
+        <ProBuilder />
+      {:else if $globalStore.currentPage === "Management"}
+        <Management />
+      {/if}
+    {:else}
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div class="text-3xl font-bold">Welcome to Builder</div>
+        <div class="text-xl">Please login or register to continue</div>
+      </div>
     {/if}
     <slot />
   </main>

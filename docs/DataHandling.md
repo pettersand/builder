@@ -34,8 +34,7 @@ Manages goal-related state within the application. Includes functions for updati
 ## Example Usage
 ```svelte
 <script lang="ts">
-  import { goalsStore, determineCreatedFor, getGoals } from '../../../utilities/goals/index';
-  import type { Goal } from '../../../utilities/goals/index';
+  import { goalsStore, determineCreatedFor, getGoals, type Goal } from "../../../utilities/goals";
   
   // Component logic...
 </script>

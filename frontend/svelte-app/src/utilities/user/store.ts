@@ -16,4 +16,4 @@ function createUserStore() {
     };
 }
 
-export const newUserStore = createUserStore();
+export const userStore = createUserStore();
