@@ -16,7 +16,7 @@ class UserViewsTestCase(TestCase):
     def test_check_auth_status_authenticated(self):
         response = self.client.get(reverse("check_auth_status"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {"isAuthenticated": True, "roles": []})
+        self.assertEqual(response.json(), {"isAuthenticated": True, "roles": [], "userId": str(self.user.id)})
 
     def test_check_auth_status_unauthenticated(self):
         self.client.logout()
