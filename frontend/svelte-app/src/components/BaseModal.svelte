@@ -1,27 +1,26 @@
 <!-- BaseModal.svelte -->
 <script lang="ts">
-  import {
-    handleKeyboardEvent,
-    handleClickOutside,
-  } from "../utilities/modalUtilities";
   import { onMount } from "svelte";
-  import themeStore from "../stores/themeStore";
-  import { modalStore } from "../utilities/modal";
-
-  export let modalContent: string = "";
-  export let onClose: () => void;
-  export let onConfirm: () => void = () => {};
-
-  let props = {};
-  let ModalComponent;
+  import {
+    modalStore,
+    handleClickOutside,
+    handleKeyboardEvent,
+  } from "../utilities/modal";
 
   let modalRef: HTMLElement;
   let modalBox: HTMLElement;
 
+  let ModalComponent;
+  let props = {};
+
+  const closeModal = () => {
+    modalStore.closeModal();
+  };
+
   const handleOutsideClick = (event: MouseEvent) =>
-    handleClickOutside(event, modalRef, modalBox, onClose);
+    handleClickOutside(event, modalRef, modalBox, closeModal);
   const handleKeyEvent = (event: KeyboardEvent) =>
-    handleKeyboardEvent(event, onConfirm, onClose);
+    handleKeyboardEvent(event, () => {}, closeModal);
 
   onMount(() => {
     window.addEventListener("click", handleOutsideClick);
@@ -33,7 +32,7 @@
     };
   });
 
-  $: modalStore.subscribe($modal => {
+  $: modalStore.subscribe(($modal) => {
     ({ props, ModalComponent } = $modal);
   });
 </script>
@@ -45,36 +44,8 @@
   <div class="bg-bg2 text-headline p-4 w-1/3 rounded-lg" bind:this={modalBox}>
     <button
       class="flex w-full justify-end font-bold p-2 rounded-full"
-      on:click={onClose}>X</button
+      on:click={closeModal}>X</button
     >
-    {#if modalContent}
-      <h2 class="text-2xl mb-4">{modalContent}</h2>
-    {/if}
-    <slot />
-    <div class="mt-4">
-      <button
-        class={`px-4 py-2 mr-2 rounded-full ${
-          $themeStore === "dark"
-            ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-            : "bg-light-primary hover:bg-light-primary2 text-light-text"
-        }`}
-        on:click={onConfirm}
-      >
-        Confirm
-      </button>
-      <button
-        class={`px-4 py-2 rounded-full ${
-          $themeStore === "dark"
-            ? "bg-dark-primary hover:bg-dark-primary2 text-dark-text "
-            : "bg-light-primary hover:bg-light-primary2 text-light-text"
-        }`}
-        on:click={onClose}
-      >
-        Exit
-      </button>
-    </div>
+    <svelte:component this={ModalComponent} {...props} />
   </div>
 </div>
-
-<style>
-</style>
