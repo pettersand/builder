@@ -23,6 +23,8 @@ Got a lot of work done today. A lot of refactoring and restructuring done.
     - Same as ^
 - utilities/modal
     - --||--
+- utilities/client
+    - --||--
 
 ## 10/01-24
 
