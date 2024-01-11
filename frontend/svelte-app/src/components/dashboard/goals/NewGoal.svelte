@@ -13,7 +13,7 @@
    */
 
   import { saveGoal } from "../../../utilities/goals/index";
-  import type { Goal } from "../../../utilities/goals/index";
+  import { GoalType, type Goal } from "../../../utilities/goals/index";
 
   let createdBy = "";
   let createdFor = "";
@@ -21,7 +21,7 @@
   let goalForm: Goal = {
     goal: "",
     dueDate: new Date(),
-    type: "long",
+    type: GoalType.Long,
     private: false,
   }
 
@@ -44,17 +44,6 @@
   }; 
 
 
-  const longTermGoal: FrontendGoal = {
-    dueDate: "",
-    goal: "",
-    type: "long",
-  };
-
-  const shortTermGoal: FrontendGoal = {
-    dueDate: "",
-    goal: "",
-    type: "short",
-  };
 
   const updateGoalsStorage = (newGoal: FrontendGoal): void => {
     const currentGoals: FrontendGoal[] = JSON.parse(
@@ -64,29 +53,6 @@
     sessionStorage.setItem("goals", JSON.stringify(currentGoals));
   };
 
-  const addLongTermGoal = async () => {
-    const goalData: BackendGoal = frontToBackGoal({
-      dueDate: longTermGoal.dueDate,
-      goal: longTermGoal.goal,
-      type: "long",
-    });
-    console.log("Long Term Goal:", goalData);
-
-    try {
-      const response = await newLongTermGoal(goalData);
-      console.log("New Goal Added", response);
-
-      const goalForStorage: FrontendGoal = backToFrontGoal(response);
-      updateGoalsStorage(goalForStorage);
-      
-    } catch (error) {
-      console.log("Error creating goal:", error);
-    }
-  };
-
-  const addShortTermGoal = () => {
-    console.log("Short Term Goal:", shortTermGoal);
-  };
 </script>
 
 <div class="flex flex-col items-start p-2 gap-4 bg-bg custom-border-bottom">

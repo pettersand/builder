@@ -23,6 +23,8 @@ const convertToFrontend = (data: any): Goal => {
   };
 };
 
+//TODO: Create update endpoint
+
 export const saveGoal = async (goal: Goal): Promise<Goal> => {
   try {
     const backendGoal = convertToBackend(goal);
