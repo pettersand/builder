@@ -3,4 +3,4 @@
 export * from './API';
 export * from './types';
 export * from './functions';
-/* export * from "./store"; */
+export * from "./store";

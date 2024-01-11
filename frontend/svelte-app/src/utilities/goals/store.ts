@@ -22,7 +22,7 @@ function createGoalStore() {
         return updatedGoals;
       });
     },
-    // Additional methods like removeGoal, updateGoal, etc., can be added here.
+    // Additional methods like removeGoal, updateGoal, etc., will be added here.
   };
 }
 
