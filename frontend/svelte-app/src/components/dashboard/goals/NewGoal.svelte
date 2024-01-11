@@ -30,6 +30,19 @@
  * */ 
   $: createdFor = determineCreator();
 
+  const addGoal = async () => {
+    goalForm.createdBy = createdBy;
+    goalForm.createdFor = createdFor;
+
+    try {
+      const savedGoal = await saveGoal(goalForm);
+      // TODO: Update store/storage
+      console.log("New Goal Added", savedGoal);
+    } catch (error) {
+      console.error("Error creating goal:", error);
+    }
+  }; 
+
 
   const longTermGoal: FrontendGoal = {
     dueDate: "",
