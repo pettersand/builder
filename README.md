@@ -10,6 +10,18 @@
 - [Contributing](#contributing)
 - [License](#license)
 
+## Documentation
+
+For more detailed information about the project, please refer to the following documents:
+
+- [Project Overview](./docs/Overview.md)
+- [Backend Architecture](./docs/Backend.md)
+- [Frontend Architecture](./docs/Frontend.md)
+- [Data Handling](./docs/DataHandling.md)
+- [Coding Standards](./docs/CodingStandards.md)
+- [Setup and Installation](./docs/SetupAndInstallation.md)
+- [Contribution Guidelines](./docs/ContributionGuidelines.md)
+
 ## Introduction
 
 Welcome to the Workout Program Builder & Personal Trainer Management System. This application aims to revolutionize the way personal trainers and fitness enthusiasts create, manage, and track workout programs. With a focus on customization and user experience, this app provides a seamless way to build workout routines from beginner to expert levels.
