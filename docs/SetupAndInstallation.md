@@ -1,0 +1,1 @@
+# Detailed steps for setting up the project locally, including any dependencies and environment setup.
