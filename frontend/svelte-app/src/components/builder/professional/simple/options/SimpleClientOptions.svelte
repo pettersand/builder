@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import {
     clients,
     activeClient,
@@ -10,27 +10,39 @@
     builderState,
     programNotes,
   } from "../../../../../stores/builderStore";
-  import { userStore, getUserId } from "../../../../../utilities/user";
-  import { fetchClientData } from "../../../../../utilities/client";
+  import { userStore } from "../../../../../utilities/user";
   import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
-  let activeClientDetails = null;
+
+  let currentClientId = null;
+  let currentClientDetails = null;
+
+ 
+  const unsubscribeActiveClient = activeClient.subscribe(value => {
+    currentClientId = value;
+
+    if (currentClientId) {
+      const clientList = $clients;
+      currentClientDetails = clientList.find(client => client.id === currentClientId);
+    } else {
+      currentClientDetails = null;
+    }
+  });
 
   onMount(async () => {
     await clients.fetchAndInitialize();
   });
 
   // Sets active client and fetches client data
-  const setActiveClient = async (clientId: string) => {
+  function setActiveClient(clientId: string) {
     activeClient.updateActiveClient(clientId);
-    await clientData.fetchClientData(clientId);
-  };
+    clientData.fetchClientData(clientId);
+  }
 
   // Sets self as active client
   const selectSelfAsClient = () => {
-    let userId = getUserId();
     if (userId) {
       setActiveClient(userId);
     } else {
@@ -66,16 +78,16 @@
       console.log("Error creating program:", error);
     }
   };
-  
-  $: if ($activeClient) {
-    activeClientDetails = $clients.find(
-      (client) => client.id === $activeClient
-    );
-  }
+
+  $: userId = $userStore.userId;
 
   $: filteredClients = $clients.filter((client) =>
     client.firstName.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  onDestroy(() => {
+    unsubscribeActiveClient();
+  });
 </script>
 
 <div class="flex flex-col w-full items-center">
@@ -101,16 +113,16 @@
       class="flex flex-row justify-between w-1/3 gap-4 p-4 custom-border-right"
     >
       <div class="flex flex-col gap-4 w-1/2">
-        {#if $activeClientDetails}
+        {#if currentClientDetails}
           <span class="font-bold">Active Client</span>
           <p class="text-lg">
-            {$activeClientDetails.firstName}
-            {$activeClientDetails.lastName}
+            {currentClientDetails.firstName}
+            {currentClientDetails.lastName}
           </p>
           <p>
-            {$activeClientDetails.email}
+            {currentClientDetails.email}
           </p>
-          <p>Age, Gender, {$activeClientDetails.status}</p>
+          <p>Age, Gender, {currentClientDetails.status}</p>
         {:else}
           <span class="font-bold">Select Client</span>
         {/if}
