@@ -2,19 +2,26 @@
   import ProgramNotes from "./components/ProgramNotes.svelte";
   import {
     activeClient,
-    clients } from "../../../../../utilities/client";
+    clientData,
+    type ClientGoal,
+  } from "../../../../../utilities/client";
   import { formatDate } from "../../../../../utilities/global";
   import { calculateTimeToGoal } from "../../../../../utilities/goals";
 
-  let clientDetails;
+  let activeClientId: string | null;
+  let clientGoals: ClientGoal[] = [];
 
-  $: if ($activeClient && $activeClient.clientDetails) {
-    console.log($activeClient);
-    clientDetails = $activeClient.clientDetails;
-  } else {
-    clientDetails = null;
-  }
+  activeClient.subscribe($activeClient => {
+    activeClientId = $activeClient;
+    if (activeClientId) {
+      clientData.fetchClientData(activeClientId);
+    }
+  });
 
+
+  clientData.subscribe($clientData => {
+    clientGoals = $clientData && $clientData.goals ? $clientData.goals : [];
+  });
 </script>
 
 <div class="gap-4 w-full h-full flex flex-row">
@@ -32,61 +39,40 @@
     <!-- Client Data Container -->
     <div class="h-1/2 flex flex-col gap-4 custom-border-bottom">
       <span class="font-bold text-lg">Client Data</span>
-      {#if clientDetails}
-        <!-- Goals Container -->
-        <div class="flex flex-col gap-4 justify-evenly custom-border-bottom">
-          <span class="font-bold">Goals:</span>
-          {#if clientDetails.goals && clientDetails.goals.length}
-            {#each sortGoals(clientDetails.goals) as goal}
-              <div class="flex flex-col justify-between bg-card">
-                <div class="flex flex-col">
-                  <p>
-                    {goalTypeMap[goal.goal_type]} - Due: {formatDate(
-                      goal.goal_date
-                    )}
-                  </p>
-                  <p>{goal.content}</p>
-                </div>
-
-                <p>Deadline: {calculateTimeToGoal(goal.goal_date)}</p>
+      {#if activeClientId}
+        {#if clientGoals.length > 0}
+          <div class="goals-container">
+            {#each clientGoals as goal}
+              <div class="goal">
+                <h3>{goal.goal}</h3>
+                <p>Type: {goal.type}</p>
+                <p>Status: {goal.status}</p>
+                <p>Due Date: {formatDate(new Date(goal.dueDate))}</p>
+                <p>Time to Goal: {calculateTimeToGoal(new Date(goal.dueDate))}</p>
               </div>
             {/each}
-          {:else}
-            <p>No Goals Data</p>
-          {/if}
-        </div>
-        <!-- Injuries Container -->
-        <div class="flex flex-col gap-4 justify-evenly custom-border-bottom">
-          <span class="font-bold">Injuries:</span>
-          {#if clientDetails.injuries && clientDetails.injuries.length}
-            {#each clientDetails.injuries as injury}
-              <p>{injury.injury_name} - {injury.site}</p>
-            {/each}
-          {:else}
-            <p>No Injuries Data</p>
-          {/if}
-        </div>
-
-        <span>Strength</span>
-        <span>Completion Stats</span>
-        <span>Progress Stats</span>
+          </div>
+        {:else}
+          <p>No goals available for this client</p>
+        {/if}
+      {:else}
+        <p>Select a client to view goals</p>
       {/if}
     </div>
 
-    <!-- Client Notes Container -->
-    <div class="h-1/2 flex flex-col">
-      <div>
-        <span class="font-bold">Notes:</span>
-        {#if clientDetails && clientDetails.notes && clientDetails.notes.length}
-          {#each clientDetails.notes as note}
-            <p>{note.content}</p>
-          {/each}
-        {:else}
-          <p>No Notes Data</p>
-        {/if}
-      </div>
-    </div>
+    <span>Strength</span>
+    <span>Completion Stats</span>
+    <span>Progress Stats</span>
   </div>
+
+  <!-- Client Notes Container -->
+  <div class="h-1/2 flex flex-col">
+    <div>
+      <span class="font-bold">Notes:</span>
+    </div>
+  
+  </div>
+
   <div
     class="flex flex-grow w-1/3 bg-bg flex flex-col justify-start p-3 shadow-xl"
   >

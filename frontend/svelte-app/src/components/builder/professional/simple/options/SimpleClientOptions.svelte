@@ -1,43 +1,54 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { clients, activeClient } from "../../../../../stores/clientStore";
+  import {
+    clients,
+    activeClient,
+    clientData,
+    type Client,
+  } from "../../../../../utilities/client";
   import {
     builderState,
     programNotes,
   } from "../../../../../stores/builderStore";
-  import { fetchClientData } from "../../../../../utilities/clientAPI";
-  import { user } from "../../../../../stores/userStore";
+  import { userStore, getUserId } from "../../../../../utilities/user";
+  import { fetchClientData } from "../../../../../utilities/client";
   import { postProgramData } from "../../../../../utilities/programAPI";
 
-  let searchTerm = "";
-  let filteredClients = [];
+  let searchTerm: string = "";
+  let filteredClients: Client[] = [];
+  let activeClientDetails = null;
 
-  onMount(() => {
-    clients.initialize(); // This will load clients from sessionStorage
+  onMount(async () => {
+    await clients.fetchAndInitialize();
   });
 
   // Sets active client and fetches client data
-  const setActiveClient = async (client) => {
-    activeClient.updateActiveClient(client);
+  const setActiveClient = async (clientId: string) => {
+    activeClient.updateActiveClient(clientId);
+    await clientData.fetchClientData(clientId);
+  };
 
-    try {
-      const clientData = await fetchClientData(client.id);
-      console.log("Fetched Client Data:", clientData);
-      activeClient.updateActiveClient({ ...client, clientDetails: clientData });
-    } catch (error) {
-      console.log(error);
+  // Sets self as active client
+  const selectSelfAsClient = () => {
+    let userId = getUserId();
+    if (userId) {
+      setActiveClient(userId);
+    } else {
+      console.error("User ID is not available");
     }
   };
 
-  /*   function selectTrainerAsClient() {
-    setActiveTrainerAsClient();
-  } */
-
-  const handleKeyPress = (event, client) => {
+  const handleKeyPress = (event: KeyboardEvent, client) => {
     if (event.key === "Enter" || event.key === " ") {
       setActiveClient(client);
     }
   };
+
+  function handleSelfKeyPress(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      selectSelfAsClient();
+    }
+  }
 
   const handleContinue = async () => {
     // Save the program notes
@@ -55,6 +66,12 @@
       console.log("Error creating program:", error);
     }
   };
+  
+  $: if ($activeClient) {
+    activeClientDetails = $clients.find(
+      (client) => client.id === $activeClient
+    );
+  }
 
   $: filteredClients = $clients.filter((client) =>
     client.firstName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -84,16 +101,16 @@
       class="flex flex-row justify-between w-1/3 gap-4 p-4 custom-border-right"
     >
       <div class="flex flex-col gap-4 w-1/2">
-        {#if $activeClient}
+        {#if $activeClientDetails}
           <span class="font-bold">Active Client</span>
           <p class="text-lg">
-            {$activeClient.firstName}
-            {$activeClient.lastName}
+            {$activeClientDetails.firstName}
+            {$activeClientDetails.lastName}
           </p>
           <p>
-            {$activeClient.email}
+            {$activeClientDetails.email}
           </p>
-          <p>Age, Gender, {$activeClient.status}</p>
+          <p>Age, Gender, {$activeClientDetails.status}</p>
         {:else}
           <span class="font-bold">Select Client</span>
         {/if}
@@ -110,14 +127,17 @@
         <div
           class="overflow-y-auto max-h-60 divide-y divide-gray-300 zebra-striped"
         >
-          <div class="p-1 cursor-pointer">
-            <!-- TODO: Add self select as activeClient -->
+          <div
+            class="p-1 cursor-pointer"
+            on:click={selectSelfAsClient}
+            on:keydown={handleSelfKeyPress}
+          >
             Myself
           </div>
           {#each filteredClients as client}
             <div
               class="p-1 cursor-pointer"
-              on:click={() => setActiveClient(client)}
+              on:click={() => setActiveClient(client.id)}
               on:keydown={(event) => handleKeyPress(event, client)}
             >
               {client.firstName}

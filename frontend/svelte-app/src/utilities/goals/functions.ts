@@ -10,12 +10,11 @@ export function determineCreator(activeClientId: string | null, isTrainer: boole
     }
   }
 
-export function calculateTimeToGoal(goalDate: string): string {
+  export function calculateTimeToGoal(goalDate: Date): string {
     const today = new Date();
-    const dueDate = new Date(goalDate);
-    const diffTime = Math.abs(dueDate.getTime() - today.getTime());
+    const diffTime = Math.abs(goalDate.getTime() - today.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     const diffWeeks = Math.floor(diffDays / 7);
     const diffMonths = Math.floor(diffDays / 30);
     return `${diffMonths} months, ${diffWeeks % 4} weeks, ${diffDays % 7} days`;
-  }
+}
