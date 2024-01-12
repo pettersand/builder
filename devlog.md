@@ -6,7 +6,10 @@ Fopr today I will ensure my backend is updated to receive from my new frontend s
 
 ### Worked On:
 1. Client goals data handling
-    - Fixing backend response
+    - Fixed backend response
+    - Fixed trainer fetching their personal goals, not clients
+2. Removing old code/utility files
+ 
 
 ## 11/01-24
 

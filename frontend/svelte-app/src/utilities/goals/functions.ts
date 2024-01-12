@@ -9,3 +9,13 @@ export function determineCreator(activeClientId: string | null, isTrainer: boole
       return loggedInUserId || ""; // If the user is creating a goal for themselves or fallback
     }
   }
+
+export function calculateTimeToGoal(goalDate: string): string {
+    const today = new Date();
+    const dueDate = new Date(goalDate);
+    const diffTime = Math.abs(dueDate.getTime() - today.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diffWeeks = Math.floor(diffDays / 7);
+    const diffMonths = Math.floor(diffDays / 30);
+    return `${diffMonths} months, ${diffWeeks % 4} weeks, ${diffDays % 7} days`;
+  }

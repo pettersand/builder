@@ -6,8 +6,7 @@
   import NewGoal from "./NewGoal.svelte";
   import ManageGoal from "./ManageGoal.svelte";
 
-
-  import { goalsStore, getGoals} from "../../../utilities/goals";
+  import { goalsStore, getGoals } from "../../../utilities/goals";
   import type { Goal } from "../../../utilities/goals";
   import { getUserId } from "../../../utilities/user";
   import { modalStore } from "../../../utilities/modal";
@@ -36,9 +35,8 @@
 
   const openNewGoalModal = () => {
     const createdFor = getUserId();
-    modalStore.openModal(NewGoal, { createdFor })
+    modalStore.openModal(NewGoal, { createdFor });
   };
-
 
   const handleKeydown = (event, item: string) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -60,7 +58,7 @@
   }
 
   onMount(() => {
-    const unsubscribe = goalsStore.subscribe($goals => {
+    const unsubscribe = goalsStore.subscribe(($goals) => {
       goalsData = $goals;
     });
 

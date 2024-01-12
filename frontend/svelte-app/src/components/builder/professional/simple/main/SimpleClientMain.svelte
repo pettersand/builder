@@ -2,8 +2,9 @@
   import ProgramNotes from "./components/ProgramNotes.svelte";
   import {
     activeClient,
-    clients as clientStore,
-  } from "../../../../../stores/clientStore";
+    clients } from "../../../../../utilities/client";
+  import { formatDate } from "../../../../../utilities/global";
+  import { calculateTimeToGoal } from "../../../../../utilities/goals";
 
   let clientDetails;
 
@@ -14,37 +15,6 @@
     clientDetails = null;
   }
 
-  function formatDate(dateString: string): string {
-    const options: Intl.DateTimeFormatOptions = {
-      month: "long",
-      day: "numeric",
-    };
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", options);
-  }
-
-  function calculateTimeToGoal(goalDate: string): string {
-    const today = new Date();
-    const dueDate = new Date(goalDate);
-    const diffTime = Math.abs(dueDate.getTime() - today.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    const diffWeeks = Math.floor(diffDays / 7);
-    const diffMonths = Math.floor(diffDays / 30);
-    return `${diffMonths} months, ${diffWeeks % 4} weeks, ${diffDays % 7} days`;
-  }
-
-  const goalTypeMap = {
-    short: "Short Term",
-    med: "Medium Term",
-    long: "Long Term",
-  };
-
-  function sortGoals(goals) {
-    return goals.slice().sort((a, b) => {
-      const order = ["short", "med", "long"];
-      return order.indexOf(a.goal_type) - order.indexOf(b.goal_type);
-    });
-  }
 </script>
 
 <div class="gap-4 w-full h-full flex flex-row">

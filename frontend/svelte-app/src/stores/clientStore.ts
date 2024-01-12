@@ -4,6 +4,8 @@
  * * Stores activeClient and client list
  * TODO: Add client data for activeClient
  */
+
+/* 
 import { writable } from 'svelte/store';
 import type { Client, ClientData } from '../types/Client';
 import { fetchClientData } from '../utilities/clientAPI';
@@ -65,4 +67,4 @@ function createClientDataStore() {
 
 export const clients = createClientsStore();
 export const activeClient = createActiveClientStore();
-export const clientData = createClientDataStore();
+export const clientData = createClientDataStore(); */
