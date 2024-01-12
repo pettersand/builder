@@ -45,7 +45,7 @@ class NewSimpleGoal(APIView):
 
 class FetchGoals(APIView):
     def get(self, request):
-        goals = SimpleGoal.objects.filter(user_id=request.user)
+        goals = SimpleGoal.objects.filter(created_for=request.user)
         serializer = FetchGoalsSerializer(goals, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
