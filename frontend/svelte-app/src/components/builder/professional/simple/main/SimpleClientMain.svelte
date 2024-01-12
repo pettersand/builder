@@ -5,11 +5,14 @@
     clientData,
     type ClientGoal,
   } from "../../../../../utilities/client";
+  import { getGoals } from "../../../../../utilities/goals";
+  import { userStore } from "../../../../../utilities/user";
   import { formatDate } from "../../../../../utilities/global";
   import { calculateTimeToGoal } from "../../../../../utilities/goals";
 
   let activeClientId: string | null;
   let clientGoals: ClientGoal[] = [];
+  let isSelfSelected: boolean = false;
 
   activeClient.subscribe($activeClient => {
     activeClientId = $activeClient;

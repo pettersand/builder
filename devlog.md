@@ -9,7 +9,8 @@ Fopr today I will ensure my backend is updated to receive from my new frontend s
     - Fixed backend response
     - Fixed trainer fetching their personal goals, not clients
 2. Removing old code/utility files
- 
+3. Implementing new client handling in step 1 builder
+    - Causing issues in how to separate client data and trainer data for program creation for self. 
 
 ## 11/01-24
 

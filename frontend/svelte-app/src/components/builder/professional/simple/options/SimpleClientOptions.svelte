@@ -11,21 +11,30 @@
     programNotes,
   } from "../../../../../stores/builderStore";
   import { userStore } from "../../../../../utilities/user";
+  import { goalsStore, getGoals } from "../../../../../utilities/goals";
   import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
 
+let isSelfSelected: boolean = false;
+
   let currentClientId = null;
   let currentClientDetails = null;
+  let userId: string | null;
 
- 
-  const unsubscribeActiveClient = activeClient.subscribe(value => {
+  userStore.subscribe(($user) => {
+    userId = $user.userId;
+  });
+
+  const unsubscribeActiveClient = activeClient.subscribe((value) => {
     currentClientId = value;
 
     if (currentClientId) {
       const clientList = $clients;
-      currentClientDetails = clientList.find(client => client.id === currentClientId);
+      currentClientDetails = clientList.find(
+        (client) => client.id === currentClientId
+      );
     } else {
       currentClientDetails = null;
     }
@@ -40,15 +49,25 @@
     activeClient.updateActiveClient(clientId);
     clientData.fetchClientData(clientId);
   }
+  
+  function selectSelfAsClient() {
+    isSelfSelected = true;
+    activeClient.updateActiveClient(null); // Or use a specific value to indicate self-selection
+    // Fetch the trainer's own goals
+    fetchTrainerGoals();
+  }
 
   // Sets self as active client
-  const selectSelfAsClient = () => {
-    if (userId) {
-      setActiveClient(userId);
-    } else {
-      console.error("User ID is not available");
+  async function fetchTrainerGoals() {
+    try {
+      if (userId) {
+        const goals = await getGoals();
+        goalsStore.set(goals);
+      }
+    } catch (error) {
+      console.error("Error fetching trainer's goals:", error);
     }
-  };
+  }
 
   const handleKeyPress = (event: KeyboardEvent, client) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -78,8 +97,6 @@
       console.log("Error creating program:", error);
     }
   };
-
-  $: userId = $userStore.userId;
 
   $: filteredClients = $clients.filter((client) =>
     client.firstName.toLowerCase().includes(searchTerm.toLowerCase())
