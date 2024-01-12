@@ -1,3 +1,13 @@
+## 12/01-24
+
+Extremely pleased with everything I accomplished yesterday. The new structure feels miles stronger than my old setup. Refactored a lot of the more recent and important files, still lots of components to rework before I can remove the old files. I plan on doing this iteratively as I work through the functionality, and then with a full scale refactor prior to launching the MVP. 
+
+Fopr today I will ensure my backend is updated to receive from my new frontend structure, I expect some minor tweaks. Will also consider starting a rework of my backend, or at least analysing it to see whether there are some clear improvements to be made. 
+
+### Worked On:
+1. Client goals data handling
+    - Fixing backend response
+
 ## 11/01-24
 
 Created a new custom GPT and defined a clearer structure for data handling and utility file usage. Implementing iteratively, starting with goal handling. 

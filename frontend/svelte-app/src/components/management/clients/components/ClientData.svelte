@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { activeClient, clientData } from "../../../../stores/clientStore";
-  import type { ClientData, ClientGoal } from "../../../../types/Client";
+  import { activeClient, clientData } from "../../../../utilities/client";
+  import type { ClientData, ClientGoal } from "../../../../utilities/client";
   import GoalsData from "./data/GoalsData.svelte";
 
   /**

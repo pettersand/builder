@@ -3,6 +3,10 @@
   import { modalStore } from "../../../../../utilities/modal";
   import { activeClient } from "../../../../../utilities/client";
 
+/**
+ * TODO: Make reactive on first click
+ */
+
   export let goals = [];
 
   let activeClientId: string | null;
@@ -10,7 +14,7 @@
 
   const openNewGoalModal = () => {
     if (activeClientId) {
-      modalStore.openModal(NewGoal, { createdFor: activeClientId });
+      modalStore.openModal(NewGoal, { createdForId: activeClientId });
     } else {
       console.error("No active client selected");
     }
