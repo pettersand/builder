@@ -17,8 +17,6 @@
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
 
-let isSelfSelected: boolean = false;
-
   let currentClientId = null;
   let currentClientDetails = null;
   let userId: string | null;
@@ -30,7 +28,15 @@ let isSelfSelected: boolean = false;
   const unsubscribeActiveClient = activeClient.subscribe((value) => {
     currentClientId = value;
 
-    if (currentClientId) {
+    // If trainer selects himself, set currentClientDetails to a generic object
+    if (currentClientId === userId) {
+      currentClientDetails = {
+        firstName: "Myself",
+        lastName: "",
+        email: "",
+        status: "",
+      };
+    } else if (currentClientId) {
       const clientList = $clients;
       currentClientDetails = clientList.find(
         (client) => client.id === currentClientId
@@ -49,37 +55,13 @@ let isSelfSelected: boolean = false;
     activeClient.updateActiveClient(clientId);
     clientData.fetchClientData(clientId);
   }
-  
-  function selectSelfAsClient() {
-    isSelfSelected = true;
-    activeClient.updateActiveClient(null); // Or use a specific value to indicate self-selection
-    // Fetch the trainer's own goals
-    fetchTrainerGoals();
-  }
 
-  // Sets self as active client
-  async function fetchTrainerGoals() {
-    try {
-      if (userId) {
-        const goals = await getGoals();
-        goalsStore.set(goals);
-      }
-    } catch (error) {
-      console.error("Error fetching trainer's goals:", error);
-    }
-  }
 
   const handleKeyPress = (event: KeyboardEvent, client) => {
     if (event.key === "Enter" || event.key === " ") {
       setActiveClient(client);
     }
   };
-
-  function handleSelfKeyPress(event) {
-    if (event.key === "Enter" || event.key === " ") {
-      selectSelfAsClient();
-    }
-  }
 
   const handleContinue = async () => {
     // Save the program notes
@@ -158,8 +140,8 @@ let isSelfSelected: boolean = false;
         >
           <div
             class="p-1 cursor-pointer"
-            on:click={selectSelfAsClient}
-            on:keydown={handleSelfKeyPress}
+            on:click={() => setActiveClient(userId)}
+              on:keydown={(event) => handleKeyPress(event, userId)}
           >
             Myself
           </div>

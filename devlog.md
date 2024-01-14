@@ -2,6 +2,10 @@
 
 Weekend shenanigans. Some tinkering and cleanup - working on handling of self user or client being selected. 
 
+### Worked On:
+1. client_views.py
+    - Checks for self select
+
 ## 12/01-24
 
 Extremely pleased with everything I accomplished yesterday. The new structure feels miles stronger than my old setup. Refactored a lot of the more recent and important files, still lots of components to rework before I can remove the old files. I plan on doing this iteratively as I work through the functionality, and then with a full scale refactor prior to launching the MVP. 
