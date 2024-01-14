@@ -167,7 +167,7 @@
     </div>
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">Continue</span>
-      <div>Click to save & continue</div>
+      <div>Click to save & continue to template creation</div>
       <button class="bg-accent2 p-4 font-bold text-lg" on:click={handleContinue}
         >Continue</button
       >

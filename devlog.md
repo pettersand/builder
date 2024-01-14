@@ -5,6 +5,16 @@ Weekend shenanigans. Some tinkering and cleanup - working on handling of self us
 ### Worked On:
 1. client_views.py
     - Checks for self select
+    - Fixed correct data being rendered in Main component
+2. Planning refactor of program related utility files / data handling
+
+### Created:
+- utilities/builder/simple
+    - 5 util files
+
+### Next Session: 
+- File handling setup
+    - New, Open, Save, Save As
 
 ## 12/01-24
 

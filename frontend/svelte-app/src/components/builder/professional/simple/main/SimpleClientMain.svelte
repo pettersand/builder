@@ -12,7 +12,6 @@
 
   let activeClientId: string | null;
   let clientGoals: ClientGoal[] = [];
-  let isSelfSelected: boolean = false;
 
   activeClient.subscribe($activeClient => {
     activeClientId = $activeClient;
