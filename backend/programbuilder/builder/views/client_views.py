@@ -60,20 +60,21 @@ class ClientDataView(APIView):
         client_id = request.query_params.get("clientId")
         print("Received client_id:", client_id)
 
-        # Fetch TrainerClient instance
-        trainer_client_instance = TrainerClient.objects.filter(
-            trainer=request.user, client__id=client_id
-        ).first()
+        if client_id == str(request.user.id):
+            goals_data = SimpleGoal.objects.filter(created_for=request.user)
+        else:
+            trainer_client_instance = TrainerClient.objects.filter(
+                trainer=request.user, client__id=client_id
+            ).first()
 
-        if not trainer_client_instance:
-            return Response({"message": "TrainerClient instance not found"}, status=404)
+            if not trainer_client_instance:
+                return Response({"message": "TrainerClient instance not found"}, status=404)
 
         # Fetching and serializing goals, injuries, preferences, and notes
-        goals_data = SimpleGoal.objects.filter(
-            Q(created_for_id=client_id, user_id=request.user) |
-            Q(created_for_id=client_id, private=False)
-        )
-        print("Goals data:", goals_data)
+            goals_data = SimpleGoal.objects.filter(
+                Q(created_for_id=client_id, user_id=request.user) |
+                Q(created_for_id=client_id, private=False)
+            )
 
         serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
         print("Serialized goals:", serialized_goals)
