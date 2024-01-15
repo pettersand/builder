@@ -8,7 +8,7 @@
     type Client,
   } from "../../../../../utilities/client";
   import {
-    programNotesStore,
+    programStore,
     saveProgramData,
   } from "../../../../../utilities/builder/simple";
   import { userStore } from "../../../../../utilities/user";

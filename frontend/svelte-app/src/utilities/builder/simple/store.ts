@@ -1,43 +1,39 @@
 import { writable } from "svelte/store";
-import type { ProgramNotes } from "./types";
+import type { ProgramData } from "./types";
 
-const sessionStorageKey = "programNotes";
+const sessionStorageKey = "programData";
 
-const getInitialProgramNotes = () => {
-  const stored = sessionStorage.getItem(sessionStorageKey);
-  return stored ? JSON.parse(stored) : {
-    customName: "",
-    focus: "",
-    phase: "",
-    considerations: "",
-    notes: "",
-  };
-};
-
-const createProgramNotesStore = () => {
-  const { subscribe, set, update } = writable(getInitialProgramNotes());
-
-  return {
-    subscribe,
-    updateNotes: (newNotes: ProgramNotes) => {
-      update(notes => {
-        const updatedNotes = { ...notes, ...newNotes };
-        sessionStorage.setItem(sessionStorageKey, JSON.stringify(updatedNotes));
-        return updatedNotes;
-      });
+const initialState: ProgramData = {
+    id: null,
+    status: "draft",
+    program_data: {
+      programNotes: {
+        customName: "",
+        focus: "",
+        phase: "",
+        considerations: "",
+        notes: "",
+      },
     },
-    reset: () => {
-        // Clear sessionStorage and then reset the store
-        sessionStorage.removeItem(sessionStorageKey);
-        set({
-          customName: "",
-          focus: "",
-          phase: "",
-          considerations: "",
-          notes: "",
+  };
+
+  const createProgramStore = () => {
+    const { subscribe, set, update } = writable<ProgramData>(initialState);
+  
+    return {
+      subscribe,
+      updateProgram: (updatedData: Partial<ProgramData>) => {
+        update(data => {
+          const newData = { ...data, ...updatedData };
+          sessionStorage.setItem(sessionStorageKey, JSON.stringify(newData));
+          return newData;
         });
+      },
+      reset: () => {
+        sessionStorage.removeItem(sessionStorageKey);
+        set(initialState);
       },
     };
   };
 
-export const programNotesStore = createProgramNotesStore();
+  export const programStore = createProgramStore();

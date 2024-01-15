@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { proStepState } from "../../../../stores/builderStore";
-  import { programNotesStore } from "../../../../utilities/builder/simple/store";
+  import { programStore } from "../../../../utilities/builder/simple/store";
 
   import SimpleClientOptions from "./options/SimpleClientOptions.svelte";
 
@@ -12,7 +12,7 @@
 
   const handleNewProgram = () => {
     // Reset the program notes
-    programNotesStore.reset();
+    programStore.reset();
   };
 </script>
 
