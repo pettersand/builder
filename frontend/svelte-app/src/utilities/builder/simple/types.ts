@@ -7,3 +7,9 @@ export interface ProgramNotes {
     considerations: string;
     notes: string;
 }
+
+export interface ProgramData {
+    id?: number;
+    status: string;
+    programNotes: ProgramNotes;
+}

@@ -7,9 +7,11 @@
     clientData,
     type Client,
   } from "../../../../../utilities/client";
-  import { programNotesStore } from "../../../../../utilities/builder/simple/store";
+  import {
+    programNotesStore,
+    postProgramData,
+  } from "../../../../../utilities/builder/simple";
   import { userStore } from "../../../../../utilities/user";
-  import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
@@ -52,7 +54,6 @@
     activeClient.updateActiveClient(clientId);
     clientData.fetchClientData(clientId);
   }
-
 
   const handleKeyPress = (event: KeyboardEvent, client) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -139,7 +140,7 @@
           <div
             class="p-1 cursor-pointer"
             on:click={() => setActiveClient(userId)}
-              on:keydown={(event) => handleKeyPress(event, userId)}
+            on:keydown={(event) => handleKeyPress(event, userId)}
           >
             Myself
           </div>

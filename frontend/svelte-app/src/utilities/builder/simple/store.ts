@@ -19,7 +19,7 @@ const createProgramNotesStore = () => {
 
   return {
     subscribe,
-    updateNotes: (newNotes) => {
+    updateNotes: (newNotes: ProgramNotes) => {
       update(notes => {
         const updatedNotes = { ...notes, ...newNotes };
         sessionStorage.setItem(sessionStorageKey, JSON.stringify(updatedNotes));

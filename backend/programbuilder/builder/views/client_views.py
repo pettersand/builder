@@ -58,7 +58,7 @@ class ClientPreferencesView(ListCreateAPIView):
 class ClientDataView(APIView):
     def get(self, request, *args, **kwargs):
         client_id = request.query_params.get("clientId")
-        print("Received client_id:", client_id)
+        print("Received client_id for ClientDataView")
 
         if client_id == str(request.user.id):
             goals_data = SimpleGoal.objects.filter(created_for=request.user)
@@ -77,7 +77,6 @@ class ClientDataView(APIView):
             )
 
         serialized_goals = FetchClientGoalsSerializer(goals_data, many=True).data
-        print("Serialized goals:", serialized_goals)
         
 
         # Constructing and returning the response
