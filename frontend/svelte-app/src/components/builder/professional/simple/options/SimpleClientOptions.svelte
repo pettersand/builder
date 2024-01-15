@@ -9,7 +9,7 @@
   } from "../../../../../utilities/client";
   import {
     programNotesStore,
-    postProgramData,
+    saveProgramData,
   } from "../../../../../utilities/builder/simple";
   import { userStore } from "../../../../../utilities/user";
 
@@ -72,7 +72,7 @@
     };
 
     try {
-      const response = await postProgramData(programData);
+      const response = await saveProgramData(programData);
       console.log("Program created:", response);
     } catch (error) {
       console.error("Error creating program:", error);

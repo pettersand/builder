@@ -11,5 +11,7 @@ export interface ProgramNotes {
 export interface ProgramData {
     id?: number;
     status: string;
-    programNotes: ProgramNotes;
+    program_data: {
+        programNotes: ProgramNotes;
+    }
 }
