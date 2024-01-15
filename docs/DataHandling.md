@@ -1,40 +1,72 @@
-# Specifics about how data flow is handled
-
 # Frontend Data Handling Documentation
 
 ## Overview
-This document outlines the structure and usage of the frontend data handling in the Builder application. The application uses a modular approach, with a clear separation of concerns for API interactions, type definitions, utility functions, and state management.
+
+This document outlines the structure and approach for frontend data handling in the Builder application. It focuses on a modular and scalable approach, ensuring a clear separation of concerns for API interactions, type definitions, utility functions, and state management, especially in scenarios where editability and reactive rendering intertwine.
 
 ## Folder Structure
-The application's frontend is structured as follows:
 
-- `utilities/`: Contains utility functions, type definitions, and API interactions for different features.
-  - `goals/`: Specific utilities for goal management.
-    - `API.ts`: Functions for server communication regarding goals.
-    - `types.ts`: TypeScript type definitions for goals.
-    - `functions.ts`: Utility functions related to goal processing.
-    - `store.ts`: Svelte store for managing state.
-    - `index.ts`: Exports all members from the above files.
+The application's frontend is organized into modules for each feature or topic, as follows:
 
-Goal is used as an example, this structure applies to all other functionalities such as program creation, client management, user interactions, and so on. 
+- `utilities/`: Core directory for various utilities, type definitions, and API interactions.
+  - `[topic]/`: Specific utilities for a particular feature (e.g., goals, programs).
+    - `API.ts`: Functions for server communication related to the topic.
+    - `types.ts`: TypeScript type definitions for the topic.
+    - `functions.ts`: Utility functions relevant to the topic.
+    - `store.ts`: Svelte store for managing state of the topic.
+    - `index.ts`: Aggregates and exports all members from the topic's files.
+
+This structure is replicated across different features such as program creation, client management, user interactions, etc., ensuring consistency and ease of maintainability.
 
 ## Usage
+
 ### API.ts
-Used for all backend interactions. Functions include `saveGoal`, `getGoals`, `deleteUserGoal`, etc.
+
+Responsible for all backend interactions. Functions typically include CRUD operations like `createItem`, `getItem`, `updateItem`, `deleteItem`, etc., specific to the feature.
 
 ### types.ts
-Contains type and interface definitions, such as `Goal` and `GoalType`.
+
+Hosts type and interface definitions specific to the feature, ensuring type safety and clarity across the application.
 
 ### functions.ts
-Houses utility functions like `determineCreatedFor` which are used across components.
+
+Contains utility functions for data manipulation, validation, or transformations specific to the feature.
 
 ### store.ts
-Manages goal-related state within the application. Includes functions for updating, adding, and removing goals from the state.
+
+Central to state management, the store handles the state for its respective feature. It includes methods for updating, resetting, and manipulating the state as needed.
 
 ## Example Usage
+
+````svelte
+<script lang="ts">
+  import { itemStore, processItem, getItem, type Item } from "../../../utilities/item";
+
+  // Component logic implementing the dual case handling...
+</script>
+````
+
+## Handling Dual Cases: Editability and Reactive Rendering
+In scenarios where a component needs to display data from the store and also allow for editing, the following approach is taken:
+
+- Each feature has a dedicated store that manages its state.
+- Components subscribe to these stores and initialize their local state with the store's data.
+- User input triggers updates to the local state, which in turn updates the store.
+- This approach ensures that any changes in the input fields are immediately reflected in the store, maintaining reactivity and data integrity.
+
+### Example:
 ```svelte
 <script lang="ts">
-  import { goalsStore, determineCreatedFor, getGoals, type Goal } from "../../../utilities/goals";
-  
-  // Component logic...
+  import { programStore } from "../../../../utilities/program";
+
+  let programNotes = $programStore.programData.programNotes;
+
+  function handleInput(event, field) {
+    programStore.updateProgram({
+      programData: {
+        programNotes: { ...programNotes, [field]: event.target.value }
+      }
+    });
+  }
 </script>
+

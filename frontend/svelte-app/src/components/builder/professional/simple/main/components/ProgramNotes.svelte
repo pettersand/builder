@@ -4,6 +4,11 @@
   import { onDestroy } from "svelte";
   import { programStore } from "../../../../../../utilities/builder/simple/store";
 
+/**
+ * TODO: Secure the data handling of dual cases - input vs stores
+ * Implement once the program stores and handlers are complete
+*/
+
   let programNotes;
   $: programNotes = $programStore.programData.programNotes;
 
