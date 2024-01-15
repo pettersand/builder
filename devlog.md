@@ -1,3 +1,12 @@
+## 15/01-24
+
+Refactoring data handling for step 1, and incorporating the file handling container. 
+
+### Worked On:
+1. FileOptions.svelte
+2. ProgramNotes
+    - Refactor to new structure
+
 ## 14/01-24
 
 Weekend shenanigans. Some tinkering and cleanup - working on handling of self user or client being selected. 
