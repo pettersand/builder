@@ -1,11 +1,18 @@
 ## 15/01-24
 
-Refactoring data handling for step 1, and incorporating the file handling container. 
+Refactoring data handling for step 1, and incorporating the file handling container. A bit back and forth on how to properly structure my data handling. Through trial and error I've realized that its integral to define a structure for data handling in cases where a field needs to render saved information, as well as seamlessly be editable and avoiding losing data, or overwriting data. 
 
 ### Worked On:
 1. FileOptions.svelte
 2. ProgramNotes
     - Refactor to new structure
+3. More brainstorming on data handling
+    - Need to structure handling of data handling of editable fields
+    - Emphasis on reusability and uniformity across the app
+
+### Next Session: 
+- Clearly define new structure for dual data handling
+- Update DataHandling.md docs to reflect change
 
 ## 14/01-24
 
