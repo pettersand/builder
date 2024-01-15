@@ -1,17 +1,14 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
+  import { get } from "svelte/store";
   import {
     clients,
     activeClient,
     clientData,
     type Client,
   } from "../../../../../utilities/client";
-  import {
-    builderState,
-    programNotes,
-  } from "../../../../../stores/builderStore";
+  import { programNotesStore } from "../../../../../utilities/builder/simple/store";
   import { userStore } from "../../../../../utilities/user";
-  import { goalsStore, getGoals } from "../../../../../utilities/goals";
   import { postProgramData } from "../../../../../utilities/programAPI";
 
   let searchTerm: string = "";
@@ -64,19 +61,20 @@
   };
 
   const handleContinue = async () => {
-    // Save the program notes
+    const currentNotes = get(programNotesStore);
+
     const programData = {
       status: "draft",
       program_data: {
-        programNotes: $programNotes,
+        programNotes: currentNotes,
       },
     };
-    console.log("Program Data:", programData);
+
     try {
       const response = await postProgramData(programData);
       console.log("Program created:", response);
     } catch (error) {
-      console.log("Error creating program:", error);
+      console.error("Error creating program:", error);
     }
   };
 

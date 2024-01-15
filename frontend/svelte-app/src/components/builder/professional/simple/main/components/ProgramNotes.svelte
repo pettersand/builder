@@ -1,15 +1,21 @@
 <script lang="ts">
-  import { programNotes } from "../../../../../../stores/builderStore";
+  import { programNotesStore } from "../../../../../../utilities/builder/simple/store";
 
-  let { customName, focus, phase, considerations, notes } = $programNotes;
+  let customName = '';
+  let focus = '';
+  let phase = '';
+  let considerations = '';
+  let notes = '';
 
-  $: programNotes.set({
-    customName,
-    focus,
-    phase,
-    considerations,
-    notes,
-  });
+  $: {
+    programNotesStore.updateNotes({
+      customName,
+      focus,
+      phase,
+      considerations,
+      notes,
+    });
+  }
 
   const addCustom = () => {
     // Handle the addition of custom data
