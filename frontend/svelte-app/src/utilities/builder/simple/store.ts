@@ -26,8 +26,18 @@ const createProgramNotesStore = () => {
         return updatedNotes;
       });
     },
-    reset: () => set(getInitialProgramNotes()),
+    reset: () => {
+        // Clear sessionStorage and then reset the store
+        sessionStorage.removeItem(sessionStorageKey);
+        set({
+          customName: "",
+          focus: "",
+          phase: "",
+          considerations: "",
+          notes: "",
+        });
+      },
+    };
   };
-};
 
 export const programNotesStore = createProgramNotesStore();
