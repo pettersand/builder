@@ -1,37 +1,33 @@
 import { writable } from "svelte/store";
 import type { ProgramNotes } from "./types";
 
-const initialState: ProgramNotes = {
+const sessionStorageKey = "programNotes";
+
+const getInitialProgramNotes = () => {
+  const stored = sessionStorage.getItem(sessionStorageKey);
+  return stored ? JSON.parse(stored) : {
     customName: "",
     focus: "",
     phase: "",
     considerations: "",
     notes: "",
-    };
+  };
+};
 
 const createProgramNotesStore = () => {
-    const getInitialNotes = (): ProgramNotes => {
-        const storedNotes = sessionStorage.getItem("programNotes");
-        return storedNotes ? JSON.parse(storedNotes) : initialState;
-    };
+  const { subscribe, set, update } = writable(getInitialProgramNotes());
 
-    const { subscribe, set, update } = writable<ProgramNotes>(initialState);
-
-     return {
+  return {
     subscribe,
-    updateNotes: (newNotes: Partial<ProgramNotes>) => {
-      update((notes) => {
+    updateNotes: (newNotes) => {
+      update(notes => {
         const updatedNotes = { ...notes, ...newNotes };
-        sessionStorage.setItem('programNotes', JSON.stringify(updatedNotes));
+        sessionStorage.setItem(sessionStorageKey, JSON.stringify(updatedNotes));
         return updatedNotes;
       });
     },
-    reset: () => {
-      const resetState = initialState;
-      set(resetState);
-      sessionStorage.setItem('programNotes', JSON.stringify(resetState));
-    },
+    reset: () => set(getInitialProgramNotes()),
   };
-}
+};
 
 export const programNotesStore = createProgramNotesStore();

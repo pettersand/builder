@@ -1,21 +1,33 @@
+<!-- ProgramNotes.svelte -->
+
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import { programNotesStore } from "../../../../../../utilities/builder/simple/store";
 
-  let customName = '';
-  let focus = '';
-  let phase = '';
-  let considerations = '';
-  let notes = '';
+  let customName = "";
+  let focus = "";
+  let phase = "";
+  let considerations = "";
+  let notes = "";
 
-  $: {
-    programNotesStore.updateNotes({
-      customName,
-      focus,
-      phase,
-      considerations,
-      notes,
-    });
-  }
+  // Initialize local state from store when the component mounts
+  const unsubscribe = programNotesStore.subscribe(storedData => {
+    if (!customName && !focus && !phase && !considerations && !notes) {
+      customName = storedData.customName || '';
+      focus = storedData.focus || '';
+      phase = storedData.phase || '';
+      considerations = storedData.considerations || '';
+      notes = storedData.notes || '';
+    }
+  });
+
+  // Reactive statement to update store
+  $: programNotesStore.updateNotes({ customName, focus, phase, considerations, notes });
+
+  
+  onDestroy(() => {
+    unsubscribe();
+  });
 
   const addCustom = () => {
     // Handle the addition of custom data
