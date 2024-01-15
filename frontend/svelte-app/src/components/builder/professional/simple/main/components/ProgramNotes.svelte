@@ -2,24 +2,31 @@
 
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import { programNotesStore } from "../../../../../../utilities/builder/simple/store";
+  import { programStore } from "../../../../../../utilities/builder/simple/store";
 
-  let programNotes = {
-    customName: "",
-    focus: "",
-    phase: "",
-    considerations: "",
-    notes: "",
-  };
+  let customName = "";
+  let focus = "";
+  let phase = "";
+  let considerations = "";
+  let notes = "";
 
-  const unsubscribe = programNotesStore.subscribe((storedData) => {
-    programNotes = { ...storedData };
+  // Subscribe to the store and handle unsubscription
+  const unsubscribe = programStore.subscribe((storedData) => {
+    if (storedData && storedData.programData && storedData.programData.programNotes) {
+      ({ customName, focus, phase, considerations, notes } = storedData.programData.programNotes);
+    }
   });
 
-  // Reactive statement to update store
+  // Update store when input values change
   function handleInput(event, field) {
-    programNotes[field] = event.target.value;
-    programNotesStore.updateNotes(programNotes);
+    programStore.updateProgram({
+      programData: {
+        programNotes: {
+          ...programStore.get().programData.programNotes,
+          [field]: event.target.value
+        }
+      }
+    });
   }
 
   onDestroy(() => {
@@ -27,7 +34,7 @@
   });
 
   const addCustom = () => {
-    console.log(programNotes);
+    console.log({ customName, focus, phase, considerations, notes });
   };
 </script>
 
@@ -37,7 +44,7 @@
     <input
       type="text"
       id="customName"
-      bind:value={programNotes.customName}
+      bind:value={customName}
       on:input={(e) => handleInput(e, "customName")}
       class="p-2 border rounded-lg"
     />
@@ -48,7 +55,7 @@
     <input
       type="text"
       id="focus"
-      bind:value={programNotes.focus}
+      bind:value={focus}
       on:input={(e) => handleInput(e, "focus")}
       class="p-2 border rounded-lg"
     />
@@ -59,7 +66,7 @@
     <input
       type="text"
       id="phase"
-      bind:value={programNotes.phase}
+      bind:value={phase}
       on:input={(e) => handleInput(e, "phase")}
       class="p-2 border rounded-lg"
     />
@@ -70,7 +77,7 @@
     <input
       type="text"
       id="considerations"
-      bind:value={programNotes.considerations}
+      bind:value={considerations}
       on:input={(e) => handleInput(e, "considerations")}
       class="p-2 border rounded-lg"
     />
@@ -80,7 +87,7 @@
     <label for="notes">Program Notes:</label>
     <textarea
       id="notes"
-      bind:value={programNotes.notes}
+      bind:value={notes}
       on:input={(e) => handleInput(e, "notes")}
       class="p-2 border rounded-lg"
     ></textarea>

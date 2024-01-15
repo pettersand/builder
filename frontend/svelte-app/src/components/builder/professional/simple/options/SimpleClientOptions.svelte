@@ -62,20 +62,17 @@
   };
 
   const handleContinue = async () => {
-    const currentNotes = get(programNotesStore);
-
-    const programData = {
-      status: "draft",
-      program_data: {
-        programNotes: currentNotes,
-      },
-    };
+    const currentProgram = get(programStore);
 
     try {
-      const response = await saveProgramData(programData);
-      console.log("Program created:", response);
+      const response = await saveProgramData(currentProgram);
+      console.log("Program created/updated:", response);
+      // Update the store with the new ID if it's a new program
+      if (!currentProgram.id) {
+        programStore.updateProgram({ id: response.id });
+      }
     } catch (error) {
-      console.error("Error creating program:", error);
+      console.error("Error creating/updating program:", error);
     }
   };
 

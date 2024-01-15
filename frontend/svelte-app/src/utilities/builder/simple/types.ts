@@ -1,5 +1,7 @@
 // utilities/builder/simple/types.ts
 
+
+
 export interface ProgramNotes {
     customName: string;
     focus: string;
@@ -11,7 +13,7 @@ export interface ProgramNotes {
 export interface ProgramData {
     id?: number;
     status: string;
-    program_data: {
+    programData: {
         programNotes: ProgramNotes;
     }
 }
