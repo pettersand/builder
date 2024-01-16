@@ -54,19 +54,4 @@ In scenarios where a component needs to display data from the store and also all
 - User input triggers updates to the local state, which in turn updates the store.
 - This approach ensures that any changes in the input fields are immediately reflected in the store, maintaining reactivity and data integrity.
 
-### Example:
-```svelte
-<script lang="ts">
-  import { programStore } from "../../../../utilities/program";
-
-  let programNotes = $programStore.programData.programNotes;
-
-  function handleInput(event, field) {
-    programStore.updateProgram({
-      programData: {
-        programNotes: { ...programNotes, [field]: event.target.value }
-      }
-    });
-  }
-</script>
 
