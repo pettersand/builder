@@ -57,3 +57,5 @@ Optimization and Monitoring
 
 ## Conclusion
 This document will evolve alongside the frontend development, with updates to reflect changes in technologies, design principles, and best practices adopted throughout the project's lifecycle.
+
+_Note: This document is subject to updates as the project evolves and more standards are defined._

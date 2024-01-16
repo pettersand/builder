@@ -42,7 +42,6 @@ Central to state management, the store handles the state for its respective feat
 <script lang="ts">
   import { itemStore, processItem, getItem, type Item } from "../../../utilities/item";
 
-  // Component logic implementing the dual case handling...
 </script>
 ````
 
@@ -54,4 +53,4 @@ In scenarios where a component needs to display data from the store and also all
 - User input triggers updates to the local state, which in turn updates the store.
 - This approach ensures that any changes in the input fields are immediately reflected in the store, maintaining reactivity and data integrity.
 
-
+_Note: This document is subject to updates as the project evolves and more standards are defined._
