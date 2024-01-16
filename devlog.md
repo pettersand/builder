@@ -1,3 +1,10 @@
+## 16/01-24
+
+Eager to get my structure implemented for program data handling. Starting with improving the basis for my documentation. I have created the base files and populated typical subjects to the best of my current development process. There is still a lot of details to iron out, which will be done iteratively as development progresses. 
+
+### Worked On: 
+1. Documentation
+
 ## 15/01-24
 
 Refactoring data handling for step 1, and incorporating the file handling container. A bit back and forth on how to properly structure my data handling. Through trial and error I've realized that its integral to define a structure for data handling in cases where a field needs to render saved information, as well as seamlessly be editable and avoiding losing data, or overwriting data. 
