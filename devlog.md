@@ -4,6 +4,13 @@ Eager to get my structure implemented for program data handling. Starting with i
 
 ### Worked On: 
 1. Documentation
+2. Further ironing of details for program data handling
+    - Updated documentation on handling
+    - Created base files
+    - Defining helper functions required
+
+### Next Session: 
+- Start implementing and creating reusable helper functions.
 
 ## 15/01-24
 

@@ -45,12 +45,17 @@ Central to state management, the store handles the state for its respective feat
 </script>
 ````
 
-## Handling Dual Cases: Editability and Reactive Rendering
-In scenarios where a component needs to display data from the store and also allow for editing, the following approach is taken:
+## Handling Dual Cases: Editability and Reactive Rendering Simultaneously
+In scenarios where components require both display and editing capabilities, we adopt a structured approach to handle data reactively, in this case provided in the context of program creation:
 
-- Each feature has a dedicated store that manages its state.
-- Components subscribe to these stores and initialize their local state with the store's data.
-- User input triggers updates to the local state, which in turn updates the store.
-- This approach ensures that any changes in the input fields are immediately reflected in the store, maintaining reactivity and data integrity.
+- **Substores**: Each aspect of the program, such as program notes, exercises, template layout, etc., has its own dedicated store that manages its state. These substores handle user input locally and update their state accordingly.
+
+- **Central Main Store**: Acts as a "manager", receiving updates from substores and compiling them into a cohesive programData object. This central store is the sole entity responsible for synchronizing data with the backend, ensuring a single source of truth.
+
+- **Reactivity and State Synchronization**: When a substore's state changes, it informs the main store of the update. The main store then updates its overall programData, readying it for any backend operations.
+
+- **User Interaction Flow**: As users interact with program components, their inputs immediately update the local substore state, which then propagates changes back to the main store.
+
+- **Consistency and Integrity**: This structure ensures consistency across the application, maintaining data integrity whether the user is creating a new program, editing an existing one, or interacting with a completed program during a workout session.
 
 _Note: This document is subject to updates as the project evolves and more standards are defined._
