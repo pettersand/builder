@@ -1,3 +1,11 @@
+## 17/01-24
+
+Improved my docs yesterday, and defined some handling of complex cases. Will start implementing the highly modular approach to program data handling today. 
+
+### Worked On: 
+1. /utilities/program/simple 
+    - Planning out components / functions
+
 ## 16/01-24
 
 Eager to get my structure implemented for program data handling. Starting with improving the basis for my documentation. I have created the base files and populated typical subjects to the best of my current development process. There is still a lot of details to iron out, which will be done iteratively as development progresses. 
