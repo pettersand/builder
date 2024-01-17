@@ -12,6 +12,7 @@
     saveProgramData,
   } from "../../../../../utilities/builder/simple";
   import { userStore } from "../../../../../utilities/user";
+  import SaveStatus from "../../../../base/SaveStatus.svelte";
 
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
@@ -160,6 +161,7 @@
       <span class="font-bold">File Handling</span>
       <div>Input for File Name</div>
       <div>Default Name View</div>
+      <SaveStatus />
     </div>
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">Continue</span>

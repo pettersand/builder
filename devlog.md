@@ -17,7 +17,10 @@ Improved my docs yesterday, and defined some handling of complex cases. Will sta
     - globalStore, GlobalStoreState types
 
 ### Created:
-- AutoSave.svelte
+- AutoSave.svelte // Rename to SaveStatus.svelte
+
+### Issues:
+The auto save function has proven to be quite complex and perhaps overly so. I have decided to rework it to still provide the user with assurance of saved status of their data. Instead of performing auto saves, it will track the status of changes made to data that has yet to be commited to the database. Upon saving to the backend, it will ensure the user that their changes have been saved. 
 
 ## 16/01-24
 

@@ -6,30 +6,33 @@ import type { GlobalStoreState } from "./types";
 const initialState: GlobalStoreState = {
     theme: localStorage.getItem("theme") || "light",
     isAuthenticated: localStorage.getItem("isAuthenticated") === "true" || false,
-    saveStatus: "Changes Detected",
 };
 
 const globalStore = writable(initialState);
 
+const saveStatusStore = writable({
+    programData: "Saved",
+    // other components to be added (workout, pro builder, etc.)
+  });
+
+export const setComponentSaveStatus = (componentName: string, status: string) => {
+    saveStatusStore.update((state) => ({ ...state, [componentName]: status }));
+}
+
 const setTheme = (newTheme: "light" | "dark") => {
     globalStore.update((state) => ({ ...state, theme: newTheme }));
-};
+    localStorage.setItem("theme", newTheme);
+  };
 
 const setAuthenticationStatus = (authStatus: boolean) => {
     globalStore.update((state) => ({ ...state, isAuthenticated: authStatus }));
-};
-
-const setSaveStatus = (newStatus: string) => {
-    globalStore.update((state) => ({ ...state, saveStatus: newStatus }));
-};
-
-export const globalStoreMethods = {
-    setTheme,
-    setAuthenticationStatus,
-    setSaveStatus,
+    sessionStorage.setItem("isAuthenticated", authStatus.toString());
 };
 
 export default {
     subscribe: globalStore.subscribe,
-    ...globalStoreMethods,
-};
+    setTheme,
+    setAuthenticationStatus,
+    saveStatusStore,
+    setComponentSaveStatus,
+  };

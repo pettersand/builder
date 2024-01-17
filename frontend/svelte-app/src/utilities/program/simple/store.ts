@@ -62,6 +62,7 @@ export const createProgramStore = () => {
     subscribe,
     updateProgram,
     resetProgram,
+    syncWithSessionStorage,
     fetchAndUpdate,
   };
 };
