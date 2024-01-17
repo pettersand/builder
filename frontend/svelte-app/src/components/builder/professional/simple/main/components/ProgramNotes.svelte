@@ -6,6 +6,7 @@
   import type { ProgramNotes } from "../../../../../../utilities/program/simple/types";
 
   /**
+   * * Component to display and edit program notes in step 1 of the builder process.
    * TODO: Secure the data handling of dual cases - input vs stores
    * Implement once the program stores and handlers are complete
    */

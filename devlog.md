@@ -9,6 +9,15 @@ Improved my docs yesterday, and defined some handling of complex cases. Will sta
     - CRUD API calls
     - Helper functions for formatting syntax front/back
     - Helper function for conditional checking on save - existing or new program
+2. Auto save component
+    - Reusable across entire App, where auto saving is required
+3. GlobalStore
+    - Rework to match new structure and capabilities
+    - Add debounce function
+    - globalStore, GlobalStoreState types
+
+### Created:
+- AutoSave.svelte
 
 ## 16/01-24
 
