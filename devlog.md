@@ -5,6 +5,10 @@ Improved my docs yesterday, and defined some handling of complex cases. Will sta
 ### Worked On: 
 1. /utilities/program/simple 
     - Planning out components / functions
+    - Created mainProgramStore
+    - CRUD API calls
+    - Helper functions for formatting syntax front/back
+    - Helper function for conditional checking on save - existing or new program
 
 ## 16/01-24
 

@@ -3,7 +3,7 @@ import type { ProgramData } from "./types";
 
 const sessionStorageKey = "programData";
 
-const initialState: ProgramData = {
+export const initialState: ProgramData = {
   id: null,
   status: "draft",
   programData: {
@@ -16,6 +16,7 @@ const initialState: ProgramData = {
     },
   },
 };
+
 
 const internalStore = writable<ProgramData>(initialState);
 
@@ -38,5 +39,6 @@ const createProgramStore = () => {
     },
   };
 };
+
 
 export const programStore = createProgramStore();
