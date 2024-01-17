@@ -14,7 +14,7 @@
 
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
-import { fetchProgramData, saveProgramData } from "./API";
+import { fetchProgramData } from "./API";
 
 const sessionStorageKey = "programData";
 
