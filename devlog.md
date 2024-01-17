@@ -15,6 +15,7 @@ Improved my docs yesterday, and defined some handling of complex cases. Will sta
     - Rework to match new structure and capabilities
     - Add debounce function
     - globalStore, GlobalStoreState types
+4. programNotes and mainStore mutual reactivity - ensuring sessionStorage first
 
 ### Created:
 - AutoSave.svelte // Rename to SaveStatus.svelte
@@ -25,6 +26,8 @@ The auto save function has proven to be quite complex and perhaps overly so. I h
 ### Next Session:
 - Set save status on changes from mainProgramStore
 - Redesign save status component
+- Display current program in File Handling - 
+    - Continue work on Save, Save As, Open for handling program files
 
 ## 16/01-24
 
