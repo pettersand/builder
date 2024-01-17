@@ -2,33 +2,27 @@
 
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import { programStore } from "../../../../../../utilities/builder/simple/store";
+  import { programNotesStore } from "../../../../../../utilities/program/simple/substores/notesStore";
+  import type { ProgramNotes } from "../../../../../../utilities/program/simple/types";
 
-/**
- * TODO: Secure the data handling of dual cases - input vs stores
- * Implement once the program stores and handlers are complete
-*/
+  /**
+   * TODO: Secure the data handling of dual cases - input vs stores
+   * Implement once the program stores and handlers are complete
+   */
 
-  let programNotes;
-  $: programNotes = $programStore.programData.programNotes;
-
-  // Update store when input values change
-  function handleInput(event, field) {
-    // Update the store with new values
-    programStore.updateProgram({
-      programData: {
-        programNotes: {
-          ...programNotes,
-          [field]: event.target.value
-        }
-      }
-    });
-  }
-
+  // Subscribes to programNotesStore and updates local state
+  let programNotes: ProgramNotes;
+  const unsubscribe = programNotesStore.subscribe((value) => {
+    programNotes = value;
+  });
 
   const addCustom = () => {
     console.log("Add custom note type");
   };
+
+  onDestroy(() => {
+    unsubscribe();
+  });
 </script>
 
 <div class="flex flex-col space-y-4">
@@ -38,7 +32,6 @@
       type="text"
       id="customName"
       bind:value={programNotes.customName}
-      on:input={(e) => handleInput(e, "customName")}
       class="p-2 border rounded-lg"
     />
   </div>
@@ -49,7 +42,6 @@
       type="text"
       id="focus"
       bind:value={programNotes.focus}
-      on:input={(e) => handleInput(e, "focus")}
       class="p-2 border rounded-lg"
     />
   </div>
@@ -60,7 +52,6 @@
       type="text"
       id="phase"
       bind:value={programNotes.phase}
-      on:input={(e) => handleInput(e, "phase")}
       class="p-2 border rounded-lg"
     />
   </div>
@@ -71,7 +62,6 @@
       type="text"
       id="considerations"
       bind:value={programNotes.considerations}
-      on:input={(e) => handleInput(e, "considerations")}
       class="p-2 border rounded-lg"
     />
   </div>
@@ -81,7 +71,6 @@
     <textarea
       id="notes"
       bind:value={programNotes.notes}
-      on:input={(e) => handleInput(e, "notes")}
       class="p-2 border rounded-lg"
     ></textarea>
   </div>
