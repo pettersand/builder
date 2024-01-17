@@ -6,20 +6,14 @@ import { mainProgramStore } from "../store";
 import { initialState as mainInitialState } from "../store";
 
 /**
- * * Handles the program notes section of program data. 
+ * * Handles the program notes section of program data.
  * * Works closely with relevant components in charge of displaying, and editing program notes.
  */
 
 const initialState = mainInitialState.programData.programNotes;
 
 const createNotesStore = () => {
-  const { subscribe, set, update } = writable<ProgramNotes>({
-    customName: "",
-    focus: "",
-    phase: "",
-    considerations: "",
-    notes: "",
-  });
+  const { subscribe, set, update } = writable<ProgramNotes>(initialState);
 
   return {
     subscribe,
@@ -28,13 +22,7 @@ const createNotesStore = () => {
       syncWithMainStore();
     },
     reset: () =>
-      set({
-        customName: "",
-        focus: "",
-        phase: "",
-        considerations: "",
-        notes: "",
-      }),
+      set(initialState),
   };
 };
 

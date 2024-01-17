@@ -18,7 +18,7 @@ import { fetchProgramData } from "./API";
 
 const sessionStorageKey = "programData";
 
-const initialState: ProgramData = {
+export const initialState: ProgramData = {
   id: null,
   status: "draft",
   programData: {
