@@ -159,8 +159,8 @@
     <!-- File Handling Container -->
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">File Handling</span>
-      <div>Input for File Name</div>
-      <div>Default Name View</div>
+      <div>SHow active program, id, client, program metadata</div>
+
       <SaveStatus />
     </div>
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">

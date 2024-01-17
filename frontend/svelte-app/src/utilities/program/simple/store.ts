@@ -12,13 +12,13 @@
  * TODO: Data naming conversion for backend/frontend
  */
 
-import { writable, get as getStoreValue } from "svelte/store";
+import { writable, get as getStoreValue, get } from "svelte/store";
 import type { ProgramData } from "./types";
 import { fetchProgramData } from "./API";
 
 const sessionStorageKey = "programData";
 
-export const initialState: ProgramData = {
+const defaultState: ProgramData = {
   id: null,
   status: "draft",
   programData: {
@@ -32,25 +32,32 @@ export const initialState: ProgramData = {
   },
 };
 
-const programStore = writable<ProgramData>(initialState);
+const getInitialState = () => {
+    const stored = sessionStorage.getItem(sessionStorageKey);
+    return stored ? JSON.parse(stored) : defaultState;
+  };
+
+const programStore = writable<ProgramData>(getInitialState());
 
 //* Creates store
 export const createProgramStore = () => {
   const { subscribe, set, update } = programStore;
 
   const updateProgram = (updatedData: Partial<ProgramData>) => {
+    console.log("Updating program data");
     update((data) => ({ ...data, ...updatedData }));
     syncWithSessionStorage();
   };
 
   const resetProgram = () => {
     sessionStorage.removeItem(sessionStorageKey);
-    set(initialState);
+    set(defaultState);
   };
 
   const syncWithSessionStorage = () => {
     const currentData = getStoreValue(programStore);
     sessionStorage.setItem(sessionStorageKey, JSON.stringify(currentData));
+    console.log("Program data synced with session storage");
   };
 
   const fetchAndUpdate = async (programId: number) => {
@@ -68,4 +75,3 @@ export const createProgramStore = () => {
 };
 
 export const mainProgramStore = createProgramStore();
-

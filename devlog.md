@@ -22,6 +22,10 @@ Improved my docs yesterday, and defined some handling of complex cases. Will sta
 ### Issues:
 The auto save function has proven to be quite complex and perhaps overly so. I have decided to rework it to still provide the user with assurance of saved status of their data. Instead of performing auto saves, it will track the status of changes made to data that has yet to be commited to the database. Upon saving to the backend, it will ensure the user that their changes have been saved. 
 
+### Next Session:
+- Set save status on changes from mainProgramStore
+- Redesign save status component
+
 ## 16/01-24
 
 Eager to get my structure implemented for program data handling. Starting with improving the basis for my documentation. I have created the base files and populated typical subjects to the best of my current development process. There is still a lot of details to iron out, which will be done iteratively as development progresses. 

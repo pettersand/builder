@@ -3,16 +3,38 @@
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramNotes } from "../types";
 import { mainProgramStore } from "../store";
-import { initialState as mainInitialState } from "../store";
 
 /**
  * * Handles the program notes section of program data.
  * * Works closely with relevant components in charge of displaying, and editing program notes.
  */
 
-const initialState = mainInitialState.programData.programNotes;
+const getNotesInitialState = () => {
+  const mainState = getStoreValue(mainProgramStore);
+  return mainState.programData.programNotes;
+};
 
-const createNotesStore = () => {
+const notesStore = writable<ProgramNotes>(getNotesInitialState());
+
+// Reactive subscription to sync with mainProgramStore
+notesStore.subscribe((currentNotes) => {
+  mainProgramStore.updateProgram({
+    programData: { programNotes: currentNotes },
+  });
+});
+
+const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
+  notesStore.update((notes) => ({ ...notes, ...updatedNotes }));
+};
+
+/* const resetNotes = () => {
+  notesStore.set(initialState);
+}; */
+
+export { notesStore, updateNotes};
+
+
+/* const createNotesStore = () => {
   const { subscribe, set, update } = writable<ProgramNotes>(initialState);
 
   return {
@@ -33,4 +55,4 @@ const syncWithMainStore = () => {
   });
 };
 
-export const programNotesStore = createNotesStore();
+export const programNotesStore = createNotesStore(); */
