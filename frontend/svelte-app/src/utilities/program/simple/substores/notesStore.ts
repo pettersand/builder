@@ -1,8 +1,8 @@
 // utilities/program/simple/substores/notesStore.ts
 
-import { writable, get as getStoreValue, get } from "svelte/store";
+import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramNotes } from "../types";
-import { mainProgramStore } from "../store";
+import { mainProgramStore, getProgramData } from "../store";
 import { setComponentSaveStatus } from "../../../global/store";
 
 /**
@@ -10,28 +10,30 @@ import { setComponentSaveStatus } from "../../../global/store";
  * * Works closely with relevant components in charge of displaying, and editing program notes.
  */
 
-const getNotesInitialState = () => {
-  const mainState = getStoreValue(mainProgramStore);
-  return mainState.programData.programNotes;
+
+const getInitialState = () => {
+  const mainData = getProgramData();
+  return mainData.programData.programNotes;
+}
+
+const notesStore = writable<ProgramNotes>(getInitialState());
+
+export const refreshNotes = () => {
+  const { programNotes } = getProgramData().programData;
+  notesStore.set(programNotes);
 };
-
-const notesStore = writable<ProgramNotes>(getNotesInitialState());
-
-// Reactive subscription to sync with mainProgramStore
-notesStore.subscribe((currentNotes) => {
-  mainProgramStore.updateProgram({
-    programData: { programNotes: currentNotes },
-  });
-});
 
 const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
   notesStore.update((notes) => ({ ...notes, ...updatedNotes }));
+  mainProgramStore.updateProgram({
+    programData: { programNotes: { ...getStoreValue(notesStore), ...updatedNotes } },
+  });
   setComponentSaveStatus("programData", "Changes Detected");
 };
 
-export const resetNotes = () => {
+/* export const resetNotes = () => {
   notesStore.set(getNotesInitialState());
-}; 
+}; */
 
 export { notesStore, updateNotes};
 

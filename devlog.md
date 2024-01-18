@@ -9,6 +9,9 @@ Implementing the saveStatus tracker, and fixing its design.
 2. UnsavedPrompt
     - Modal component to prompt upon unsaved changes
         - New program, Open program
+3. Data handling
+    - Ran into issue with circular dependencies affecting flow
+    - There seems to be some difficulty in ensuring two-way communication between the main store, and the sub stores.
 
 ## 17/01-24
 

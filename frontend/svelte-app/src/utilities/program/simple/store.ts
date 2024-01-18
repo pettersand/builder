@@ -1,8 +1,4 @@
 /**
- * TODO: Auto saving (debounce)
- * TODO: Component for showing save status
- * TODO: Unsaved changes prompt to save - rework global stores
- *
  * TODO: Determine editability flags / role based editing
  *
  * TODO: Reusable input handler function
@@ -16,7 +12,6 @@ import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
 import { fetchProgramData } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
-import { resetNotes } from "./substores/notesStore";
 
 
 const sessionStorageKey = "programData";
@@ -42,6 +37,9 @@ const getInitialState = () => {
 
 const programStore = writable<ProgramData>(getInitialState());
 
+export const getProgramData = () => getStoreValue(programStore);
+
+
 //* Creates store
 export const createProgramStore = () => {
   const { subscribe, set, update } = programStore;
@@ -49,14 +47,14 @@ export const createProgramStore = () => {
   const updateProgram = (updatedData: Partial<ProgramData>) => {
     update((data) => ({ ...data, ...updatedData }));
     syncWithSessionStorage();
+    console.log("Program updated");
   };
 
   const resetProgram = () => {
     sessionStorage.removeItem(sessionStorageKey);
     set(defaultState);
     setComponentSaveStatus("programData", "Saved");
-    syncWithSessionStorage();
-    resetNotes();
+    // trigger refresh
   };
 
   const syncWithSessionStorage = () => {
@@ -75,6 +73,7 @@ export const createProgramStore = () => {
     resetProgram,
     syncWithSessionStorage,
     fetchAndUpdate,
+    getProgramData,
   };
 };
 

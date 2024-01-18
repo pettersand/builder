@@ -1,8 +1,8 @@
 <!-- ProgramNotes.svelte -->
 
 <script lang="ts">
-  import { onDestroy } from "svelte";
-  import { notesStore, updateNotes } from "../../../../../../utilities/program/simple/substores/notesStore";
+  import { onMount, onDestroy } from "svelte";
+  import { notesStore, updateNotes, refreshNotes } from "../../../../../../utilities/program/simple/substores/notesStore";
   import type { ProgramNotes } from "../../../../../../utilities/program/simple/types";
   
 
@@ -14,17 +14,15 @@
 
   // Subscribes to programNotesStore and updates local state
   let programNotes: ProgramNotes;
-  const unsubscribe = notesStore.subscribe((value) => {
-    programNotes = value;
+  const unsubscribe = notesStore.subscribe(value => programNotes = value);
+
+  onDestroy(() => {
+    unsubscribe();
   });
 
   const addCustom = () => {
     console.log("Add custom note type");
   };
-
-  onDestroy(() => {
-    unsubscribe();
-  });
 </script>
 
 <div class="flex flex-col space-y-4">
