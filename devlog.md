@@ -16,6 +16,10 @@ Implementing the saveStatus tracker, and fixing its design.
     - Might have been the issue. Restructuring to fix. 
 
 
+### Next Session: 
+- Fix circular dependencies
+- Update docs to reflect changes
+
 ## 17/01-24
 
 Improved my docs yesterday, and defined some handling of complex cases. Will start implementing the highly modular approach to program data handling today. 
