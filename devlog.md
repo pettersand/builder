@@ -12,6 +12,9 @@ Implementing the saveStatus tracker, and fixing its design.
 3. Data handling
     - Ran into issue with circular dependencies affecting flow
     - There seems to be some difficulty in ensuring two-way communication between the main store, and the sub stores.
+4. Circular Dependencies
+    - Might have been the issue. Restructuring to fix. 
+
 
 ## 17/01-24
 

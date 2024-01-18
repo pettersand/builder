@@ -7,11 +7,13 @@
  * TODO: Define use of mount and destroy
  * TODO: Data naming conversion for backend/frontend
  */
+// utilities/program/simple/store.ts
 
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
 import { fetchProgramData } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
+
 
 
 const sessionStorageKey = "programData";
@@ -37,7 +39,7 @@ const getInitialState = () => {
 
 const programStore = writable<ProgramData>(getInitialState());
 
-export const getProgramData = () => getStoreValue(programStore);
+export const getProgramData = () => getStoreValue(mainProgramStore);
 
 
 //* Creates store
@@ -73,7 +75,6 @@ export const createProgramStore = () => {
     resetProgram,
     syncWithSessionStorage,
     fetchAndUpdate,
-    getProgramData,
   };
 };
 

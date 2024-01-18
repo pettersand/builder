@@ -25,12 +25,13 @@ export const formatProgramDataForFrontend = (
   };
 };
 
+//! Move. Circ dep.
 
-/* export const refreshProgramData = () => {
-    const mainData = getStoreValue(mainProgramStore);
-    notesStore.set(mainData.programData.programNotes);
-}; */
 
+
+/**
+ * ! Refactor to take arguments, circ dep.
+ */
 // Function on save buttons, to check if program exists and call create or update
 export const saveProgram = async (): Promise<void> => {
   const currentProgramData: ProgramData = getStoreValue(mainProgramStore);
