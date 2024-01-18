@@ -1,7 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { proStepState } from "../../../../stores/builderStore";
-  import { programStore } from "../../../../utilities/builder/simple/store";
+  import { mainProgramStore } from "../../../../utilities/program/simple/store";
+  import { modalStore } from "../../../../utilities/modal";
+  import UnsavedPrompt from "./UnsavedPrompt.svelte";
+
 
   import SimpleClientOptions from "./options/SimpleClientOptions.svelte";
 
@@ -10,9 +13,17 @@
     activeStep = $proStepState.activeStep;
   });
 
+  //*TODO: Implement getSaveStatus function
+  const savedStatus = sessionStorage.getItem("saveStatus");
+  const saveStatus = savedStatus ? JSON.parse(savedStatus) : {};
+
   const handleNewProgram = () => {
-    // Reset the program notes
-    programStore.reset();
+    if (saveStatus.programData === "Changes Detected") {
+      modalStore.openModal(UnsavedPrompt);
+      
+    } else {
+      mainProgramStore.resetProgram();
+    }
   };
 </script>
 

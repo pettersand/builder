@@ -6,7 +6,7 @@ import type { ProgramData } from "./types";
 
 export const fetchProgramData = async (programId: number): Promise<ProgramData> => {
     try {
-        const response = await api.get(`/programs/${programId}`);
+        const response = await api.get(`/get_program/${programId}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching program data", error);
@@ -34,6 +34,16 @@ export const createProgram = async (programData: ProgramData): Promise<ProgramDa
         return response.data;
     } catch (error) {
         console.error("Error creating new program", error);
+        throw error;
+    }
+};
+
+export const deleteProgram = async (programId: number): Promise<void> => {
+    try {
+        await api.delete(`/delete_program/${programId}`);
+        console.log("Program deleted");
+    } catch (error) {
+        console.error("Error deleting program", error);
         throw error;
     }
 };

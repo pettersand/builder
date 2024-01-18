@@ -4,6 +4,7 @@ import type { ProgramData, BackendProgramData } from "./types";
 import { get as getStoreValue } from "svelte/store";
 import { mainProgramStore } from "./store";
 import { createProgram, updateProgram } from "./API";
+import { setComponentSaveStatus } from "../../global/store";
 
 // Formats data from Frontend to Backend syntax, and vice versa for the second function
 export const formatProgramDataForBackend = (programData: ProgramData): any => {
@@ -35,6 +36,7 @@ export const saveProgram = async (): Promise<void> => {
       const updatedProgram = await updateProgram(currentProgramData);
       mainProgramStore.updateProgram(updatedProgram);
       console.log("Program updated");
+      setComponentSaveStatus("programData", "Saved");
     } catch (error) {
       console.error("Error updating program", error);
     }
@@ -44,6 +46,7 @@ export const saveProgram = async (): Promise<void> => {
       const newProgram = await createProgram(currentProgramData);
       mainProgramStore.updateProgram(newProgram);
       console.log("New program created");
+      setComponentSaveStatus("programData", "Saved");
     } catch (error) {
       console.error("Error creating new program", error);
     }

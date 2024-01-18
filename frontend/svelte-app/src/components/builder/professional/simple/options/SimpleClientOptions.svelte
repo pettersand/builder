@@ -159,7 +159,7 @@
     <!-- File Handling Container -->
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">File Handling</span>
-      <div>SHow active program, id, client, program metadata</div>
+      <div>Show active program & client, locks client selection, Show program name</div>
 
       <SaveStatus context="programData" />
     </div>
