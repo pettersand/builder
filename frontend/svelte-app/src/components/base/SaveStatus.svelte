@@ -8,7 +8,7 @@
 
   // Subscribe to the save status store
   const unsubscribeSaveStatus = globalStore.saveStatusStore.subscribe(status => {
-    saveStatus = status.programData; // Assuming 'programData' is the key for program save status
+    saveStatus = status.programData; 
   });
 
   // Cleanup

@@ -4,35 +4,44 @@ import { writable } from "svelte/store";
 import type { GlobalStoreState } from "./types";
 
 const initialState: GlobalStoreState = {
-    theme: localStorage.getItem("theme") || "light",
-    isAuthenticated: localStorage.getItem("isAuthenticated") === "true" || false,
+  theme: localStorage.getItem("theme") || "light",
+  isAuthenticated: localStorage.getItem("isAuthenticated") === "true" || false,
 };
 
 const globalStore = writable(initialState);
 
-const saveStatusStore = writable({
-    programData: "Saved",
-    // other components to be added (workout, pro builder, etc.)
-  });
+const getInitialSaveStatus = () => {
+  const savedStatus = sessionStorage.getItem("saveStatus");
+  return savedStatus ? JSON.parse(savedStatus) : { programData: "Saved" };
+};
 
-export const setComponentSaveStatus = (componentName: string, status: string) => {
-    saveStatusStore.update((state) => ({ ...state, [componentName]: status }));
-}
+const saveStatusStore = writable(getInitialSaveStatus());
+
+export const setComponentSaveStatus = (
+  componentName: string,
+  status: string
+) => {
+  saveStatusStore.update((state) => {
+    const newState = { ...state, [componentName]: status };
+    sessionStorage.setItem("saveStatus", JSON.stringify(newState));
+    return newState;
+  });
+};
 
 const setTheme = (newTheme: "light" | "dark") => {
-    globalStore.update((state) => ({ ...state, theme: newTheme }));
-    localStorage.setItem("theme", newTheme);
-  };
+  globalStore.update((state) => ({ ...state, theme: newTheme }));
+  localStorage.setItem("theme", newTheme);
+};
 
 const setAuthenticationStatus = (authStatus: boolean) => {
-    globalStore.update((state) => ({ ...state, isAuthenticated: authStatus }));
-    sessionStorage.setItem("isAuthenticated", authStatus.toString());
+  globalStore.update((state) => ({ ...state, isAuthenticated: authStatus }));
+  sessionStorage.setItem("isAuthenticated", authStatus.toString());
 };
 
 export default {
-    subscribe: globalStore.subscribe,
-    setTheme,
-    setAuthenticationStatus,
-    saveStatusStore,
-    setComponentSaveStatus,
-  };
+  subscribe: globalStore.subscribe,
+  setTheme,
+  setAuthenticationStatus,
+  saveStatusStore,
+  setComponentSaveStatus,
+};

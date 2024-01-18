@@ -3,6 +3,7 @@
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramNotes } from "../types";
 import { mainProgramStore } from "../store";
+import { setComponentSaveStatus } from "../../../global/store";
 
 /**
  * * Handles the program notes section of program data.
@@ -25,6 +26,7 @@ notesStore.subscribe((currentNotes) => {
 
 const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
   notesStore.update((notes) => ({ ...notes, ...updatedNotes }));
+  setComponentSaveStatus("programData", "Changes Detected");
 };
 
 /* const resetNotes = () => {
