@@ -161,7 +161,7 @@
       <span class="font-bold">File Handling</span>
       <div>SHow active program, id, client, program metadata</div>
 
-      <SaveStatus />
+      <SaveStatus context="programData" />
     </div>
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">Continue</span>

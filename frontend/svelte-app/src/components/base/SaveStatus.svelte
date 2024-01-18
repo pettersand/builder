@@ -4,23 +4,37 @@
     setComponentSaveStatus,
   } from "../../utilities/global/store";
 
+export let context;
+
   let saveStatus = "Loading...";
 
   // Subscribe to the save status store
   const unsubscribeSaveStatus = globalStore.saveStatusStore.subscribe(status => {
-    saveStatus = status.programData; 
+    saveStatus = status[context] || "Unknown";
   });
 
-  // Cleanup
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case "Changes Detected":
+        return "color: orange;";
+      case "Saved":
+        return "color: green;";
+      case "Loading...":
+        return "color: grey;";
+      default:
+        return "color: red;";
+    }
+  };
+
+
   onDestroy(() => {
     unsubscribeSaveStatus();
   });
 
-  // Additional logic here as needed
 </script>
 
 <div>
-  <h2>Program Save Status</h2>
-  <p>{saveStatus}</p>
+  <h2>Save Status</h2>
+  <p style={getStatusStyle(saveStatus)}>{saveStatus}</p>
   <!-- Add any additional UI elements as necessary -->
 </div>

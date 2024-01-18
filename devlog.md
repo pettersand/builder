@@ -1,3 +1,12 @@
+## 18/01-24
+
+Implementing the saveStatus tracker, and fixing its design. 
+
+### Worked On:
+1. SaveStatus
+    - Saves to sessionStorage
+    - Made it conditional based on context
+
 ## 17/01-24
 
 Improved my docs yesterday, and defined some handling of complex cases. Will start implementing the highly modular approach to program data handling today. 
