@@ -6,6 +6,9 @@ Implementing the saveStatus tracker, and fixing its design.
 1. SaveStatus
     - Saves to sessionStorage
     - Made it conditional based on context
+2. UnsavedPrompt
+    - Modal component to prompt upon unsaved changes
+        - New program, Open program
 
 ## 17/01-24
 

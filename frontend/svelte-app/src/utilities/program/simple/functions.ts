@@ -25,7 +25,6 @@ export const formatProgramDataForFrontend = (
   };
 };
 
-
 // Function on save buttons, to check if program exists and call create or update
 export const saveProgram = async (): Promise<void> => {
   const currentProgramData: ProgramData = getStoreValue(mainProgramStore);

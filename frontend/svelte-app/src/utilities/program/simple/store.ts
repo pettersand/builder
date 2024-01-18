@@ -16,6 +16,8 @@ import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
 import { fetchProgramData } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
+import { resetNotes } from "./substores/notesStore";
+
 
 const sessionStorageKey = "programData";
 
@@ -52,6 +54,9 @@ export const createProgramStore = () => {
   const resetProgram = () => {
     sessionStorage.removeItem(sessionStorageKey);
     set(defaultState);
+    setComponentSaveStatus("programData", "Saved");
+    syncWithSessionStorage();
+    resetNotes();
   };
 
   const syncWithSessionStorage = () => {

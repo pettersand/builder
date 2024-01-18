@@ -1,6 +1,6 @@
 // utilities/program/simple/substores/notesStore.ts
 
-import { writable, get as getStoreValue } from "svelte/store";
+import { writable, get as getStoreValue, get } from "svelte/store";
 import type { ProgramNotes } from "../types";
 import { mainProgramStore } from "../store";
 import { setComponentSaveStatus } from "../../../global/store";
@@ -29,9 +29,9 @@ const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
   setComponentSaveStatus("programData", "Changes Detected");
 };
 
-/* const resetNotes = () => {
-  notesStore.set(initialState);
-}; */
+export const resetNotes = () => {
+  notesStore.set(getNotesInitialState());
+}; 
 
 export { notesStore, updateNotes};
 
