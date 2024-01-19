@@ -1,60 +1,39 @@
 // utilities/program/simple/functions.ts
 
-import type { ProgramData, BackendProgramData } from "./types";
-import { get as getStoreValue } from "svelte/store";
-import { mainProgramStore } from "./store";
+import type { ProgramData, ProgramNotes } from "./types";
 import { createProgram, updateProgram } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
-
-// Formats data from Frontend to Backend syntax, and vice versa for the second function
-export const formatProgramDataForBackend = (programData: ProgramData): any => {
-  const { programData: frontEndProgramData, ...rest } = programData;
-  return {
-    ...rest,
-    program_data: frontEndProgramData,
-  };
-};
-
-export const formatProgramDataForFrontend = (
-  backendProgramData: BackendProgramData
-): ProgramData => {
-  const { program_data, ...rest } = backendProgramData;
-  return {
-    ...rest,
-    programData: program_data,
-  };
-};
-
-//! Move. Circ dep.
+import { mainProgramStore } from "./store";
 
 
 
-/**
- * ! Refactor to take arguments, circ dep.
- */
+
 // Function on save buttons, to check if program exists and call create or update
-export const saveProgram = async (): Promise<void> => {
-  const currentProgramData: ProgramData = getStoreValue(mainProgramStore);
+export const saveProgram = async (programData: ProgramData): Promise<ProgramData> => {
+    if (programData.id) {
+      try {
+        const updatedProgram = await updateProgram(programData);
+        console.log("Program updated");
+        setComponentSaveStatus("programData", "Saved");
+        return updatedProgram;
+      } catch (error) {
+        console.error("Error updating program", error);
+        throw error;
+      }
+    } else {
+      try {
+        const newProgram = await createProgram(programData);
+        console.log("New program created");
+        setComponentSaveStatus("programData", "Saved");
+        return newProgram;
+      } catch (error) {
+        console.error("Error creating new program", error);
+        throw error;
+      }
+    }
+  };
 
-  // Check for active program
-  if (currentProgramData.id) {
-    try {
-      const updatedProgram = await updateProgram(currentProgramData);
-      mainProgramStore.updateProgram(updatedProgram);
-      console.log("Program updated");
-      setComponentSaveStatus("programData", "Saved");
-    } catch (error) {
-      console.error("Error updating program", error);
-    }
-  } else {
-    // Create new program
-    try {
-      const newProgram = await createProgram(currentProgramData);
-      mainProgramStore.updateProgram(newProgram);
-      console.log("New program created");
-      setComponentSaveStatus("programData", "Saved");
-    } catch (error) {
-      console.error("Error creating new program", error);
-    }
+  export const updateMainStoreFromNotes = (updatedNotes: ProgramNotes) => {
+    const updatedData: Partial<ProgramData> = { programData: { programNotes: updatedNotes } };
+    mainProgramStore.updateProgram(updatedData); // Use the main store's method to update
   }
-};

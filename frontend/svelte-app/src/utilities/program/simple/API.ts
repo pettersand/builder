@@ -1,8 +1,30 @@
 // utilities/program/simple/API.ts
 
 import api from "../../api";
-import { formatProgramDataForBackend } from "./functions";
-import type { ProgramData } from "./types";
+import type { ProgramData, BackendProgramData } from "./types";
+
+/**
+ * * Handles data formatting and communication with backend. 
+ */
+
+
+export const formatProgramDataForBackend = (programData: ProgramData): any => {
+    const { programData: frontEndProgramData, ...rest } = programData;
+    return {
+      ...rest,
+      program_data: frontEndProgramData,
+    };
+  };
+  
+  export const formatProgramDataForFrontend = (
+    backendProgramData: BackendProgramData
+  ): ProgramData => {
+    const { program_data, ...rest } = backendProgramData;
+    return {
+      ...rest,
+      programData: program_data,
+    };
+  };
 
 export const fetchProgramData = async (programId: number): Promise<ProgramData> => {
     try {

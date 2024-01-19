@@ -11,13 +11,11 @@
 
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
-import { fetchProgramData } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
-
+import { refreshSubstoreData } from "./substores/functions";
 
 
 const sessionStorageKey = "programData";
-
 const defaultState: ProgramData = {
   id: null,
   status: "draft",
@@ -39,8 +37,6 @@ const getInitialState = () => {
 
 const programStore = writable<ProgramData>(getInitialState());
 
-export const getProgramData = () => getStoreValue(mainProgramStore);
-
 
 //* Creates store
 export const createProgramStore = () => {
@@ -49,14 +45,14 @@ export const createProgramStore = () => {
   const updateProgram = (updatedData: Partial<ProgramData>) => {
     update((data) => ({ ...data, ...updatedData }));
     syncWithSessionStorage();
-    console.log("Program updated");
   };
 
   const resetProgram = () => {
     sessionStorage.removeItem(sessionStorageKey);
     set(defaultState);
+    const currentData = getStoreValue(programStore);
     setComponentSaveStatus("programData", "Saved");
-    // trigger refresh
+/*     refreshSubstoreData(currentData, refreshNotes); */
   };
 
   const syncWithSessionStorage = () => {
@@ -64,18 +60,13 @@ export const createProgramStore = () => {
     sessionStorage.setItem(sessionStorageKey, JSON.stringify(currentData));
   };
 
-  const fetchAndUpdate = async (programId: number) => {
-    const fetchedData = await fetchProgramData(programId);
-    set(fetchedData);
-  };
-
   return {
     subscribe,
     updateProgram,
     resetProgram,
     syncWithSessionStorage,
-    fetchAndUpdate,
   };
 };
 
 export const mainProgramStore = createProgramStore();
+export const getCurrentProgramData = (): ProgramData => getStoreValue(mainProgramStore);

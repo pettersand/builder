@@ -1,28 +1,25 @@
-// In refreshSubstores.ts
+// utilities/program/simple/substores/functions.ts
+
+import type { Writable } from "svelte/store";
+import type { ProgramData, ProgramNotes } from "../types";
+
 
 /**
- * TODO: Add "bridging" functions between mainStore and subStores - refresh, reset
+ * * Handles communication between mainStore and subStores. 
+ * * Updates main store, and refreshes substore data.
  */
 
-import { get as getStoreValue } from 'svelte/store';
-import { mainProgramStore } from '../store';
-import { notesStore } from './notesStore';
-
-// Function to update the main program store from notesStore
-export const updateMainStoreFromNotes = (updatedNotes) => {
-    const currentProgramData = getStoreValue(mainProgramStore);
-    const updatedProgramData = {
-        ...currentProgramData,
-        programData: {
-            ...currentProgramData.programData,
-            programNotes: updatedNotes,
-        },
+export const getCurrentState = (mainStore: Writable<ProgramData>) => {
+    return mainStore.subscribe((currentState) => currentState);
     };
-    mainProgramStore.updateProgram(updatedProgramData);
-};
 
-// Function to refresh notesStore from mainProgramStore
-export const refreshNotesFromMainStore = () => {
-    const currentProgramData = getStoreValue(mainProgramStore);
-    notesStore.set(currentProgramData.programData.programNotes);
+// Function to update main store with data from substores
+
+
+// Function to refresh substore data based on main store's data
+export const refreshSubstoreData = (
+  mainStoreData: ProgramData,
+  refreshCallback: (data: ProgramNotes) => void
+) => {
+  refreshCallback(mainStoreData.programData.programNotes);
 };

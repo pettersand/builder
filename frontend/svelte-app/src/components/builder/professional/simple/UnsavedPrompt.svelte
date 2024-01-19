@@ -2,9 +2,11 @@
   import { saveProgram } from "../../../../utilities/program/simple/functions";
   import { modalStore } from "../../../../utilities/modal";
   import { mainProgramStore } from "../../../../utilities/program/simple/store";
+  import { get as getStoreValue } from "svelte/store";
 
   const handleSave = () => {
-    saveProgram();
+    const programData = getStoreValue(mainProgramStore);
+    saveProgram(programData);
     modalStore.closeModal();
   };
 
