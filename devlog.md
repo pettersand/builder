@@ -4,6 +4,8 @@ Circular dependencies is becoming an issue between the mainStore and the subStor
 
 Landed on using an event bus, which worked perfectly. Though is something I have not yet used, so unsure if this is poor design.
 
+In summary: Everything is now functional on the frontend concerning tracking the save state of the program, prompting the user to save or discard changes in the event of creating a new program, or when opening an existing program from the database. 
+
 ## Worked On:
 1. Fixing circular dependencies
     - Lots of tinkering, trial and error

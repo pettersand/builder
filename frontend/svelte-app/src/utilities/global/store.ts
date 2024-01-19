@@ -15,7 +15,7 @@ const getInitialSaveStatus = () => {
   return savedStatus ? JSON.parse(savedStatus) : { programData: "Saved" };
 };
 
-const saveStatusStore = writable(getInitialSaveStatus());
+export const saveStatusStore = writable(getInitialSaveStatus());
 
 export const setComponentSaveStatus = (
   componentName: string,

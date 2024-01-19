@@ -3,24 +3,28 @@
   import { proStepState } from "../../../../stores/builderStore";
   import { mainProgramStore } from "../../../../utilities/program/simple/store";
   import { modalStore } from "../../../../utilities/modal";
+  import { saveStatusStore } from "../../../../utilities/global/store";
   import UnsavedPrompt from "./UnsavedPrompt.svelte";
-
-
   import SimpleClientOptions from "./options/SimpleClientOptions.svelte";
+
 
   let activeStep: string;
   proStepState.subscribe(($proStepState) => {
     activeStep = $proStepState.activeStep;
   });
 
-  //*TODO: Implement getSaveStatus function
-  const savedStatus = sessionStorage.getItem("saveStatus");
-  const saveStatus = savedStatus ? JSON.parse(savedStatus) : {};
+  let saveStatus = "Loading...";
+
+  $: {
+    saveStatusStore.subscribe(status => {
+      saveStatus = status.programData;
+    });
+  }
 
   const handleNewProgram = () => {
-    if (saveStatus.programData === "Changes Detected") {
+    if (saveStatus === "Changes Detected") {
       modalStore.openModal(UnsavedPrompt);
-      
+
     } else {
       mainProgramStore.resetProgram();
     }
@@ -37,7 +41,7 @@
         >File</span
       >
       <button
-        class="flex text-start w-full px-2 text-gray-400 hover:bg-card"
+        class="flex text-start w-full px-2 hover:bg-card"
         on:click={handleNewProgram}
       >
         New
