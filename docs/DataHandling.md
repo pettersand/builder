@@ -54,7 +54,9 @@ In scenarios where components require both display and editing capabilities, we 
 
 - **Reactivity and State Synchronization**: When a substore's state changes, it informs the main store of the update. The main store then updates its overall programData, readying it for any backend operations.
 
-- **User Interaction Flow**: As users interact with program components, their inputs immediately update the local substore state, which then propagates changes back to the main store via an eventBus.
+- **User Interaction Flow**: As users interact with program components, their inputs immediately update the local substore state, which then propagates changes back to the main store.
+
+- **File Handling**: When opening an existing program file, or creating a new one; the main store calls for all sub stores to refresh their state via an eventBus. 
 
 - **Consistency and Integrity**: This structure ensures consistency across the application, maintaining data integrity whether the user is creating a new program, editing an existing one, or interacting with a completed program during a workout session.
 
