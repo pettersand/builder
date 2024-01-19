@@ -11,6 +11,25 @@ In summary: Everything is now functional on the frontend concerning tracking the
     - Lots of tinkering, trial and error
     - Trying the use of eventBus
     - EventBus is successful!
+2. Backend
+    - Ensuring backend is ready and working with the program functions
+    - Added id in response on create program,
+    - Added handling of updates to existing programs
+3. User feedback - errors/confirmation
+    - Reworking and refining error and confirmation handling
+    - Planning out the structure and handling of user feedback.
+    - Created base .ts files in utilities/feedback
+    - Created base .svelte files components/feedback
+
+### Next Session:
+- Refactor and implement Error/Confirmation handling
+    - Success Notifications
+    - Error Messages
+    - Confirmation Dialogues
+        - Avoid accidental deletion, etc
+    - Progress Indicator / Loading state
+    - Tooltips / Help text
+    - Form Validation Feedback
 
 ## 18/01-24
 
