@@ -14,5 +14,5 @@ from .client_views import (
     ClientPreferencesView,
     ClientDataView,
 )
-from .program_views import CreateProgramView
+from .program_views import CreateProgramView, UpdateProgramView
 from .goal_views import NewSimpleGoal, FetchGoals, DeleteGoal

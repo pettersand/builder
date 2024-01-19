@@ -14,3 +14,20 @@ class CreateProgramView(APIView):
                 ProgramSerializer(program).data, status=status.HTTP_201_CREATED
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Get program view
+
+##TODO: Add active client as field for user, and check permissions/ownership
+class UpdateProgramView(APIView):
+    def put(self, request, *args, **kwargs):
+        program = Program.objects.get(pk=kwargs["pk"])
+        serializer = ProgramSerializer(program, data=request.data, partial=True)
+        if serializer.is_valid():
+            program = serializer.save()
+            return Response(
+                ProgramSerializer(program).data, status=status.HTTP_200_OK
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+# Delete program view
+    
