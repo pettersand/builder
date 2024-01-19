@@ -12,8 +12,7 @@
 import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
 import { setComponentSaveStatus } from "../../global/store";
-import { refreshSubstoreData } from "./substores/functions";
-
+import { eventBus } from "../../global/eventBus";
 
 const sessionStorageKey = "programData";
 const defaultState: ProgramData = {
@@ -31,12 +30,11 @@ const defaultState: ProgramData = {
 };
 
 const getInitialState = () => {
-    const stored = sessionStorage.getItem(sessionStorageKey);
-    return stored ? JSON.parse(stored) : defaultState;
-  };
+  const stored = sessionStorage.getItem(sessionStorageKey);
+  return stored ? JSON.parse(stored) : defaultState;
+};
 
 const programStore = writable<ProgramData>(getInitialState());
-
 
 //* Creates store
 export const createProgramStore = () => {
@@ -50,9 +48,9 @@ export const createProgramStore = () => {
   const resetProgram = () => {
     sessionStorage.removeItem(sessionStorageKey);
     set(defaultState);
-    const currentData = getStoreValue(programStore);
     setComponentSaveStatus("programData", "Saved");
-/*     refreshSubstoreData(currentData, refreshNotes); */
+    
+    eventBus.emit({ type: "REFRESH_PROGRAM", payload: defaultState });
   };
 
   const syncWithSessionStorage = () => {
@@ -69,4 +67,5 @@ export const createProgramStore = () => {
 };
 
 export const mainProgramStore = createProgramStore();
-export const getCurrentProgramData = (): ProgramData => getStoreValue(mainProgramStore);
+export const getCurrentProgramData = (): ProgramData =>
+  getStoreValue(mainProgramStore);

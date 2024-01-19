@@ -2,7 +2,7 @@
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { notesStore, updateNotes, refreshNotes } from "../../../../../../utilities/program/simple/substores/notesStore";
+  import { notesStore, updateNotes } from "../../../../../../utilities/program/simple/substores/notesStore";
   import type { ProgramNotes } from "../../../../../../utilities/program/simple/types";
   
 

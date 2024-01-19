@@ -4,3 +4,4 @@ export interface GlobalStoreState {
   theme: string;
   isAuthenticated: boolean;
 }
+

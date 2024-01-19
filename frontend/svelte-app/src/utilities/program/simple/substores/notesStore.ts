@@ -1,28 +1,34 @@
 // utilities/program/simple/substores/notesStore.ts
 
 import { writable } from "svelte/store";
-import type { ProgramNotes } from "../types";
+import type { ProgramNotes, ProgramData } from "../types";
 import { setComponentSaveStatus } from "../../../global/store";
 import { getCurrentProgramData } from "../store";
 import { updateMainStoreFromNotes } from "../functions";
-
+import { eventBus } from "../../../global/eventBus";
 
 /**
  * * Handles the program notes section of program data.
  * * Works closely with relevant components in charge of displaying, and editing program notes.
  */
 
-
 const getInitialState = () => {
   const currentData = getCurrentProgramData();
   return currentData.programData.programNotes;
-}
+};
 
 const notesStore = writable<ProgramNotes>(getInitialState());
 
-const refreshNotes = (newData: ProgramNotes) => {
-  notesStore.set(newData);
-};
+eventBus.subscribe((event) => {
+  if (event?.type === "REFRESH_PROGRAM") {
+    handleRefreshEvent(event.payload);
+  }
+});
+
+function handleRefreshEvent(payload: ProgramData) {
+  const { programNotes } = payload.programData;
+  notesStore.set(programNotes);
+}
 
 const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
   notesStore.update((notes) => {
@@ -33,9 +39,7 @@ const updateNotes = (updatedNotes: Partial<ProgramNotes>) => {
   });
 };
 
-
-export { notesStore, updateNotes, refreshNotes};
-
+export { notesStore, updateNotes };
 
 /* const createNotesStore = () => {
   const { subscribe, set, update } = writable<ProgramNotes>(initialState);

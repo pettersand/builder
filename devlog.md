@@ -1,3 +1,15 @@
+## 19/01-24
+
+Circular dependencies is becoming an issue between the mainStore and the subStores. Spent the day trying to figure out the best solution to this. 
+
+Landed on using an event bus, which worked perfectly. Though is something I have not yet used, so unsure if this is poor design.
+
+## Worked On:
+1. Fixing circular dependencies
+    - Lots of tinkering, trial and error
+    - Trying the use of eventBus
+    - EventBus is successful!
+
 ## 18/01-24
 
 Implementing the saveStatus tracker, and fixing its design. 
