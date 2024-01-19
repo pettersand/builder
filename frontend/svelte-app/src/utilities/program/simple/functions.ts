@@ -23,7 +23,10 @@ export const saveProgram = async (
     try {
       const newProgram = await createProgram(programData);
       console.log("New program created");
+      
+      mainProgramStore.updateProgram(newProgram);
       setComponentSaveStatus("programData", "Saved");
+
       return newProgram;
     } catch (error) {
       console.error("Error creating new program", error);
