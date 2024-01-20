@@ -1,3 +1,7 @@
+## 20/01-24 
+
+Day was spent practicing and reading up ahead of an interview. Will likely be relatively inactive here for the next couple of days. 
+
 ## 19/01-24
 
 Circular dependencies is becoming an issue between the mainStore and the subStores. Spent the day trying to figure out the best solution to this. 
