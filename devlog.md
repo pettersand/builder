@@ -1,6 +1,6 @@
 ## 22/01-24
 
-Still focusing on interview prep, and theory. 
+Still focusing on interview prep, and theory. Though ended the day with some work on my project. 
 
 ### Worked On:
 1. Implementing Error & Confirmation handling
@@ -8,6 +8,22 @@ Still focusing on interview prep, and theory.
     - Added methods to feedbackStore
 2. Designed ErrorModal, Toast, FeedbackManager components
     - Added conditionals / sub to feedbackStore
+
+### Next session:
+- Add confirmation dialogues 
+    - Rework the "UnsavedPrompt" component
+- Add validation util files
+    - Create reusable handling
+        - validateLength
+        - validateEmail
+        - validate...xxx
+    - Or implement validation libs
+        - yup?
+        - vee-validate?
+        - Svelte compatibility?
+- Update docs
+    - Error & Confirmation handling
+    - Frontend validation
 
 ## 20/01-24 
 
