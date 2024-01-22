@@ -39,6 +39,8 @@ const createFeedbackStore = () => {
     }));
   };
 
+
+  //! Add discard changes confirmation button, Add details
   const setConfirmation = (confirmation: ConfirmationMessage) => {
     update((state) => ({
       ...state,

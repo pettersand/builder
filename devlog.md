@@ -6,6 +6,8 @@ Still focusing on interview prep, and theory.
 1. Implementing Error & Confirmation handling
     - Structuring the feedback store
     - Added methods to feedbackStore
+2. Designed ErrorModal, Toast, FeedbackManager components
+    - Added conditionals / sub to feedbackStore
 
 ## 20/01-24 
 
