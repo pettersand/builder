@@ -37,6 +37,7 @@
 
   // Icon imports
   import Icon from "@iconify/svelte";
+  import FeedbackManager from "../components/feedback/FeedbackManager.svelte";
 
   // Local state
 
@@ -144,6 +145,8 @@
 {/if}
 <TopBar />
 <ErrorModal />
+
+<FeedbackManager />
 
 <div class="flex flex-col h-screen font-oswald bg-bg2 text-headline">
   <header

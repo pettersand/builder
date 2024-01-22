@@ -1,6 +1,4 @@
-/**
- * TODO: Types for messages, confirmation dialogs, etc
- */
+// utilities/feedback/types.ts
 
 export interface ErrorMessage {
     errorMessage: string;
@@ -18,3 +16,12 @@ export interface SuccessMessage {
     successMessage: string;
 }
 
+export interface FeedbackState {
+    errorMessage: string;
+    errorCode: string;
+    errorDetails: string;
+    confirmationMessage: string;
+    onConfirm: () => void;
+    onCancel: () => void;
+    successMessage: string;
+}
