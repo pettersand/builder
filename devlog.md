@@ -1,3 +1,11 @@
+## 22/01-24
+
+Still focusing on interview prep, and theory. 
+
+### Worked On:
+1. Implementing Error & Confirmation handling
+    - Structuring the feedback store
+
 ## 20/01-24 
 
 Day was spent practicing and reading up ahead of an interview. Will likely be relatively inactive here for the next couple of days. 
