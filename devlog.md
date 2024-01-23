@@ -11,6 +11,11 @@ More learning! And ending the day with some project work. Continuing where I lef
     - Will add to iteratively
 3. Error & Confirmation implementation
     - Added for program saving/creation
+4. Builder step store
+    - activeStep
+    - Added conditional rendering for other steps
+    - StepBar svelte component for tab, shows active tab
+5. Template planning & Base component design
 
 ## 22/01-24
 

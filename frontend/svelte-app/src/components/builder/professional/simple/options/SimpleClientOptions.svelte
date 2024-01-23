@@ -11,6 +11,7 @@
   import { userStore } from "../../../../../utilities/user";
   import SaveStatus from "../../../../base/SaveStatus.svelte";
   import StepBar from "./components/StepBar.svelte";
+  import { activeStepStore } from "../../../../../utilities/builder/simple";
 
   /**
    * TODO: Refactor old imports to the new, ensure working
@@ -69,6 +70,7 @@
   const handleContinue = async () => {
     const programData = getCurrentProgramData();
     saveProgram(programData);
+    activeStepStore.set("template");
   };
 
   $: filteredClients = $clients.filter((client) =>
