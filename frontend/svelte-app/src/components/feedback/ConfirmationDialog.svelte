@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { feedbackStore } from "../../utilities/feedback/store";
-
-  export let confirmationMessage = "";
+  export let message = "";
   export let onConfirm = () => {};
   export let onCancel = () => {};
   export let onAction = () => {};
@@ -9,7 +7,7 @@
 </script>
 
 <div class="confirmation-dialog">
-  <p>{confirmationMessage}</p>
+  <p>{message}</p>
   <button on:click={onConfirm}>Confirm</button>
   <button on:click={onCancel}>Cancel</button>
   {#if onAction}

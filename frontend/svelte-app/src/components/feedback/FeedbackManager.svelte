@@ -2,6 +2,7 @@
   import { feedbackStore } from "../../utilities/feedback/store";
   import ErrorModal from "./ErrorModal.svelte";
   import Toast from "./Toast.svelte";
+  import ConfirmationDialog from "./ConfirmationDialog.svelte";
 
 
   /**
@@ -11,6 +12,7 @@
    */
   let errorMessage = "";
   let successMessage = "";
+  let confirmationMessage = "";
 
   $: {
     feedbackStore.subscribe(($feedback) => {
@@ -28,5 +30,10 @@
 {#if successMessage}
   <div class="absolute bottom-6 left-6">
     <Toast message={successMessage} />
+  </div>
+{/if}
+{#if confirmationMessage}
+  <div class="absolute top-12 left-2/4">
+    <ConfirmationDialog message={confirmationMessage} />
   </div>
 {/if}
