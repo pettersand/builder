@@ -1,11 +1,14 @@
 ## 23/01-24
 
-More learning! And ending the day with some project work. 
+More learning! And ending the day with some project work. Continuing where I left off with implementation of user feedback events, as well as basic input validation on the frontend.
 
 ### Worked On:
 1. Confirmation Dialogue
     - Created component
     - Added third optional button
+2. Validation utility files
+    - Base validation
+    - Will add to iteratively
 
 ## 22/01-24
 
