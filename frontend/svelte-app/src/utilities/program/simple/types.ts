@@ -9,6 +9,7 @@ export interface ProgramNotes {
 }
 
 export interface ProgramData {
+  message?: string;
   id?: number;
   status: string;
   programData: {

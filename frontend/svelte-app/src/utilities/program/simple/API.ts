@@ -2,6 +2,7 @@
 
 import api from "../../api";
 import type { ProgramData, BackendProgramData } from "./types";
+import { feedbackStore } from "../../feedback/store";
 
 /**
  * * Handles data formatting and communication with backend. 
@@ -40,10 +41,16 @@ export const updateProgram = async (programData: ProgramData): Promise<ProgramDa
     const formattedData = formatProgramDataForBackend(programData);
     try {
         const response = await api.put(`/update_program/${programData.id}`, formattedData);
-        console.log("Program updated", response.data);
-        return response.data;
+        console.log("Program updated", response.data.message);
+        feedbackStore.setSuccess({ successMessage: response.data.message});
+        return formatProgramDataForFrontend(response.data.data);
     } catch (error) {
         console.error("Error updating program", error);
+        feedbackStore.setError({
+            errorMessage: error.response?.data?.message || "Error saving program",
+            errorCode: "SAVE_PROGRAM_ERROR",
+            errorDetails: error.message
+          });
         throw error;
     }
 };
@@ -52,10 +59,16 @@ export const createProgram = async (programData: ProgramData): Promise<ProgramDa
     const formattedData = formatProgramDataForBackend(programData);
     try {
         const response = await api.post("/create_program/", formattedData);
-        console.log("New program created", response.data);
-        return response.data;
+        console.log("New program created", response.data.message);
+        feedbackStore.setSuccess({ successMessage: response.data.message}); 
+        return formatProgramDataForFrontend(response.data.data);
     } catch (error) {
         console.error("Error creating new program", error);
+        feedbackStore.setError({
+          errorMessage: error.response?.data?.message || "Error creating new program",
+          errorCode: "CREATE_PROGRAM_ERROR",
+          errorDetails: error.message
+        });
         throw error;
     }
 };

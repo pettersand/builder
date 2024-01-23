@@ -9,29 +9,17 @@ import { mainProgramStore } from "./store";
 export const saveProgram = async (
   programData: ProgramData
 ): Promise<ProgramData> => {
-  if (programData.id) {
-    try {
-      const updatedProgram = await updateProgram(programData);
-      console.log("Program updated");
-      setComponentSaveStatus("programData", "Saved");
-      return updatedProgram;
-    } catch (error) {
-      console.error("Error updating program", error);
-      throw error;
-    }
-  } else {
-    try {
-      const newProgram = await createProgram(programData);
-      console.log("New program created");
-      
-      mainProgramStore.updateProgram(newProgram);
-      setComponentSaveStatus("programData", "Saved");
-
-      return newProgram;
-    } catch (error) {
-      console.error("Error creating new program", error);
-      throw error;
-    }
+  try {
+    const response = programData.id
+      ? await updateProgram(programData)
+      : await createProgram(programData);
+    
+    mainProgramStore.updateProgram(response);
+    setComponentSaveStatus("programData", "Saved");
+    return response;
+  } catch (error) {
+    console.error("Error in program operation", error);
+    throw error;
   }
 };
 

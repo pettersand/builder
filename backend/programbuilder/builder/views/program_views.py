@@ -5,19 +5,30 @@ from rest_framework import status
 from builder.serializers import ProgramSerializer
 
 """ TODO: Add activeClient as field for user """
+
+
 class CreateProgramView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = ProgramSerializer(data=request.data)
         if serializer.is_valid():
             program = serializer.save(creator=request.user, user=request.user)
             return Response(
-                ProgramSerializer(program).data, status=status.HTTP_201_CREATED
+                {
+                    "message": "New program created successfully!",
+                    "data": ProgramSerializer(program).data,
+                },
+                status=status.HTTP_201_CREATED,
             )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {"message": "Error creating new program.", "errors": serializer.errors},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
 
 # Get program view
 
-##TODO: Add active client as field for user, and check permissions/ownership
+
+#TODO: Add active client as field for user, and check permissions/ownership
 class UpdateProgramView(APIView):
     def put(self, request, *args, **kwargs):
         program = Program.objects.get(pk=kwargs["pk"])
@@ -25,9 +36,16 @@ class UpdateProgramView(APIView):
         if serializer.is_valid():
             program = serializer.save()
             return Response(
-                ProgramSerializer(program).data, status=status.HTTP_200_OK
+                {
+                    "message": "Program updated successfully.",
+                    "data": ProgramSerializer(program).data,
+                },
+                status=status.HTTP_200_OK,
             )
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        return Response(
+            {"message": "Error updating program.", "errors": serializer.errors},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+
 # Delete program view
-    
