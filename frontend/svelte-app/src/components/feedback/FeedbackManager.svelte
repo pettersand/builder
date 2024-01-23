@@ -32,8 +32,8 @@
     <Toast message={successMessage} />
   </div>
 {/if}
-{#if confirmationMessage}
+
   <div class="absolute top-12 left-2/4">
     <ConfirmationDialog message={confirmationMessage} />
   </div>
-{/if}
+
