@@ -2,6 +2,8 @@
 
 More learning! And ending the day with some project work. Continuing where I left off with implementation of user feedback events, as well as basic input validation on the frontend.
 
+Got even more work done, and finished first draft of the aforementioned features. Starting work on the template generation part of the builder process. An integral, and quite complex feature... Looking forward to it!  
+
 ### Worked On:
 1. Confirmation Dialogue
     - Created component
@@ -16,6 +18,19 @@ More learning! And ending the day with some project work. Continuing where I lef
     - Added conditional rendering for other steps
     - StepBar svelte component for tab, shows active tab
 5. Template planning & Base component design
+    - Created SmallProgramNotes
+
+### Next Session:
+- Base design for Template Builder containers
+    - Program notes / Optionals?
+    - Custom Template variables
+    - Browse templates, official, own, favorites?
+    - Active Program info:
+        - Client: 
+        - Program name:
+        - Button save as template
+        - Button save & continue
+        - Save Status
 
 ## 22/01-24
 
