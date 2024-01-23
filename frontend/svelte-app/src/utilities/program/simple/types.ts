@@ -9,17 +9,22 @@ export interface ProgramNotes {
 }
 
 export interface ProgramData {
-  message?: string;
   id?: number;
   status: string;
   programData: {
     programNotes: ProgramNotes;
   };
 }
+
 export interface BackendProgramData {
   id?: number;
   status: string;
   program_data: {
     programNotes: ProgramNotes;
   };
+}
+
+export interface BackendResponse {
+  message: string;
+  data: ProgramData;
 }

@@ -1,18 +1,22 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { get } from "svelte/store";
   import {
     clients,
     activeClient,
     clientData,
     type Client,
   } from "../../../../../utilities/client";
-  import {
-    programStore,
-    saveProgramData,
-  } from "../../../../../utilities/builder/simple";
+  import { getCurrentProgramData } from "../../../../../utilities/program/simple/store";
+  import { saveProgram } from "../../../../../utilities/program/simple/functions";
   import { userStore } from "../../../../../utilities/user";
   import SaveStatus from "../../../../base/SaveStatus.svelte";
+  import StepBar from "./components/StepBar.svelte";
+
+  /**
+   * TODO: Refactor old imports to the new, ensure working
+   * TODO: Ensure initial client is set to trainer, unless active client set
+   * TODO: If activeClient - display general info for activeClient
+   */
 
   let searchTerm: string = "";
   let filteredClients: Client[] = [];
@@ -63,18 +67,8 @@
   };
 
   const handleContinue = async () => {
-    const currentProgram = get(programStore);
-
-    try {
-      const response = await saveProgramData(currentProgram);
-      console.log("Program created/updated:", response);
-      // Update the store with the new ID if it's a new program
-      if (!currentProgram.id) {
-        programStore.updateProgram({ id: response.id });
-      }
-    } catch (error) {
-      console.error("Error creating/updating program:", error);
-    }
+    const programData = getCurrentProgramData();
+    saveProgram(programData);
   };
 
   $: filteredClients = $clients.filter((client) =>
@@ -87,20 +81,7 @@
 </script>
 
 <div class="flex flex-col w-full items-center">
-  <div
-    class="flex flex-row w-full justify-evenly custom-border-bottom text-lg font-bold"
-  >
-    <button class="bg-card w-full p-1 custom-border-right hover:bg-card">
-      1. Setup
-    </button>
-    <button class="w-full p-1 custom-border-right hover:bg-card">
-      2. Template
-    </button>
-    <button class=" w-full p-1 custom-border-right hover:bg-card">
-      3. Program
-    </button>
-    <button class=" w-full p-1 hover:bg-card"> 4. Final </button>
-  </div>
+  <StepBar />
 
   <!-- Main Container -->
   <div class="flex flex-row h-full w-full justify-center">
@@ -159,7 +140,9 @@
     <!-- File Handling Container -->
     <div class="flex flex-col w-1/3 gap-4 p-4 custom-border-right">
       <span class="font-bold">File Handling</span>
-      <div>Show active program & client, locks client selection, Show program name</div>
+      <div>
+        Show active program & client, locks client selection, Show program name
+      </div>
 
       <SaveStatus context="programData" />
     </div>

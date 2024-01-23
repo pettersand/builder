@@ -8,13 +8,15 @@
   import { saveProgram } from "../../../../utilities/program/simple/functions";
   import { modalStore } from "../../../../utilities/modal";
   import { saveStatusStore } from "../../../../utilities/global/store";
+  import { activeStepStore } from "../../../../utilities/builder/simple/store";
   import UnsavedPrompt from "./UnsavedPrompt.svelte";
   import SimpleClientOptions from "./options/SimpleClientOptions.svelte";
+  import SimpleTemplateOptions from "./options/SimpleTemplateOptions.svelte";
+  import SimpleExerciseOptions from "./options/SimpleExerciseOptions.svelte";
+  import SimpleFinalOptions from "./options/SimpleFinalOptions.svelte";
 
   let activeStep: string;
-  proStepState.subscribe(($proStepState) => {
-    activeStep = $proStepState.activeStep;
-  });
+  $: activeStepStore.subscribe((value) => (activeStep = value));
 
   let saveStatus = "Loading...";
 
@@ -24,11 +26,21 @@
     });
   }
 
+  //TODO: Refine process
   const handleNewProgram = () => {
     if (saveStatus === "Changes Detected") {
       modalStore.openModal(UnsavedPrompt);
     } else {
       mainProgramStore.resetProgram();
+    }
+  };
+
+  //TODO: Add function to open modal. Modal will let trainer choose between their own program, or clients programs.
+  const handleOpenProgram = () => {
+    if (saveStatus === "Changes Detected") {
+      modalStore.openModal(UnsavedPrompt);
+    } else {
+      console.log("Open program");
     }
   };
 
@@ -53,16 +65,16 @@
       >
         New
       </button>
-      <button
-        class="flex w-full px-2 hover:bg-card"
-        on:click={handleSave}
-      >
+      <button class="flex w-full px-2 hover:bg-card" on:click={handleSave}>
         Save
       </button>
       <button class="flex w-full px-2 mr-6 text-gray-400 hover:bg-card">
         Save As
       </button>
-      <button class="flex w-full px-2 text-gray-400 hover:bg-card">
+      <button
+        class="flex w-full px-2 text-gray-400 hover:bg-card"
+        on:click={handleOpenProgram}
+      >
         Open
       </button>
       <button class="flex w-full px-2 text-gray-400 hover:bg-card">
@@ -70,9 +82,13 @@
       </button>
     </div>
   </div>
-  {#if activeStep === "step1"}
+  {#if activeStep === "setup"}
     <SimpleClientOptions />
-  {:else if activeStep === "step2"}
-    <div>Step 2</div>
+  {:else if activeStep === "template"}
+    <SimpleTemplateOptions />
+  {:else if activeStep === "program"}
+    <SimpleExerciseOptions />
+  {:else if activeStep === "final"}
+    <SimpleFinalOptions />
   {/if}
 </div>

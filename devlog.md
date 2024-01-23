@@ -9,6 +9,8 @@ More learning! And ending the day with some project work. Continuing where I lef
 2. Validation utility files
     - Base validation
     - Will add to iteratively
+3. Error & Confirmation implementation
+    - Added for program saving/creation
 
 ## 22/01-24
 

@@ -3,6 +3,8 @@
   import { modalStore } from "../../../../utilities/modal";
   import { getCurrentProgramData, mainProgramStore } from "../../../../utilities/program/simple/store";
 
+
+  //TODO: Ensure it saves, and then resets - starting a new program after saving is complete. 
   const handleSave = () => {
     const programData = getCurrentProgramData();
     saveProgram(programData);
