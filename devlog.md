@@ -1,3 +1,12 @@
+## 23/01-24
+
+More learning! And ending the day with some project work. 
+
+### Worked On:
+1. Confirmation Dialogue
+    - Created component
+    - Added third optional button
+
 ## 22/01-24
 
 Still focusing on interview prep, and theory. Though ended the day with some work on my project. 
