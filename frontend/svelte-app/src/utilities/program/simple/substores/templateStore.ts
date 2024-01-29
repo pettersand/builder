@@ -22,13 +22,13 @@ export function initializeTemplateStore() {
   }
 }
 
-const updateTemplate = (updatedTemplate: TrainingDay[]) => {
-  templateStore.update((template) => {
-    const newTemplate = { ...template, ...updatedTemplate };
-    updateMainStoreFromTemplate(newTemplate);
-    setComponentSaveStatus("programData", "Changes Detected");
-    return newTemplate;
-  });
-};
+const updateTemplate = (templateData: { trainingDays: TrainingDay[], sessions: string[] }) => {
+    templateStore.update((currentTemplate) => {
+      const newTemplate = { ...currentTemplate, ...templateData };
+      updateMainStoreFromTemplate(newTemplate.trainingDays, templateData.sessions);
+      setComponentSaveStatus("programData", "Changes Detected");
+      return newTemplate;
+    });
+  };
 
 export { templateStore, updateTemplate };

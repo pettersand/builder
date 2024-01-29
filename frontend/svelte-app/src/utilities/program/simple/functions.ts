@@ -30,9 +30,12 @@ export const updateMainStoreFromNotes = (updatedNotes: ProgramNotes) => {
   mainProgramStore.updateProgram(updatedData);
 };
 
-export const updateMainStoreFromTemplate = (updatedTemplate: TrainingDay[]) => {
+export const updateMainStoreFromTemplate = (updatedTrainingDays: TrainingDay[], updatedSessions: string[]) => {
   const updatedData: Partial<ProgramData> = {
-    programData: { trainingDays: updatedTemplate },
+    programData: {
+      trainingDays: updatedTrainingDays,
+      sessions: updatedSessions
+    },
   };
   mainProgramStore.updateProgram(updatedData);
 };

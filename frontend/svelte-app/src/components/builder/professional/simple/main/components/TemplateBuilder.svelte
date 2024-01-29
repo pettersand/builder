@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import type { TemplateVariables } from "../../../../../../utilities/program/simple/substores/types";
   import { generateProgramTemplate } from "../../../../../../utilities/program/simple/substores/functions";
+  import { updateTemplate } from "../../../../../../utilities/program/simple/substores/templateStore";
 
   let hasTemplate = false;
   let templateData = {};
@@ -26,13 +27,14 @@
 
   // Function to handle form submission and generate template
   function generateTemplate() {
-    const generatedTemplate = generateProgramTemplate(
+    const { trainingDays, sessions } = generateProgramTemplate(
       formData.days,
       formData.sessions,
       formData.exercises
     );
-    console.log(generatedTemplate);
+    updateTemplate({ trainingDays, sessions });
     hasTemplate = true;
+    console.log("Template generated")
   }
 </script>
 
