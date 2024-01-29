@@ -5,7 +5,7 @@
 
   // State management imports
   import themeStore from "../stores/themeStore";
-  import modalStore from "../stores/modalStore";
+import { modalStore } from "../utilities/modal";
   import globalStore from "../stores/globalStore";
   import { registrationStore } from "../stores/registrationStore";
   import type { Step1Data, Step2Data } from "../stores/registrationStore";
@@ -13,10 +13,7 @@
   import { user } from "../stores/userStore";
 
   // Utility function imports
-  import {
-    handleKeyboardEvent,
-    handleClickOutside,
-  } from "../utilities/modalUtilities";
+  import { handleClickOutside, handleKeyboardEvent } from "../utilities/modal";
   import {
     checkExistingUser,
     loginUser,
@@ -144,33 +141,23 @@
     }
   }
 
+  let onClose = () => {
+    
+  };
+
   // Function to handle outside clicks for modal
-  const handleOutsideClick = (event: MouseEvent) => {
-    handleClickOutside(event, modalRef, modalBox, () => {
-      modalStore.toggleModalWithContent("", "");
-    });
-  };
+  const handleOutsideClick = (event: MouseEvent) =>
+    handleClickOutside(event, modalRef, modalBox, onClose);
+  const handleKeyEvent = (event: KeyboardEvent) =>
+    handleKeyboardEvent(event, () => {}, onClose);
 
-  // Function to handle keyboard events for modal
-  const handleKey = (event: KeyboardEvent) => {
-    handleKeyboardEvent(
-      event,
-      () => {},
-      () => {
-        modalStore.toggleModalWithContent("", "");
-      }
-    );
-  };
-
-  // Attach event listeners on component mount
   onMount(() => {
     window.addEventListener("click", handleOutsideClick);
-    window.addEventListener("keydown", handleKey);
+    window.addEventListener("keydown", handleKeyEvent);
 
-    // Cleanup event listeners on component destroy
     return () => {
       window.removeEventListener("click", handleOutsideClick);
-      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("keydown", handleKeyEvent);
     };
   });
 

@@ -1,3 +1,12 @@
+## 29/01-24
+
+Focus on learning some new relevant topics and tools after a second round interview. Will get some more work done here today, and the next few days. 
+
+Something has changed, and I'm not sure what - but it seems I have been logged out, and the login modal is broken. Will have to fix.
+
+### Worked On: 
+1. Fixed login
+
 ## 23/01-24
 
 More learning! And ending the day with some project work. Continuing where I left off with implementation of user feedback events, as well as basic input validation on the frontend.
