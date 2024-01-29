@@ -2,14 +2,12 @@
 
 import { writable } from "svelte/store";
 import type { TrainingDay, ProgramData } from "../types";
+import type { TemplateState } from "./types";
 import { getCurrentProgramData } from "../store";
 import { updateMainStoreFromTemplate } from "../functions";
 import { setComponentSaveStatus } from "../../../global/store";
 
-interface TemplateState {
-  trainingDays: TrainingDay[];
-  sessions: string[];
-}
+
 
 function getInitialState(): TemplateState {
   const currentProgramData: ProgramData = getCurrentProgramData();

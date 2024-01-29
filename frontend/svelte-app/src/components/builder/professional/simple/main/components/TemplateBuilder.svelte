@@ -1,22 +1,20 @@
 <script lang="ts">
-  import { getCurrentProgramData } from "../../../../../../utilities/program/simple";
-  import { onMount } from "svelte";
-  import type { TemplateVariables } from "../../../../../../utilities/program/simple/substores/types";
+  import { onDestroy } from "svelte";
+  import type {
+    TemplateVariables,
+    TemplateState,
+  } from "../../../../../../utilities/program/simple/substores/types";
   import { generateProgramTemplate } from "../../../../../../utilities/program/simple/substores/functions";
-  import { updateTemplate } from "../../../../../../utilities/program/simple/substores/templateStore";
+  import {
+    templateStore,
+    updateTemplate,
+  } from "../../../../../../utilities/program/simple/substores/templateStore";
 
   let hasTemplate = false;
-  let templateData = {};
+  let templateData: TemplateState = { trainingDays: [], sessions: [] };
 
-  onMount(() => {
-    const currentProgramData = getCurrentProgramData();
-    if (
-      currentProgramData &&
-      currentProgramData.programData.trainingDays.length > 0
-    ) {
-      hasTemplate = true;
-      templateData = currentProgramData.programData;
-    }
+  const unsubscribe = templateStore.subscribe((value) => {
+    templateData = value;
   });
 
   let formData: TemplateVariables = {
@@ -33,14 +31,17 @@
       formData.exercises
     );
     updateTemplate(templateData);
-    hasTemplate = true;
-    console.log("Template generated")
+    console.log("Template generated");
   }
+
+  onDestroy(() => {
+    unsubscribe();
+  });
 </script>
 
 <div class="flex flex-col flex-grow w-2/3 bg-bg justify-start p-3 shadow-xl">
   <div class="text-lg font-bold">Template Builder</div>
-  {#if hasTemplate}
+  {#if templateData.trainingDays.length > 0 && templateData.sessions.length > 0}
     <!-- Render existing template -->
     Render Template
   {:else}
