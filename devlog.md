@@ -6,6 +6,10 @@ Something has changed, and I'm not sure what - but it seems I have been logged o
 
 ### Worked On: 
 1. Fixed login
+    - Updated utilities usage, temporary fix
+        - Will have to rework entirely at a later time
+2. Step 2 Builder - Template page
+    - ProgramNotes container
 
 ## 23/01-24
 
