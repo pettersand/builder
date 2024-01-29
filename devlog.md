@@ -4,6 +4,8 @@ Focus on learning some new relevant topics and tools after a second round interv
 
 Something has changed, and I'm not sure what - but it seems I have been logged out, and the login modal is broken. Will have to fix.
 
+Got quite a bit of work done. Fixed the login and sorted the bulk of the template generation handling. Next up is rendering the template itself! 
+
 ### Worked On: 
 1. Fixed login
     - Updated utilities usage, temporary fix
@@ -15,6 +17,13 @@ Something has changed, and I'm not sure what - but it seems I have been logged o
 3. Template builder process
     - Complex stuff.. Working on base design
     - Initial check, form prompt -> generate template
+    - Generate Template on empty - 
+    - DeepMerge
+    - Fixed overwriting
+
+### Next Session: 
+- Rendering template based on JSON structure
+    - Create base blocks
 
 ## 23/01-24
 
