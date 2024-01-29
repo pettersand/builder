@@ -2,6 +2,7 @@
   import { getCurrentProgramData } from "../../../../../../utilities/program/simple";
   import { onMount } from "svelte";
   import type { TemplateVariables } from "../../../../../../utilities/program/simple/substores/types";
+  import { generateProgramTemplate } from "../../../../../../utilities/program/simple/substores/functions";
 
   let hasTemplate = false;
   let templateData = {};
@@ -17,9 +18,21 @@
     }
   });
 
+  let formData: TemplateVariables = {
+    days: 0,
+    sessions: 0,
+    exercises: 0,
+  };
+
   // Function to handle form submission and generate template
-  function generateTemplate(formData) {
-    // Send formData to function for template generation
+  function generateTemplate() {
+    const generatedTemplate = generateProgramTemplate(
+      formData.days,
+      formData.sessions,
+      formData.exercises
+    );
+    console.log(generatedTemplate);
+    hasTemplate = true;
   }
 </script>
 
@@ -42,6 +55,7 @@
         on:submit|preventDefault={generateTemplate}
       >
         <input
+          bind:value={formData.days}
           class="p-2 border rounded-lg"
           type="number"
           name="days"
@@ -54,6 +68,7 @@
           week where the exercises are not the same.</label
         >
         <input
+          bind:value={formData.sessions}
           class="p-2 border rounded-lg"
           type="number"
           name="sessions"
@@ -66,6 +81,7 @@
           for your program.</label
         >
         <input
+          bind:value={formData.exercises}
           class="p-2 border rounded-lg"
           type="number"
           name="exercises"

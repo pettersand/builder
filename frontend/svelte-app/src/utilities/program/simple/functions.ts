@@ -1,6 +1,6 @@
 // utilities/program/simple/functions.ts
 
-import type { ProgramData, ProgramNotes } from "./types";
+import type { ProgramData, ProgramNotes, TrainingDay } from "./types";
 import { createProgram, updateProgram } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
 import { mainProgramStore } from "./store";
@@ -13,7 +13,7 @@ export const saveProgram = async (
     const response = programData.id
       ? await updateProgram(programData)
       : await createProgram(programData);
-    
+
     mainProgramStore.updateProgram(response);
     setComponentSaveStatus("programData", "Saved");
     return response;
@@ -26,6 +26,13 @@ export const saveProgram = async (
 export const updateMainStoreFromNotes = (updatedNotes: ProgramNotes) => {
   const updatedData: Partial<ProgramData> = {
     programData: { programNotes: updatedNotes },
+  };
+  mainProgramStore.updateProgram(updatedData);
+};
+
+export const updateMainStoreFromTemplate = (updatedTemplate: TrainingDay[]) => {
+  const updatedData: Partial<ProgramData> = {
+    programData: { trainingDays: updatedTemplate },
   };
   mainProgramStore.updateProgram(updatedData);
 };
