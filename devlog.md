@@ -10,6 +10,8 @@ Something has changed, and I'm not sure what - but it seems I have been logged o
         - Will have to rework entirely at a later time
 2. Step 2 Builder - Template page
     - ProgramNotes container
+    - CustomTemplates, BrowseTemplates, Save & Continue
+    - Main containers, Program/Client Data + Template Builder
 
 ## 23/01-24
 
