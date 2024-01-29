@@ -12,6 +12,9 @@ Something has changed, and I'm not sure what - but it seems I have been logged o
     - ProgramNotes container
     - CustomTemplates, BrowseTemplates, Save & Continue
     - Main containers, Program/Client Data + Template Builder
+3. Template builder process
+    - Complex stuff.. Working on base design
+    - Initial check, form prompt -> generate template
 
 ## 23/01-24
 
