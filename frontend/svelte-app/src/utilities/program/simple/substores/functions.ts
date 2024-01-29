@@ -1,9 +1,6 @@
 // utilities/program/simple/substores/functions.ts
 
-import type { Writable } from "svelte/store";
 import type {
-  ProgramData,
-  ProgramNotes,
   TrainingDay,
   Exercise,
   ExerciseSessionData,

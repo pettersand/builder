@@ -6,29 +6,35 @@ import { getCurrentProgramData } from "../store";
 import { updateMainStoreFromTemplate } from "../functions";
 import { setComponentSaveStatus } from "../../../global/store";
 
-const templateStore = writable<TrainingDay[]>([]);
+interface TemplateState {
+  trainingDays: TrainingDay[];
+  sessions: string[];
+}
 
-// Function to initialize the template store
-export function initializeTemplateStore() {
+function getInitialState(): TemplateState {
   const currentProgramData: ProgramData = getCurrentProgramData();
-  if (
-    currentProgramData &&
-    currentProgramData.programData.trainingDays.length > 0
-  ) {
-    // Initialize with existing data
-    templateStore.set(currentProgramData.programData.trainingDays);
+  if (currentProgramData?.programData) {
+    return {
+      trainingDays: currentProgramData.programData.trainingDays || [],
+      sessions: currentProgramData.programData.sessions || [],
+    };
   } else {
-    // Optional: Initialize with a default template structure if needed
+    return { trainingDays: [], sessions: [] };
   }
 }
 
-const updateTemplate = (templateData: { trainingDays: TrainingDay[], sessions: string[] }) => {
-    templateStore.update((currentTemplate) => {
-      const newTemplate = { ...currentTemplate, ...templateData };
-      updateMainStoreFromTemplate(newTemplate.trainingDays, templateData.sessions);
-      setComponentSaveStatus("programData", "Changes Detected");
-      return newTemplate;
-    });
-  };
+const templateStore = writable<TemplateState>(getInitialState());
+
+const updateTemplate = (templateData: TemplateState) => {
+  templateStore.update((currentTemplate) => {
+    const newTemplate = {
+      trainingDays: templateData.trainingDays,
+      sessions: templateData.sessions,
+    };
+    updateMainStoreFromTemplate(newTemplate.trainingDays, newTemplate.sessions);
+    setComponentSaveStatus("programData", "Changes Detected");
+    return newTemplate;
+  });
+};
 
 export { templateStore, updateTemplate };

@@ -27,12 +27,12 @@
 
   // Function to handle form submission and generate template
   function generateTemplate() {
-    const { trainingDays, sessions } = generateProgramTemplate(
+    const templateData = generateProgramTemplate(
       formData.days,
       formData.sessions,
       formData.exercises
     );
-    updateTemplate({ trainingDays, sessions });
+    updateTemplate(templateData);
     hasTemplate = true;
     console.log("Template generated")
   }

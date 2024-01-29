@@ -13,6 +13,7 @@ import { writable, get as getStoreValue } from "svelte/store";
 import type { ProgramData } from "./types";
 import { setComponentSaveStatus } from "../../global/store";
 import { eventBus } from "../../global/eventBus";
+import { deepMerge } from "../deepMerge";
 
 const sessionStorageKey = "programData";
 const defaultState: ProgramData = {
@@ -41,7 +42,10 @@ export const createProgramStore = () => {
   const { subscribe, set, update } = programStore;
 
   const updateProgram = (updatedData: Partial<ProgramData>) => {
-    update((data) => ({ ...data, ...updatedData }));
+    update((currentData) => {
+      const mergedData = deepMerge(currentData, updatedData);
+      return mergedData;
+    });
     syncWithSessionStorage();
   };
 

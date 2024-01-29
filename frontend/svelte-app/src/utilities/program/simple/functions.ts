@@ -3,7 +3,7 @@
 import type { ProgramData, ProgramNotes, TrainingDay } from "./types";
 import { createProgram, updateProgram } from "./API";
 import { setComponentSaveStatus } from "../../global/store";
-import { mainProgramStore } from "./store";
+import { mainProgramStore, getCurrentProgramData } from "./store";
 
 // Function on save buttons, to check if program exists and call create or update
 export const saveProgram = async (
@@ -30,11 +30,14 @@ export const updateMainStoreFromNotes = (updatedNotes: ProgramNotes) => {
   mainProgramStore.updateProgram(updatedData);
 };
 
-export const updateMainStoreFromTemplate = (updatedTrainingDays: TrainingDay[], updatedSessions: string[]) => {
+export const updateMainStoreFromTemplate = (
+  updatedTrainingDays: TrainingDay[],
+  updatedSessions: string[]
+) => {
   const updatedData: Partial<ProgramData> = {
     programData: {
       trainingDays: updatedTrainingDays,
-      sessions: updatedSessions
+      sessions: updatedSessions,
     },
   };
   mainProgramStore.updateProgram(updatedData);
